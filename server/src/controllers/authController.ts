@@ -301,6 +301,13 @@ export async function requestOTP(req: Request, res: Response): Promise<void> {
         "If an eligible account exists, a verification code has been sent.",
     });
   } catch (error: any) {
+    logger.error("OTP_REQUEST_FAILED", {
+      ip: req.ip,
+      details: {
+        errorCode: error.code,
+        message: error.message,
+      },
+    });
     const status = error.message?.includes("wait")
       ? 429
       : error.message?.includes("not configured")
