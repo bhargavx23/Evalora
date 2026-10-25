@@ -27,6 +27,11 @@ function getTransporter(): Transporter {
       port: ENV.SMTP_PORT,
       secure: ENV.SMTP_SECURE,
       auth: { user: ENV.SMTP_USER, pass: ENV.SMTP_PASS },
+      // Fail promptly when the SMTP host is unreachable instead of leaving
+      // the login request (and its loading indicator) open indefinitely.
+      connectionTimeout: 10_000,
+      greetingTimeout: 10_000,
+      socketTimeout: 20_000,
     });
   }
 

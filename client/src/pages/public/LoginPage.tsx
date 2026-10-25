@@ -997,7 +997,7 @@ export const LoginPage: React.FC = () => {
                     isLoading={isLoading}
                     icon={<ArrowRight className="h-4 w-4" />}
                   >
-                    Send OTP
+                    {isLoading ? "Sending code..." : "Send OTP"}
                   </Button>
                 </form>
               ) : (
