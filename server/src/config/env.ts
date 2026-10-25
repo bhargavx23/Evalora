@@ -65,15 +65,9 @@ export const ENV = {
   SMTP_FROM_EMAIL: process.env.SMTP_FROM_EMAIL || "",
   RESEND_API_KEY: process.env.RESEND_API_KEY || "",
   RESEND_FROM_EMAIL: process.env.RESEND_FROM_EMAIL || "",
-  OTP_EXPIRY_MINUTES: process.env.OTP_EXPIRY_MINUTES
-    ? parseInt(process.env.OTP_EXPIRY_MINUTES, 10)
-    : 10,
-  OTP_MAX_ATTEMPTS: process.env.OTP_MAX_ATTEMPTS
-    ? parseInt(process.env.OTP_MAX_ATTEMPTS, 10)
+  AUTH_CHALLENGE_MAX_ATTEMPTS: process.env.AUTH_CHALLENGE_MAX_ATTEMPTS
+    ? parseInt(process.env.AUTH_CHALLENGE_MAX_ATTEMPTS, 10)
     : 5,
-  OTP_RESEND_SECONDS: process.env.OTP_RESEND_SECONDS
-    ? parseInt(process.env.OTP_RESEND_SECONDS, 10)
-    : 60,
   EXECUTION_TIMEOUT_MS: process.env.EXECUTION_TIMEOUT_MS
     ? parseInt(process.env.EXECUTION_TIMEOUT_MS, 10)
     : 4000,

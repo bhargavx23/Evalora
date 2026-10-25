@@ -38,6 +38,7 @@ export interface IUser extends Document {
   walletAddress?: string; // Primary verified Algorand wallet address (backward compatible)
   wallets: IUserWallet[];
   googleId?: string;
+  // Keep the legacy "otp" value readable for existing records; OTP auth is disabled.
   authProviders?: Array<"password" | "google" | "otp" | "wallet">;
   emailVerified: boolean;
   authTokenVersion: number;

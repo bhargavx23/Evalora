@@ -1,17 +1,5 @@
 import { api } from '../api/client';
 
-export interface OtpRequestPayload {
-  email: string;
-  intent?: 'login' | 'register' | 'account_access';
-}
-
-export interface OtpLoginPayload {
-  email: string;
-  otp: string;
-  role?: string;
-  collegeName?: string;
-}
-
 export interface RegisterPayload {
   name: string;
   email: string;
@@ -24,16 +12,6 @@ export interface RegisterPayload {
 }
 
 export const authService = {
-  async requestOtp(payload: OtpRequestPayload) {
-    const res = await api.post('/auth/otp/request', payload);
-    return res.data;
-  },
-
-  async loginWithOtp(payload: OtpLoginPayload) {
-    const res = await api.post('/auth/otp/login', payload);
-    return res.data;
-  },
-
   async loginWithPassword(email: string, password: string) {
     const res = await api.post('/auth/login', { email, password });
     return res.data;

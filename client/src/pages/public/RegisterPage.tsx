@@ -9,7 +9,6 @@ import { Badge } from "../../components/ui/Badge";
 import {
   ArrowRight,
   CheckCircle2,
-  KeyRound,
   Lock,
   Mail,
   Phone,
@@ -37,8 +36,6 @@ export const RegisterPage: React.FC = () => {
   const [isWalletLoading, setIsWalletLoading] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [verificationCode, setVerificationCode] = useState("");
-  const [verificationPending, setVerificationPending] = useState(false);
   const { user, authStatus, loginWithToken } = useAuth();
   const toast = useToast();
   const navigate = useNavigate();
@@ -130,31 +127,12 @@ export const RegisterPage: React.FC = () => {
 
       const res = await api.post("/auth/register", payload);
       if (res.data.success) {
-        setVerificationPending(true);
-        toast.success(
-          "Account created. Check your email for the verification code."
-        );
+        const user = await loginWithToken(res.data.token);
+        toast.success(`Welcome to Evalora, ${user.name}!`);
+        navigate("/dashboard", { replace: true });
       }
     } catch (err: any) {
       toast.error(err.response?.data?.message || "Registration failed");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleVerify = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    try {
-      const res = await api.post("/auth/otp/verify-email", {
-        email: formData.email.trim(),
-        code: verificationCode.trim(),
-      });
-      const user = await loginWithToken(res.data.token);
-      toast.success(`Welcome to Evalora, ${user.name}!`);
-      navigate("/dashboard");
-    } catch (err: any) {
-      toast.error(err.response?.data?.message || "Email verification failed");
     } finally {
       setIsLoading(false);
     }
@@ -174,41 +152,7 @@ export const RegisterPage: React.FC = () => {
             </p>
           </div>
 
-          {verificationPending ? (
-            <form onSubmit={handleVerify} className="space-y-4">
-              <div>
-                <label className="field-label">6-Digit Verification Code</label>
-                <div className="relative">
-                  <KeyRound className="absolute left-3.5 top-3 h-4 w-4 text-[#9494A3]" />
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    pattern="[0-9]{6}"
-                    maxLength={6}
-                    value={verificationCode}
-                    onChange={(e) => setVerificationCode(e.target.value)}
-                    placeholder="482913"
-                    className="field-control pl-10 font-mono tracking-widest"
-                    required
-                    autoFocus
-                  />
-                </div>
-              </div>
-              <Button
-                type="submit"
-                variant="primary"
-                className="w-full"
-                isLoading={isLoading}
-                icon={<ArrowRight className="w-4 h-4" />}
-              >
-                Verify Email & Enter Dashboard
-              </Button>
-              <p className="text-center text-xs text-[#6B6B78]">
-                The code was sent to {formData.email}. It expires soon and can only be used once.
-              </p>
-            </form>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="field-label">Full Name *</label>
                 <div className="relative">
@@ -342,8 +286,7 @@ export const RegisterPage: React.FC = () => {
               >
                 Create Account
               </Button>
-            </form>
-          )}
+          </form>
 
           <div className="space-y-2 text-center text-xs text-[#6B6B78] pt-3 border-t border-[#E8E8EF]">
             <div>

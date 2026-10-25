@@ -376,7 +376,7 @@ export const LandingPage: React.FC = () => {
             </div>
             <div className="flex items-center gap-2">
               <Wallet className="h-4 w-4 text-[#5B5CE2]" />
-              <span>Pera Wallet QR & OTP login</span>
+              <span>Email + password and Pera Wallet login</span>
             </div>
           </div>
         </div>

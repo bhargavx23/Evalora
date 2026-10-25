@@ -90,7 +90,7 @@ export async function resetDevDatabase(): Promise<void> {
           lastUsedAt: new Date()
         }
       ],
-      authProviders: ['password', 'otp', 'wallet'],
+      authProviders: ['password', 'wallet'],
       emailVerified: true,
       status: 'active',
       plan: 'enterprise',

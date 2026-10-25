@@ -99,7 +99,7 @@ All lifecycle scripts can be executed directly from the repository root:
 | `JWT_EXPIRES_IN` | Token validity period | `7d` |
 | `GEMINI_API_KEY` | Google Gemini API Key for autonomous question generation | `<gemini-key>` |
 | `GEMINI_MODEL` | Google Gemini model identifier | `gemini-3.8-flash` |
-| `SMTP_HOST` | SMTP server host for sending OTP challenge emails | `smtp.gmail.com` |
+| `SMTP_HOST` | SMTP server host for assessment invitations and reminders | `smtp.gmail.com` |
 | `SMTP_PORT` | SMTP port (465 for SSL, 587 for TLS) | `465` |
 | `SMTP_USER` | SMTP username / sender email | `admin@evalora.com` |
 | `SMTP_PASS` | SMTP application password | `<app-password>` |

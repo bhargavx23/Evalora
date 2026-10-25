@@ -1,16 +1,10 @@
 import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
-import crypto from "node:crypto";
 import jwt from "jsonwebtoken";
 import { User, IUser } from "../models/User.js";
-import {
-  AuthChallenge,
-  AuthChallengePurpose,
-} from "../models/AuthChallenge.js";
 import { College } from "../models/College.js";
 import { Department } from "../models/Department.js";
 import { ENV } from "../config/env.js";
-import { emailService } from "../services/emailService.js";
 import { algorandAuthService } from "../services/algorandAuthService.js";
 import { logger } from "../utils/logger.js";
 
@@ -51,10 +45,6 @@ function redirectWithAuthResult(
     redirect.searchParams.set(key, value),
   );
   res.redirect(redirect.toString());
-}
-
-function normalizeEmail(email: unknown): string {
-  return typeof email === "string" ? email.toLowerCase().trim() : "";
 }
 
 function publicUser(user: IUser): Record<string, unknown> {
@@ -111,80 +101,6 @@ function publicUser(user: IUser): Record<string, unknown> {
   };
 }
 
-function createOTP(): string {
-  return crypto.randomInt(100000, 1000000).toString();
-}
-
-async function issueOTP(
-  email: string,
-  purpose: AuthChallengePurpose,
-): Promise<void> {
-  const user = await User.findOne({ email });
-  const existing = await AuthChallenge.findOne({
-    email,
-    purpose,
-    consumedAt: { $exists: false },
-  }).sort({ createdAt: -1 });
-  if (
-    existing &&
-    Date.now() - existing.lastSentAt.getTime() < ENV.OTP_RESEND_SECONDS * 1000
-  ) {
-    throw new Error(
-      `Please wait ${ENV.OTP_RESEND_SECONDS} seconds before requesting another code.`,
-    );
-  }
-
-  await AuthChallenge.deleteMany({ email, purpose });
-  const code = createOTP();
-  const challenge = await AuthChallenge.create({
-    email,
-    purpose,
-    userId: user?._id,
-    codeHash: await bcrypt.hash(code, 10),
-    expiresAt: new Date(Date.now() + ENV.OTP_EXPIRY_MINUTES * 60 * 1000),
-    lastSentAt: new Date(),
-  });
-
-  try {
-    if (purpose === "login") await emailService.sendLoginOTP(email, code);
-    else if (purpose === "email_verification")
-      await emailService.sendVerificationOTP(email, code);
-    else if (purpose === "password_reset")
-      await emailService.sendPasswordResetOTP(email, code);
-  } catch (error) {
-    await AuthChallenge.deleteOne({ _id: challenge._id });
-    throw error;
-  }
-}
-
-async function consumeOTP(
-  email: string,
-  purpose: AuthChallengePurpose,
-  code: string,
-) {
-  const challenge = await AuthChallenge.findOne({
-    email,
-    purpose,
-    consumedAt: { $exists: false },
-    expiresAt: { $gt: new Date() },
-  }).sort({ createdAt: -1 });
-
-  if (!challenge || !challenge.codeHash || challenge.attempts >= ENV.OTP_MAX_ATTEMPTS) {
-    throw new Error("Invalid or expired verification code.");
-  }
-
-  const isValid = await bcrypt.compare(code, challenge.codeHash);
-  if (!isValid) {
-    challenge.attempts += 1;
-    await challenge.save();
-    throw new Error("Invalid or expired verification code.");
-  }
-
-  challenge.consumedAt = new Date();
-  await challenge.save();
-  return challenge;
-}
-
 export async function login(req: Request, res: Response): Promise<void> {
   try {
     const { email, password } = req.body;
@@ -211,16 +127,6 @@ export async function login(req: Request, res: Response): Promise<void> {
         success: false,
         message: "Account is suspended. Please contact administrator.",
       });
-      return;
-    }
-
-    if (!user.emailVerified) {
-      res
-        .status(403)
-        .json({
-          success: false,
-          message: "Please verify your email before signing in.",
-        });
       return;
     }
 
@@ -272,247 +178,6 @@ export async function login(req: Request, res: Response): Promise<void> {
   }
 }
 
-export async function requestOTP(req: Request, res: Response): Promise<void> {
-  try {
-    const email = normalizeEmail(req.body.email);
-    const purpose = req.body.purpose as AuthChallengePurpose;
-    const allowNewUser = Boolean(req.body.allowNewUser);
-    if (
-      !email ||
-      !["login", "password_reset", "email_verification"].includes(purpose)
-    ) {
-      res
-        .status(400)
-        .json({
-          success: false,
-          message: "A valid email and OTP purpose are required.",
-        });
-      return;
-    }
-
-    const user = await User.findOne({ email });
-    if (user || (purpose === "login" && allowNewUser)) {
-      await issueOTP(email, purpose);
-    }
-
-    res.json({
-      success: true,
-      message:
-        "If an eligible account exists, a verification code has been sent.",
-    });
-  } catch (error: any) {
-    logger.error("OTP_REQUEST_FAILED", {
-      ip: req.ip,
-      details: {
-        errorCode: error.code,
-        message: error.message,
-      },
-    });
-    const status = error.message?.includes("wait")
-      ? 429
-      : error.message?.includes("not configured")
-        ? 503
-        : 500;
-    res
-      .status(status)
-      .json({
-        success: false,
-        message:
-          status === 500 ? "Unable to send verification code." : error.message,
-      });
-  }
-}
-
-export async function loginWithOTP(req: Request, res: Response): Promise<void> {
-  try {
-    const email = normalizeEmail(req.body.email);
-    const code = typeof req.body.code === "string" ? req.body.code.trim() : "";
-    const requireProfileSetup = Boolean(req.body.requireProfileSetup);
-    if (!email || !/^\d{6}$/.test(code)) {
-      res
-        .status(400)
-        .json({
-          success: false,
-          message: "Email and a six-digit code are required.",
-          code: "VALIDATION_ERROR"
-        });
-      return;
-    }
-
-    await consumeOTP(email, "login", code);
-    let user = await User.findOne({ email }).populate(
-      "collegeId",
-      "name code status",
-    );
-    let isNewUser = false;
-
-    if (!user && requireProfileSetup) {
-      const onboardingToken = algorandAuthService.createEmailOnboardingToken(email);
-      res.json({
-        success: true,
-        message: "Email verified. Complete your profile to create your Evalora account.",
-        isNewUser: true,
-        requiresProfileSetup: true,
-        onboardingToken,
-        email,
-      });
-      return;
-    }
-
-    if (!user) {
-      user = await User.create({
-        name: email.split("@")[0],
-        email,
-        role: "student",
-        emailVerified: true,
-        authProviders: ["otp"],
-        freeAttempts: { total: 10, used: 0 },
-        paidAttempts: { total: 0, used: 0 },
-        plan: "free",
-        status: "active"
-      });
-      isNewUser = true;
-    }
-
-    if (user.status === "suspended") {
-      res
-        .status(403)
-        .json({
-          success: false,
-          message: "Account is suspended. Please contact administrator.",
-          code: "ACCOUNT_SUSPENDED"
-        });
-      return;
-    }
-
-    if (!user.emailVerified) {
-      res
-        .status(403)
-        .json({
-          success: false,
-          message: "Please verify your email before signing in.",
-          code: "EMAIL_NOT_VERIFIED"
-        });
-      return;
-    }
-
-    const token = signToken(user);
-    setAuthCookie(res, token);
-
-    logger.info(isNewUser ? "USER_REGISTERED" : "USER_LOGIN", {
-      userId: user._id.toString(),
-      email: user.email,
-      details: { authMethod: "otp", isNewUser }
-    });
-
-    res.json({
-      success: true,
-      message: isNewUser ? "Welcome! Account created successfully." : "Login successful",
-      token,
-      user: publicUser(user),
-      isNewUser
-    });
-  } catch (error: any) {
-    res
-      .status(401)
-      .json({
-        success: false,
-        message: error.message || "Unable to sign in with OTP.",
-        code: "UNAUTHORIZED"
-      });
-  }
-}
-
-export async function verifyEmail(req: Request, res: Response): Promise<void> {
-  try {
-    const email = normalizeEmail(req.body.email);
-    const code = typeof req.body.code === "string" ? req.body.code.trim() : "";
-    if (!email || !/^\d{6}$/.test(code)) {
-      res
-        .status(400)
-        .json({
-          success: false,
-          message: "Email and a six-digit code are required.",
-        });
-      return;
-    }
-
-    await consumeOTP(email, "email_verification", code);
-    const user = await User.findOneAndUpdate(
-      { email },
-      { emailVerified: true },
-      { new: true },
-    );
-    if (!user) {
-      res
-        .status(400)
-        .json({ success: false, message: "Unable to verify this account." });
-      return;
-    }
-
-    const token = signToken(user);
-    setAuthCookie(res, token);
-    res.json({
-      success: true,
-      message: "Email verified successfully.",
-      token,
-      user: publicUser(user),
-    });
-  } catch (error: any) {
-    res
-      .status(400)
-      .json({
-        success: false,
-        message: error.message || "Unable to verify email.",
-      });
-  }
-}
-
-export async function resetPassword(
-  req: Request,
-  res: Response,
-): Promise<void> {
-  try {
-    const email = normalizeEmail(req.body.email);
-    const code = typeof req.body.code === "string" ? req.body.code.trim() : "";
-    const password =
-      typeof req.body.password === "string" ? req.body.password : "";
-    if (!email || !/^\d{6}$/.test(code) || password.length < 8) {
-      res
-        .status(400)
-        .json({
-          success: false,
-          message:
-            "Email, a six-digit code, and a password of at least 8 characters are required.",
-        });
-      return;
-    }
-
-    const challenge = await consumeOTP(email, "password_reset", code);
-    const passwordHash = await bcrypt.hash(password, 12);
-    const user = await User.findOneAndUpdate(
-      { _id: challenge.userId, email },
-      { passwordHash },
-      { new: true },
-    );
-    if (!user) {
-      res
-        .status(400)
-        .json({ success: false, message: "Unable to reset this account." });
-      return;
-    }
-
-    res.json({ success: true, message: "Password reset successfully." });
-  } catch (error: any) {
-    res
-      .status(400)
-      .json({
-        success: false,
-        message: error.message || "Unable to reset password.",
-      });
-  }
-}
-
 export async function register(req: Request, res: Response): Promise<void> {
   try {
     const {
@@ -557,7 +222,7 @@ export async function register(req: Request, res: Response): Promise<void> {
     const salt = await bcrypt.genSalt(10);
     const passwordHash = await bcrypt.hash(password, salt);
 
-    const authProviders: Array<"password" | "google" | "otp" | "wallet"> = [
+    const authProviders: Array<"password" | "google" | "wallet"> = [
       "password",
     ];
     if (preparedWallet?.verified) {
@@ -571,24 +236,20 @@ export async function register(req: Request, res: Response): Promise<void> {
       passwordHash,
       role: "student",
       collegeId: null,
-      emailVerified: false,
+      emailVerified: true,
       status: "active",
       authProviders,
       walletAddress: preparedWallet?.verified ? preparedWallet.address : undefined,
       wallets: preparedWallet ? [preparedWallet] : [],
     });
 
-    await AuthChallenge.deleteMany({ email: newUser.email, purpose: "email_verification" });
-    try {
-      await issueOTP(newUser.email, "email_verification");
-    } catch (error) {
-      await User.deleteOne({ _id: newUser._id });
-      throw error;
-    }
+    const token = signToken(newUser);
+    setAuthCookie(res, token);
 
     res.status(201).json({
       success: true,
-      message: "Account created. Check your email for the verification code.",
+      message: "Account created successfully.",
+      token,
       user: publicUser(newUser),
     });
   } catch (error: any) {

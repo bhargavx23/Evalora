@@ -280,7 +280,7 @@ export class AlgorandAuthService {
       );
     }
 
-    if (storedChallenge.attempts >= (ENV.OTP_MAX_ATTEMPTS || 5)) {
+    if (storedChallenge.attempts >= (ENV.AUTH_CHALLENGE_MAX_ATTEMPTS || 5)) {
       throw new UnauthorizedError(
         "Maximum verification attempts exceeded for this challenge."
       );
@@ -572,23 +572,7 @@ export class AlgorandAuthService {
   }
 
   /**
-   * Issues a short-lived signed token allowing a newly verified email OTP user
-   * to complete profile setup (Name, Phone, optional Pera Wallet).
-   */
-  createEmailOnboardingToken(email: string): string {
-    return jwt.sign(
-      {
-        email: email.toLowerCase().trim(),
-        purpose: "email_onboarding",
-      },
-      ENV.JWT_SECRET,
-      { expiresIn: "15m" }
-    );
-  }
-
-  /**
-   * Completes onboarding for a new user who authenticated via Pera Wallet, QR login, or Email OTP
-   * and submitted their profile setup details (Name, Email, Phone, optional Pera Wallet).
+   * Completes onboarding for a new Pera Wallet user and submitted profile details.
    */
   async completeWalletOnboarding(params: {
     onboardingToken: string;
@@ -613,56 +597,6 @@ export class AlgorandAuthService {
       decoded = jwt.verify(params.onboardingToken, ENV.JWT_SECRET);
     } catch {
       throw new UnauthorizedError("Invalid or expired onboarding session.");
-    }
-
-    // Case 1: New Email OTP User completing profile setup (Section 10 Case B)
-    if (decoded.purpose === "email_onboarding" && decoded.email) {
-      const normalizedEmail = String(decoded.email).toLowerCase().trim();
-      const existingEmailUser = await User.findOne({ email: normalizedEmail });
-      if (existingEmailUser) {
-        throw new ConflictError("An account with this email already exists.");
-      }
-
-      const preparedWallet = await this.prepareRegistrationWallet({
-        walletAddress: params.walletAddress,
-        walletType: params.walletType || "pera",
-        network: params.network || "algorand",
-        challenge: params.challenge,
-        signature: params.signature,
-        publicKey: params.publicKey,
-      });
-
-      const authProviders: Array<"password" | "google" | "otp" | "wallet"> = ["otp"];
-      if (preparedWallet?.verified) {
-        authProviders.push("wallet");
-      }
-
-      const user = await User.create({
-        name: params.name.trim(),
-        email: normalizedEmail,
-        phone: params.phone?.trim() || undefined,
-        walletAddress: preparedWallet?.verified ? preparedWallet.address : undefined,
-        wallets: preparedWallet ? [preparedWallet] : [],
-        role: "student",
-        emailVerified: true,
-        authProviders,
-        freeAttempts: { total: 10, used: 0 },
-        paidAttempts: { total: 0, used: 0 },
-        plan: "free",
-        status: "active",
-      });
-
-      logger.info("USER_REGISTERED", {
-        userId: user._id.toString(),
-        email: user.email,
-        details: {
-          authMethod: "otp",
-          hasWallet: Boolean(preparedWallet),
-          walletVerified: Boolean(preparedWallet?.verified),
-        },
-      });
-
-      return { user, isNewUser: true };
     }
 
     // Case 2: New Pera Wallet User completing profile setup (Section 24)
@@ -733,7 +667,7 @@ export class AlgorandAuthService {
   }
 
   /**
-   * Validates optional wallet data provided during Email/OTP account registration (Sections 4, 5, 6):
+   * Validates optional wallet data provided during email/password registration:
    * - If signature + challenge are provided: cryptographically verifies ownership and returns `verified: true`.
    * - If only walletAddress is provided (manual entry): validates format, checks that no other user already
    *   verified this wallet (409 Conflict), and returns `verified: false` (pending ownership verification).
@@ -1374,7 +1308,7 @@ export class AlgorandAuthService {
       );
     }
 
-    if (session.attempts >= (ENV.OTP_MAX_ATTEMPTS || 5)) {
+    if (session.attempts >= (ENV.AUTH_CHALLENGE_MAX_ATTEMPTS || 5)) {
       session.status = "REJECTED";
       await session.save();
       throw new UnauthorizedError(

@@ -43,22 +43,17 @@ type AuthMode =
   | "select"
   | "pera_qr"
   | "onboarding_pera"
-  | "onboarding_email"
-  | "password"
-  | "reset";
+  | "password";
 
 export const LoginPage: React.FC = () => {
   const [searchParams] = useSearchParams();
   const [authMode, setAuthMode] = useState<AuthMode>("select");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Password sign-in and reset state
+  // Password sign-in state
   const [email, setEmail] = useState("");
-  const [code, setCode] = useState("");
 
-  // Institutional password fallback state
   const [password, setPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
 
   // Pera Wallet state
   const [walletAddress, setWalletAddress] = useState("");
@@ -69,12 +64,6 @@ export const LoginPage: React.FC = () => {
   const [onboardingName, setOnboardingName] = useState("");
   const [onboardingEmail, setOnboardingEmail] = useState("");
   const [onboardingPhone, setOnboardingPhone] = useState("");
-  const [optionalWalletAddress, setOptionalWalletAddress] = useState("");
-  const [optionalWalletChallenge, setOptionalWalletChallenge] = useState("");
-  const [optionalWalletSignature, setOptionalWalletSignature] = useState("");
-  const [optionalWalletVerified, setOptionalWalletVerified] = useState(false);
-  const [isConnectingOptionalPera, setIsConnectingOptionalPera] =
-    useState(false);
 
   // Desktop Pera QR Login state (Sections 13–21 & Section 35)
   const [qrSessionId, setQrSessionId] = useState("");
@@ -181,64 +170,6 @@ export const LoginPage: React.FC = () => {
     const timer = window.setInterval(updateRemaining, 1000);
     return () => window.clearInterval(timer);
   }, [qrExpiresAt, qrStatus]);
-
-  // Connect Pera Wallet optionally during Email Onboarding (Section 10 Case B)
-  const handleConnectOptionalPera = async () => {
-    setIsConnectingOptionalPera(true);
-    try {
-      let addr = optionalWalletAddress.trim().toUpperCase();
-      if (!addr) {
-        const connected = await connectInjectedAlgorandWallet(true);
-        if (connected) {
-          addr = connected.toUpperCase();
-          setOptionalWalletAddress(addr);
-        }
-      }
-
-      if (!addr) {
-        toast.info(
-          "Enter your 58-character Algorand address manually or connect Pera Wallet."
-        );
-        return;
-      }
-
-      if (!isValidAlgorandAddressFormat(addr)) {
-        toast.warning("Please enter a valid 58-character Algorand address.");
-        return;
-      }
-
-      const challengeRes = await api.post("/wallet/challenge", {
-        walletAddress: addr,
-        walletType: "pera",
-        network: "algorand",
-        purpose: "REGISTER_WALLET",
-      });
-
-      if (challengeRes.data.success) {
-        const issuedChallenge = challengeRes.data.challenge;
-        const sig = await signChallengeWithInjectedWallet(
-          addr,
-          issuedChallenge
-        );
-        if (sig) {
-          setOptionalWalletChallenge(issuedChallenge);
-          setOptionalWalletSignature(sig);
-          setOptionalWalletVerified(true);
-          toast.success("Pera Wallet ownership verified!");
-        } else {
-          toast.info(
-            "Address saved. You can verify wallet ownership anytime from Settings."
-          );
-        }
-      }
-    } catch (err: any) {
-      toast.error(
-        err.response?.data?.message || "Unable to connect Pera Wallet."
-      );
-    } finally {
-      setIsConnectingOptionalPera(false);
-    }
-  };
 
   // =========================================================================
   // 2. PERA WALLET REAL DESKTOP QR & MOBILE CONNECT FLOW (SECTIONS 81–95)
@@ -600,9 +531,7 @@ export const LoginPage: React.FC = () => {
     }
   };
 
-  // =========================================================================
-  // 3. COMPLETE ONBOARDING (NEW PERA USER OR NEW EMAIL OTP USER)
-  // =========================================================================
+  // Complete Pera Wallet profile setup.
   const handleCompleteOnboarding = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!onboardingName.trim()) {
@@ -618,17 +547,6 @@ export const LoginPage: React.FC = () => {
       return;
     }
 
-    if (
-      authMode === "onboarding_email" &&
-      optionalWalletAddress.trim() &&
-      !isValidAlgorandAddressFormat(optionalWalletAddress.trim())
-    ) {
-      toast.warning(
-        "Please enter a valid 58-character Algorand address or leave the Pera Wallet field blank."
-      );
-      return;
-    }
-
     setIsLoading(true);
     try {
       const payload: Record<string, unknown> = {
@@ -637,16 +555,6 @@ export const LoginPage: React.FC = () => {
         email: onboardingEmail.trim().toLowerCase(),
         phone: onboardingPhone.trim(),
       };
-
-      if (authMode === "onboarding_email" && optionalWalletAddress.trim()) {
-        payload.walletAddress = optionalWalletAddress.trim().toUpperCase();
-        payload.walletType = "pera";
-        payload.network = "algorand";
-        if (optionalWalletChallenge && optionalWalletSignature) {
-          payload.challenge = optionalWalletChallenge;
-          payload.signature = optionalWalletSignature;
-        }
-      }
 
       const res = await api.post("/wallet/complete-onboarding", payload);
 
@@ -668,7 +576,7 @@ export const LoginPage: React.FC = () => {
   };
 
   // =========================================================================
-  // 4. INSTITUTIONAL PASSWORD SIGN-IN & RESET
+  // EMAIL + PASSWORD SIGN-IN
   // =========================================================================
   const handlePasswordSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -684,26 +592,6 @@ export const LoginPage: React.FC = () => {
       redirectUser(user.role);
     } catch (err: any) {
       toast.error(err.message || "Login failed. Please verify credentials.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handlePasswordReset = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    try {
-      const res = await api.post("/auth/password-reset", {
-        email,
-        code,
-        password: newPassword,
-      });
-      toast.success(res.data.message);
-      setAuthMode("password");
-      setCode("");
-      setNewPassword("");
-    } catch (err: any) {
-      toast.error(err.response?.data?.message || "Unable to reset password");
     } finally {
       setIsLoading(false);
     }
@@ -1139,118 +1027,8 @@ export const LoginPage: React.FC = () => {
           )}
 
           {/* =============================================================== */}
-          {/* VIEW 5: NEW EMAIL OTP USER REGISTRATION (SECTION 10 CASE B)     */}
+          {/* VIEW 5: NEW PERA WALLET ACCOUNT PROFILE SETUP                  */}
           {/* =============================================================== */}
-          {authMode === "onboarding_email" && (
-            <form onSubmit={handleCompleteOnboarding} className="space-y-4">
-              <div className="space-y-1">
-                <Badge variant="green">Email Verified</Badge>
-                <h2 className="display-heading pt-1 text-2xl text-[#18181F]">
-                  Complete your Evalora account
-                </h2>
-                <p className="text-xs text-[#6B6B78]">
-                  Finish setting up your profile to access your dashboard.
-                </p>
-              </div>
-
-              <div>
-                <label className="field-label">Full Name *</label>
-                <div className="relative">
-                  <User className="absolute left-3.5 top-3 h-4 w-4 text-[#9494A3]" />
-                  <input
-                    type="text"
-                    value={onboardingName}
-                    onChange={(e) => setOnboardingName(e.target.value)}
-                    placeholder="Enter your full name"
-                    className="field-control pl-10"
-                    required
-                    autoFocus
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="field-label">Email Address (Verified)</label>
-                <input
-                  type="email"
-                  value={onboardingEmail}
-                  readOnly
-                  className="field-control bg-[#F7F7FB] text-[#6B6B78]"
-                />
-              </div>
-
-              <div>
-                <label className="field-label">Phone Number *</label>
-                <div className="relative">
-                  <Phone className="absolute left-3.5 top-3 h-4 w-4 text-[#9494A3]" />
-                  <input
-                    type="tel"
-                    value={onboardingPhone}
-                    onChange={(e) => setOnboardingPhone(e.target.value)}
-                    placeholder="+91 98765 43210"
-                    className="field-control pl-10"
-                    required
-                  />
-                </div>
-              </div>
-
-              {/* Optional Pera Wallet Section */}
-              <div className="rounded-xl border border-[#E8E8EF] bg-[#F7F7FB] p-3.5 space-y-2.5">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-[#18181F]">
-                    Pera Wallet (Optional)
-                  </span>
-                  {optionalWalletVerified ? (
-                    <Badge variant="green">Verified</Badge>
-                  ) : (
-                    <Badge variant="neutral">Algorand</Badge>
-                  )}
-                </div>
-
-                <Button
-                  type="button"
-                  size="sm"
-                  variant="secondary"
-                  className="w-full"
-                  isLoading={isConnectingOptionalPera}
-                  icon={<Wallet className="h-3.5 w-3.5" />}
-                  onClick={handleConnectOptionalPera}
-                >
-                  {optionalWalletVerified
-                    ? "Pera Wallet Connected"
-                    : "Connect Pera Wallet"}
-                </Button>
-
-                <div>
-                  <label className="block text-[11px] text-[#6B6B78] mb-1">
-                    or enter Algorand address manually
-                  </label>
-                  <input
-                    type="text"
-                    value={optionalWalletAddress}
-                    onChange={(e) => {
-                      setOptionalWalletAddress(e.target.value);
-                      setOptionalWalletVerified(false);
-                      setOptionalWalletChallenge("");
-                      setOptionalWalletSignature("");
-                    }}
-                    placeholder="58-character Algorand address (optional)"
-                    className="field-control font-mono text-[11px]"
-                  />
-                </div>
-              </div>
-
-              <Button
-                type="submit"
-                variant="primary"
-                className="w-full"
-                isLoading={isLoading}
-                icon={<ArrowRight className="h-4 w-4" />}
-              >
-                Create Account
-              </Button>
-            </form>
-          )}
 
           {/* =============================================================== */}
           {/* VIEW 5: EMAIL + PASSWORD SIGN-IN                                */}
@@ -1296,13 +1074,6 @@ export const LoginPage: React.FC = () => {
               <div>
                 <div className="mb-1.5 flex items-center justify-between">
                   <label className="field-label mb-0">Password</label>
-                  <button
-                    type="button"
-                    className="text-xs font-medium text-[#5B5CE2] hover:text-[#34358F]"
-                    onClick={() => setAuthMode("reset")}
-                  >
-                    Forgot password?
-                  </button>
                 </div>
                 <div className="relative">
                   <Lock className="absolute left-3.5 top-3 h-4 w-4 text-[#9494A3]" />
@@ -1329,101 +1100,6 @@ export const LoginPage: React.FC = () => {
             </form>
           )}
 
-          {/* =============================================================== */}
-          {/* VIEW 7: PASSWORD RESET                                          */}
-          {/* =============================================================== */}
-          {authMode === "reset" && (
-            <form onSubmit={handlePasswordReset} className="space-y-4">
-              <div className="space-y-1">
-                <h2 className="display-heading text-2xl text-[#18181F]">
-                  Reset Password
-                </h2>
-                <p className="text-xs text-[#6B6B78]">
-                  Request a 6-digit verification code to set a new password.
-                </p>
-              </div>
-
-              <div>
-                <label className="field-label">Email</label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="field-control"
-                  required
-                />
-              </div>
-
-              <div className="flex gap-2">
-                <input
-                  inputMode="numeric"
-                  pattern="[0-9]{6}"
-                  maxLength={6}
-                  placeholder="6-digit code"
-                  value={code}
-                  onChange={(e) => setCode(e.target.value)}
-                  className="field-control font-mono"
-                  required
-                />
-                <Button
-                  type="button"
-                  variant="secondary"
-                  isLoading={isLoading}
-                  onClick={async () => {
-                    if (!email) {
-                      toast.warning("Enter your email first");
-                      return;
-                    }
-                    setIsLoading(true);
-                    try {
-                      const res = await api.post("/auth/otp/request", {
-                        email,
-                        purpose: "password_reset",
-                      });
-                      toast.success(res.data.message);
-                    } catch (err: any) {
-                      toast.error(
-                        err.response?.data?.message || "Unable to send code"
-                      );
-                    } finally {
-                      setIsLoading(false);
-                    }
-                  }}
-                >
-                  Send Code
-                </Button>
-              </div>
-
-              <div>
-                <label className="field-label">New Password</label>
-                <input
-                  type="password"
-                  minLength={8}
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                  className="field-control"
-                  required
-                />
-              </div>
-
-              <Button
-                type="submit"
-                variant="primary"
-                className="w-full"
-                isLoading={isLoading}
-              >
-                Reset Password
-              </Button>
-
-              <button
-                type="button"
-                className="w-full text-xs font-medium text-[#6B6B78] hover:text-[#18181F]"
-                onClick={() => setAuthMode("password")}
-              >
-                Back to password sign in
-              </button>
-            </form>
-          )}
         </div>
       </Card>
     </div>

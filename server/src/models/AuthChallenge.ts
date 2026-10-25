@@ -1,20 +1,15 @@
 import mongoose, { Document, Schema } from "mongoose";
 
 export type AuthChallengePurpose =
-  | "login"
-  | "password_reset"
-  | "email_verification"
   | "wallet_auth"
   | "wallet_link"
   | "wallet_register";
 
 export interface IAuthChallenge extends Document {
-  email?: string;
   walletAddress?: string;
   walletType?: string;
   network?: string;
   purpose: AuthChallengePurpose;
-  codeHash?: string;
   nonce?: string;
   nonceId?: string;
   userId?: mongoose.Types.ObjectId;
@@ -26,12 +21,6 @@ export interface IAuthChallenge extends Document {
 
 const AuthChallengeSchema = new Schema<IAuthChallenge>(
   {
-    email: {
-      type: String,
-      lowercase: true,
-      trim: true,
-      index: true,
-    },
     walletAddress: {
       type: String,
       trim: true,
@@ -50,9 +39,6 @@ const AuthChallengeSchema = new Schema<IAuthChallenge>(
     purpose: {
       type: String,
       enum: [
-        "login",
-        "password_reset",
-        "email_verification",
         "wallet_auth",
         "wallet_link",
         "wallet_register",
@@ -60,7 +46,6 @@ const AuthChallengeSchema = new Schema<IAuthChallenge>(
       required: true,
       index: true,
     },
-    codeHash: { type: String },
     nonce: { type: String },
     nonceId: { type: String, index: true },
     userId: { type: Schema.Types.ObjectId, ref: "User" },
@@ -73,7 +58,6 @@ const AuthChallengeSchema = new Schema<IAuthChallenge>(
 );
 
 AuthChallengeSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
-AuthChallengeSchema.index({ email: 1, purpose: 1, consumedAt: 1 });
 AuthChallengeSchema.index({ walletAddress: 1, purpose: 1, consumedAt: 1 });
 AuthChallengeSchema.index({ walletAddress: 1, network: 1, purpose: 1, consumedAt: 1 });
 

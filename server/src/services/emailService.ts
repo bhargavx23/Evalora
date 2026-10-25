@@ -43,18 +43,6 @@ export class EmailService {
     await getTransporter().verify();
   }
 
-  async sendVerificationOTP(email: string, code: string): Promise<void> {
-    await this.sendOTP(email, "verification", code);
-  }
-
-  async sendLoginOTP(email: string, code: string): Promise<void> {
-    await this.sendOTP(email, "login", code);
-  }
-
-  async sendPasswordResetOTP(email: string, code: string): Promise<void> {
-    await this.sendOTP(email, "password reset", code);
-  }
-
   async sendAssessmentInvitation(
     email: string,
     assessmentTitle: string,
@@ -76,18 +64,6 @@ export class EmailService {
       email,
       `Reminder: ${assessmentTitle} on Evalora`,
       `This is a reminder to complete "${assessmentTitle}" on Evalora.\n\nOpen your assessment: ${assessmentUrl}`,
-    );
-  }
-
-  private async sendOTP(
-    email: string,
-    purpose: string,
-    code: string,
-  ): Promise<void> {
-    await this.send(
-      email,
-      `Your Evalora ${purpose} code`,
-      `Your Evalora ${purpose} verification code is ${code}.\n\nThis 6-digit code expires in ${ENV.OTP_EXPIRY_MINUTES} minutes and can be used only once. Do not share it with anyone.`,
     );
   }
 
