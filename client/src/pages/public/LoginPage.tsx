@@ -18,7 +18,6 @@ import {
   ArrowRight,
   Building,
   CheckCircle2,
-  KeyRound,
   Lock,
   Mail,
   Phone,
@@ -42,7 +41,6 @@ import {
 
 type AuthMode =
   | "select"
-  | "email_otp"
   | "pera_qr"
   | "onboarding_pera"
   | "onboarding_email"
@@ -54,10 +52,9 @@ export const LoginPage: React.FC = () => {
   const [authMode, setAuthMode] = useState<AuthMode>("select");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Email + OTP state
+  // Password sign-in and reset state
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
-  const [otpSent, setOtpSent] = useState(false);
 
   // Institutional password fallback state
   const [password, setPassword] = useState("");
@@ -184,84 +181,6 @@ export const LoginPage: React.FC = () => {
     const timer = window.setInterval(updateRemaining, 1000);
     return () => window.clearInterval(timer);
   }, [qrExpiresAt, qrStatus]);
-
-  // =========================================================================
-  // 1. EMAIL + OTP FLOW (SECTION 10)
-  // =========================================================================
-  const handleSendOtp = async (e?: React.FormEvent) => {
-    if (e) e.preventDefault();
-    const trimmedEmail = email.trim().toLowerCase();
-    if (!trimmedEmail) {
-      toast.warning("Please enter your email address.");
-      return;
-    }
-
-    setIsLoading(true);
-    try {
-      await api.post("/auth/otp/request", {
-        email: trimmedEmail,
-        purpose: "login",
-        allowNewUser: true,
-      });
-      setOtpSent(true);
-      toast.success("Verification code sent to your email.");
-    } catch (err: any) {
-      toast.error(
-        err.response?.data?.message || "Unable to send verification code."
-      );
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleVerifyOtp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const trimmedEmail = email.trim().toLowerCase();
-    const trimmedCode = code.trim();
-    if (!trimmedEmail || !/^\d{6}$/.test(trimmedCode)) {
-      toast.warning("Please enter your email and the 6-digit OTP.");
-      return;
-    }
-
-    setIsLoading(true);
-    try {
-      const res = await api.post("/auth/otp/login", {
-        email: trimmedEmail,
-        code: trimmedCode,
-        requireProfileSetup: true,
-      });
-
-      if (!res.data.success) {
-        throw new Error(res.data.message || "OTP verification failed.");
-      }
-
-      // Case B — New User: Open Registration / Profile Setup screen (Section 10 Case B)
-      if (res.data.requiresProfileSetup && res.data.onboardingToken) {
-        setOnboardingToken(res.data.onboardingToken);
-        setOnboardingEmail(trimmedEmail);
-        setOnboardingName("");
-        setOnboardingPhone("");
-        setOptionalWalletAddress("");
-        setOptionalWalletChallenge("");
-        setOptionalWalletSignature("");
-        setOptionalWalletVerified(false);
-        setAuthMode("onboarding_email");
-        toast.info("Email verified! Complete your profile to finish setup.");
-        return;
-      }
-
-      // Case A — Existing User: Redirect to dashboard
-      const user = await loginWithToken(res.data.token);
-      toast.success(`Welcome back, ${user.name}!`);
-      redirectUser(user.role);
-    } catch (err: any) {
-      toast.error(
-        err.response?.data?.message || err.message || "Invalid or expired OTP."
-      );
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   // Connect Pera Wallet optionally during Email Onboarding (Section 10 Case B)
   const handleConnectOptionalPera = async () => {
@@ -804,7 +723,7 @@ export const LoginPage: React.FC = () => {
             <span className="block text-[#5B5CE2]">Evaluate better.</span>
           </h1>
           <p className="text-base leading-7 text-[#6B6B78]">
-            Sign in with your email one-time code or connect your Pera Wallet on
+            Sign in with your email and password or connect your Pera Wallet on
             Algorand to access adaptive DSA, Aptitude, Reasoning, and Coding
             practice sessions.
           </p>
@@ -812,9 +731,9 @@ export const LoginPage: React.FC = () => {
 
         <div className="grid grid-cols-3 gap-4 border-t border-[#E8E8EF] pt-6 text-sm">
           <div className="rounded-xl border border-[#E8E8EF] bg-white p-3.5">
-            <div className="font-semibold text-[#18181F]">Email + OTP</div>
+            <div className="font-semibold text-[#18181F]">Email + Password</div>
             <div className="mt-1 text-xs text-[#6B6B78]">
-              Passwordless verification
+              Secure account sign-in
             </div>
           </div>
           <div className="rounded-xl border border-[#E8E8EF] bg-white p-3.5">
@@ -857,12 +776,10 @@ export const LoginPage: React.FC = () => {
                   className="w-full justify-between px-5 font-semibold"
                   icon={<Mail className="h-4 w-4" />}
                   onClick={() => {
-                    setOtpSent(false);
-                    setCode("");
-                    setAuthMode("email_otp");
+                    setAuthMode("password");
                   }}
                 >
-                  <span className="flex-1 text-left">Continue with Email + OTP</span>
+                  <span className="flex-1 text-left">Continue with Email + Password</span>
                   <ArrowRight className="h-4 w-4 opacity-80" />
                 </Button>
 
@@ -932,140 +849,6 @@ export const LoginPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="border-t border-[#E8E8EF] pt-3 text-center text-xs text-[#6B6B78]">
-                <button
-                  type="button"
-                  onClick={() => setAuthMode("password")}
-                  className="font-medium text-[#6B6B78] hover:text-[#18181F] transition-colors"
-                >
-                  Sign in with institutional password
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* =============================================================== */}
-          {/* VIEW 2: CONTINUE WITH EMAIL (EMAIL + OTP) (SECTION 10 & 35)     */}
-          {/* =============================================================== */}
-          {authMode === "email_otp" && (
-            <div className="space-y-5">
-              <div className="flex items-center justify-between">
-                <button
-                  type="button"
-                  onClick={() => setAuthMode("select")}
-                  className="inline-flex items-center gap-1.5 text-xs font-medium text-[#6B6B78] hover:text-[#18181F]"
-                >
-                  <ArrowLeft className="h-3.5 w-3.5" />
-                  <span>Back</span>
-                </button>
-                <Badge variant="purple">Email + OTP</Badge>
-              </div>
-
-              <div className="space-y-1.5">
-                <h2 className="display-heading text-2xl text-[#18181F]">
-                  Continue with Email
-                </h2>
-                <p className="text-xs text-[#6B6B78]">
-                  {otpSent
-                    ? `Enter the 6-digit verification code sent to ${email}.`
-                    : "Enter your email address to receive a one-time verification code."}
-                </p>
-              </div>
-
-              {!otpSent ? (
-                <form onSubmit={handleSendOtp} className="space-y-4">
-                  <div>
-                    <label className="field-label">Email Address</label>
-                    <div className="relative">
-                      <Mail className="absolute left-3.5 top-3 h-4 w-4 text-[#9494A3]" />
-                      <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="you@example.com"
-                        className="field-control pl-10"
-                        required
-                        autoFocus
-                      />
-                    </div>
-                  </div>
-
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    className="w-full"
-                    isLoading={isLoading}
-                    icon={<ArrowRight className="h-4 w-4" />}
-                  >
-                    {isLoading ? "Sending code..." : "Send OTP"}
-                  </Button>
-                </form>
-              ) : (
-                <form onSubmit={handleVerifyOtp} className="space-y-4">
-                  <div>
-                    <div className="mb-1.5 flex items-center justify-between">
-                      <label className="field-label mb-0">Email Address</label>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setOtpSent(false);
-                          setCode("");
-                        }}
-                        className="text-xs font-medium text-[#5B5CE2] hover:text-[#34358F]"
-                      >
-                        Change email
-                      </button>
-                    </div>
-                    <input
-                      type="email"
-                      value={email}
-                      readOnly
-                      className="field-control bg-[#F7F7FB] text-[#6B6B78]"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="field-label">6-Digit OTP Code</label>
-                    <div className="relative">
-                      <KeyRound className="absolute left-3.5 top-3 h-4 w-4 text-[#9494A3]" />
-                      <input
-                        inputMode="numeric"
-                        pattern="[0-9]{6}"
-                        maxLength={6}
-                        value={code}
-                        onChange={(e) =>
-                          setCode(e.target.value.replace(/\D/g, ""))
-                        }
-                        placeholder="123456"
-                        className="field-control pl-10 font-mono tracking-widest"
-                        required
-                        autoFocus
-                      />
-                    </div>
-                  </div>
-
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    className="w-full"
-                    isLoading={isLoading}
-                    icon={<ArrowRight className="h-4 w-4" />}
-                  >
-                    Verify OTP
-                  </Button>
-
-                  <div className="text-center">
-                    <button
-                      type="button"
-                      onClick={() => handleSendOtp()}
-                      disabled={isLoading}
-                      className="text-xs font-medium text-[#6B6B78] hover:text-[#18181F]"
-                    >
-                      Didn't receive the code? Resend OTP
-                    </button>
-                  </div>
-                </form>
-              )}
             </div>
           )}
 
@@ -1470,7 +1253,7 @@ export const LoginPage: React.FC = () => {
           )}
 
           {/* =============================================================== */}
-          {/* VIEW 6: INSTITUTIONAL PASSWORD SIGN-IN                          */}
+          {/* VIEW 5: EMAIL + PASSWORD SIGN-IN                                */}
           {/* =============================================================== */}
           {authMode === "password" && (
             <form onSubmit={handlePasswordSubmit} className="space-y-4">
@@ -1483,7 +1266,7 @@ export const LoginPage: React.FC = () => {
                   <ArrowLeft className="h-3.5 w-3.5" />
                   <span>Back to primary login</span>
                 </button>
-                <Badge variant="neutral">Institution</Badge>
+                <Badge variant="neutral">Email + Password</Badge>
               </div>
 
               <div className="space-y-1">
@@ -1491,7 +1274,7 @@ export const LoginPage: React.FC = () => {
                   Password Sign In
                 </h2>
                 <p className="text-xs text-[#6B6B78]">
-                  Sign in with your institutional email and password.
+                  Sign in with your email address and password.
                 </p>
               </div>
 
@@ -1503,7 +1286,7 @@ export const LoginPage: React.FC = () => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="name@college.edu"
+                    placeholder="you@example.com"
                     className="field-control pl-10"
                     required
                   />
