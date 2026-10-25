@@ -34,6 +34,11 @@ import { adaptiveSchedulerJob } from './jobs/index.js';
 
 const app = express();
 
+// Render terminates public traffic at a reverse proxy. Trust its single
+// forwarded hop so req.ip (and the per-IP rate limiters) identifies visitors
+// instead of grouping everyone under the proxy address.
+app.set('trust proxy', 1);
+
 // Security and utility middlewares
 app.use(helmet({
   contentSecurityPolicy: false // Disable CSP for local dev/Monaco workers
