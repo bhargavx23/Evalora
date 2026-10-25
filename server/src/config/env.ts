@@ -63,6 +63,8 @@ export const ENV = {
   SMTP_PASS: process.env.SMTP_PASS || "",
   SMTP_FROM_NAME: process.env.SMTP_FROM_NAME || "Evalora",
   SMTP_FROM_EMAIL: process.env.SMTP_FROM_EMAIL || "",
+  RESEND_API_KEY: process.env.RESEND_API_KEY || "",
+  RESEND_FROM_EMAIL: process.env.RESEND_FROM_EMAIL || "",
   OTP_EXPIRY_MINUTES: process.env.OTP_EXPIRY_MINUTES
     ? parseInt(process.env.OTP_EXPIRY_MINUTES, 10)
     : 10,

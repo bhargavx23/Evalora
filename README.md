@@ -103,6 +103,8 @@ All lifecycle scripts can be executed directly from the repository root:
 | `SMTP_PORT` | SMTP port (465 for SSL, 587 for TLS) | `465` |
 | `SMTP_USER` | SMTP username / sender email | `admin@evalora.com` |
 | `SMTP_PASS` | SMTP application password | `<app-password>` |
+| `RESEND_API_KEY` | Optional Resend API key; uses HTTPS instead of SMTP when set | `<resend-api-key>` |
+| `RESEND_FROM_EMAIL` | Optional verified sender, such as `Evalora <login@example.com>` | `<verified-sender>` |
 | `EVALORA_PAYMENT_WALLET` | Algorand receiver treasury address for verified payments | `WLLFEO...` |
 | `ALGORAND_NETWORK` | Algorand network (`testnet` / `mainnet`) | `testnet` |
 
@@ -117,7 +119,7 @@ All lifecycle scripts can be executed directly from the repository root:
 - **Root Directory**: `server`
 - **Build Command**: `npm install && npm run build`
 - **Start Command**: `npm run start` (executes `node dist/server.js`)
-- **Required Env**: Configure MongoDB URI, JWT secret, Gemini key, SMTP credentials, and set `CLIENT_URL` to your production frontend domain.
+- **Required Env**: Configure MongoDB URI, JWT secret, Gemini key, email delivery credentials (`RESEND_API_KEY` recommended for Render Free, or SMTP credentials on a plan that permits SMTP), and set `CLIENT_URL` to your production frontend domain. For Resend, verify a sender domain and set `RESEND_FROM_EMAIL` to an address on that domain.
 
 #### 2. Frontend Deployment (`client/`)
 - **Platforms**: Vercel, Netlify, Cloudflare Pages, AWS S3 + CloudFront.

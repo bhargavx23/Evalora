@@ -92,6 +92,41 @@ export class EmailService {
   }
 
   private async send(to: string, subject: string, text: string): Promise<void> {
+    if (ENV.RESEND_API_KEY) {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 15_000);
+      const from = ENV.RESEND_FROM_EMAIL ||
+        (ENV.SMTP_FROM_EMAIL
+          ? `\"${ENV.SMTP_FROM_NAME}\" <${ENV.SMTP_FROM_EMAIL}>`
+          : "Evalora <onboarding@resend.dev>");
+
+      try {
+        const response = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${ENV.RESEND_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ from, to: [to], subject, text }),
+          signal: controller.signal,
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          throw new Error(
+            `Resend email API returned ${response.status}: ${result.message || result.name || "request failed"}`,
+          );
+        }
+        return;
+      } catch (error: any) {
+        if (error.name === "AbortError") {
+          throw new Error("Resend email API request timed out.");
+        }
+        throw error;
+      } finally {
+        clearTimeout(timeout);
+      }
+    }
+
     await getTransporter().sendMail({
       from: `"${ENV.SMTP_FROM_NAME}" <${ENV.SMTP_FROM_EMAIL}>`,
       to,
