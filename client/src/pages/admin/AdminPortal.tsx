@@ -537,7 +537,7 @@ export const AdminPortal: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 pb-12">
+    <div className="admin-portal min-w-0 space-y-6 break-words pb-12">
       {/* Top Header */}
       <header className="flex flex-col justify-between gap-4 border-b border-border-subtle pb-6 md:flex-row md:items-end">
         <div>
@@ -553,14 +553,14 @@ export const AdminPortal: React.FC = () => {
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <Badge variant="blue">
+          <Badge className="max-w-full whitespace-normal break-all" variant="blue">
             Admin: {user?.email}
           </Badge>
         </div>
       </header>
 
       {/* Navigation Tabs */}
-      <div className="flex overflow-x-auto border-b border-border-subtle pb-px text-sm">
+      <div className="flex min-w-0 max-w-full touch-pan-x overflow-x-auto overscroll-x-contain border-b border-border-subtle pb-px text-sm">
         {[
           { id: 'overview', label: 'Overview', icon: Layers },
           { id: 'users', label: 'Users', icon: Users },
@@ -577,7 +577,7 @@ export const AdminPortal: React.FC = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as AdminTab)}
-              className={`flex items-center gap-2 whitespace-nowrap border-b-2 px-4 py-3 font-medium transition-colors ${
+              className={`flex shrink-0 items-center gap-2 whitespace-nowrap border-b-2 px-4 py-3 font-medium transition-colors ${
                 isActive
                   ? 'border-brand-primary text-brand-primary font-semibold'
                   : 'border-transparent text-text-secondary hover:border-border-subtle hover:text-text-primary'
@@ -598,27 +598,27 @@ export const AdminPortal: React.FC = () => {
           ) : metrics ? (
             <>
               {/* Primary Stat Grid */}
-              <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-                <Card className="p-4">
-                  <span className="text-xs font-medium text-text-muted">Total Registered Users</span>
-                  <div className="mt-1 font-serif text-3xl font-medium text-text-primary">{metrics.users.total}</div>
-                  <div className="mt-2 flex gap-2 text-xs text-text-secondary">
+              <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 md:grid-cols-4 md:gap-4">
+                <Card padding="sm">
+                  <span className="block min-w-0 text-xs font-medium leading-5 text-text-muted">Total Registered Users</span>
+                  <div className="mt-1 break-words font-serif text-2xl font-medium text-text-primary sm:text-3xl">{metrics.users.total}</div>
+                  <div className="mt-2 flex flex-wrap gap-x-2 text-xs text-text-secondary">
                     <span>{metrics.users.students} Students</span> &bull; <span>{metrics.users.faculty} Faculty</span>
                   </div>
                 </Card>
-                <Card className="p-4">
-                  <span className="text-xs font-medium text-text-muted">Onboarded Institutions</span>
-                  <div className="mt-1 font-serif text-3xl font-medium text-text-primary">{metrics.organizations.total}</div>
+                <Card padding="sm">
+                  <span className="block min-w-0 text-xs font-medium leading-5 text-text-muted">Onboarded Institutions</span>
+                  <div className="mt-1 break-words font-serif text-2xl font-medium text-text-primary sm:text-3xl">{metrics.organizations.total}</div>
                   <div className="mt-2 text-xs text-[#527565] font-medium">{metrics.organizations.active} Active</div>
                 </Card>
-                <Card className="p-4">
-                  <span className="text-xs font-medium text-text-muted">Question Bank Size</span>
-                  <div className="mt-1 font-serif text-3xl font-medium text-text-primary">{metrics.questions.total}</div>
-                  <div className="mt-2 text-xs text-text-secondary">{metrics.questions.coding} Coding &bull; {metrics.questions.dsa} DSA</div>
+                <Card padding="sm">
+                  <span className="block min-w-0 text-xs font-medium leading-5 text-text-muted">Question Bank Size</span>
+                  <div className="mt-1 break-words font-serif text-2xl font-medium text-text-primary sm:text-3xl">{metrics.questions.total}</div>
+                  <div className="mt-2 flex flex-wrap gap-x-1 text-xs text-text-secondary">{metrics.questions.coding} Coding &bull; {metrics.questions.dsa} DSA</div>
                 </Card>
-                <Card className="p-4">
-                  <span className="text-xs font-medium text-text-muted">Pera Payments Volume</span>
-                  <div className="mt-1 font-serif text-3xl font-medium text-[#527565]">{metrics.payments.totalAlgoVolume} ALGO</div>
+                <Card padding="sm">
+                  <span className="block min-w-0 text-xs font-medium leading-5 text-text-muted">Pera Payments Volume</span>
+                  <div className="mt-1 break-all font-serif text-2xl font-medium text-[#527565] sm:text-3xl">{metrics.payments.totalAlgoVolume} ALGO</div>
                   <div className="mt-2 text-xs text-text-secondary">{metrics.payments.verifiedTransactions} Verified Txns</div>
                 </Card>
               </div>
@@ -626,9 +626,9 @@ export const AdminPortal: React.FC = () => {
               {/* Authorized Admin & Treasury Details */}
               <Card
                 header={
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-semibold text-text-primary">System Authority & Treasury Wallet</span>
-                    <Badge variant="green">Verified On-Chain Destination</Badge>
+                  <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between">
+                    <span className="min-w-0 break-words text-sm font-semibold text-text-primary">System Authority &amp; Treasury Wallet</span>
+                    <Badge className="max-w-full whitespace-normal" variant="green">Verified On-Chain Destination</Badge>
                   </div>
                 }
               >

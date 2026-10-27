@@ -20,7 +20,7 @@ export const LogoMark: React.FC<{ size?: 'sm' | 'md' | 'lg'; showWordmark?: bool
       {showWordmark && (
         <div className="leading-none">
           <div className="text-sm font-bold tracking-tight text-[#49465B]">Evalora</div>
-          <div className="mt-0.5 text-[10px] font-medium text-[#777486]">Practice smarter. Evaluate better.</div>
+          <div className="logo-tagline mt-0.5 text-[10px] font-medium text-[#777486]">Practice smarter. Evaluate better.</div>
         </div>
       )}
     </div>

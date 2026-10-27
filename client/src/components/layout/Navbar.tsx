@@ -15,8 +15,9 @@ import {
   User,
 } from "lucide-react";
 
-export const Navbar: React.FC<{ onToggleSidebar?: () => void }> = ({
+export const Navbar: React.FC<{ onToggleSidebar?: () => void; isSidebarExpanded?: boolean }> = ({
   onToggleSidebar,
+  isSidebarExpanded = false,
 }) => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -72,8 +73,11 @@ export const Navbar: React.FC<{ onToggleSidebar?: () => void }> = ({
         {onToggleSidebar && (
           <button
             onClick={onToggleSidebar}
-            className="rounded-lg p-2 text-[#777486] hover:bg-[#F8F7FC] hover:text-[#49465B] md:hidden"
-            aria-label="Toggle Navigation"
+            className="rounded-lg p-2 text-[#777486] hover:bg-[#F8F7FC] hover:text-[#49465B]"
+            aria-label={isSidebarExpanded ? "Close navigation sidebar" : "Open navigation sidebar"}
+            aria-controls="app-sidebar"
+            aria-expanded={isSidebarExpanded}
+            title={isSidebarExpanded ? "Close sidebar" : "Open sidebar"}
           >
             <Menu className="h-5 w-5" />
           </button>
@@ -128,7 +132,7 @@ export const Navbar: React.FC<{ onToggleSidebar?: () => void }> = ({
         {user ? (
           <div className="relative flex items-center gap-1.5" ref={profileRef}>
             <button
-              className="rounded-lg p-2 text-[#9895A8] hover:bg-[#F8F7FC]"
+              className="hidden rounded-lg p-2 text-[#9895A8] hover:bg-[#F8F7FC] sm:inline-flex"
               aria-label="Notifications"
               disabled
               title="Notifications are up to date"
@@ -205,6 +209,7 @@ export const Navbar: React.FC<{ onToggleSidebar?: () => void }> = ({
             <Button
               variant="ghost"
               size="sm"
+              className="hidden sm:inline-flex"
               onClick={() => navigate("/login")}
             >
               Sign in
@@ -214,7 +219,8 @@ export const Navbar: React.FC<{ onToggleSidebar?: () => void }> = ({
               size="sm"
               onClick={() => navigate("/login?redirect=/practice")}
             >
-              Start Practicing
+              <span className="sm:hidden">Start</span>
+              <span className="hidden sm:inline">Start Practicing</span>
             </Button>
           </div>
         )}

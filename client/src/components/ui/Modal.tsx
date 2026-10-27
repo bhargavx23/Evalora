@@ -42,7 +42,7 @@ export const Modal: React.FC<ModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto p-3 sm:items-center sm:p-4">
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-[#625E75]/32 backdrop-blur-sm transition-opacity animate-in fade-in duration-200 ease-out"
@@ -51,13 +51,13 @@ export const Modal: React.FC<ModalProps> = ({
 
       {/* Modal Dialog */}
       <div
-        className={`relative w-full ${maxWidthClasses[maxWidth]} bg-white rounded-2xl border border-gray-200 shadow-xl overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-200 ease-out`}
+        className={`relative flex max-h-[calc(100dvh-1.5rem)] w-full ${maxWidthClasses[maxWidth]} flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl z-10 animate-in fade-in zoom-in-95 duration-200 ease-out sm:max-h-[calc(100dvh-2rem)]`}
         role="dialog"
         aria-modal="true"
       >
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-[#FAFAF8]">
-          <div>
-            <h3 className="text-base font-semibold text-gray-900">{title}</h3>
+        <div className="flex items-center justify-between gap-3 px-4 py-4 border-b border-gray-100 bg-[#FAFAF8] sm:px-6">
+          <div className="min-w-0">
+            <h3 className="break-words text-base font-semibold text-gray-900">{title}</h3>
             {description && <p className="text-xs text-gray-500 mt-0.5">{description}</p>}
           </div>
           <button
@@ -69,9 +69,9 @@ export const Modal: React.FC<ModalProps> = ({
           </button>
         </div>
 
-        <div className="p-6 max-h-[75vh] overflow-y-auto">{children}</div>
+        <div className="min-h-0 flex-1 overflow-y-auto p-4 sm:p-6">{children}</div>
 
-        {footer && <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-gray-100 bg-gray-50/70">{footer}</div>}
+        {footer && <div className="flex flex-wrap items-center justify-end gap-2 border-t border-gray-100 bg-gray-50/70 px-4 py-4 sm:gap-3 sm:px-6">{footer}</div>}
       </div>
     </div>
   );

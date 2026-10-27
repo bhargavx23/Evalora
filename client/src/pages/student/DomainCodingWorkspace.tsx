@@ -844,7 +844,7 @@ export const DomainCodingWorkspace: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="flex h-screen w-full items-center justify-center bg-surface-neutral text-text-primary">
+      <div className="flex h-[100dvh] w-full items-center justify-center bg-surface-neutral text-text-primary">
         <div className="flex flex-col items-center gap-3">
           <Loader2 className="h-8 w-8 animate-spin text-brand-primary" />
           <p className="text-sm font-medium text-text-secondary">Loading domain workspace...</p>
@@ -854,10 +854,10 @@ export const DomainCodingWorkspace: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col h-screen w-full max-w-full overflow-hidden bg-surface-neutral text-text-primary min-h-0 min-w-0 font-sans">
+    <div className="flex h-[100dvh] min-h-0 min-w-0 w-full max-w-full flex-col overflow-hidden bg-surface-neutral font-sans text-text-primary">
       {/* 1. Evalora Header Toolbar */}
-      <header className="flex h-14 shrink-0 items-center justify-between border-b border-border-subtle bg-white px-4 z-10">
-        <div className="flex items-center gap-3 min-w-0">
+      <header className="z-10 flex min-h-14 shrink-0 flex-wrap items-center justify-between gap-2 border-b border-border-subtle bg-white px-3 py-2 sm:flex-nowrap sm:px-4">
+        <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
           <Link
             to={`/domains/${slug}`}
             className="flex items-center gap-1.5 text-xs font-medium text-text-secondary hover:text-text-primary transition-colors"
@@ -890,7 +890,7 @@ export const DomainCodingWorkspace: React.FC = () => {
         </div>
 
         {/* Viewport switcher & actions */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex w-full shrink-0 items-center justify-end gap-1.5 sm:w-auto sm:gap-2">
           {/* Viewport switcher for Web mode */}
           {workspaceType === 'web' && (
             <div className="hidden md:flex items-center bg-surface-neutral rounded-lg p-0.5 border border-border-subtle">
@@ -1029,7 +1029,8 @@ export const DomainCodingWorkspace: React.FC = () => {
               isLoading={isSubmitting}
               icon={<Send className="h-3.5 w-3.5" />}
             >
-              <span>{isAssignmentMode ? 'Submit Assignment' : 'Submit Code'}</span>
+              <span className="hidden sm:inline">{isAssignmentMode ? 'Submit Assignment' : 'Submit Code'}</span>
+              <span className="sm:hidden">Submit</span>
             </Button>
           </div>
         </div>

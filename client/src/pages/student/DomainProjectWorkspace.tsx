@@ -79,6 +79,7 @@ export const DomainProjectWorkspace: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isEvaluating, setIsEvaluating] = useState(false);
   const [evaluationResult, setEvaluationResult] = useState<any>(null);
+  const [mobilePane, setMobilePane] = useState<'tasks' | 'editor' | 'preview'>('editor');
 
   const [compiledPreview, setCompiledPreview] = useState('');
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
@@ -188,10 +189,10 @@ export const DomainProjectWorkspace: React.FC = () => {
   const activeFile = files.find((f) => f.filename === activeFileName) || files[0];
 
   return (
-    <div className="flex h-screen w-full flex-col overflow-hidden bg-[#F8F7FC] text-[#49465B] min-h-0 min-w-0">
+    <div className="flex h-[100dvh] min-h-0 min-w-0 w-full flex-col overflow-hidden bg-[#F8F7FC] text-[#49465B]">
       {/* Top Navbar */}
-      <div className="flex items-center justify-between border-b border-[#E9E7F0] bg-[#F0EFF6] px-4 py-2.5">
-        <div className="flex items-center gap-3">
+      <div className="flex shrink-0 flex-wrap items-center justify-between gap-2 border-b border-[#E9E7F0] bg-[#F0EFF6] px-3 py-2.5 sm:px-4">
+        <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
           <Link
             to={`/domains/${slug}`}
             className="flex items-center gap-1 text-xs text-[#777486] hover:text-[#49465B]"
@@ -199,16 +200,16 @@ export const DomainProjectWorkspace: React.FC = () => {
             <ArrowLeft className="h-4 w-4" />
             <span>Learning Path</span>
           </Link>
-          <span className="text-[#777486]">|</span>
-          <div className="flex items-center gap-2">
-            <span className="rounded bg-[#F0EFF9] text-[#686AAE] px-2 py-0.5 text-xs font-bold uppercase">
+          <span className="hidden text-[#777486] sm:inline">|</span>
+          <div className="flex min-w-0 items-center gap-2">
+            <span className="hidden shrink-0 rounded bg-[#F0EFF9] px-2 py-0.5 text-xs font-bold uppercase text-[#686AAE] sm:inline-flex">
               {project.difficulty} Project
             </span>
-            <span className="text-sm font-semibold text-[#49465B]">{project.title}</span>
+            <span className="truncate text-sm font-semibold text-[#49465B]">{project.title}</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex shrink-0 items-center gap-3">
           <button
             type="button"
             onClick={handleSubmitProject}
@@ -216,15 +217,35 @@ export const DomainProjectWorkspace: React.FC = () => {
             className="inline-flex h-9 items-center justify-center gap-2 rounded-lg bg-[#78A88F] hover:bg-[#68977F] active:bg-[#5F8A75] px-4 text-xs font-bold text-white shadow-md shadow-[#719B84]/20 border border-[#C8DFD1] transition-all focus:outline-none focus:ring-2 focus:ring-[#78A88F]/50 disabled:opacity-60 disabled:cursor-not-allowed whitespace-nowrap"
           >
             <Award className="h-4 w-4 shrink-0" />
-            <span>{isEvaluating ? 'Evaluating...' : 'Submit Project Evaluation'}</span>
+            <span className="sm:hidden">{isEvaluating ? 'Evaluating' : 'Submit'}</span>
+            <span className="hidden sm:inline">{isEvaluating ? 'Evaluating...' : 'Submit Project Evaluation'}</span>
           </button>
         </div>
       </div>
 
+      <nav className="grid shrink-0 grid-cols-3 border-b border-[#E9E7F0] bg-white text-xs lg:hidden" aria-label="Project workspace panels">
+        {([
+          ['tasks', 'Milestones', Layers],
+          ['editor', 'Editor', Code2],
+          ['preview', 'Preview', ExternalLink]
+        ] as const).map(([pane, label, Icon]) => (
+          <button
+            key={pane}
+            type="button"
+            aria-pressed={mobilePane === pane}
+            onClick={() => setMobilePane(pane)}
+            className={`flex min-w-0 items-center justify-center gap-1.5 border-b-2 px-2 py-3 font-semibold transition-colors ${mobilePane === pane ? 'border-[#7779C5] text-[#555780]' : 'border-transparent text-[#777486]'}`}
+          >
+            <Icon className="h-3.5 w-3.5 shrink-0" />
+            <span className="truncate">{label}</span>
+          </button>
+        ))}
+      </nav>
+
       {/* Main Split Layout */}
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex min-h-0 flex-1 flex-col overflow-hidden lg:flex-row">
         {/* Left Column: Milestones & Tasks Checklist (320px) */}
-        <div className="w-80 flex flex-col border-r border-[#E9E7F0] bg-[#F0EFF6] p-5 overflow-y-auto">
+        <div className={`${mobilePane === 'tasks' ? 'flex' : 'hidden'} min-h-0 w-full flex-col overflow-y-auto border-r border-[#E9E7F0] bg-[#F0EFF6] p-4 lg:flex lg:w-80 lg:shrink-0 lg:p-5`}>
           <h3 className="text-sm font-bold text-[#49465B] flex items-center gap-2">
             <Layers className="h-4 w-4 text-[#7779C5]" />
             <span>Project Milestones</span>
@@ -274,13 +295,13 @@ export const DomainProjectWorkspace: React.FC = () => {
         </div>
 
         {/* Center: File Tabs & Code Editor */}
-        <div className="flex flex-1 flex-col border-r border-[#E9E7F0] bg-[#F8F7FC]">
-          <div className="flex items-center border-b border-[#E9E7F0] bg-[#F0EFF6]">
+        <div className={`${mobilePane === 'editor' ? 'flex' : 'hidden'} min-h-0 min-w-0 flex-1 flex-col border-r border-[#E9E7F0] bg-[#F8F7FC]`}>
+          <div className="flex min-w-0 items-center overflow-x-auto border-b border-[#E9E7F0] bg-[#F0EFF6]">
             {files.map((file) => (
               <button
                 key={file.filename}
                 onClick={() => setActiveFileName(file.filename)}
-                className={`flex items-center gap-2 px-4 py-2.5 text-xs font-semibold border-b-2 transition-colors ${
+                className={`flex shrink-0 items-center gap-2 whitespace-nowrap px-4 py-2.5 text-xs font-semibold border-b-2 transition-colors ${
                   activeFileName === file.filename
                     ? 'border-[#9691CC] bg-[#F8F7FC] text-[#49465B]'
                     : 'border-transparent text-[#777486] hover:text-[#49465B]'
@@ -325,7 +346,7 @@ export const DomainProjectWorkspace: React.FC = () => {
         </div>
 
         {/* Right: Live Project Preview */}
-        <div className="flex flex-1 flex-col bg-[#F0EFF6] p-3">
+        <div className={`${mobilePane === 'preview' ? 'flex' : 'hidden'} min-h-0 min-w-0 flex-1 flex-col bg-[#F0EFF6] p-3`}>
           <div className="text-xs font-semibold text-[#777486] pb-2">Live Application Preview</div>
           <div className="h-full w-full overflow-hidden rounded-lg bg-white shadow-md">
             <iframe

@@ -25,10 +25,11 @@ import { LogoMark } from "../ui/LogoMark";
 
 interface SidebarProps {
   isOpen: boolean;
+  isCollapsed?: boolean;
   onCloseMobile?: () => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ isOpen, isCollapsed = false, onCloseMobile }) => {
   const { user } = useAuth();
   const role = user?.role || "student";
 
@@ -50,15 +51,17 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
       {/* Mobile Backdrop */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-40 bg-[#49465B]/30 backdrop-blur-xs md:hidden"
+          className="fixed inset-0 z-40 bg-[#49465B]/30 backdrop-blur-xs lg:hidden"
           onClick={onCloseMobile}
         />
       )}
 
       <aside
-          className={`fixed top-16 z-40 flex h-[calc(100dvh-4rem)] w-[15.5rem] flex-col justify-between overflow-y-auto border-r border-[#E9E7F0] bg-white/90 p-3.5 shadow-[8px_0_28px_-24px_rgba(82,77,119,0.25)] backdrop-blur-xl transition-transform duration-300 ease-out md:sticky ${
-          isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
-        }`}
+          id="app-sidebar"
+          aria-hidden={isCollapsed && !isOpen}
+          className={`fixed left-0 top-16 z-40 flex h-[calc(100dvh-4rem)] w-[min(15.5rem,calc(100vw-2rem))] flex-col justify-between overflow-y-auto border-r border-[#E9E7F0] bg-white/90 p-3.5 shadow-[8px_0_28px_-24px_rgba(82,77,119,0.25)] backdrop-blur-xl transition-[transform,width,padding] duration-300 ease-out lg:sticky lg:translate-x-0 ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        } ${isCollapsed ? 'lg:w-0 lg:overflow-hidden lg:border-r-0 lg:p-0 lg:shadow-none' : 'lg:w-[15.5rem]'}`}
       >
         <div className="space-y-6">
           <div className="hidden px-2 pt-1 md:block">

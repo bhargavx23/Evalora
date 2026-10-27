@@ -417,7 +417,7 @@ export const AssessmentRoom: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen w-screen max-w-full flex-col overflow-hidden bg-white select-none">
+    <div className="flex h-[100dvh] w-full max-w-full flex-col overflow-hidden bg-white select-none">
       {/* Distraction-Free Header */}
       <header className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-b border-gray-200 bg-[#FAFAF8] px-4 py-3 sm:px-6">
         <div className="flex min-w-0 items-center gap-2 sm:gap-4">
@@ -441,7 +441,7 @@ export const AssessmentRoom: React.FC = () => {
         <div className="flex shrink-0 items-center gap-2 sm:gap-4">
           <button
             type="button"
-            className="inline-flex items-center gap-1.5 rounded-md border border-stone-200 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-700 md:hidden"
+            className="inline-flex items-center gap-1.5 rounded-md border border-stone-200 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-700 lg:hidden"
             onClick={() => setIsPaletteOpen((prev) => !prev)}
             aria-expanded={isPaletteOpen}
           >
@@ -474,7 +474,7 @@ export const AssessmentRoom: React.FC = () => {
       {/* Main Split Interface */}
       <div className="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden md:flex-row">
         {/* Left Side / Question Palette Navigator */}
-        <aside className="hidden w-64 shrink-0 flex-col justify-between border-r border-gray-200 bg-[#FAFAF8] p-4 md:flex">
+        <aside className="hidden w-64 shrink-0 flex-col justify-between border-r border-gray-200 bg-[#FAFAF8] p-4 lg:flex">
           <div className="space-y-4">
             <div className="text-xs font-bold text-gray-700 uppercase tracking-wider">
               Question Palette

@@ -175,8 +175,8 @@ export const AIQuestionGenerator: React.FC = () => {
           </div>
         </div>
 
-        <div className="pt-4 mt-4 border-t border-gray-100 flex items-center justify-between">
-          <span className="text-[11px] text-gray-400">
+        <div className="mt-4 flex flex-col gap-3 border-t border-gray-100 pt-4 sm:flex-row sm:items-center sm:justify-between">
+          <span className="text-[11px] leading-5 text-gray-400">
             Strict human-in-the-loop review enabled. Drafts require faculty sign-off.
           </span>
           <Button
@@ -184,6 +184,7 @@ export const AIQuestionGenerator: React.FC = () => {
             size="md"
             onClick={handleGenerate}
             isLoading={isGenerating}
+            className="w-full justify-center sm:w-auto"
             icon={<Bot className="w-4 h-4 text-[#7779C5]" />}
           >
             {isGenerating ? 'Synthesizing Questions...' : 'Generate Draft Questions'}
@@ -193,10 +194,10 @@ export const AIQuestionGenerator: React.FC = () => {
 
       {/* Review Section */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
+        <div className="flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-center">
+          <h3 className="flex min-w-0 items-center gap-2 text-base font-bold text-gray-900">
             <BookOpen className="w-4 h-4 text-[#555780]" />
-            Generated Draft Review Pool ({draftQuestions.length})
+            <span className="break-words">Generated Draft Review Pool ({draftQuestions.length})</span>
           </h3>
           {draftQuestions.length > 0 && (
             <Badge variant="amber">Pending Faculty Sign-off</Badge>
@@ -204,23 +205,24 @@ export const AIQuestionGenerator: React.FC = () => {
         </div>
 
         {draftQuestions.map((draft, idx) => (
-          <Card key={draft._id} pastelAccent="purple">
-            <div className="space-y-4">
-              <div className="flex items-start justify-between gap-3">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
+          <Card key={draft._id} pastelAccent="purple" padding="sm">
+            <div className="min-w-0 space-y-4">
+              <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div className="min-w-0 space-y-1">
+                  <div className="flex flex-wrap items-center gap-1.5">
                     <DifficultyBadge difficulty={draft.difficulty} />
                     <Badge variant="purple">{draft.topic}</Badge>
                     <Badge variant="neutral">{draft.subtopic}</Badge>
                     <Badge variant="amber">Status: Draft</Badge>
                   </div>
-                  <h4 className="text-base font-bold text-gray-900 mt-1">{draft.title}</h4>
+                  <h4 className="mt-1 break-words text-base font-bold text-gray-900">{draft.title}</h4>
                 </div>
 
-                <div className="flex items-center gap-2 shrink-0">
+                <div className="grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto sm:shrink-0">
                   <Button
                     variant="outline"
                     size="sm"
+                    className="w-full min-w-0 justify-center px-2 sm:w-auto sm:px-3"
                     onClick={() => setEditingQuestion({ ...draft })}
                     icon={<Edit className="w-3.5 h-3.5" />}
                   >
@@ -229,6 +231,7 @@ export const AIQuestionGenerator: React.FC = () => {
                   <Button
                     variant="danger"
                     size="sm"
+                    className="w-full min-w-0 justify-center px-2 sm:w-auto sm:px-3"
                     onClick={() => handleReject(draft._id)}
                     icon={<Trash2 className="w-3.5 h-3.5" />}
                   >
@@ -237,15 +240,17 @@ export const AIQuestionGenerator: React.FC = () => {
                   <Button
                     variant="accent"
                     size="sm"
+                    className="col-span-2 w-full min-w-0 justify-center px-2 sm:col-span-1 sm:w-auto sm:px-3"
                     onClick={() => handleApprove(draft._id)}
                     icon={<CheckCircle2 className="w-3.5 h-3.5 text-[#527565]" />}
                   >
-                    Approve to Bank
+                    <span className="sm:hidden">Approve</span>
+                    <span className="hidden sm:inline">Approve to Bank</span>
                   </Button>
                 </div>
               </div>
 
-              <div className="p-3 bg-gray-50 rounded-xl border border-gray-200 text-xs text-gray-700 leading-relaxed whitespace-pre-line">
+              <div className="break-words rounded-xl border border-gray-200 bg-gray-50 p-3 text-xs leading-relaxed text-gray-700 whitespace-pre-line">
                 {draft.description}
               </div>
 
@@ -267,18 +272,18 @@ export const AIQuestionGenerator: React.FC = () => {
               ) : (
                 <div className="space-y-1.5">
                   <span className="text-xs font-bold text-gray-800">Options:</span>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
                     {draft.options?.map((opt: any) => (
                       <div
                         key={opt.id}
-                        className={`p-2 rounded-lg border text-xs flex items-center justify-between ${
+                        className={`flex min-w-0 items-start justify-between gap-2 rounded-lg border p-2 text-xs ${
                           opt.isCorrect
                             ? 'bg-[#DCEFE8] border-[#C8DFD1] font-bold text-[#527565]'
                             : 'bg-white border-gray-200 text-gray-700'
                         }`}
                       >
-                        <span>{opt.text}</span>
-                        {opt.isCorrect && <Badge variant="green">Correct</Badge>}
+                        <span className="min-w-0 flex-1 break-words leading-5">{opt.text}</span>
+                        {opt.isCorrect && <Badge className="shrink-0" size="sm" variant="green">Correct</Badge>}
                       </div>
                     ))}
                   </div>
@@ -286,7 +291,7 @@ export const AIQuestionGenerator: React.FC = () => {
               )}
 
               {draft.explanation && (
-                <div className="p-2.5 bg-[#F0EFF9]/50 rounded-lg border border-[#DEDDF0] text-xs text-[#555780]">
+                <div className="break-words rounded-lg border border-[#DEDDF0] bg-[#F0EFF9]/50 p-2.5 text-xs text-[#555780]">
                   <span className="font-bold">Explanation: </span>
                   {draft.explanation}
                 </div>

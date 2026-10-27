@@ -292,7 +292,7 @@ export const PracticeRoom: React.FC = () => {
 
   if (!currentQ) {
     return (
-      <div className="flex h-screen w-full items-center justify-center bg-surface-neutral">
+      <div className="flex h-[100dvh] w-full items-center justify-center bg-surface-neutral">
         <div className="text-center space-y-3">
           <div className="h-8 w-8 animate-spin rounded-full border-2 border-brand-primary border-t-transparent mx-auto" />
           <p className="text-xs text-text-secondary">Loading practice room...</p>
@@ -306,11 +306,11 @@ export const PracticeRoom: React.FC = () => {
   const savedCount = Object.keys(answersMap).length;
 
   return (
-    <div className="flex h-screen w-screen max-w-full flex-col overflow-hidden bg-white select-none">
+    <div className="flex h-[100dvh] w-full max-w-full flex-col overflow-hidden bg-white select-none">
       {/* Top Header Bar */}
-      <header className="flex h-14 shrink-0 items-center justify-between border-b border-border-subtle bg-surface-neutral/90 px-4 sm:px-6">
+      <header className="flex min-h-14 shrink-0 flex-wrap items-center justify-between gap-2 border-b border-border-subtle bg-surface-neutral/90 px-3 py-2 sm:flex-nowrap sm:px-6">
         {/* Left: Brand + Section + Question Counter */}
-        <div className="flex min-w-0 items-center gap-3">
+        <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
           <button
             type="button"
             onClick={() => setShowExitConfirm(true)}
@@ -323,27 +323,28 @@ export const PracticeRoom: React.FC = () => {
 
           <div className="h-4 w-px bg-border-subtle hidden sm:block" />
 
-          <Badge variant="purple" size="sm">
+          <Badge className="hidden sm:inline-flex" variant="purple" size="sm">
             {currentQ.category || "Practice"}
           </Badge>
 
-          <span className="truncate text-xs font-semibold text-text-primary">
+          <span className="max-w-[30vw] truncate text-xs font-semibold text-text-primary sm:max-w-none">
             {currentQ.topic}
           </span>
 
-          <span className="text-border-subtle">•</span>
+          <span className="hidden text-border-subtle sm:inline">•</span>
 
-          <span className="shrink-0 text-xs font-medium text-text-secondary">
-            Question {currentIndex + 1} of {questions.length}
+          <span className="shrink-0 text-[11px] font-medium text-text-secondary sm:text-xs">
+            <span className="sm:hidden">Q{currentIndex + 1}/{questions.length}</span>
+            <span className="hidden sm:inline">Question {currentIndex + 1} of {questions.length}</span>
           </span>
         </div>
 
         {/* Right: Palette Toggle + Timer + Submit Button */}
-        <div className="flex shrink-0 items-center gap-2.5 sm:gap-3">
+        <div className="flex w-full min-w-0 items-center justify-end gap-1.5 sm:w-auto sm:gap-3">
           <button
             type="button"
             onClick={() => setIsNavigatorOpen((prev) => !prev)}
-            className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-semibold transition-all ${
+            className={`inline-flex min-w-0 items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-[11px] font-semibold transition-all sm:px-3 sm:text-xs ${
               isNavigatorOpen
                 ? "border-brand-primary bg-brand-light text-brand-primary"
                 : "border-border-subtle bg-white text-text-secondary hover:text-text-primary"
@@ -351,11 +352,12 @@ export const PracticeRoom: React.FC = () => {
           >
             <List className="h-3.5 w-3.5 text-brand-primary" />
             <span>
-              {savedCount}/{questions.length} Saved
+              <span className="sm:hidden">{savedCount}/{questions.length}</span>
+              <span className="hidden sm:inline">{savedCount}/{questions.length} Saved</span>
             </span>
           </button>
 
-          <div className="flex items-center gap-1.5 rounded-lg border border-border-subtle bg-white px-3 py-1.5 font-mono text-xs font-semibold text-text-primary shadow-2xs">
+          <div className="flex shrink-0 items-center gap-1.5 rounded-lg border border-border-subtle bg-white px-2.5 py-1.5 font-mono text-[11px] font-semibold text-text-primary shadow-2xs sm:px-3 sm:text-xs">
             <Clock className="w-3.5 h-3.5 text-brand-primary" />
             <span>{formatTimer(elapsedSeconds)}</span>
           </div>
@@ -367,7 +369,8 @@ export const PracticeRoom: React.FC = () => {
             isLoading={isSubmitting}
             icon={<CheckCircle2 className="w-3.5 h-3.5" />}
           >
-            Submit Practice
+            <span className="sm:hidden">Submit</span>
+            <span className="hidden sm:inline">Submit Practice</span>
           </Button>
         </div>
       </header>
@@ -376,7 +379,7 @@ export const PracticeRoom: React.FC = () => {
       <div className="relative flex min-h-0 min-w-0 flex-1 overflow-hidden">
         {/* Collapsible Question Palette Sidebar */}
         {isNavigatorOpen && (
-          <aside className="w-64 shrink-0 flex flex-col justify-between border-r border-border-subtle bg-surface-neutral/70 p-4 transition-all duration-200 animate-in slide-in-from-left-4 ease-out z-20">
+          <aside className="absolute inset-y-0 left-0 z-20 flex w-64 max-w-[86vw] shrink-0 flex-col justify-between border-r border-border-subtle bg-surface-neutral/95 p-4 shadow-xl backdrop-blur-sm transition-all duration-200 animate-in slide-in-from-left-4 ease-out lg:static lg:z-auto lg:max-w-none lg:bg-surface-neutral/70 lg:shadow-none lg:backdrop-blur-0">
             <div className="space-y-4">
               <div className="flex items-center justify-between border-b border-border-subtle pb-3">
                 <span className="text-xs font-bold uppercase tracking-wider text-text-muted">
