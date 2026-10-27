@@ -57,7 +57,7 @@ export const MyAssessments: React.FC = () => {
   return (
     <div className="page-shell">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E8E8EF] pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E9E7F0] pb-6">
         <div>
           <div className="page-kicker">Student Portal</div>
           <h1 className="page-title mt-1">Assigned Assessments</h1>
@@ -67,13 +67,13 @@ export const MyAssessments: React.FC = () => {
         </div>
 
         {/* Tab Filters */}
-        <div className="flex items-center gap-1.5 p-1 bg-[#F1F2F8] rounded-xl border border-[#E8E8EF]">
+        <div className="flex items-center gap-1.5 p-1 bg-[#F1F2F8] rounded-xl border border-[#E9E7F0]">
           <button
             onClick={() => setActiveTab('available')}
             className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
               activeTab === 'available'
-                ? 'bg-white text-[#34358F] shadow-xs font-semibold'
-                : 'text-[#6B6B78] hover:text-[#18181F]'
+                ? 'bg-white text-[#555780] shadow-xs font-semibold'
+                : 'text-[#777486] hover:text-[#49465B]'
             }`}
           >
             Available ({availableAssessments.length})
@@ -82,8 +82,8 @@ export const MyAssessments: React.FC = () => {
             onClick={() => setActiveTab('completed')}
             className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
               activeTab === 'completed'
-                ? 'bg-white text-[#5B5CE2] shadow-xs font-semibold'
-                : 'text-[#6B6B78] hover:text-[#18181F]'
+                ? 'bg-white text-[#7779C5] shadow-xs font-semibold'
+                : 'text-[#777486] hover:text-[#49465B]'
             }`}
           >
             Completed ({completedAssessments.length})
@@ -93,18 +93,18 @@ export const MyAssessments: React.FC = () => {
 
       {/* Search Bar */}
       <div className="relative max-w-md">
-        <Search className="w-4 h-4 text-[#9494A3] absolute left-3.5 top-3" />
+        <Search className="w-4 h-4 text-[#9895A8] absolute left-3.5 top-3" />
         <input
           type="text"
           placeholder="Filter assessments by title or topic..."
           value={searchQuery}
           onChange={e => setSearchQuery(e.target.value)}
-          className="w-full pl-10 pr-9 py-2 text-xs border border-[#E8E8EF] rounded-xl focus:outline-none focus:border-[#5B5CE2] focus:ring-2 focus:ring-[#5B5CE2]/15 text-[#18181F] bg-white transition-all shadow-[0_1px_2px_rgba(24,24,31,0.02)]"
+          className="w-full pl-10 pr-9 py-2 text-xs border border-[#E9E7F0] rounded-xl focus:outline-none focus:border-[#7779C5] focus:ring-2 focus:ring-[#7779C5]/15 text-[#49465B] bg-white transition-all shadow-[0_1px_2px_rgba(82,77,119,0.02)]"
         />
         {searchQuery && (
           <button
             onClick={() => setSearchQuery('')}
-            className="absolute right-3 top-2.5 text-[#9494A3] hover:text-[#18181F]"
+            className="absolute right-3 top-2.5 text-[#9895A8] hover:text-[#49465B]"
             title="Clear filter"
           >
             <X className="w-3.5 h-3.5" />
@@ -113,7 +113,7 @@ export const MyAssessments: React.FC = () => {
       </div>
 
       {loadError && (
-        <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs font-medium text-amber-900">
+        <div className="rounded-xl border border-[#E8D9B9] bg-[#F8F3E8] px-4 py-3 text-xs font-medium text-[#896D45]">
           {loadError}
         </div>
       )}
@@ -131,38 +131,38 @@ export const MyAssessments: React.FC = () => {
                       <Badge variant={isInProgress ? 'amber' : 'blue'}>
                         {isInProgress ? 'In Progress (Resumable)' : 'Ready to Take'}
                       </Badge>
-                      <h3 className="text-base font-semibold text-[#18181F] mt-2">{ass.title}</h3>
+                      <h3 className="text-base font-semibold text-[#49465B] mt-2">{ass.title}</h3>
                     </div>
-                    <span className="text-xs font-semibold text-[#34358F] bg-[#EEF0FF] border border-[#D6DAFF] px-2.5 py-1 rounded-lg shrink-0">
+                    <span className="text-xs font-semibold text-[#555780] bg-[#F0EFF9] border border-[#DEDDF0] px-2.5 py-1 rounded-lg shrink-0">
                       {ass.totalMarks} Marks
                     </span>
                   </div>
 
-                  <p className="text-xs text-[#6B6B78] line-clamp-2 leading-relaxed">{ass.description}</p>
+                  <p className="text-xs text-[#777486] line-clamp-2 leading-relaxed">{ass.description}</p>
 
-                  <div className="grid grid-cols-2 gap-2 text-xs text-[#6B6B78] pt-2 border-t border-[#E8E8EF]">
+                  <div className="grid grid-cols-2 gap-2 text-xs text-[#777486] pt-2 border-t border-[#E9E7F0]">
                     <div className="flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5 text-[#9494A3]" />
+                      <Clock className="w-3.5 h-3.5 text-[#9895A8]" />
                       <span>{ass.durationMinutes} Minutes</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <Layers className="w-3.5 h-3.5 text-[#9494A3]" />
+                      <Layers className="w-3.5 h-3.5 text-[#9895A8]" />
                       <span>{ass.sections?.length ?? 0} Sections</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5 text-[#9494A3]" />
+                      <Calendar className="w-3.5 h-3.5 text-[#9895A8]" />
                       <span>Due: {new Date(ass.endDate).toLocaleDateString()}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <ShieldCheck className="w-3.5 h-3.5 text-[#9494A3]" />
+                      <ShieldCheck className="w-3.5 h-3.5 text-[#9895A8]" />
                       <span>Proctored</span>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between pt-2 border-t border-[#E8E8EF]">
+                  <div className="flex items-center justify-between pt-2 border-t border-[#E9E7F0]">
                     <button
                       onClick={() => setSelectedForInstructions(ass)}
-                      className="text-xs text-[#6B6B78] hover:text-[#18181F] font-medium underline"
+                      className="text-xs text-[#777486] hover:text-[#49465B] font-medium underline"
                     >
                       View Instructions
                     </button>
@@ -182,9 +182,9 @@ export const MyAssessments: React.FC = () => {
           })}
 
           {!isLoading && availableAssessments.length === 0 && (
-            <div className="col-span-2 text-center py-12 bg-white rounded-2xl border border-[#E8E8EF] text-xs text-[#6B6B78] space-y-2">
-              <CheckCircle2 className="w-8 h-8 text-emerald-500 mx-auto" />
-              <p className="text-sm font-semibold text-[#18181F]">
+            <div className="col-span-2 text-center py-12 bg-white rounded-2xl border border-[#E9E7F0] text-xs text-[#777486] space-y-2">
+              <CheckCircle2 className="w-8 h-8 text-[#527565] mx-auto" />
+              <p className="text-sm font-semibold text-[#49465B]">
                 {searchQuery ? 'No Matching Assessments Found' : 'No Pending Assessments'}
               </p>
               <p>
@@ -203,28 +203,28 @@ export const MyAssessments: React.FC = () => {
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <Badge variant="green">Completed & Evaluated</Badge>
-                    <h3 className="text-base font-semibold text-[#18181F] mt-2">{ass.title}</h3>
+                    <h3 className="text-base font-semibold text-[#49465B] mt-2">{ass.title}</h3>
                   </div>
                   <div className="text-right shrink-0">
-                    <span className="text-base font-bold text-emerald-700">
+                    <span className="text-base font-bold text-[#527565]">
                       {ass.userAttempt?.totalScore} / {ass.totalMarks}
                     </span>
-                    <div className="text-[10px] text-[#6B6B78] font-medium">
+                    <div className="text-[10px] text-[#777486] font-medium">
                       ({ass.userAttempt?.percentage}%)
                     </div>
                   </div>
                 </div>
 
-                <div className="p-3 bg-[#F7F7FB] rounded-xl border border-[#E8E8EF] flex items-center justify-between text-xs">
+                <div className="p-3 bg-[#F8F7FC] rounded-xl border border-[#E9E7F0] flex items-center justify-between text-xs">
                   <div>
-                    <div className="text-[#6B6B78]">Submitted On</div>
-                    <div className="font-semibold text-[#18181F]">
+                    <div className="text-[#777486]">Submitted On</div>
+                    <div className="font-semibold text-[#49465B]">
                       {ass.userAttempt?.submittedAt ? new Date(ass.userAttempt.submittedAt).toLocaleString() : 'Submitted'}
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="text-[#6B6B78]">Integrity Score</div>
-                    <div className="font-semibold text-emerald-700">
+                    <div className="text-[#777486]">Integrity Score</div>
+                    <div className="font-semibold text-[#527565]">
                       {ass.userAttempt?.integrityScore != null ? `${ass.userAttempt.integrityScore}%` : 'Not available'}
                     </div>
                   </div>
@@ -244,9 +244,9 @@ export const MyAssessments: React.FC = () => {
           ))}
 
           {!isLoading && completedAssessments.length === 0 && (
-            <div className="col-span-2 text-center py-12 bg-white rounded-2xl border border-[#E8E8EF] text-xs text-[#6B6B78] space-y-2">
-              <FileCheck2 className="w-8 h-8 text-[#9494A3] mx-auto" />
-              <p className="text-sm font-semibold text-[#18181F]">No Completed Assessments</p>
+            <div className="col-span-2 text-center py-12 bg-white rounded-2xl border border-[#E9E7F0] text-xs text-[#777486] space-y-2">
+              <FileCheck2 className="w-8 h-8 text-[#9895A8] mx-auto" />
+              <p className="text-sm font-semibold text-[#49465B]">No Completed Assessments</p>
               <p>Completed examinations and test results will appear here.</p>
             </div>
           )}
@@ -261,7 +261,7 @@ export const MyAssessments: React.FC = () => {
           title={`Instructions: ${selectedForInstructions.title}`}
           footer={
             <div className="flex items-center justify-between w-full">
-              <span className="text-xs text-[#6B6B78]">Timer commences immediately on start</span>
+              <span className="text-xs text-[#777486]">Timer commences immediately on start</span>
               <Button
                 variant="primary"
                 size="sm"
@@ -276,21 +276,21 @@ export const MyAssessments: React.FC = () => {
             </div>
           }
         >
-          <div className="space-y-4 text-xs text-[#18181F] leading-relaxed">
-            <div className="p-3.5 bg-[#EEF0FF] rounded-xl border border-[#D6DAFF] text-[#34358F] font-medium">
+          <div className="space-y-4 text-xs text-[#49465B] leading-relaxed">
+            <div className="p-3.5 bg-[#F0EFF9] rounded-xl border border-[#DEDDF0] text-[#555780] font-medium">
               Assessment Duration: {selectedForInstructions.durationMinutes} minutes &bull; Total Marks: {selectedForInstructions.totalMarks}
             </div>
 
             <div>
-              <h4 className="font-semibold text-[#18181F] mb-1">General Rules:</h4>
-              <p className="whitespace-pre-line text-[#6B6B78]">
+              <h4 className="font-semibold text-[#49465B] mb-1">General Rules:</h4>
+              <p className="whitespace-pre-line text-[#777486]">
                 {selectedForInstructions.instructions || 'Answer all questions within the designated duration.'}
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-[#18181F] mb-1">Anti-Cheating & Integrity Monitoring:</h4>
-              <ul className="list-disc pl-5 space-y-1 text-[#6B6B78]">
+              <h4 className="font-semibold text-[#49465B] mb-1">Anti-Cheating & Integrity Monitoring:</h4>
+              <ul className="list-disc pl-5 space-y-1 text-[#777486]">
                 <li>Fullscreen mode is strictly monitored throughout the session.</li>
                 <li>Tab switches and window minimization events are logged to the faculty proctoring dashboard.</li>
                 <li>Copying and pasting text is disabled during the exam.</li>

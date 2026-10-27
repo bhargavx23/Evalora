@@ -14,12 +14,12 @@ export const Badge: React.FC<BadgeProps> = ({
   className = ''
 }) => {
   const variants = {
-    blue: 'bg-[#EEF0FF] text-[#34358F] border-[#D6DAFF]',
+    blue: 'bg-[#F0EFF9] text-[#555780] border-[#DEDDF0]',
     purple: 'bg-[#F1EEFF] text-[#4C3FB8] border-[#DFD8FF]',
-    green: 'bg-[#E6F6F0] text-emerald-900 border-[#C3E8D8]',
-    amber: 'bg-[#FEF7E6] text-amber-900 border-[#F7E0B2]',
-    rose: 'bg-[#FDECEC] text-rose-900 border-[#F5C6C6]',
-    neutral: 'bg-[#F1F2F8] text-[#4A4A57] border-[#E8E8EF]'
+    green: 'bg-[#E6F6F0] text-[#527565] border-[#C3E8D8]',
+    amber: 'bg-[#FEF7E6] text-[#896D45] border-[#F7E0B2]',
+    rose: 'bg-[#FDECEC] text-[#9A646D] border-[#F5C6C6]',
+    neutral: 'bg-[#F1F2F8] text-[#4A4A57] border-[#E9E7F0]'
   };
 
   const sizes = {

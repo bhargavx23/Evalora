@@ -67,12 +67,12 @@ export const Navbar: React.FC<{ onToggleSidebar?: () => void }> = ({
       ?.replace(/-/g, " ") || "overview";
 
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-[#E8E8EF] bg-white/90 px-4 backdrop-blur-md md:px-6">
+    <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-[#E9E7F0]/80 bg-white/85 px-4 shadow-[0_4px_18px_-14px_rgba(82,77,119,0.25)] backdrop-blur-xl md:px-6">
       <div className="flex items-center gap-3">
         {onToggleSidebar && (
           <button
             onClick={onToggleSidebar}
-            className="rounded-lg p-2 text-[#6B6B78] hover:bg-[#F7F7FB] hover:text-[#18181F] md:hidden"
+            className="rounded-lg p-2 text-[#777486] hover:bg-[#F8F7FC] hover:text-[#49465B] md:hidden"
             aria-label="Toggle Navigation"
           >
             <Menu className="h-5 w-5" />
@@ -84,12 +84,12 @@ export const Navbar: React.FC<{ onToggleSidebar?: () => void }> = ({
         </Link>
 
         {user?.collegeId && (
-          <div className="hidden lg:flex items-center gap-2 ml-4 pl-4 border-l border-[#E8E8EF]">
-            <span className="text-xs font-medium capitalize text-[#6B6B78]">
+          <div className="hidden lg:flex items-center gap-2 ml-4 pl-4 border-l border-[#E9E7F0]">
+            <span className="text-xs font-medium capitalize text-[#777486]">
               {pathLabel}
             </span>
             <span className="text-[#D4D4E0]">/</span>
-            <span className="text-xs font-semibold text-[#18181F]">
+            <span className="text-xs font-semibold text-[#49465B]">
               {collegeName}
             </span>
           </div>
@@ -102,14 +102,14 @@ export const Navbar: React.FC<{ onToggleSidebar?: () => void }> = ({
             {/* Desktop Quick Search Trigger */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="hidden md:flex h-9 w-64 items-center justify-between rounded-lg border border-[#E8E8EF] bg-[#F7F7FB] px-3 text-xs text-[#6B6B78] hover:border-[#D6DAFF] hover:bg-white transition-all shadow-[0_1px_2px_rgba(24,24,31,0.02)] group"
+              className="hidden md:flex h-9 w-64 items-center justify-between rounded-lg border border-[#E9E7F0] bg-[#F8F7FC] px-3 text-xs text-[#777486] hover:border-[#DEDDF0] hover:bg-white transition-all shadow-[0_1px_2px_rgba(82,77,119,0.02)] group"
               title="Quick Search (Ctrl + K)"
             >
               <div className="flex items-center gap-2">
-                <Search className="h-3.5 w-3.5 text-[#9494A3] group-hover:text-[#5B5CE2] transition-colors" />
+                <Search className="h-3.5 w-3.5 text-[#9895A8] group-hover:text-[#7779C5] transition-colors" />
                 <span>Search features, exams...</span>
               </div>
-              <span className="rounded border border-[#E8E8EF] bg-white px-1.5 py-0.5 text-[10px] font-mono text-[#9494A3] shadow-xs">
+              <span className="rounded border border-[#E9E7F0] bg-white px-1.5 py-0.5 text-[10px] font-mono text-[#9895A8] shadow-xs">
                 ⌘K
               </span>
             </button>
@@ -117,7 +117,7 @@ export const Navbar: React.FC<{ onToggleSidebar?: () => void }> = ({
             {/* Mobile Search Icon Button */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="flex md:hidden h-8 w-8 items-center justify-center rounded-lg border border-[#E8E8EF] text-[#6B6B78] hover:bg-[#F7F7FB]"
+              className="flex md:hidden h-8 w-8 items-center justify-center rounded-lg border border-[#E9E7F0] text-[#777486] hover:bg-[#F8F7FC]"
               aria-label="Open Search"
             >
               <Search className="h-4 w-4" />
@@ -128,7 +128,7 @@ export const Navbar: React.FC<{ onToggleSidebar?: () => void }> = ({
         {user ? (
           <div className="relative flex items-center gap-1.5" ref={profileRef}>
             <button
-              className="rounded-lg p-2 text-[#9494A3] hover:bg-[#F7F7FB]"
+              className="rounded-lg p-2 text-[#9895A8] hover:bg-[#F8F7FC]"
               aria-label="Notifications"
               disabled
               title="Notifications are up to date"
@@ -137,40 +137,40 @@ export const Navbar: React.FC<{ onToggleSidebar?: () => void }> = ({
             </button>
             <button
               onClick={() => setIsProfileOpen((prev) => !prev)}
-              className="flex items-center gap-2.5 rounded-xl border border-[#E8E8EF] bg-white px-2.5 py-1.5 transition-all duration-150 hover:border-[#D6D8F8] hover:bg-[#F7F7FB] active:scale-[0.98]"
+              className="flex items-center gap-2.5 rounded-xl border border-[#E9E7F0] bg-white px-2.5 py-1.5 transition-all duration-150 hover:border-[#D6D8F8] hover:bg-[#F8F7FC] active:scale-[0.98]"
             >
-              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#EEF0FF] text-xs font-semibold text-[#34358F]">
+              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F0EFF9] text-xs font-semibold text-[#555780]">
                 {user.name.charAt(0).toUpperCase()}
               </div>
               <div className="hidden text-left md:block">
-                <div className="text-xs font-semibold text-[#18181F]">
+                <div className="text-xs font-semibold text-[#49465B]">
                   {user.name}
                 </div>
-                <div className="text-[10px] capitalize text-[#6B6B78]">
+                <div className="text-[10px] capitalize text-[#777486]">
                   {user.role.replace("_", " ")}
                 </div>
               </div>
             </button>
 
             {isProfileOpen && (
-              <div className="absolute right-0 top-12 w-52 rounded-xl border border-[#E8E8EF] bg-white p-1.5 shadow-[0_10px_30px_-5px_rgba(24,24,31,0.08)] animate-in fade-in zoom-in-95 duration-150 origin-top-right ease-out z-50">
+              <div className="absolute right-0 top-12 w-52 rounded-xl border border-[#E9E7F0] bg-white p-1.5 shadow-[0_10px_30px_-5px_rgba(82,77,119,0.08)] animate-in fade-in zoom-in-95 duration-150 origin-top-right ease-out z-50">
                 <button
                   onClick={() => {
                     setIsProfileOpen(false);
                     navigate("/profile");
                   }}
-                  className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-xs font-medium text-[#18181F] hover:bg-[#F7F7FB]"
+                  className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-xs font-medium text-[#49465B] hover:bg-[#F8F7FC]"
                 >
-                  <User className="h-3.5 w-3.5 text-[#6B6B78]" /> Profile
+                  <User className="h-3.5 w-3.5 text-[#777486]" /> Profile
                 </button>
                 <button
                   onClick={() => {
                     setIsProfileOpen(false);
                     navigate("/settings");
                   }}
-                  className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-xs font-medium text-[#18181F] hover:bg-[#F7F7FB]"
+                  className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-xs font-medium text-[#49465B] hover:bg-[#F8F7FC]"
                 >
-                  <Settings className="h-3.5 w-3.5 text-[#6B6B78]" /> Settings & Wallet
+                  <Settings className="h-3.5 w-3.5 text-[#777486]" /> Settings & Wallet
                 </button>
                 {(user.role === "admin" || user.role === "platform_admin") && (
                   <button
@@ -178,22 +178,22 @@ export const Navbar: React.FC<{ onToggleSidebar?: () => void }> = ({
                       setIsProfileOpen(false);
                       navigate("/admin");
                     }}
-                    className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-xs font-semibold text-[#5B5CE2] hover:bg-[#EEF0FF]"
+                    className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-xs font-semibold text-[#7779C5] hover:bg-[#F0EFF9]"
                   >
-                    <ShieldCheck className="h-3.5 w-3.5 text-[#5B5CE2]" /> Admin Portal
+                    <ShieldCheck className="h-3.5 w-3.5 text-[#7779C5]" /> Admin Portal
                   </button>
                 )}
                 <button
-                  className="flex w-full cursor-not-allowed items-center gap-2.5 rounded-lg px-3 py-2 text-left text-xs text-[#9494A3]"
+                  className="flex w-full cursor-not-allowed items-center gap-2.5 rounded-lg px-3 py-2 text-left text-xs text-[#9895A8]"
                   disabled
                   title="Documentation"
                 >
                   <HelpCircle className="h-3.5 w-3.5" /> Help
                 </button>
-                <div className="my-1 border-t border-[#E8E8EF]" />
+                <div className="my-1 border-t border-[#E9E7F0]" />
                 <button
                   onClick={handleLogout}
-                  className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-xs font-medium text-red-600 hover:bg-red-50"
+                  className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-xs font-medium text-[#9A646D] hover:bg-[#F8EDEF]"
                 >
                   <LogOut className="h-3.5 w-3.5" /> Log out
                 </button>

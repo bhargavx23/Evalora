@@ -121,7 +121,7 @@ export const SampleCodeDropdown: React.FC<SampleCodeDropdownProps> = ({
                   onClearSample();
                 }}
                 title="Clear selected sample"
-                className="rounded p-0.5 text-text-muted hover:text-text-primary hover:bg-black/5"
+                className="rounded p-0.5 text-text-muted hover:text-text-primary hover:bg-[#625E75]/5"
               >
                 <X className="h-3 w-3" />
               </span>

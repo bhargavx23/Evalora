@@ -135,7 +135,7 @@ export const PASTEL_THEME = {
   warmAccent: '#F5E5D3',
   softWarning: '#F7E6B5',
   softDanger: '#F4D8D8',
-  text: '#1F2937',
+  text: '#49465B',
   secondaryText: '#6B7280',
   borders: '#E5E7EB'
 } as const;

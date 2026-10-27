@@ -135,9 +135,9 @@ export const AssessmentWizard: React.FC = () => {
               <div
                 className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-colors ${
                   currentStep === s.num
-                    ? 'bg-[#DDE7F7] text-blue-900 border border-blue-300'
+                    ? 'bg-[#DDE7F7] text-[#555780] border border-[#DEDDF0]'
                     : currentStep > s.num
-                    ? 'bg-[#DCEFE8] text-emerald-900 border border-emerald-300'
+                    ? 'bg-[#DCEFE8] text-[#527565] border border-[#C8DFD1]'
                     : 'bg-gray-100 text-gray-400'
                 }`}
               >
@@ -245,7 +245,7 @@ export const AssessmentWizard: React.FC = () => {
                           sections: formData.sections.filter(s => s.id !== sec.id)
                         })
                       }
-                      className="text-red-500 hover:text-red-700 text-xs flex items-center gap-1"
+                      className="text-[#9A646D] hover:text-[#9A646D] text-xs flex items-center gap-1"
                     >
                       <Trash2 className="w-3.5 h-3.5" /> Remove
                     </button>
@@ -333,10 +333,10 @@ export const AssessmentWizard: React.FC = () => {
       {currentStep === 3 && (
         <Card header={<span className="text-xs font-bold text-gray-800">Step 3: Question Selection</span>}>
           <div className="space-y-6 text-xs">
-            <div className="p-3 bg-[#DDE7F7]/50 rounded-xl border border-blue-200 text-blue-950 flex items-center justify-between">
+            <div className="p-3 bg-[#DDE7F7]/50 rounded-xl border border-[#DEDDF0] text-[#555780] flex items-center justify-between">
               <div>
                 <span className="font-bold">Smart Selection Available</span>
-                <p className="text-[11px] text-blue-800">Select questions from bank or auto-distribute across difficulties</p>
+                <p className="text-[11px] text-[#555780]">Select questions from bank or auto-distribute across difficulties</p>
               </div>
               <Button
                 variant="primary"
@@ -376,7 +376,7 @@ export const AssessmentWizard: React.FC = () => {
                               }
                               setFormData({ ...formData, sections: updated });
                             }}
-                            className="rounded text-blue-600"
+                            className="rounded text-[#555780]"
                           />
                           <span className="font-semibold text-gray-800">{q.title}</span>
                           <span className="text-gray-400">({q.topic})</span>
@@ -414,7 +414,7 @@ export const AssessmentWizard: React.FC = () => {
                         rules: { ...formData.rules, [r.key]: e.target.checked }
                       })
                     }
-                    className="mt-0.5 rounded text-blue-600"
+                    className="mt-0.5 rounded text-[#555780]"
                   />
                   <div>
                     <span className="font-bold text-gray-900">{r.label}</span>
@@ -475,7 +475,7 @@ export const AssessmentWizard: React.FC = () => {
                 size="md"
                 onClick={() => handleCreateAndPublish(true)}
                 isLoading={isSubmitting}
-                icon={<CheckCircle2 className="w-4 h-4 text-blue-700" />}
+                icon={<CheckCircle2 className="w-4 h-4 text-[#555780]" />}
               >
                 Publish Assessment to Students
               </Button>

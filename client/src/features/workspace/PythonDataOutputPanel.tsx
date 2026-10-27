@@ -82,7 +82,7 @@ export const PythonDataOutputPanel: React.FC<PythonDataOutputProps> = ({
                   </span>
                 )}
                 {tab.hasErr && (
-                  <span className="rounded-full bg-rose-50 px-1.5 py-0.2 text-[10px] font-bold text-rose-700">
+                  <span className="rounded-full bg-[#F8EDEF] px-1.5 py-0.2 text-[10px] font-bold text-[#9A646D]">
                     error
                   </span>
                 )}
@@ -104,9 +104,9 @@ export const PythonDataOutputPanel: React.FC<PythonDataOutputProps> = ({
       <div className="min-h-0 flex-1 overflow-y-auto p-4 space-y-4">
         {/* Error notification if any */}
         {result.stderr && (
-          <div className="rounded-xl border border-rose-200 bg-rose-50/70 p-3 text-xs text-rose-800">
-            <div className="flex items-center gap-1.5 font-semibold mb-1 text-rose-900">
-              <AlertCircle className="h-4 w-4 text-rose-600 shrink-0" />
+          <div className="rounded-xl border border-[#E8CFD2] bg-[#F8EDEF]/70 p-3 text-xs text-[#9A646D]">
+            <div className="flex items-center gap-1.5 font-semibold mb-1 text-[#9A646D]">
+              <AlertCircle className="h-4 w-4 text-[#9A646D] shrink-0" />
               <span>Execution Note / Error:</span>
             </div>
             <pre className="font-mono text-[11px] overflow-x-auto whitespace-pre-wrap">{result.stderr}</pre>
@@ -190,7 +190,7 @@ export const PythonDataOutputPanel: React.FC<PythonDataOutputProps> = ({
                 <h4 className="text-[11px] font-bold uppercase tracking-wider text-text-muted mb-2">
                   Output Logs
                 </h4>
-                <div className="rounded-xl border border-border-subtle bg-[#0D0D11] p-3 font-mono text-xs text-emerald-400 overflow-x-auto max-h-48 leading-relaxed">
+                <div className="rounded-xl border border-border-subtle bg-[#F0EFF6] p-3 font-mono text-xs text-[#719B84] overflow-x-auto max-h-48 leading-relaxed">
                   <pre className="whitespace-pre-wrap">{result.output}</pre>
                 </div>
               </div>
@@ -273,9 +273,9 @@ export const PythonDataOutputPanel: React.FC<PythonDataOutputProps> = ({
         {/* TAB 4: CONSOLE */}
         {activeTab === 'console' && (
           <div className="space-y-3">
-            <div className="rounded-xl border border-border-subtle bg-[#0D0D11] p-4 font-mono text-xs text-gray-200 overflow-x-auto min-h-[220px]">
+            <div className="rounded-xl border border-border-subtle bg-[#F0EFF6] p-4 font-mono text-xs text-[#49465B] overflow-x-auto min-h-[220px]">
               {result.output ? (
-                <pre className="whitespace-pre-wrap leading-relaxed text-emerald-400">{result.output}</pre>
+                <pre className="whitespace-pre-wrap leading-relaxed text-[#719B84]">{result.output}</pre>
               ) : (
                 <span className="text-gray-500 italic">No standard output logged.</span>
               )}
@@ -287,7 +287,7 @@ export const PythonDataOutputPanel: React.FC<PythonDataOutputProps> = ({
       {/* Enlarged Plot Modal */}
       {enlargedPlot && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-xs"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#625E75]/35 p-4 backdrop-blur-xs"
           onClick={() => setEnlargedPlot(null)}
         >
           <div

@@ -83,18 +83,18 @@ const getEditorLanguage = (filename: string): string => {
   }
 };
 
-const setupMonacoBlackTheme = (monaco: any) => {
-  monaco.editor.defineTheme('evalora-black', {
-    base: 'vs-dark',
+const setupMonacoLightTheme = (monaco: any) => {
+  monaco.editor.defineTheme('evalora-soft', {
+    base: 'vs',
     inherit: true,
     rules: [],
     colors: {
-      'editor.background': '#000000',
-      'editorGutter.background': '#000000',
-      'editorLineNumber.foreground': '#52525b',
-      'editorLineNumber.activeForeground': '#a5b4fc',
-      'editor.lineHighlightBackground': '#18181b50',
-      'editorCursor.foreground': '#6366f1',
+      'editor.background': '#F8F7FC',
+      'editorGutter.background': '#F8F7FC',
+      'editorLineNumber.foreground': '#9895A8',
+      'editorLineNumber.activeForeground': '#8D8BC2',
+      'editor.lineHighlightBackground': '#7779C515',
+      'editorCursor.foreground': '#7779C5',
     }
   });
 };
@@ -999,8 +999,8 @@ export const DomainCodingWorkspace: React.FC = () => {
                 <Loader2 className="h-3.5 w-3.5 animate-spin text-brand-primary" />
               ) : isJustSaved ? (
                 <>
-                  <Check className="h-3.5 w-3.5 text-emerald-600" />
-                  <span className="text-emerald-700 font-bold">Saved</span>
+                  <Check className="h-3.5 w-3.5 text-[#527565]" />
+                  <span className="text-[#527565] font-bold">Saved</span>
                 </>
               ) : (
                 <>
@@ -1208,8 +1208,8 @@ export const DomainCodingWorkspace: React.FC = () => {
                   <div
                     className={`rounded-xl p-3 text-xs border ${
                       evaluationResult.passed
-                        ? 'bg-emerald-50 border-emerald-200 text-emerald-900'
-                        : 'bg-amber-50 border-amber-200 text-amber-900'
+                        ? 'bg-[#E9F3ED] border-[#C8DFD1] text-[#527565]'
+                        : 'bg-[#F8F3E8] border-[#E8D9B9] text-[#896D45]'
                     }`}
                   >
                     <div className="flex items-center justify-between font-bold mb-1">
@@ -1242,11 +1242,11 @@ export const DomainCodingWorkspace: React.FC = () => {
             mobileTab === 'code' ? 'flex' : 'hidden'
           } ${
             isFullscreenPreview ? 'hidden' : 'lg:flex'
-          } flex-1 flex flex-col overflow-hidden min-h-0 min-w-0 bg-black border-r border-border-subtle`}
+          } flex-1 flex flex-col overflow-hidden min-h-0 min-w-0 bg-[#F0EFF6] border-r border-border-subtle`}
         >
           {/* File Tabs for multi-file web mode */}
           {workspaceType === 'web' && (
-            <div className="flex items-center gap-1 overflow-x-auto border-b border-gray-800 bg-[#121217] px-2 py-1.5 shrink-0">
+            <div className="flex items-center gap-1 overflow-x-auto border-b border-[#E9E7F0] bg-[#F0EFF6] px-2 py-1.5 shrink-0">
               {files.map((file) => {
                 const isActive = file.filename === activeFileName;
                 return (
@@ -1255,8 +1255,8 @@ export const DomainCodingWorkspace: React.FC = () => {
                     onClick={() => setActiveFileName(file.filename)}
                     className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-mono transition-colors ${
                       isActive
-                        ? 'bg-black text-[#A5B4FC] shadow-2xs font-semibold border border-gray-800'
-                        : 'text-gray-400 hover:bg-gray-800/50 hover:text-gray-200'
+                        ? 'bg-[#F0EFF6] text-[#A5B4FC] shadow-2xs font-semibold border border-[#E9E7F0]'
+                        : 'text-[#777486] hover:bg-[#F0EFF9] hover:text-[#49465B]'
                     }`}
                   >
                     <FileCode className="h-3.5 w-3.5" />
@@ -1269,25 +1269,25 @@ export const DomainCodingWorkspace: React.FC = () => {
 
           {/* Single-file header for python_data, sql, dsa */}
           {workspaceType !== 'web' && (
-            <div className="flex items-center justify-between border-b border-gray-800 bg-[#121217] px-3 py-1.5 shrink-0 text-xs">
-              <div className="flex items-center gap-2 font-mono text-gray-300">
+            <div className="flex items-center justify-between border-b border-[#E9E7F0] bg-[#F0EFF6] px-3 py-1.5 shrink-0 text-xs">
+              <div className="flex items-center gap-2 font-mono text-[#777486]">
                 <FileCode className="h-3.5 w-3.5 text-[#A5B4FC]" />
                 <span className="font-semibold">{activeFile?.filename || 'solution'}</span>
               </div>
-              <span className="font-mono text-[11px] text-gray-500 uppercase">
+              <span className="font-mono text-[11px] text-[#777486] uppercase">
                 {selectedLanguage}
               </span>
             </div>
           )}
 
-          {/* Monaco Code Editor Container (Pure Black #000000) */}
-          <div className="flex-1 flex overflow-hidden relative min-h-0 bg-black">
+          {/* Monaco code editor container using the shared light theme */}
+          <div className="flex-1 flex overflow-hidden relative min-h-0 bg-[#F0EFF6]">
             <Editor
               height="100%"
               language={getEditorLanguage(activeFile?.filename || '')}
               value={activeFile?.content || ''}
-              beforeMount={setupMonacoBlackTheme}
-              theme="evalora-black"
+              beforeMount={setupMonacoLightTheme}
+              theme="evalora-soft"
               onChange={(val) => handleCodeChange(val || '')}
               onMount={(editor, monaco) => {
                 editorRef.current = editor;
@@ -1318,8 +1318,8 @@ export const DomainCodingWorkspace: React.FC = () => {
 
           {/* Error Banner */}
           {runtimeError && (
-            <div className="shrink-0 flex items-center gap-2 bg-rose-50 border-t border-rose-200 px-4 py-2 text-xs text-rose-800">
-              <AlertCircle className="h-4 w-4 shrink-0 text-rose-600" />
+            <div className="shrink-0 flex items-center gap-2 bg-[#F8EDEF] border-t border-[#E8CFD2] px-4 py-2 text-xs text-[#9A646D]">
+              <AlertCircle className="h-4 w-4 shrink-0 text-[#9A646D]" />
               <span className="truncate">{runtimeError}</span>
             </div>
           )}
@@ -1374,7 +1374,7 @@ export const DomainCodingWorkspace: React.FC = () => {
                       : 'text-text-secondary hover:text-text-primary'
                   }`}
                 >
-                  <Terminal className="h-3.5 w-3.5 text-emerald-600" />
+                  <Terminal className="h-3.5 w-3.5 text-[#527565]" />
                   <span>Console</span>
                   {consoleLogs.length > 0 && (
                     <span className="rounded-full bg-brand-light px-1.5 py-0.2 text-[10px] font-mono text-brand-dark">
@@ -1430,26 +1430,26 @@ export const DomainCodingWorkspace: React.FC = () => {
             />
           ) : activeRightTab === 'console' && workspaceType === 'web' ? (
             /* Console log output view for Web */
-            <div className="flex-1 flex flex-col overflow-hidden min-h-0 bg-[#0D0D11] p-4 font-mono text-xs text-gray-200">
-              <div className="flex items-center justify-between border-b border-gray-800 pb-2 mb-2 text-gray-400">
+            <div className="flex-1 flex flex-col overflow-hidden min-h-0 bg-[#F0EFF6] p-4 font-mono text-xs text-[#49465B]">
+              <div className="flex items-center justify-between border-b border-[#E9E7F0] pb-2 mb-2 text-[#777486]">
                 <div className="flex items-center gap-1.5">
-                  <Terminal className="h-4 w-4 text-emerald-400" />
-                  <span className="font-semibold text-white">Browser Console Logs</span>
+                  <Terminal className="h-4 w-4 text-[#719B84]" />
+                  <span className="font-semibold text-[#49465B]">Browser Console Logs</span>
                 </div>
                 <button
                   onClick={() => setConsoleLogs([])}
-                  className="text-[11px] text-gray-500 hover:text-white"
+                  className="text-[11px] text-[#777486] hover:text-[#49465B]"
                 >
                   Clear
                 </button>
               </div>
-              <div className="flex-1 overflow-y-auto space-y-1 text-gray-300">
+              <div className="flex-1 overflow-y-auto space-y-1 text-[#777486]">
                 {consoleLogs.length === 0 ? (
-                  <p className="text-gray-600 italic">No console messages logged yet.</p>
+                  <p className="text-[#777486] italic">No console messages logged yet.</p>
                 ) : (
                   consoleLogs.map((log, idx) => (
                     <div key={idx} className="flex items-start gap-2">
-                      <span className="text-emerald-500 select-none">&gt;</span>
+                      <span className="text-[#719B84] select-none">&gt;</span>
                       <span className="break-all">{log}</span>
                     </div>
                   ))
@@ -1504,10 +1504,10 @@ export const DomainCodingWorkspace: React.FC = () => {
 
       {/* Confirmation Modal for Reset */}
       {showResetModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#625E75]/35 backdrop-blur-xs p-4">
           <div className="relative w-full max-w-md rounded-2xl border border-border-subtle bg-white p-6 shadow-xl text-text-primary animate-in fade-in zoom-in-95 duration-150">
             <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-700 border border-amber-200">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#F8F3E8] text-[#896D45] border border-[#E8D9B9]">
                 <RotateCcw className="h-5 w-5" />
               </div>
               <div>
@@ -1553,20 +1553,20 @@ export const DomainCodingWorkspace: React.FC = () => {
 
       {/* 3. Celebration Modal on Passing Assignment */}
       {showCelebrationModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
-          <div className="max-w-md w-full rounded-2xl bg-white border border-emerald-200 p-6 shadow-2xl text-center space-y-4">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 ring-8 ring-emerald-50">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#625E75]/35 backdrop-blur-xs p-4">
+          <div className="max-w-md w-full rounded-2xl bg-white border border-[#C8DFD1] p-6 shadow-2xl text-center space-y-4">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#E9F3ED] text-[#527565] ring-8 ring-[#78A88F]">
               <Award className="h-8 w-8" />
             </div>
             <div className="space-y-1">
               <h2 className="text-xl font-bold text-text-primary">Module Assignment Passed!</h2>
               <p className="text-sm text-text-secondary">
-                You scored <strong className="text-emerald-700 font-extrabold">{evaluationResult?.score}%</strong>{' '}
+                You scored <strong className="text-[#527565] font-extrabold">{evaluationResult?.score}%</strong>{' '}
                 and met all verified rubric criteria.
               </p>
             </div>
             {evaluationResult?.nextModuleId && (
-              <div className="rounded-xl bg-emerald-50 border border-emerald-200 p-3 text-xs text-emerald-800">
+              <div className="rounded-xl bg-[#E9F3ED] border border-[#C8DFD1] p-3 text-xs text-[#527565]">
                 <strong>Next Module Unlocked!</strong> You can now progress to the next module in your career curriculum.
               </div>
             )}

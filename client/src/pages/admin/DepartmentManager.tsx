@@ -66,7 +66,7 @@ export const DepartmentManager: React.FC = () => {
   return (
     <div className="page-shell">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E8E8EF] pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E9E7F0] pb-6">
         <div>
           <div className="page-kicker">Administration</div>
           <h1 className="page-title mt-1">Department Management</h1>
@@ -86,18 +86,18 @@ export const DepartmentManager: React.FC = () => {
 
       {/* Search Input */}
       <div className="relative max-w-md">
-        <Search className="w-4 h-4 text-[#9494A3] absolute left-3.5 top-3" />
+        <Search className="w-4 h-4 text-[#9895A8] absolute left-3.5 top-3" />
         <input
           type="text"
           placeholder="Search by department name or code..."
           value={searchQuery}
           onChange={e => setSearchQuery(e.target.value)}
-          className="w-full pl-10 pr-9 py-2 text-xs border border-[#E8E8EF] rounded-xl focus:outline-none focus:border-[#5B5CE2] focus:ring-2 focus:ring-[#5B5CE2]/15 text-[#18181F] bg-white transition-all shadow-[0_1px_2px_rgba(24,24,31,0.02)]"
+          className="w-full pl-10 pr-9 py-2 text-xs border border-[#E9E7F0] rounded-xl focus:outline-none focus:border-[#7779C5] focus:ring-2 focus:ring-[#7779C5]/15 text-[#49465B] bg-white transition-all shadow-[0_1px_2px_rgba(82,77,119,0.02)]"
         />
         {searchQuery && (
           <button
             onClick={() => setSearchQuery('')}
-            className="absolute right-3 top-2.5 text-[#9494A3] hover:text-[#18181F]"
+            className="absolute right-3 top-2.5 text-[#9895A8] hover:text-[#49465B]"
             title="Clear search"
           >
             <X className="w-3.5 h-3.5" />
@@ -108,7 +108,7 @@ export const DepartmentManager: React.FC = () => {
       <Card
         header={
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-[#18181F]">
+            <span className="text-xs font-semibold text-[#49465B]">
               Academic Departments ({filtered.length})
             </span>
           </div>
@@ -117,7 +117,7 @@ export const DepartmentManager: React.FC = () => {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-[#E8E8EF] text-[#9494A3] font-semibold uppercase text-[10px] tracking-wider">
+              <tr className="border-b border-[#E9E7F0] text-[#9895A8] font-semibold uppercase text-[10px] tracking-wider">
                 <th className="pb-3">Department Name</th>
                 <th className="pb-3">Code</th>
                 <th className="pb-3">Faculty Count</th>
@@ -125,17 +125,17 @@ export const DepartmentManager: React.FC = () => {
                 <th className="pb-3 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E8E8EF]">
+            <tbody className="divide-y divide-[#E9E7F0]">
               {filtered.map(d => (
-                <tr key={d._id} className="hover:bg-[#F7F7FB] transition-colors">
-                  <td className="py-3 font-semibold text-[#18181F]">{d.name}</td>
-                  <td className="py-3 font-mono text-[#34358F] font-bold">{d.code}</td>
-                  <td className="py-3 text-[#6B6B78]">{d.facultyCount || 0}</td>
-                  <td className="py-3 text-[#6B6B78]">{d.studentCount || 0}</td>
+                <tr key={d._id} className="hover:bg-[#F8F7FC] transition-colors">
+                  <td className="py-3 font-semibold text-[#49465B]">{d.name}</td>
+                  <td className="py-3 font-mono text-[#555780] font-bold">{d.code}</td>
+                  <td className="py-3 text-[#777486]">{d.facultyCount || 0}</td>
+                  <td className="py-3 text-[#777486]">{d.studentCount || 0}</td>
                   <td className="py-3 text-right">
                     <button
                       onClick={() => handleDelete(d._id)}
-                      className="p-1.5 text-[#6B6B78] hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors"
+                      className="p-1.5 text-[#777486] hover:text-[#9A646D] hover:bg-[#F8EDEF] rounded-lg transition-colors"
                       title="Delete Department"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
@@ -145,7 +145,7 @@ export const DepartmentManager: React.FC = () => {
               ))}
               {filtered.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="py-8 text-center text-xs text-[#6B6B78]">
+                  <td colSpan={5} className="py-8 text-center text-xs text-[#777486]">
                     {searchQuery ? 'No departments match your search.' : 'No departments configured yet.'}
                   </td>
                 </tr>
@@ -164,38 +164,38 @@ export const DepartmentManager: React.FC = () => {
         >
           <form onSubmit={handleCreate} className="space-y-4 text-xs">
             <div>
-              <label className="block font-semibold text-[#18181F] mb-1">Department Name</label>
+              <label className="block font-semibold text-[#49465B] mb-1">Department Name</label>
               <input
                 type="text"
                 required
                 value={formData.name}
                 onChange={e => setFormData({ ...formData, name: e.target.value })}
                 placeholder="e.g. Computer Science & Engineering"
-                className="w-full px-3.5 py-2.5 border border-[#E8E8EF] rounded-xl text-xs text-[#18181F] focus:border-[#5B5CE2] focus:outline-none"
+                className="w-full px-3.5 py-2.5 border border-[#E9E7F0] rounded-xl text-xs text-[#49465B] focus:border-[#7779C5] focus:outline-none"
               />
             </div>
             <div>
-              <label className="block font-semibold text-[#18181F] mb-1">Department Code</label>
+              <label className="block font-semibold text-[#49465B] mb-1">Department Code</label>
               <input
                 type="text"
                 required
                 value={formData.code}
                 onChange={e => setFormData({ ...formData, code: e.target.value.toUpperCase() })}
                 placeholder="e.g. CSE"
-                className="w-full px-3.5 py-2.5 border border-[#E8E8EF] rounded-xl text-xs text-[#18181F] font-mono focus:border-[#5B5CE2] focus:outline-none"
+                className="w-full px-3.5 py-2.5 border border-[#E9E7F0] rounded-xl text-xs text-[#49465B] font-mono focus:border-[#7779C5] focus:outline-none"
               />
             </div>
             <div>
-              <label className="block font-semibold text-[#18181F] mb-1">Description (Optional)</label>
+              <label className="block font-semibold text-[#49465B] mb-1">Description (Optional)</label>
               <textarea
                 value={formData.description}
                 onChange={e => setFormData({ ...formData, description: e.target.value })}
                 placeholder="Brief department scope..."
                 rows={3}
-                className="w-full px-3.5 py-2.5 border border-[#E8E8EF] rounded-xl text-xs text-[#18181F] focus:border-[#5B5CE2] focus:outline-none"
+                className="w-full px-3.5 py-2.5 border border-[#E9E7F0] rounded-xl text-xs text-[#49465B] focus:border-[#7779C5] focus:outline-none"
               />
             </div>
-            <div className="flex justify-end gap-2 pt-2 border-t border-[#E8E8EF]">
+            <div className="flex justify-end gap-2 pt-2 border-t border-[#E9E7F0]">
               <Button variant="outline" size="sm" type="button" onClick={() => setIsModalOpen(false)}>
                 Cancel
               </Button>

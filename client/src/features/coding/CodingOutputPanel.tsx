@@ -54,7 +54,7 @@ export const CodingOutputPanel: React.FC<CodingOutputPanelProps> = ({
               >
                 {label}
                 {id === 'errors' && errors.length > 0 && (
-                  <span className="ml-1.5 rounded-full bg-rose-500/10 px-1.5 py-0.2 text-[10px] font-bold text-rose-600">
+                  <span className="ml-1.5 rounded-full bg-[#F8EDEF]/10 px-1.5 py-0.2 text-[10px] font-bold text-[#9A646D]">
                     {errors.length}
                   </span>
                 )}
@@ -62,8 +62,8 @@ export const CodingOutputPanel: React.FC<CodingOutputPanelProps> = ({
                   <span
                     className={`ml-1.5 rounded-full px-1.5 py-0.2 text-[10px] font-bold ${
                       result.passedCount === result.totalTestCases
-                        ? 'bg-emerald-500/10 text-emerald-700'
-                        : 'bg-rose-500/10 text-rose-700'
+                        ? 'bg-[#E9F3ED]/10 text-[#527565]'
+                        : 'bg-[#F8EDEF]/10 text-[#9A646D]'
                     }`}
                   >
                     {result.passedCount}/{result.totalTestCases}
@@ -121,7 +121,7 @@ export const CodingOutputPanel: React.FC<CodingOutputPanelProps> = ({
               {errors.map((error: string, index: number) => (
                 <pre
                   key={`${error}-${index}`}
-                  className="overflow-x-auto whitespace-pre-wrap rounded-xl border border-rose-200 bg-rose-50/70 p-3.5 font-mono text-xs text-rose-900"
+                  className="overflow-x-auto whitespace-pre-wrap rounded-xl border border-[#E8CFD2] bg-[#F8EDEF]/70 p-3.5 font-mono text-xs text-[#9A646D]"
                 >
                   {error}
                 </pre>
@@ -169,16 +169,16 @@ export const CodingOutputPanel: React.FC<CodingOutputPanelProps> = ({
                     key={test.testCaseIndex}
                     className={`rounded-xl border p-3 transition-colors ${
                       test.passed
-                        ? 'border-emerald-200/80 bg-emerald-50/30'
-                        : 'border-rose-200/80 bg-rose-50/30'
+                        ? 'border-[#C8DFD1]/80 bg-[#E9F3ED]/30'
+                        : 'border-[#E8CFD2]/80 bg-[#F8EDEF]/30'
                     }`}
                   >
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
                         {test.passed ? (
-                          <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+                          <CheckCircle2 className="h-4 w-4 text-[#527565]" />
                         ) : (
-                          <CircleX className="h-4 w-4 text-rose-600" />
+                          <CircleX className="h-4 w-4 text-[#9A646D]" />
                         )}
                         <span className="font-semibold text-text-primary">
                           Test Case #{test.testCaseIndex}
@@ -217,7 +217,7 @@ export const CodingOutputPanel: React.FC<CodingOutputPanelProps> = ({
                           </span>
                           <span
                             className={`mt-0.5 block break-all ${
-                              test.passed ? 'text-emerald-700' : 'text-rose-700 font-semibold'
+                              test.passed ? 'text-[#527565]' : 'text-[#9A646D] font-semibold'
                             }`}
                           >
                             {test.actualOutput || '(empty)'}

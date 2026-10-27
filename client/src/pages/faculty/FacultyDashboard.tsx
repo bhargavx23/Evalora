@@ -76,7 +76,7 @@ export const FacultyDashboard: React.FC = () => {
             variant="outline"
             size="sm"
             onClick={() => navigate('/faculty/ai-generator')}
-            icon={<Bot className="w-3.5 h-3.5 text-[#5B5CE2]" />}
+            icon={<Bot className="w-3.5 h-3.5 text-[#7779C5]" />}
           >
             AI Question Generator
           </Button>
@@ -93,7 +93,7 @@ export const FacultyDashboard: React.FC = () => {
 
       {/* Metrics Grid */}
       {loadError && (
-        <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-medium text-amber-900">
+        <div className="rounded-lg border border-[#E8D9B9] bg-[#F8F3E8] px-3 py-2 text-xs font-medium text-[#896D45]">
           {loadError}
         </div>
       )}
@@ -103,7 +103,7 @@ export const FacultyDashboard: React.FC = () => {
             <div className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
               Active Assessments
             </div>
-            <div className="text-2xl font-bold text-blue-900">{publishedAssessments.length}</div>
+            <div className="text-2xl font-bold text-[#555780]">{publishedAssessments.length}</div>
             <div className="text-[10px] text-gray-400">Published to students</div>
           </div>
         </Card>
@@ -113,7 +113,7 @@ export const FacultyDashboard: React.FC = () => {
             <div className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
               Class Average
             </div>
-            <div className="text-2xl font-bold text-emerald-900">{stats?.classAverage != null ? `${stats.classAverage}%` : 'No data'}</div>
+            <div className="text-2xl font-bold text-[#527565]">{stats?.classAverage != null ? `${stats.classAverage}%` : 'No data'}</div>
             <div className="text-[10px] text-gray-400">Median: {stats?.median != null ? `${stats.median}%` : 'Not enough data'}</div>
           </div>
         </Card>
@@ -123,7 +123,7 @@ export const FacultyDashboard: React.FC = () => {
             <div className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
               Question Bank
             </div>
-            <div className="text-2xl font-bold text-purple-900">{assessments.reduce((total, ass) => total + (ass.sections || []).reduce((sum: number, section: any) => sum + (section.questions?.length || 0), 0), 0)}</div>
+            <div className="text-2xl font-bold text-[#555780]">{assessments.reduce((total, ass) => total + (ass.sections || []).reduce((sum: number, section: any) => sum + (section.questions?.length || 0), 0), 0)}</div>
             <div className="text-[10px] text-gray-400">Questions in listed assessments</div>
           </div>
         </Card>
@@ -133,7 +133,7 @@ export const FacultyDashboard: React.FC = () => {
             <div className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
               Pass Rate
             </div>
-            <div className="text-2xl font-bold text-red-900">{stats?.passRate != null ? `${stats.passRate}%` : 'No data'}</div>
+            <div className="text-2xl font-bold text-[#9A646D]">{stats?.passRate != null ? `${stats.passRate}%` : 'No data'}</div>
             <div className="text-[10px] text-gray-400">Across current batch</div>
           </div>
         </Card>
@@ -147,12 +147,12 @@ export const FacultyDashboard: React.FC = () => {
             header={
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-gray-800 flex items-center gap-1.5">
-                  <FileCheck2 className="w-4 h-4 text-blue-600" />
+                  <FileCheck2 className="w-4 h-4 text-[#555780]" />
                   Current Department Assessments
                 </span>
                 <button
                   onClick={() => navigate('/faculty/assessments')}
-                  className="text-[11px] text-blue-600 font-semibold hover:underline"
+                  className="text-[11px] text-[#555780] font-semibold hover:underline"
                 >
                   View All ({assessments.length})
                 </button>
@@ -173,7 +173,7 @@ export const FacultyDashboard: React.FC = () => {
                       <p className="text-[11px] text-gray-500 line-clamp-1 mt-0.5">{ass.description}</p>
                     </div>
 
-                    <span className="text-xs font-bold text-blue-800 bg-blue-50 px-2 py-0.5 rounded border border-blue-200 shrink-0">
+                    <span className="text-xs font-bold text-[#555780] bg-[#F0EFF9] px-2 py-0.5 rounded border border-[#DEDDF0] shrink-0">
                       {ass.totalMarks} Marks
                     </span>
                   </div>
@@ -188,14 +188,14 @@ export const FacultyDashboard: React.FC = () => {
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => navigate(`/faculty/live-monitor?assessmentId=${ass._id}`)}
-                        className="text-purple-600 hover:text-purple-800 font-medium"
+                        className="text-[#555780] hover:text-[#555780] font-medium"
                       >
                         Live Monitor
                       </button>
                       <span>&bull;</span>
                       <button
                         onClick={() => navigate(`/faculty/similarity?assessmentId=${ass._id}`)}
-                        className="text-red-600 hover:text-red-800 font-medium"
+                        className="text-[#9A646D] hover:text-[#9A646D] font-medium"
                       >
                         Plagiarism
                       </button>
@@ -214,7 +214,7 @@ export const FacultyDashboard: React.FC = () => {
             header={
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-gray-800 flex items-center gap-1.5">
-                  <Activity className="w-4 h-4 text-rose-500" />
+                  <Activity className="w-4 h-4 text-[#9A646D]" />
                   Live Proctoring Signals
                 </span>
                 <Badge variant="rose">Real-Time</Badge>
@@ -226,7 +226,7 @@ export const FacultyDashboard: React.FC = () => {
                 <div key={item.attemptId || item._id} className="p-3 bg-gray-50 rounded-xl border border-gray-200 text-xs space-y-1">
                   <div className="flex items-center justify-between font-bold text-gray-800">
                     <span>{item.student?.name || 'Student'}</span>
-                    <span className="text-emerald-700">{item.integrityScore ?? 'N/A'}{item.integrityScore != null ? '% Integrity' : ''}</span>
+                    <span className="text-[#527565]">{item.integrityScore ?? 'N/A'}{item.integrityScore != null ? '% Integrity' : ''}</span>
                   </div>
                   <div className="text-[11px] text-gray-500">
                     Progress: {item.answeredQuestions ?? 0}/{item.totalQuestions ?? 0} Questions
@@ -260,12 +260,12 @@ export const FacultyDashboard: React.FC = () => {
           header={
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-gray-800 flex items-center gap-1.5">
-                <BarChart3 className="w-4 h-4 text-blue-600" />
+                <BarChart3 className="w-4 h-4 text-[#555780]" />
                 Batch Topic Proficiency Heatmap
               </span>
               <button
                 onClick={() => navigate('/faculty/batch-analytics')}
-                className="text-[11px] text-blue-600 font-semibold hover:underline"
+                className="text-[11px] text-[#555780] font-semibold hover:underline"
               >
                 Detailed Analytics
               </button>
@@ -284,7 +284,7 @@ export const FacultyDashboard: React.FC = () => {
                     className="h-full rounded-full"
                     style={{
                       width: `${t.average}%`,
-                      backgroundColor: t.average < 50 ? '#EF4444' : t.average < 75 ? '#F59E0B' : '#10B981'
+                      backgroundColor: t.average < 50 ? '#CB888F' : t.average < 75 ? '#C6A466' : '#78A88F'
                     }}
                   />
                 </div>
@@ -304,12 +304,12 @@ export const FacultyDashboard: React.FC = () => {
           header={
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-gray-800 flex items-center gap-1.5">
-                <Layers className="w-4 h-4 text-amber-500" />
+                <Layers className="w-4 h-4 text-[#896D45]" />
                 Question Quality Alerts
               </span>
               <button
                 onClick={() => navigate('/faculty/question-analytics')}
-                className="text-[11px] text-blue-600 font-semibold hover:underline"
+                className="text-[11px] text-[#555780] font-semibold hover:underline"
               >
                 Review Bank
               </button>

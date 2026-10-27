@@ -72,8 +72,8 @@ export const CodeSimilarityViewer: React.FC = () => {
     <div className="space-y-6 py-2">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#F4D8D8] text-red-950 text-xs font-semibold mb-1">
-            <ShieldAlert className="w-3.5 h-3.5 text-red-600" />
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#F4D8D8] text-[#9A646D] text-xs font-semibold mb-1">
+            <ShieldAlert className="w-3.5 h-3.5 text-[#9A646D]" />
             AST-Normalized Code Plagiarism Detector
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-gray-900">Code Similarity Analysis</h1>
@@ -108,11 +108,11 @@ export const CodeSimilarityViewer: React.FC = () => {
       </div>
 
       {/* Flagged Alert Banner */}
-      <div className="p-4 rounded-xl bg-[#F7E6B5]/60 border border-amber-300 text-xs text-amber-950 flex items-start gap-3">
-        <AlertTriangle className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
+      <div className="p-4 rounded-xl bg-[#F7E6B5]/60 border border-[#E8D9B9] text-xs text-[#896D45] flex items-start gap-3">
+        <AlertTriangle className="w-5 h-5 text-[#896D45] shrink-0 mt-0.5" />
         <div className="space-y-1">
           <span className="font-bold">Structural Equivalence Flagging:</span>
-          <p className="text-[11px] text-amber-900 leading-relaxed">
+          <p className="text-[11px] text-[#896D45] leading-relaxed">
             Submissions with &ge; 80% token n-gram equivalence are highlighted for faculty inspection. Variable name substitution, reformatting, and comment stripping are automatically accounted for.
           </p>
         </div>
@@ -146,7 +146,7 @@ export const CodeSimilarityViewer: React.FC = () => {
                 const isHigh = report.similarityPercentage >= 80;
 
                 return (
-                  <tr key={idx} className={isHigh ? 'bg-red-50/30' : 'hover:bg-gray-50'}>
+                  <tr key={idx} className={isHigh ? 'bg-[#F8EDEF]/30' : 'hover:bg-gray-50'}>
                     <td className="py-3">
                       <div className="font-semibold text-gray-900">
                         {report.studentAId?.name || 'Student A'} &harr; {report.studentBId?.name || 'Student B'}
@@ -164,7 +164,7 @@ export const CodeSimilarityViewer: React.FC = () => {
                       <div className="flex items-center gap-2">
                         <span
                           className={`font-bold text-sm ${
-                            isHigh ? 'text-red-700' : 'text-gray-800'
+                            isHigh ? 'text-[#9A646D]' : 'text-gray-800'
                           }`}
                         >
                           {report.similarityPercentage}%
@@ -172,7 +172,7 @@ export const CodeSimilarityViewer: React.FC = () => {
                         <div className="w-20 h-1.5 bg-gray-200 rounded-full overflow-hidden">
                           <div
                             className={`h-full rounded-full ${
-                              isHigh ? 'bg-red-500' : 'bg-blue-500'
+                              isHigh ? 'bg-[#F8EDEF]' : 'bg-[#F0EFF9]'
                             }`}
                             style={{ width: `${report.similarityPercentage}%` }}
                           />
@@ -182,8 +182,8 @@ export const CodeSimilarityViewer: React.FC = () => {
 
                     <td className="py-3">
                       {isHigh ? (
-                        <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded bg-[#F4D8D8] text-red-950 font-bold border border-red-200">
-                          <AlertTriangle className="w-3 h-3 text-red-600" />
+                        <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded bg-[#F4D8D8] text-[#9A646D] font-bold border border-[#E8CFD2]">
+                          <AlertTriangle className="w-3 h-3 text-[#9A646D]" />
                           High Code Similarity
                         </span>
                       ) : (
@@ -230,7 +230,7 @@ export const CodeSimilarityViewer: React.FC = () => {
           }
         >
           <div className="space-y-4 text-xs">
-            <div className="p-3 bg-red-50 rounded-xl border border-red-200 text-red-950 flex items-center justify-between">
+            <div className="p-3 bg-[#F8EDEF] rounded-xl border border-[#E8CFD2] text-[#9A646D] flex items-center justify-between">
               <span className="font-bold">
                 Student A ({inspectPair.studentAId?.name}) vs Student B ({inspectPair.studentBId?.name})
               </span>
@@ -240,7 +240,7 @@ export const CodeSimilarityViewer: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-1">
                 <span className="font-bold text-gray-700">Student A Submission ({inspectPair.studentAId?.name}):</span>
-                <pre className="p-3 bg-gray-900 text-emerald-400 font-mono text-[11px] rounded-xl h-64 overflow-y-auto">
+                <pre className="p-3 bg-[#F0EFF6] text-[#719B84] font-mono text-[11px] rounded-xl h-64 overflow-y-auto">
 {`# Student A Submission
 def maxSubArray(nums):
     max_sum = nums[0]
@@ -254,7 +254,7 @@ def maxSubArray(nums):
 
               <div className="space-y-1">
                 <span className="font-bold text-gray-700">Student B Submission ({inspectPair.studentBId?.name}):</span>
-                <pre className="p-3 bg-gray-900 text-emerald-400 font-mono text-[11px] rounded-xl h-64 overflow-y-auto">
+                <pre className="p-3 bg-[#F0EFF6] text-[#719B84] font-mono text-[11px] rounded-xl h-64 overflow-y-auto">
 {`# Student B Submission (Renamed variables)
 def maxSubArray(arr):
     ans = arr[0]

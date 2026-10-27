@@ -341,7 +341,7 @@ export const SettingsPage: React.FC = () => {
 
               {browserWallet && (
                 <div className="flex items-center gap-2 text-xs">
-                  <span className="font-mono text-emerald-700">
+                  <span className="font-mono text-[#527565]">
                     Active: {browserWallet.slice(0, 8)}...{browserWallet.slice(-6)}
                   </span>
                   <Button
@@ -364,7 +364,7 @@ export const SettingsPage: React.FC = () => {
         header={
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-50 text-emerald-700">
+              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#E9F3ED] text-[#527565]">
                 <History className="h-4 w-4" />
               </div>
               <span className="text-sm font-semibold text-text-primary">
@@ -412,7 +412,7 @@ export const SettingsPage: React.FC = () => {
                     <td className="py-3 font-mono font-medium text-text-primary">
                       {tx.amount} {tx.currency}
                     </td>
-                    <td className="py-3 font-medium text-emerald-600">
+                    <td className="py-3 font-medium text-[#527565]">
                       +{tx.attemptsUnlocked || 0}
                     </td>
                     <td className="py-3">

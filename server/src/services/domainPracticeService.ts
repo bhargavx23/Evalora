@@ -401,9 +401,9 @@ export class DomainPracticeService {
       }
     }
 
-    // If still need more, generate from lessons
-    if (questionsToCreate.length < count && topicContent.lessons.length > 0) {
-      const lesson = topicContent.lessons[0];
+    // If still need more, generate one question from each available lesson.
+    for (const lesson of topicContent.lessons) {
+      if (questionsToCreate.length >= count) break;
       questionsToCreate.push({
         title: `Core Concept: ${lesson.title}`,
         description: `Regarding ${topic}: ${lesson.concept.slice(0, 150)}... Which pattern best adheres to best practices?`,
@@ -417,6 +417,33 @@ export class DomainPracticeService {
           { id: 'opt2', text: `Bypass error boundaries and rely on global mutations.`, isCorrect: false }
         ],
         explanation: lesson.keyTakeaways[0] || `Understanding ${topic} requires proper lifecycle management.`,
+        tags: [domain.slug, domainModule.moduleId, topic.toLowerCase()],
+        creatorId: new mongoose.Types.ObjectId(userId),
+        createdBy: 'ai',
+        source: 'domain_curriculum'
+      });
+    }
+
+    // Curriculum content can contain fewer authored exercises and lessons than
+    // a requested session. Keep the requested session complete with distinct,
+    // clearly labeled review prompts instead of returning a partial session.
+    while (questionsToCreate.length < count) {
+      const variant = questionsToCreate.length + 1;
+      questionsToCreate.push({
+        title: `${topic}: Practice Review ${variant}`,
+        description: `Which approach best applies the core principles of ${topic} in ${domainModule.title}?`,
+        type: 'mcq',
+        difficulty: 'medium',
+        category: domain.name,
+        topic,
+        subtopic: domainModule.title,
+        options: [
+          { id: 'opt1', text: `Apply ${topic} consistently with clear boundaries and validated inputs.`, isCorrect: true },
+          { id: 'opt2', text: 'Skip validation and rely on unrelated global state.', isCorrect: false },
+          { id: 'opt3', text: 'Ignore the topic and bypass the module requirements.', isCorrect: false },
+          { id: 'opt4', text: 'Duplicate behavior without checking the expected outcomes.', isCorrect: false }
+        ],
+        explanation: `Review the core concepts and expected practices for ${topic}.`,
         tags: [domain.slug, domainModule.moduleId, topic.toLowerCase()],
         creatorId: new mongoose.Types.ObjectId(userId),
         createdBy: 'ai',

@@ -5,7 +5,6 @@ import { StudentSkill } from '../models/StudentSkill.js';
 import { IPracticeSectionConfig } from '../models/PracticeSession.js';
 import { DifficultyLevel } from '../shared/types.js';
 import { ValidationError } from '../utils/errors.js';
-import { ENV } from '../config/env.js';
 
 function escapeRegex(str: string): string {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -91,7 +90,6 @@ export interface GenerateMultiPracticeOptions {
   broadenCategory?: boolean;
   acceptAvailableFresh?: boolean;
   enableAIReplenishment?: boolean;
-  forceAIGeneration?: boolean;
 }
 
 export interface AvailabilityReport {
@@ -408,6 +406,9 @@ export class DynamicPracticeService {
       .lean();
 
     const attemptedIds = Array.from(new Set(history.map(h => h.questionId.toString())));
+    // First-time learners start with the curated topic bank. Returning learners
+    // receive a newly generated, section-matched batch on each practice session.
+    const isReturningLearner = attemptedIds.length > 0;
     const attemptedObjectIds = attemptedIds.map(id => new mongoose.Types.ObjectId(id));
 
     const selectedQuestions: any[] = [];
@@ -434,25 +435,37 @@ export class DynamicPracticeService {
         ...primaryQuery,
         _id: { $nin: excludedObjectIds() }
       }).lean();
+      const generatedQuestionIds = new Set<string>();
 
-      // 1b. Phase 4 AI Question Pool Replenishment:
-      // If forceAIGeneration is requested or the pool has insufficient fresh questions, invoke replenishment
-      // provider to generate, validate, deduplicate, and store fresh questions in the DB pool.
-      const isTestEnv = process.env.NODE_ENV === 'test' || Boolean(process.env.VITEST);
-      const shouldForceAI = Boolean(options.forceAIGeneration || (!isTestEnv && ENV.AI_FORCE_FRESH_EVERY_TIME && enableAIReplenishment));
+      // First-time learners use the curated pool. Returning learners get a fresh
+      // AI batch for every selected topic. Keep unseen pool questions available
+      // when the provider is unavailable or returns fewer valid questions.
+      const shouldForceAI = Boolean(isReturningLearner && enableAIReplenishment);
       if ((shouldForceAI || candidatePool.length < targetCount) && this.replenishmentProvider && enableAIReplenishment) {
         const missingCount = shouldForceAI ? targetCount : (targetCount - candidatePool.length);
         try {
-          await this.replenishmentProvider.replenishQuestions({
-            category: section.category,
-            topic: section.topic,
-            subtopic: section.subtopic,
-            difficulty: section.difficulty || 'mixed',
-            type: section.type || 'mixed',
-            count: missingCount,
-            collegeId,
-            studentId
-          });
+          const generationTypes: Array<'mcq' | 'coding'> = section.type === 'mixed'
+            ? ['mcq', 'coding']
+            : [section.type === 'coding' ? 'coding' : 'mcq'];
+          const generatedByType = await Promise.all(generationTypes.map((type, index) => {
+            const count = section.type === 'mixed'
+              ? Math.floor(missingCount / generationTypes.length) + (index < missingCount % generationTypes.length ? 1 : 0)
+              : missingCount;
+            return count > 0
+              ? this.replenishmentProvider!.replenishQuestions({
+                  category: section.category,
+                  topic: section.topic,
+                  subtopic: section.subtopic,
+                  difficulty: section.difficulty || 'mixed',
+                  type,
+                  count,
+                  collegeId,
+                  studentId
+                })
+              : Promise.resolve([]);
+          }));
+          const newlyGenerated = generatedByType.flat();
+          newlyGenerated.forEach(q => generatedQuestionIds.add(q._id.toString()));
 
           const replenishedFromPool = await Question.find({
             ...primaryQuery,
@@ -465,9 +478,12 @@ export class DynamicPracticeService {
           }).lean();
 
           if (replenishedFromPool.length > 0) {
+            const generatedIds = new Set(newlyGenerated.map(q => q._id.toString()));
+            const generatedFirst = replenishedFromPool.filter(q => generatedIds.has(q._id.toString()));
+            const remainingPool = replenishedFromPool.filter(q => !generatedIds.has(q._id.toString()));
             candidatePool = shouldForceAI
-              ? [...replenishedFromPool, ...candidatePool]
-              : [...candidatePool, ...replenishedFromPool];
+              ? [...generatedFirst, ...candidatePool, ...remainingPool]
+              : [...candidatePool, ...generatedFirst, ...remainingPool];
             aiReplenishedCount += replenishedFromPool.length;
           }
         } catch {
@@ -559,7 +575,13 @@ export class DynamicPracticeService {
       }
 
       // 5. Shuffle and select up to targetCount with concept diversity and strict duplicate prevention
-      const shuffled = [...candidatePool].sort(() => Math.random() - 0.5);
+      const randomizedPool = [...candidatePool].sort(() => Math.random() - 0.5);
+      const shuffled = shouldForceAI
+        ? [
+            ...randomizedPool.filter(q => generatedQuestionIds.has(q._id.toString())),
+            ...randomizedPool.filter(q => !generatedQuestionIds.has(q._id.toString()))
+          ]
+        : randomizedPool;
       const sectionChosen: any[] = [];
       const seenConcepts = new Set<string>();
 

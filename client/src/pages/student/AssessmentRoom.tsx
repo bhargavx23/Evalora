@@ -397,7 +397,7 @@ export const AssessmentRoom: React.FC = () => {
     return (
       <div className="flex items-center justify-center min-h-[70vh]">
         <div className="text-center space-y-3">
-          <div className="w-8 h-8 border-3 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto" />
+          <div className="w-8 h-8 border-3 border-[#DEDDF0] border-t-transparent rounded-full animate-spin mx-auto" />
           <p className="text-xs text-gray-500">
             Loading your secure assessment environment...
           </p>
@@ -432,7 +432,7 @@ export const AssessmentRoom: React.FC = () => {
 
           <div className="hidden sm:flex items-center gap-1.5 text-xs text-gray-400 border-l border-gray-200 pl-4">
             <Save
-              className={`w-3.5 h-3.5 ${isSaving ? "text-amber-500 animate-spin" : "text-emerald-500"}`}
+              className={`w-3.5 h-3.5 ${isSaving ? "text-[#896D45] animate-spin" : "text-[#527565]"}`}
             />
             <span>{isSaving ? "Autosaving..." : "All changes saved"}</span>
           </div>
@@ -452,7 +452,7 @@ export const AssessmentRoom: React.FC = () => {
           <div
             className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border font-mono text-xs font-bold ${
               timeRemainingSeconds < 300
-                ? "bg-[#F4D8D8] border-red-300 text-red-800 animate-pulse"
+                ? "bg-[#F4D8D8] border-[#E8CFD2] text-[#9A646D] animate-pulse"
                 : "bg-white border-gray-200 text-gray-800"
             }`}
           >
@@ -490,14 +490,14 @@ export const AssessmentRoom: React.FC = () => {
                   "bg-white text-gray-700 border-gray-200 hover:bg-gray-50";
                 if (status === "answered") {
                   btnStyle =
-                    "bg-[#DCEFE8] text-emerald-900 border-emerald-300 font-bold";
+                    "bg-[#DCEFE8] text-[#527565] border-[#C8DFD1] font-bold";
                 } else if (status === "review") {
                   btnStyle =
-                    "bg-[#F7E6B5] text-amber-900 border-amber-300 font-bold";
+                    "bg-[#F7E6B5] text-[#896D45] border-[#E8D9B9] font-bold";
                 }
 
                 if (isCurrent) {
-                  btnStyle += " ring-2 ring-blue-500 font-extrabold";
+                  btnStyle += " ring-2 ring-[#7779C5] font-extrabold";
                 }
 
                 return (
@@ -518,11 +518,11 @@ export const AssessmentRoom: React.FC = () => {
             {/* Legend */}
             <div className="pt-4 border-t border-gray-200 space-y-2 text-[11px] text-gray-600">
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-md bg-[#DCEFE8] border border-emerald-300" />
+                <span className="w-3 h-3 rounded-md bg-[#DCEFE8] border border-[#C8DFD1]" />
                 <span>Answered</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-md bg-[#F7E6B5] border border-amber-300" />
+                <span className="w-3 h-3 rounded-md bg-[#F7E6B5] border border-[#E8D9B9]" />
                 <span>Marked for Review</span>
               </div>
               <div className="flex items-center gap-2">
@@ -545,9 +545,9 @@ export const AssessmentRoom: React.FC = () => {
                 const isCurrent = idx === currentQuestionIndex;
                 const statusStyle =
                   status === "answered"
-                    ? "border-emerald-300 bg-[#DDEFE7] text-emerald-900"
+                    ? "border-[#C8DFD1] bg-[#DDEFE7] text-[#527565]"
                     : status === "review"
-                      ? "border-amber-300 bg-[#F4EAC5] text-amber-900"
+                      ? "border-[#E8D9B9] bg-[#F4EAC5] text-[#896D45]"
                       : "border-stone-200 bg-white text-gray-700";
                 return (
                   <button
@@ -558,7 +558,7 @@ export const AssessmentRoom: React.FC = () => {
                       setCurrentQuestionIndex(idx);
                       setIsPaletteOpen(false);
                     }}
-                    className={`h-9 rounded-md border text-xs font-medium ${statusStyle} ${isCurrent ? "ring-2 ring-blue-400" : ""}`}
+                    className={`h-9 rounded-md border text-xs font-medium ${statusStyle} ${isCurrent ? "ring-2 ring-[#7779C5]" : ""}`}
                   >
                     {idx + 1}
                   </button>
@@ -582,7 +582,7 @@ export const AssessmentRoom: React.FC = () => {
                       {currentQuestion.topic}
                     </span>
                   </div>
-                  <span className="text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
+                  <span className="text-xs font-bold text-[#555780] bg-[#F0EFF9] px-2 py-0.5 rounded border border-[#DEDDF0]">
                     {currentQuestion.marks || 15} Marks
                   </span>
                 </div>
@@ -672,7 +672,7 @@ export const AssessmentRoom: React.FC = () => {
                         setCode(defaultCode);
                         saveCurrentAnswer(undefined, defaultCode, newLang);
                       }}
-                      className="px-2 py-1 bg-white border border-gray-300 rounded font-medium focus:ring-1 focus:ring-blue-300 focus:outline-none"
+                      className="px-2 py-1 bg-white border border-gray-300 rounded font-medium focus:ring-1 focus:ring-[#7779C5] focus:outline-none"
                     >
                       <option value="python">Python 3</option>
                       <option value="cpp">C++ (g++)</option>
@@ -687,7 +687,7 @@ export const AssessmentRoom: React.FC = () => {
                       size="sm"
                       onClick={handleRunCode}
                       isLoading={isExecuting}
-                      icon={<Play className="w-3.5 h-3.5 text-blue-600" />}
+                      icon={<Play className="w-3.5 h-3.5 text-[#555780]" />}
                     >
                       Run Code
                     </Button>
@@ -696,7 +696,7 @@ export const AssessmentRoom: React.FC = () => {
                       size="sm"
                       onClick={handleEvaluateCode}
                       isLoading={isExecuting}
-                      icon={<Check className="w-3.5 h-3.5 text-emerald-700" />}
+                      icon={<Check className="w-3.5 h-3.5 text-[#527565]" />}
                     >
                       Submit Code
                     </Button>
@@ -744,7 +744,7 @@ export const AssessmentRoom: React.FC = () => {
                     <DifficultyBadge difficulty={currentQuestion.difficulty} />
                     <span className="text-xs font-semibold text-gray-500">{currentQuestion.topic}</span>
                   </div>
-                  <span className="rounded border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs font-bold text-blue-700">
+                  <span className="rounded border border-[#DEDDF0] bg-[#F0EFF9] px-2.5 py-1 text-xs font-bold text-[#555780]">
                     {currentQuestion.marks || 1} Marks
                   </span>
                 </div>
@@ -765,8 +765,8 @@ export const AssessmentRoom: React.FC = () => {
                         onClick={() => handleOptionSelect(opt.id)}
                         className={`flex w-full items-center justify-between rounded-xl border p-4 text-left text-xs transition-all duration-150 ${
                           isSelected
-                            ? "border-[#5B5CE2] bg-[#EEF0FF] font-semibold text-[#18181F] shadow-xs ring-1 ring-[#5B5CE2]/30"
-                            : "border-[#E8E8EF] bg-white text-[#18181F] hover:border-[#D6DAFF] hover:bg-[#F7F7FB]"
+                            ? "border-[#7779C5] bg-[#F0EFF9] font-semibold text-[#49465B] shadow-xs ring-1 ring-[#7779C5]/30"
+                            : "border-[#E9E7F0] bg-white text-[#49465B] hover:border-[#DEDDF0] hover:bg-[#F8F7FC]"
                         }`}
                       >
                         <span className="leading-relaxed">{opt.text}</span>
@@ -775,7 +775,7 @@ export const AssessmentRoom: React.FC = () => {
                             isMulti ? "rounded-md" : "rounded-full"
                           } ${
                             isSelected
-                              ? "border-[#5B5CE2] bg-[#5B5CE2] text-white shadow-xs"
+                              ? "border-[#7779C5] bg-[#7779C5] text-white shadow-xs"
                               : "border-[#D4D4E0] bg-white"
                           }`}
                         >
@@ -825,7 +825,7 @@ export const AssessmentRoom: React.FC = () => {
                 }}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
                   isMarkedForReview
-                    ? "bg-[#F7E6B5] border-amber-300 text-amber-900 font-bold"
+                    ? "bg-[#F7E6B5] border-[#E8D9B9] text-[#896D45] font-bold"
                     : "bg-white border-gray-200 text-gray-600 hover:bg-gray-50"
                 }`}
               >
@@ -880,8 +880,8 @@ export const AssessmentRoom: React.FC = () => {
           }
         >
           <div className="space-y-3 text-xs text-gray-700">
-            <div className="p-3 bg-[#F4D8D8]/50 rounded-xl border border-red-200 text-red-950 flex items-center gap-2.5">
-              <ShieldAlert className="w-5 h-5 text-red-600 shrink-0" />
+            <div className="p-3 bg-[#F4D8D8]/50 rounded-xl border border-[#E8CFD2] text-[#9A646D] flex items-center gap-2.5">
+              <ShieldAlert className="w-5 h-5 text-[#9A646D] shrink-0" />
               <span>{warningMessage}</span>
             </div>
             <p className="text-gray-600 leading-relaxed">
@@ -931,14 +931,14 @@ export const AssessmentRoom: React.FC = () => {
               </div>
               <div>
                 Answered:{" "}
-                <span className="font-bold text-emerald-700">
+                <span className="font-bold text-[#527565]">
                   {attempt?.answers?.filter((a: any) => a.isAttempted).length ||
                     0}
                 </span>
               </div>
               <div>
                 Marked for Review:{" "}
-                <span className="font-bold text-amber-700">
+                <span className="font-bold text-[#896D45]">
                   {attempt?.answers?.filter((a: any) => a.isMarkedForReview)
                     .length || 0}
                 </span>

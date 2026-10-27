@@ -100,8 +100,7 @@ export async function generatePractice(req: Request, res: Response): Promise<voi
       broadenCategory = false,
       acceptAvailableFresh = false,
       rejectOnInsufficientFresh = false,
-      enableAIReplenishment,
-      forceAIGeneration = false
+      enableAIReplenishment
     } = req.body;
 
     const studentId = req.user!._id;
@@ -171,8 +170,7 @@ export async function generatePractice(req: Request, res: Response): Promise<voi
       enableAIReplenishment:
         enableAIReplenishment !== undefined
           ? Boolean(enableAIReplenishment)
-          : !Boolean(rejectOnInsufficientFresh),
-      forceAIGeneration: Boolean(forceAIGeneration)
+          : !Boolean(rejectOnInsufficientFresh)
     });
 
     const { questions, sectionsConfig, availabilityReport } = result;

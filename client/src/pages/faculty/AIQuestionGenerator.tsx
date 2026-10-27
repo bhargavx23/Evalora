@@ -100,8 +100,8 @@ export const AIQuestionGenerator: React.FC = () => {
     <div className="max-w-5xl mx-auto space-y-8 py-2">
       {/* Header */}
       <div>
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E8E1F4] text-purple-950 text-xs font-semibold mb-2">
-          <Bot className="w-3.5 h-3.5 text-[#5B5CE2]" />
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E8E1F4] text-[#555780] text-xs font-semibold mb-2">
+          <Bot className="w-3.5 h-3.5 text-[#7779C5]" />
           AI Curriculum Assistant (Draft Workflow)
         </div>
         <h1 className="text-2xl font-bold tracking-tight text-gray-900">AI Question Generator</h1>
@@ -184,7 +184,7 @@ export const AIQuestionGenerator: React.FC = () => {
             size="md"
             onClick={handleGenerate}
             isLoading={isGenerating}
-            icon={<Bot className="w-4 h-4 text-[#5B5CE2]" />}
+            icon={<Bot className="w-4 h-4 text-[#7779C5]" />}
           >
             {isGenerating ? 'Synthesizing Questions...' : 'Generate Draft Questions'}
           </Button>
@@ -195,7 +195,7 @@ export const AIQuestionGenerator: React.FC = () => {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
-            <BookOpen className="w-4 h-4 text-blue-600" />
+            <BookOpen className="w-4 h-4 text-[#555780]" />
             Generated Draft Review Pool ({draftQuestions.length})
           </h3>
           {draftQuestions.length > 0 && (
@@ -238,7 +238,7 @@ export const AIQuestionGenerator: React.FC = () => {
                     variant="accent"
                     size="sm"
                     onClick={() => handleApprove(draft._id)}
-                    icon={<CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />}
+                    icon={<CheckCircle2 className="w-3.5 h-3.5 text-[#527565]" />}
                   >
                     Approve to Bank
                   </Button>
@@ -273,7 +273,7 @@ export const AIQuestionGenerator: React.FC = () => {
                         key={opt.id}
                         className={`p-2 rounded-lg border text-xs flex items-center justify-between ${
                           opt.isCorrect
-                            ? 'bg-[#DCEFE8] border-emerald-300 font-bold text-emerald-900'
+                            ? 'bg-[#DCEFE8] border-[#C8DFD1] font-bold text-[#527565]'
                             : 'bg-white border-gray-200 text-gray-700'
                         }`}
                       >
@@ -286,7 +286,7 @@ export const AIQuestionGenerator: React.FC = () => {
               )}
 
               {draft.explanation && (
-                <div className="p-2.5 bg-blue-50/50 rounded-lg border border-blue-200 text-xs text-blue-950">
+                <div className="p-2.5 bg-[#F0EFF9]/50 rounded-lg border border-[#DEDDF0] text-xs text-[#555780]">
                   <span className="font-bold">Explanation: </span>
                   {draft.explanation}
                 </div>
@@ -297,7 +297,7 @@ export const AIQuestionGenerator: React.FC = () => {
 
         {draftQuestions.length === 0 && (
           <div className="text-center py-12 bg-white rounded-2xl border border-gray-200 text-xs text-gray-400 space-y-2">
-            <Bot className="w-8 h-8 text-[#5B5CE2]/40 mx-auto" />
+            <Bot className="w-8 h-8 text-[#7779C5]/40 mx-auto" />
             <p className="font-semibold text-gray-700">No Drafts in Queue</p>
             <p>Configure parameters above and click "Generate Draft Questions" to begin.</p>
           </div>

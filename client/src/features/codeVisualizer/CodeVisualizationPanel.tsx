@@ -106,7 +106,7 @@ export const CodeVisualizationPanel: React.FC<CodeVisualizationPanelProps> = ({
   if (result.supported === false) {
     return (
       <div className="flex h-full w-full flex-col items-center justify-center p-8 text-center bg-white text-text-primary">
-        <div className="h-11 w-11 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 mb-3">
+        <div className="h-11 w-11 rounded-2xl bg-[#F8F3E8] border border-[#E8D9B9] flex items-center justify-center text-[#896D45] mb-3">
           <AlertTriangle className="h-5 w-5" />
         </div>
         <h4 className="text-sm font-bold text-text-primary mb-1">Language Support</h4>
@@ -121,11 +121,11 @@ export const CodeVisualizationPanel: React.FC<CodeVisualizationPanelProps> = ({
   if (!result.success && steps.length === 0) {
     return (
       <div className="flex h-full w-full flex-col items-center justify-center p-8 text-center bg-white">
-        <div className="h-11 w-11 rounded-2xl bg-rose-50 border border-rose-200 flex items-center justify-center text-rose-600 mb-3">
+        <div className="h-11 w-11 rounded-2xl bg-[#F8EDEF] border border-[#E8CFD2] flex items-center justify-center text-[#9A646D] mb-3">
           <XCircle className="h-5 w-5" />
         </div>
         <h4 className="text-sm font-bold text-text-primary mb-1">Execution Error</h4>
-        <div className="text-xs text-rose-800 font-mono bg-rose-50/70 border border-rose-200 rounded-xl p-3.5 max-w-md mb-4 text-left whitespace-pre-wrap">
+        <div className="text-xs text-[#9A646D] font-mono bg-[#F8EDEF]/70 border border-[#E8CFD2] rounded-xl p-3.5 max-w-md mb-4 text-left whitespace-pre-wrap">
           {result.error || 'A syntax or runtime error occurred before an execution trace could be produced.'}
         </div>
       </div>
@@ -278,14 +278,14 @@ export const CodeVisualizationPanel: React.FC<CodeVisualizationPanelProps> = ({
                 </p>
 
                 {currentStep.warning && (
-                  <div className="mt-2 flex items-center gap-1.5 rounded-lg bg-amber-50 border border-amber-200 px-2.5 py-1 text-xs text-amber-800">
-                    <AlertTriangle className="h-3.5 w-3.5 text-amber-600 shrink-0" />
+                  <div className="mt-2 flex items-center gap-1.5 rounded-lg bg-[#F8F3E8] border border-[#E8D9B9] px-2.5 py-1 text-xs text-[#896D45]">
+                    <AlertTriangle className="h-3.5 w-3.5 text-[#896D45] shrink-0" />
                     <span>{currentStep.warning}</span>
                   </div>
                 )}
                 {currentStep.error && (
-                  <div className="mt-2 flex items-center gap-1.5 rounded-lg bg-rose-50 border border-rose-200 px-2.5 py-1 text-xs text-rose-800">
-                    <XCircle className="h-3.5 w-3.5 text-rose-600 shrink-0" />
+                  <div className="mt-2 flex items-center gap-1.5 rounded-lg bg-[#F8EDEF] border border-[#E8CFD2] px-2.5 py-1 text-xs text-[#9A646D]">
+                    <XCircle className="h-3.5 w-3.5 text-[#9A646D] shrink-0" />
                     <span>{currentStep.error}</span>
                   </div>
                 )}
@@ -375,7 +375,7 @@ export const CodeVisualizationPanel: React.FC<CodeVisualizationPanelProps> = ({
         <div className="rounded-xl border border-border-subtle bg-white p-4">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-1.5">
-              <Activity className="h-4 w-4 text-emerald-600" />
+              <Activity className="h-4 w-4 text-[#527565]" />
               <h5 className="text-xs font-bold text-text-primary">
                 Scope Variables
               </h5>
@@ -404,7 +404,7 @@ export const CodeVisualizationPanel: React.FC<CodeVisualizationPanelProps> = ({
                     <div className="flex items-center justify-between text-xs">
                       <span className="font-mono font-bold text-text-primary">{name}</span>
                       {isMutated ? (
-                        <span className="rounded bg-emerald-50 px-1.5 py-0.2 text-[10px] font-semibold text-emerald-700 border border-emerald-200">
+                        <span className="rounded bg-[#E9F3ED] px-1.5 py-0.2 text-[10px] font-semibold text-[#527565] border border-[#C8DFD1]">
                           Updated
                         </span>
                       ) : (
@@ -456,12 +456,12 @@ export const CodeVisualizationPanel: React.FC<CodeVisualizationPanelProps> = ({
         )}
 
         {/* Standard Output Console Stream */}
-        <div className="rounded-xl border border-border-subtle bg-[#0D0D11] p-3 text-xs font-mono text-gray-200">
-          <div className="flex items-center gap-1.5 mb-2 pb-1.5 border-b border-gray-800 text-gray-400">
-            <Terminal className="h-3.5 w-3.5 text-emerald-400" />
-            <span className="font-semibold text-gray-300 text-xs">Console Output</span>
+        <div className="rounded-xl border border-border-subtle bg-[#F0EFF6] p-3 text-xs font-mono text-[#49465B]">
+          <div className="flex items-center gap-1.5 mb-2 pb-1.5 border-b border-[#E9E7F0] text-gray-400">
+            <Terminal className="h-3.5 w-3.5 text-[#719B84]" />
+            <span className="font-semibold text-[#777486] text-xs">Console Output</span>
           </div>
-          <pre className="whitespace-pre-wrap leading-relaxed text-emerald-400 max-h-36 overflow-y-auto">
+          <pre className="whitespace-pre-wrap leading-relaxed text-[#719B84] max-h-36 overflow-y-auto">
             {currentStep?.stdout || result.stdout || (
               <span className="text-gray-500 italic">No output logged up to this step.</span>
             )}

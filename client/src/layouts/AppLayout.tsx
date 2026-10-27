@@ -11,7 +11,7 @@ export const AppLayout: React.FC = () => {
     location.pathname.startsWith('/visualizer');
 
   return (
-    <div className="flex min-h-screen min-w-0 flex-col bg-[#F7F7FB] text-[#18181F]">
+    <div className="flex min-h-screen min-w-0 flex-col bg-transparent text-[#49465B]">
       <Navbar onToggleSidebar={() => setIsSidebarOpen((prev) => !prev)} />
       <div className="flex min-h-0 min-w-0 flex-1">
         <Sidebar
@@ -21,11 +21,13 @@ export const AppLayout: React.FC = () => {
         <main
           className={`min-w-0 w-full flex-1 overflow-x-hidden ${
             isFullWidthWorkspace
-              ? 'p-2 sm:p-3 md:p-4 flex flex-col min-h-0'
+            ? 'p-2 sm:p-3 md:p-4 flex flex-col min-h-0'
               : 'max-w-[1280px] px-4 py-6 sm:px-6 md:px-8 md:py-8 xl:px-10'
           }`}
         >
-          <Outlet />
+          <div key={location.pathname} className={`site-page ${isFullWidthWorkspace ? 'site-page-workspace w-full flex-1' : ''}`}>
+            <Outlet />
+          </div>
         </main>
       </div>
     </div>

@@ -73,7 +73,7 @@ export const AssessmentManager: React.FC = () => {
   return (
     <div className="page-shell">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E8E8EF] pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E9E7F0] pb-6">
         <div>
           <div className="page-kicker">Faculty Portal</div>
           <h1 className="page-title mt-1">Assessment Management</h1>
@@ -95,18 +95,18 @@ export const AssessmentManager: React.FC = () => {
       {/* Filter and Search Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="relative flex-1 max-w-md">
-          <Search className="w-4 h-4 text-[#9494A3] absolute left-3.5 top-3" />
+          <Search className="w-4 h-4 text-[#9895A8] absolute left-3.5 top-3" />
           <input
             type="text"
             placeholder="Search assessments by title..."
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-9 py-2 text-xs border border-[#E8E8EF] rounded-xl focus:outline-none focus:border-[#5B5CE2] focus:ring-2 focus:ring-[#5B5CE2]/15 text-[#18181F] bg-white transition-all shadow-[0_1px_2px_rgba(24,24,31,0.02)]"
+            className="w-full pl-10 pr-9 py-2 text-xs border border-[#E9E7F0] rounded-xl focus:outline-none focus:border-[#7779C5] focus:ring-2 focus:ring-[#7779C5]/15 text-[#49465B] bg-white transition-all shadow-[0_1px_2px_rgba(82,77,119,0.02)]"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-2.5 text-[#9494A3] hover:text-[#18181F]"
+              className="absolute right-3 top-2.5 text-[#9895A8] hover:text-[#49465B]"
               title="Clear search"
             >
               <X className="w-3.5 h-3.5" />
@@ -114,13 +114,13 @@ export const AssessmentManager: React.FC = () => {
           )}
         </div>
 
-        <div className="flex items-center gap-1.5 p-1 bg-[#F1F2F8] rounded-xl border border-[#E8E8EF] text-xs">
+        <div className="flex items-center gap-1.5 p-1 bg-[#F1F2F8] rounded-xl border border-[#E9E7F0] text-xs">
           <button
             onClick={() => setStatusFilter('all')}
             className={`px-3 py-1.5 rounded-lg font-medium transition-all ${
               statusFilter === 'all'
-                ? 'bg-white text-[#18181F] font-semibold shadow-xs'
-                : 'text-[#6B6B78] hover:text-[#18181F]'
+                ? 'bg-white text-[#49465B] font-semibold shadow-xs'
+                : 'text-[#777486] hover:text-[#49465B]'
             }`}
           >
             All ({assessments.length})
@@ -129,8 +129,8 @@ export const AssessmentManager: React.FC = () => {
             onClick={() => setStatusFilter('published')}
             className={`px-3 py-1.5 rounded-lg font-medium transition-all ${
               statusFilter === 'published'
-                ? 'bg-white text-emerald-800 font-semibold shadow-xs'
-                : 'text-[#6B6B78] hover:text-[#18181F]'
+                ? 'bg-white text-[#527565] font-semibold shadow-xs'
+                : 'text-[#777486] hover:text-[#49465B]'
             }`}
           >
             Published
@@ -139,8 +139,8 @@ export const AssessmentManager: React.FC = () => {
             onClick={() => setStatusFilter('draft')}
             className={`px-3 py-1.5 rounded-lg font-medium transition-all ${
               statusFilter === 'draft'
-                ? 'bg-white text-amber-800 font-semibold shadow-xs'
-                : 'text-[#6B6B78] hover:text-[#18181F]'
+                ? 'bg-white text-[#896D45] font-semibold shadow-xs'
+                : 'text-[#777486] hover:text-[#49465B]'
             }`}
           >
             Drafts
@@ -159,50 +159,50 @@ export const AssessmentManager: React.FC = () => {
                     <Badge variant={ass.status === 'published' ? 'green' : 'amber'}>
                       {ass.status === 'published' ? 'Published' : 'Draft'}
                     </Badge>
-                    <span className="text-xs text-[#6B6B78]">
+                    <span className="text-xs text-[#777486]">
                       {ass.sections?.length ?? 0} Sections
                     </span>
                   </div>
-                  <h3 className="text-base font-semibold text-[#18181F] mt-1.5">{ass.title}</h3>
+                  <h3 className="text-base font-semibold text-[#49465B] mt-1.5">{ass.title}</h3>
                 </div>
-                <span className="text-xs font-semibold text-[#34358F] bg-[#EEF0FF] px-2.5 py-1 rounded-lg border border-[#D6DAFF]">
+                <span className="text-xs font-semibold text-[#555780] bg-[#F0EFF9] px-2.5 py-1 rounded-lg border border-[#DEDDF0]">
                   {ass.totalMarks} Marks
                 </span>
               </div>
 
-              <p className="text-xs text-[#6B6B78] line-clamp-2 leading-relaxed">{ass.description}</p>
+              <p className="text-xs text-[#777486] line-clamp-2 leading-relaxed">{ass.description}</p>
 
-              <div className="grid grid-cols-2 gap-2 text-xs text-[#6B6B78] pt-2 border-t border-[#E8E8EF]">
+              <div className="grid grid-cols-2 gap-2 text-xs text-[#777486] pt-2 border-t border-[#E9E7F0]">
                 <div className="flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-[#9494A3]" />
+                  <Clock className="w-3.5 h-3.5 text-[#9895A8]" />
                   <span>{ass.durationMinutes} Minutes</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-[#9494A3]" />
+                  <Calendar className="w-3.5 h-3.5 text-[#9895A8]" />
                   <span>Ends: {new Date(ass.endDate).toLocaleDateString()}</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Users className="w-3.5 h-3.5 text-[#9494A3]" />
+                  <Users className="w-3.5 h-3.5 text-[#9895A8]" />
                   <span>{ass.stats?.totalAttempts || 0} Submissions</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Activity className="w-3.5 h-3.5 text-[#9494A3]" />
+                  <Activity className="w-3.5 h-3.5 text-[#9895A8]" />
                   <span>{ass.stats?.inProgressAttempts || 0} Active Now</span>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between pt-2 border-t border-[#E8E8EF]">
+              <div className="flex items-center justify-between pt-2 border-t border-[#E9E7F0]">
                 <div className="flex items-center gap-3">
                   <button
                     onClick={() => navigate(`/faculty/live-monitor?assessmentId=${ass._id}`)}
-                    className="text-xs font-semibold text-[#5B5CE2] hover:underline flex items-center gap-1"
+                    className="text-xs font-semibold text-[#7779C5] hover:underline flex items-center gap-1"
                   >
                     <Activity className="w-3.5 h-3.5" /> Monitor Live
                   </button>
-                  <span className="text-[#E8E8EF]">&bull;</span>
+                  <span className="text-[#E9E7F0]">&bull;</span>
                   <button
                     onClick={() => navigate(`/faculty/similarity?assessmentId=${ass._id}`)}
-                    className="text-xs font-semibold text-rose-600 hover:underline flex items-center gap-1"
+                    className="text-xs font-semibold text-[#9A646D] hover:underline flex items-center gap-1"
                   >
                     <ShieldAlert className="w-3.5 h-3.5" /> Reports
                   </button>
@@ -213,12 +213,12 @@ export const AssessmentManager: React.FC = () => {
                     variant="accent"
                     size="sm"
                     onClick={() => handlePublish(ass._id)}
-                    icon={<CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />}
+                    icon={<CheckCircle2 className="w-3.5 h-3.5 text-[#527565]" />}
                   >
                     Publish Now
                   </Button>
                 ) : (
-                  <span className="text-xs font-medium text-emerald-700 flex items-center gap-1">
+                  <span className="text-xs font-medium text-[#527565] flex items-center gap-1">
                     <CheckCircle2 className="w-3.5 h-3.5" /> Available to Students
                   </span>
                 )}
@@ -229,9 +229,9 @@ export const AssessmentManager: React.FC = () => {
       </div>
 
       {!isLoading && filteredAssessments.length === 0 && (
-        <div className="text-center py-12 bg-white rounded-2xl border border-[#E8E8EF] text-xs text-[#6B6B78] space-y-2">
-          <FileCheck2 className="w-8 h-8 text-[#9494A3] mx-auto" />
-          <p className="text-sm font-semibold text-[#18181F]">
+        <div className="text-center py-12 bg-white rounded-2xl border border-[#E9E7F0] text-xs text-[#777486] space-y-2">
+          <FileCheck2 className="w-8 h-8 text-[#9895A8] mx-auto" />
+          <p className="text-sm font-semibold text-[#49465B]">
             {searchQuery ? 'No Assessments Match Your Search' : 'No Assessments Found'}
           </p>
           <p>

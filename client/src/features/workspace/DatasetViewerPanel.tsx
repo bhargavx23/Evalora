@@ -88,8 +88,8 @@ export const DatasetViewerPanel: React.FC<DatasetViewerPanelProps> = ({
           >
             {copied ? (
               <>
-                <Check className="h-3 w-3 text-emerald-600" />
-                <span className="text-emerald-700">Copied</span>
+                <Check className="h-3 w-3 text-[#527565]" />
+                <span className="text-[#527565]">Copied</span>
               </>
             ) : (
               <>

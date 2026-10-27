@@ -58,8 +58,8 @@ export const LiveAssessmentMonitor: React.FC = () => {
     <div className="space-y-6 py-2">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#DCEFE8] text-emerald-900 text-xs font-semibold mb-1">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#DCEFE8] text-[#527565] text-xs font-semibold mb-1">
+            <span className="w-2 h-2 rounded-full bg-[#E9F3ED] animate-ping" />
             Live Proctoring Active
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-gray-900">Live Assessment Monitor</h1>
@@ -94,11 +94,11 @@ export const LiveAssessmentMonitor: React.FC = () => {
       </div>
 
       {/* Proctoring Banner */}
-      <div className="p-4 rounded-xl bg-blue-50/60 border border-blue-200 text-xs text-blue-950 flex items-start gap-3">
-        <ShieldAlert className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+      <div className="p-4 rounded-xl bg-[#F0EFF9]/60 border border-[#DEDDF0] text-xs text-[#555780] flex items-start gap-3">
+        <ShieldAlert className="w-5 h-5 text-[#555780] shrink-0 mt-0.5" />
         <div className="space-y-1">
           <span className="font-bold">Responsible Assessment Monitoring Policy:</span>
-          <p className="text-[11px] text-blue-900/80 leading-relaxed">
+          <p className="text-[11px] text-[#555780]/80 leading-relaxed">
             Telemetry logs track tab switches, window minimization, and fullscreen toggles as "Suspicious activity indicators". These signals indicate possible distractions or interruptions and should be corroborated before taking academic action.
           </p>
         </div>
@@ -141,7 +141,7 @@ export const LiveAssessmentMonitor: React.FC = () => {
                       </div>
                       <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-blue-600 rounded-full"
+                          className="h-full bg-[#F0EFF9] rounded-full"
                           style={{ width: `${item.progressPercentage}%` }}
                         />
                       </div>
@@ -151,10 +151,10 @@ export const LiveAssessmentMonitor: React.FC = () => {
                     <span
                       className={`font-bold ${
                         item.integrityScore >= 90
-                          ? 'text-emerald-700'
+                          ? 'text-[#527565]'
                           : item.integrityScore >= 70
-                          ? 'text-amber-700'
-                          : 'text-red-700'
+                          ? 'text-[#896D45]'
+                          : 'text-[#9A646D]'
                       }`}
                     >
                       {item.integrityScore}%
@@ -163,13 +163,13 @@ export const LiveAssessmentMonitor: React.FC = () => {
                   <td className="py-3">
                     <div className="flex items-center gap-2">
                       {item.suspiciousEventCount > 0 ? (
-                        <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded bg-[#F7E6B5] border border-amber-300 text-amber-900 font-medium">
-                          <AlertTriangle className="w-3 h-3 text-amber-600" />
+                        <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded bg-[#F7E6B5] border border-[#E8D9B9] text-[#896D45] font-medium">
+                          <AlertTriangle className="w-3 h-3 text-[#896D45]" />
                           {item.suspiciousEventCount} Indicator Events
                         </span>
                       ) : (
-                        <span className="text-[11px] text-emerald-700 font-medium flex items-center gap-1">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> No infractions
+                        <span className="text-[11px] text-[#527565] font-medium flex items-center gap-1">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#527565]" /> No infractions
                         </span>
                       )}
                     </div>

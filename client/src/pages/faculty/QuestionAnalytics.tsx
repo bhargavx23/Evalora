@@ -54,7 +54,7 @@ export const QuestionAnalytics: React.FC = () => {
               type="checkbox"
               checked={filterFlaggedOnly}
               onChange={e => setFilterFlaggedOnly(e.target.checked)}
-              className="rounded text-red-600"
+              className="rounded text-[#9A646D]"
             />
             <span>Show Flagged Only ({questions.filter(q => q.flag).length})</span>
           </label>
@@ -96,7 +96,7 @@ export const QuestionAnalytics: React.FC = () => {
             </thead>
             <tbody className="divide-y divide-gray-100">
               {displayedQuestions.map(q => (
-                <tr key={q._id} className={q.flag ? 'bg-amber-50/30' : 'hover:bg-gray-50'}>
+                <tr key={q._id} className={q.flag ? 'bg-[#F8F3E8]/30' : 'hover:bg-gray-50'}>
                   <td className="py-3 font-semibold text-gray-900 max-w-xs truncate">
                     {q.title}
                   </td>
@@ -109,9 +109,9 @@ export const QuestionAnalytics: React.FC = () => {
                     <span
                       className={`font-bold ${
                         q.correctPercentage != null && q.correctPercentage < 35
-                          ? 'text-red-700'
+                          ? 'text-[#9A646D]'
                           : q.correctPercentage != null && q.correctPercentage > 75
-                          ? 'text-emerald-700'
+                          ? 'text-[#527565]'
                           : 'text-gray-800'
                       }`}
                     >
@@ -119,14 +119,14 @@ export const QuestionAnalytics: React.FC = () => {
                     </span>
                   </td>
                   <td className="py-3 font-mono">
-                    <span className={q.discriminationIndex != null && q.discriminationIndex < 0.25 ? 'text-amber-700 font-bold' : 'text-gray-700'}>
+                    <span className={q.discriminationIndex != null && q.discriminationIndex < 0.25 ? 'text-[#896D45] font-bold' : 'text-gray-700'}>
                       {q.discriminationIndex != null ? q.discriminationIndex.toFixed(2) : 'N/A'}
                     </span>
                   </td>
                   <td className="py-3 text-right">
                     {q.flag ? (
-                      <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded bg-[#F7E6B5] border border-amber-300 text-amber-900 font-semibold">
-                        <AlertTriangle className="w-3 h-3 text-amber-700" />
+                      <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded bg-[#F7E6B5] border border-[#E8D9B9] text-[#896D45] font-semibold">
+                        <AlertTriangle className="w-3 h-3 text-[#896D45]" />
                         {q.flag}
                       </span>
                     ) : q.attemptCount > 0 ? (

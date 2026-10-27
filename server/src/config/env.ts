@@ -52,7 +52,6 @@ export const ENV = {
     ? parseFloat(process.env.AI_SIMILARITY_THRESHOLD)
     : 0.72,
   AI_AUTO_REPLENISH: process.env.AI_AUTO_REPLENISH !== "false",
-  AI_FORCE_FRESH_EVERY_TIME: process.env.AI_FORCE_FRESH_EVERY_TIME === "true",
   GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID || "",
   GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET || "",
   GOOGLE_CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL || "",
