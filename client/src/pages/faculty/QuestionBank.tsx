@@ -121,7 +121,7 @@ export const QuestionBank: React.FC = () => {
   return (
     <div className="page-shell">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E0E5EF] pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#D2D2D7] pb-6">
         <div>
           <div className="page-kicker">Faculty Question Repository</div>
           <h1 className="page-title mt-1">Question Bank</h1>
@@ -135,7 +135,7 @@ export const QuestionBank: React.FC = () => {
             variant="outline"
             size="sm"
             onClick={() => navigate('/faculty/ai-generator')}
-            icon={<Bot className="w-3.5 h-3.5 text-[#5288B8]" />}
+            icon={<Bot className="w-3.5 h-3.5 text-[#007AFF]" />}
           >
             AI Question Generator
           </Button>
@@ -167,12 +167,12 @@ export const QuestionBank: React.FC = () => {
                     fetchQuestions(1);
                   }
                 }}
-                className="w-full pl-10 pr-9 py-2.5 text-xs border border-[#E0E5EF] rounded-xl focus:outline-none focus:border-[#5288B8] focus:ring-2 focus:ring-[#5288B8]/15 text-[#3C4B63] bg-white transition-all"
+                className="w-full pl-10 pr-9 py-2.5 text-xs border border-[#D2D2D7] rounded-xl focus:outline-none focus:border-[#007AFF] focus:ring-2 focus:ring-[#007AFF]/15 text-[#1D1D1F] bg-white transition-all"
               />
               {searchQuery && (
                 <button
                   onClick={handleClearSearch}
-                  className="absolute right-3 top-3 text-[#8490A2] hover:text-[#3C4B63]"
+                  className="absolute right-3 top-3 text-[#8490A2] hover:text-[#1D1D1F]"
                   title="Clear search"
                 >
                   <X className="w-3.5 h-3.5" />
@@ -210,7 +210,7 @@ export const QuestionBank: React.FC = () => {
                 setSelectedTopic(e.target.value);
                 setPage(1);
               }}
-              className="px-3 py-2 border border-[#E0E5EF] rounded-xl bg-[#F7F8FC] text-[#3C4B63] focus:border-[#5288B8] focus:outline-none"
+              className="px-3 py-2 border border-[#D2D2D7] rounded-xl bg-[#F5F5F7] text-[#1D1D1F] focus:border-[#007AFF] focus:outline-none"
             >
               <option value="">All Topics</option>
               {TOPICS.map(t => (
@@ -226,7 +226,7 @@ export const QuestionBank: React.FC = () => {
                 setSelectedDifficulty(e.target.value);
                 setPage(1);
               }}
-              className="px-3 py-2 border border-[#E0E5EF] rounded-xl bg-[#F7F8FC] text-[#3C4B63] focus:border-[#5288B8] focus:outline-none"
+              className="px-3 py-2 border border-[#D2D2D7] rounded-xl bg-[#F5F5F7] text-[#1D1D1F] focus:border-[#007AFF] focus:outline-none"
             >
               <option value="">All Difficulties</option>
               <option value="easy">Easy</option>
@@ -240,7 +240,7 @@ export const QuestionBank: React.FC = () => {
                 setSelectedType(e.target.value);
                 setPage(1);
               }}
-              className="px-3 py-2 border border-[#E0E5EF] rounded-xl bg-[#F7F8FC] text-[#3C4B63] focus:border-[#5288B8] focus:outline-none"
+              className="px-3 py-2 border border-[#D2D2D7] rounded-xl bg-[#F5F5F7] text-[#1D1D1F] focus:border-[#007AFF] focus:outline-none"
             >
               <option value="">All Types</option>
               <option value="coding">Coding Problem</option>
@@ -255,7 +255,7 @@ export const QuestionBank: React.FC = () => {
                 setSelectedStatus(e.target.value);
                 setPage(1);
               }}
-              className="px-3 py-2 border border-[#E0E5EF] rounded-xl bg-[#F7F8FC] text-[#3C4B63] focus:border-[#5288B8] focus:outline-none"
+              className="px-3 py-2 border border-[#D2D2D7] rounded-xl bg-[#F5F5F7] text-[#1D1D1F] focus:border-[#007AFF] focus:outline-none"
             >
               <option value="">All Statuses</option>
               <option value="verified">Verified Bank</option>
@@ -269,10 +269,10 @@ export const QuestionBank: React.FC = () => {
       <Card
         header={
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-[#3C4B63]">
+            <span className="text-xs font-semibold text-[#1D1D1F]">
               Showing Questions ({questions.length} of {total})
             </span>
-            <div className="flex items-center gap-2 text-xs text-[#748199]">
+            <div className="flex items-center gap-2 text-xs text-[#6E6E73]">
               <span>Page {page} of {totalPages}</span>
             </div>
           </div>
@@ -280,7 +280,7 @@ export const QuestionBank: React.FC = () => {
         footer={
           totalPages > 1 ? (
             <div className="flex items-center justify-between">
-              <span className="text-xs text-[#748199]">
+              <span className="text-xs text-[#6E6E73]">
                 Displaying 15 items per page
               </span>
               <div className="flex items-center gap-1.5">
@@ -310,7 +310,7 @@ export const QuestionBank: React.FC = () => {
         <div className="question-bank-table-scroll">
           <table className="question-bank-table w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-[#E0E5EF] text-[#8490A2] font-semibold uppercase text-[10px] tracking-wider">
+              <tr className="border-b border-[#D2D2D7] text-[#8490A2] font-semibold uppercase text-[10px] tracking-wider">
                 <th className="pb-3">Title</th>
                 <th className="pb-3">Topic / Subtopic</th>
                 <th className="pb-3">Type</th>
@@ -320,14 +320,14 @@ export const QuestionBank: React.FC = () => {
                 <th className="pb-3 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E0E5EF]">
+            <tbody className="divide-y divide-[#D2D2D7]">
               {questions.map(q => (
-                <tr key={q._id} className="hover:bg-[#F7F8FC] transition-colors">
-                  <td className="py-3 font-semibold text-[#3C4B63] max-w-[280px] break-words">
+                <tr key={q._id} className="hover:bg-[#F5F5F7] transition-colors">
+                  <td className="py-3 font-semibold text-[#1D1D1F] max-w-[280px] break-words">
                     {q.title}
                   </td>
-                  <td className="py-3 text-[#748199]">
-                    <div className="font-medium text-[#3C4B63]">{q.topic}</div>
+                  <td className="py-3 text-[#6E6E73]">
+                    <div className="font-medium text-[#1D1D1F]">{q.topic}</div>
                     <div className="text-[10px] text-[#8490A2]">{q.subtopic || 'General'}</div>
                   </td>
                   <td className="py-3">
@@ -338,7 +338,7 @@ export const QuestionBank: React.FC = () => {
                   <td className="py-3">
                     <DifficultyBadge difficulty={q.difficulty} />
                   </td>
-                  <td className="py-3 font-semibold text-[#3C4B63]">{q.marks || 1}</td>
+                  <td className="py-3 font-semibold text-[#1D1D1F]">{q.marks || 1}</td>
                   <td className="py-3">
                     <Badge variant={q.status === 'verified' ? 'green' : 'amber'}>
                       {q.status === 'verified' ? 'Verified' : 'Draft'}
@@ -348,7 +348,7 @@ export const QuestionBank: React.FC = () => {
                     <div className="flex items-center justify-end gap-1.5">
                       <button
                         onClick={() => setInspectQuestion(q)}
-                        className="p-1.5 text-[#748199] hover:text-[#5288B8] hover:bg-[#EAF1F9] rounded-lg transition-colors"
+                        className="p-1.5 text-[#6E6E73] hover:text-[#007AFF] hover:bg-[#E5F1FF] rounded-lg transition-colors"
                         title="View Details"
                       >
                         <Eye className="w-3.5 h-3.5" />
@@ -364,7 +364,7 @@ export const QuestionBank: React.FC = () => {
                       )}
                       <button
                         onClick={() => handleDelete(q._id)}
-                        className="p-1.5 text-[#748199] hover:text-[#A36162] hover:bg-[#F8EDEF] rounded-lg transition-colors"
+                        className="p-1.5 text-[#6E6E73] hover:text-[#A36162] hover:bg-[#F8EDEF] rounded-lg transition-colors"
                         title="Delete Question"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
@@ -375,7 +375,7 @@ export const QuestionBank: React.FC = () => {
               ))}
               {!isLoading && questions.length === 0 && (
                 <tr>
-                  <td colSpan={7} className="py-12 text-center text-[#748199] text-xs">
+                  <td colSpan={7} className="py-12 text-center text-[#6E6E73] text-xs">
                     No questions found matching your criteria. Try adjusting filters or search terms.
                   </td>
                 </tr>
@@ -422,16 +422,16 @@ export const QuestionBank: React.FC = () => {
               <Badge variant="blue">{inspectQuestion.category}</Badge>
               <Badge variant="purple">{inspectQuestion.topic}</Badge>
               <DifficultyBadge difficulty={inspectQuestion.difficulty} />
-              <span className="text-[#748199]">• Marks: {inspectQuestion.marks || 1}</span>
+              <span className="text-[#6E6E73]">• Marks: {inspectQuestion.marks || 1}</span>
             </div>
 
-            <div className="rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-3 text-xs leading-relaxed text-[#3C4B63]">
+            <div className="rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] p-3 text-xs leading-relaxed text-[#1D1D1F]">
               {inspectQuestion.description}
             </div>
 
             {inspectQuestion.type === 'coding' ? (
               <div className="space-y-3">
-                <div className="rounded-xl border border-[#E0E5EF] bg-[#3C4B63] p-4 text-[#5B586D] font-mono text-xs">
+                <div className="rounded-xl border border-[#D2D2D7] bg-[#1D1D1F] p-4 text-[#5B586D] font-mono text-xs">
                   <div className="text-slate-400 text-[10px] mb-2 border-b border-white/10 pb-1">
                     Reference Solution ({inspectQuestion.codingDetails?.language || 'python'})
                   </div>
@@ -439,20 +439,20 @@ export const QuestionBank: React.FC = () => {
                     {inspectQuestion.codingDetails?.referenceSolution || '// No reference solution provided'}
                   </pre>
                 </div>
-                <div className="grid grid-cols-2 gap-2 text-xs text-[#748199]">
+                <div className="grid grid-cols-2 gap-2 text-xs text-[#6E6E73]">
                   <div>
-                    <span className="font-semibold text-[#3C4B63]">Visible Test Cases: </span>
+                    <span className="font-semibold text-[#1D1D1F]">Visible Test Cases: </span>
                     {inspectQuestion.codingDetails?.visibleTestCases?.length || 0}
                   </div>
                   <div>
-                    <span className="font-semibold text-[#3C4B63]">Hidden Test Cases: </span>
+                    <span className="font-semibold text-[#1D1D1F]">Hidden Test Cases: </span>
                     {inspectQuestion.codingDetails?.hiddenTestCases?.length || 0}
                   </div>
                 </div>
               </div>
             ) : (
               <div className="space-y-2">
-                <h4 className="font-semibold text-[#3C4B63]">Options:</h4>
+                <h4 className="font-semibold text-[#1D1D1F]">Options:</h4>
                 <div className="space-y-1.5">
                   {inspectQuestion.options?.map((opt: any) => (
                     <div
@@ -460,7 +460,7 @@ export const QuestionBank: React.FC = () => {
                       className={`p-3 rounded-xl border flex items-center justify-between text-xs ${
                         opt.isCorrect
                           ? 'bg-[#E5F2EB] border-[#C6DFD2] font-semibold text-[#4C765D]'
-                          : 'bg-white border-[#E0E5EF] text-[#3C4B63]'
+                          : 'bg-white border-[#D2D2D7] text-[#1D1D1F]'
                       }`}
                     >
                       <span>{opt.text}</span>
@@ -472,7 +472,7 @@ export const QuestionBank: React.FC = () => {
             )}
 
             {inspectQuestion.explanation && (
-              <div className="p-3.5 bg-[#EAF1F9] rounded-xl border border-[#CFE2DC] text-xs text-[#3C648E]">
+              <div className="p-3.5 bg-[#E5F1FF] rounded-xl border border-[#CFE2DC] text-xs text-[#0056CC]">
                 <span className="font-semibold">Explanation: </span>
                 {inspectQuestion.explanation}
               </div>

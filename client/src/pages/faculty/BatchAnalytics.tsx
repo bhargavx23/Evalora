@@ -63,7 +63,7 @@ export const BatchAnalytics: React.FC = () => {
             <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
               Class Average
             </span>
-            <div className="text-2xl font-bold text-[#3C648E]">{stats?.classAverage != null ? `${stats.classAverage}%` : 'No data'}</div>
+            <div className="text-2xl font-bold text-[#0056CC]">{stats?.classAverage != null ? `${stats.classAverage}%` : 'No data'}</div>
             <div className="text-[10px] text-gray-400">Mean Score across cohort</div>
           </div>
         </Card>
@@ -83,7 +83,7 @@ export const BatchAnalytics: React.FC = () => {
             <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
               Highest Score
             </span>
-            <div className="text-2xl font-bold text-[#3C648E]">{stats?.highest != null ? `${stats.highest}%` : 'No data'}</div>
+            <div className="text-2xl font-bold text-[#0056CC]">{stats?.highest != null ? `${stats.highest}%` : 'No data'}</div>
             <div className="text-[10px] text-gray-400">Top performer mark</div>
           </div>
         </Card>
@@ -104,7 +104,7 @@ export const BatchAnalytics: React.FC = () => {
         header={
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-gray-800 flex items-center gap-1.5">
-              <BarChart3 className="w-4 h-4 text-[#3C648E]" />
+              <BarChart3 className="w-4 h-4 text-[#0056CC]" />
               Cohort Topic Performance Distribution
             </span>
             <Badge variant="amber">Class-Wide Topic Analysis</Badge>
@@ -122,12 +122,12 @@ export const BatchAnalytics: React.FC = () => {
                   angle={-15}
                   textAnchor="end"
                 />
-                <YAxis domain={[0, 100]} tick={{ fontSize: 11, fill: '#748199' }} />
+                <YAxis domain={[0, 100]} tick={{ fontSize: 11, fill: '#6E6E73' }} />
                 <Tooltip
                   contentStyle={{
                     backgroundColor: '#FFFFFF',
                     borderRadius: '8px',
-                    border: '1px solid #E0E5EF',
+                    border: '1px solid #D2D2D7',
                     fontSize: '12px'
                   }}
                 />
@@ -141,7 +141,7 @@ export const BatchAnalytics: React.FC = () => {
           </div>
           ) : (
             <div className="h-64 flex flex-col items-center justify-center text-center text-xs text-gray-500">
-              <BarChart3 className="w-8 h-8 text-[#3C648E] mb-2" />
+              <BarChart3 className="w-8 h-8 text-[#0056CC] mb-2" />
               <p className="font-semibold text-gray-800">No performance data yet</p>
               <p>Analytics will appear after students complete assessments.</p>
             </div>

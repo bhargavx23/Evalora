@@ -53,7 +53,7 @@ export const CollegeRegisterPage: React.FC = () => {
       <Card>
         <div className="space-y-6">
           <div className="text-center space-y-1">
-            <div className="inline-flex p-2 rounded-xl bg-[#DCEFEB] text-[#3C648E] mb-1">
+            <div className="inline-flex p-2 rounded-xl bg-[#DCEFEB] text-[#0056CC] mb-1">
               <Building className="w-6 h-6" />
             </div>
             <h2 className="text-xl font-bold text-gray-900">Register Your College / University</h2>
@@ -69,7 +69,7 @@ export const CollegeRegisterPage: React.FC = () => {
                   value={formData.collegeName}
                   onChange={e => setFormData({ ...formData, collegeName: e.target.value })}
                   placeholder="e.g. National Tech Institute"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5288B8] focus:outline-none"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#007AFF] focus:outline-none"
                   required
                 />
               </div>
@@ -81,7 +81,7 @@ export const CollegeRegisterPage: React.FC = () => {
                   value={formData.collegeCode}
                   onChange={e => setFormData({ ...formData, collegeCode: e.target.value.toUpperCase() })}
                   placeholder="e.g. NTI"
-                  className="w-full px-3 py-2 uppercase border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5288B8] focus:outline-none"
+                  className="w-full px-3 py-2 uppercase border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#007AFF] focus:outline-none"
                   required
                 />
               </div>
@@ -95,7 +95,7 @@ export const CollegeRegisterPage: React.FC = () => {
                   value={formData.domain}
                   onChange={e => setFormData({ ...formData, domain: e.target.value })}
                   placeholder="e.g. nti.edu"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5288B8] focus:outline-none"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#007AFF] focus:outline-none"
                 />
               </div>
 
@@ -106,7 +106,7 @@ export const CollegeRegisterPage: React.FC = () => {
                   value={formData.phone}
                   onChange={e => setFormData({ ...formData, phone: e.target.value })}
                   placeholder="+91 98765 43210"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5288B8] focus:outline-none"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#007AFF] focus:outline-none"
                 />
               </div>
             </div>
@@ -118,7 +118,7 @@ export const CollegeRegisterPage: React.FC = () => {
                 value={formData.address}
                 onChange={e => setFormData({ ...formData, address: e.target.value })}
                 placeholder="City, State, Country"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5288B8] focus:outline-none"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#007AFF] focus:outline-none"
               />
             </div>
 
@@ -136,7 +136,7 @@ export const CollegeRegisterPage: React.FC = () => {
                   value={formData.adminName}
                   onChange={e => setFormData({ ...formData, adminName: e.target.value })}
                   placeholder="Dean / Principal Name"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5288B8] focus:outline-none"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#007AFF] focus:outline-none"
                   required
                 />
               </div>
@@ -148,7 +148,7 @@ export const CollegeRegisterPage: React.FC = () => {
                   value={formData.contactEmail}
                   onChange={e => setFormData({ ...formData, contactEmail: e.target.value })}
                   placeholder="admin@nti.edu"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5288B8] focus:outline-none"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#007AFF] focus:outline-none"
                   required
                 />
               </div>
@@ -161,7 +161,7 @@ export const CollegeRegisterPage: React.FC = () => {
                 value={formData.adminPassword}
                 onChange={e => setFormData({ ...formData, adminPassword: e.target.value })}
                 placeholder="••••••••"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5288B8] focus:outline-none"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#007AFF] focus:outline-none"
                 required
               />
             </div>
@@ -179,7 +179,7 @@ export const CollegeRegisterPage: React.FC = () => {
 
           <div className="text-center text-xs text-gray-500 pt-2 border-t border-gray-100">
             Already registered?{' '}
-            <Link to="/login" className="font-semibold text-[#3C648E] hover:underline">
+            <Link to="/login" className="font-semibold text-[#0056CC] hover:underline">
               Log in to your workspace
             </Link>
           </div>

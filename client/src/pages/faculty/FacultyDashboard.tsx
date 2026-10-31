@@ -76,7 +76,7 @@ export const FacultyDashboard: React.FC = () => {
             variant="outline"
             size="sm"
             onClick={() => navigate('/faculty/ai-generator')}
-            icon={<Bot className="w-3.5 h-3.5 text-[#5288B8]" />}
+            icon={<Bot className="w-3.5 h-3.5 text-[#007AFF]" />}
           >
             AI Question Generator
           </Button>
@@ -103,7 +103,7 @@ export const FacultyDashboard: React.FC = () => {
             <div className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
               Active Assessments
             </div>
-            <div className="text-2xl font-bold text-[#3C648E]">{publishedAssessments.length}</div>
+            <div className="text-2xl font-bold text-[#0056CC]">{publishedAssessments.length}</div>
             <div className="text-[10px] text-gray-400">Published to students</div>
           </div>
         </Card>
@@ -123,7 +123,7 @@ export const FacultyDashboard: React.FC = () => {
             <div className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
               Question Bank
             </div>
-            <div className="text-2xl font-bold text-[#3C648E]">{assessments.reduce((total, ass) => total + (ass.sections || []).reduce((sum: number, section: any) => sum + (section.questions?.length || 0), 0), 0)}</div>
+            <div className="text-2xl font-bold text-[#0056CC]">{assessments.reduce((total, ass) => total + (ass.sections || []).reduce((sum: number, section: any) => sum + (section.questions?.length || 0), 0), 0)}</div>
             <div className="text-[10px] text-gray-400">Questions in listed assessments</div>
           </div>
         </Card>
@@ -147,12 +147,12 @@ export const FacultyDashboard: React.FC = () => {
             header={
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-gray-800 flex items-center gap-1.5">
-                  <FileCheck2 className="w-4 h-4 text-[#3C648E]" />
+                  <FileCheck2 className="w-4 h-4 text-[#0056CC]" />
                   Current Department Assessments
                 </span>
                 <button
                   onClick={() => navigate('/faculty/assessments')}
-                  className="text-[11px] text-[#3C648E] font-semibold hover:underline"
+                  className="text-[11px] text-[#0056CC] font-semibold hover:underline"
                 >
                   View All ({assessments.length})
                 </button>
@@ -173,7 +173,7 @@ export const FacultyDashboard: React.FC = () => {
                       <p className="text-[11px] text-gray-500 line-clamp-1 mt-0.5">{ass.description}</p>
                     </div>
 
-                    <span className="text-xs font-bold text-[#3C648E] bg-[#EAF1F9] px-2 py-0.5 rounded border border-[#CFE2DC] shrink-0">
+                    <span className="text-xs font-bold text-[#0056CC] bg-[#E5F1FF] px-2 py-0.5 rounded border border-[#CFE2DC] shrink-0">
                       {ass.totalMarks} Marks
                     </span>
                   </div>
@@ -188,7 +188,7 @@ export const FacultyDashboard: React.FC = () => {
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => navigate(`/faculty/live-monitor?assessmentId=${ass._id}`)}
-                        className="text-[#3C648E] hover:text-[#3C648E] font-medium"
+                        className="text-[#0056CC] hover:text-[#0056CC] font-medium"
                       >
                         Live Monitor
                       </button>
@@ -260,12 +260,12 @@ export const FacultyDashboard: React.FC = () => {
           header={
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-gray-800 flex items-center gap-1.5">
-                <BarChart3 className="w-4 h-4 text-[#3C648E]" />
+                <BarChart3 className="w-4 h-4 text-[#0056CC]" />
                 Batch Topic Proficiency Heatmap
               </span>
               <button
                 onClick={() => navigate('/faculty/batch-analytics')}
-                className="text-[11px] text-[#3C648E] font-semibold hover:underline"
+                className="text-[11px] text-[#0056CC] font-semibold hover:underline"
               >
                 Detailed Analytics
               </button>
@@ -309,7 +309,7 @@ export const FacultyDashboard: React.FC = () => {
               </span>
               <button
                 onClick={() => navigate('/faculty/question-analytics')}
-                className="text-[11px] text-[#3C648E] font-semibold hover:underline"
+                className="text-[11px] text-[#0056CC] font-semibold hover:underline"
               >
                 Review Bank
               </button>

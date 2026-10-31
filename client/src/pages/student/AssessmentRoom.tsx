@@ -419,7 +419,7 @@ export const AssessmentRoom: React.FC = () => {
   return (
     <div className="flex h-[100dvh] w-full max-w-full flex-col overflow-hidden bg-white select-none">
       {/* Distraction-Free Header */}
-      <header className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-b border-gray-200 bg-[#F7F8FC] px-4 py-3 sm:px-6">
+      <header className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-b border-gray-200 bg-[#F5F5F7] px-4 py-3 sm:px-6">
         <div className="flex min-w-0 items-center gap-2 sm:gap-4">
           <div className="flex min-w-0 items-center gap-2">
             <span className="truncate text-sm font-bold text-gray-900">
@@ -474,7 +474,7 @@ export const AssessmentRoom: React.FC = () => {
       {/* Main Split Interface */}
       <div className="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden md:flex-row">
         {/* Left Side / Question Palette Navigator */}
-        <aside className="hidden w-64 shrink-0 flex-col justify-between border-r border-gray-200 bg-[#F7F8FC] p-4 lg:flex">
+        <aside className="hidden w-64 shrink-0 flex-col justify-between border-r border-gray-200 bg-[#F5F5F7] p-4 lg:flex">
           <div className="space-y-4">
             <div className="text-xs font-bold text-gray-700 uppercase tracking-wider">
               Question Palette
@@ -497,7 +497,7 @@ export const AssessmentRoom: React.FC = () => {
                 }
 
                 if (isCurrent) {
-                  btnStyle += " ring-2 ring-[#5288B8] font-extrabold";
+                  btnStyle += " ring-2 ring-[#007AFF] font-extrabold";
                 }
 
                 return (
@@ -538,7 +538,7 @@ export const AssessmentRoom: React.FC = () => {
         </aside>
 
         {isPaletteOpen && (
-          <div className="shrink-0 border-b border-gray-200 bg-[#F7F8FC] p-4 md:hidden">
+          <div className="shrink-0 border-b border-gray-200 bg-[#F5F5F7] p-4 md:hidden">
             <div className="grid grid-cols-6 gap-2">
               {questions.map((q, idx) => {
                 const status = getQuestionStatus(q._id);
@@ -558,7 +558,7 @@ export const AssessmentRoom: React.FC = () => {
                       setCurrentQuestionIndex(idx);
                       setIsPaletteOpen(false);
                     }}
-                    className={`h-9 rounded-md border text-xs font-medium ${statusStyle} ${isCurrent ? "ring-2 ring-[#5288B8]" : ""}`}
+                    className={`h-9 rounded-md border text-xs font-medium ${statusStyle} ${isCurrent ? "ring-2 ring-[#007AFF]" : ""}`}
                   >
                     {idx + 1}
                   </button>
@@ -582,7 +582,7 @@ export const AssessmentRoom: React.FC = () => {
                       {currentQuestion.topic}
                     </span>
                   </div>
-                  <span className="text-xs font-bold text-[#3C648E] bg-[#EAF1F9] px-2 py-0.5 rounded border border-[#CFE2DC]">
+                  <span className="text-xs font-bold text-[#0056CC] bg-[#E5F1FF] px-2 py-0.5 rounded border border-[#CFE2DC]">
                     {currentQuestion.marks || 15} Marks
                   </span>
                 </div>
@@ -622,7 +622,7 @@ export const AssessmentRoom: React.FC = () => {
                   (ex: any, idx: number) => (
                     <div
                       key={idx}
-                      className="space-y-1.5 p-3 rounded-lg bg-[#F7F8FC] border border-gray-200 text-xs"
+                      className="space-y-1.5 p-3 rounded-lg bg-[#F5F5F7] border border-gray-200 text-xs"
                     >
                       <div className="font-bold text-gray-800">
                         Example {idx + 1}:
@@ -672,7 +672,7 @@ export const AssessmentRoom: React.FC = () => {
                         setCode(defaultCode);
                         saveCurrentAnswer(undefined, defaultCode, newLang);
                       }}
-                      className="px-2 py-1 bg-white border border-gray-300 rounded font-medium focus:ring-1 focus:ring-[#5288B8] focus:outline-none"
+                      className="px-2 py-1 bg-white border border-gray-300 rounded font-medium focus:ring-1 focus:ring-[#007AFF] focus:outline-none"
                     >
                       <option value="python">Python 3</option>
                       <option value="cpp">C++ (g++)</option>
@@ -687,7 +687,7 @@ export const AssessmentRoom: React.FC = () => {
                       size="sm"
                       onClick={handleRunCode}
                       isLoading={isExecuting}
-                      icon={<Play className="w-3.5 h-3.5 text-[#3C648E]" />}
+                      icon={<Play className="w-3.5 h-3.5 text-[#0056CC]" />}
                     >
                       Run Code
                     </Button>
@@ -744,7 +744,7 @@ export const AssessmentRoom: React.FC = () => {
                     <DifficultyBadge difficulty={currentQuestion.difficulty} />
                     <span className="text-xs font-semibold text-gray-500">{currentQuestion.topic}</span>
                   </div>
-                  <span className="rounded border border-[#CFE2DC] bg-[#EAF1F9] px-2.5 py-1 text-xs font-bold text-[#3C648E]">
+                  <span className="rounded border border-[#CFE2DC] bg-[#E5F1FF] px-2.5 py-1 text-xs font-bold text-[#0056CC]">
                     {currentQuestion.marks || 1} Marks
                   </span>
                 </div>
@@ -765,8 +765,8 @@ export const AssessmentRoom: React.FC = () => {
                         onClick={() => handleOptionSelect(opt.id)}
                         className={`flex w-full items-center justify-between rounded-xl border p-4 text-left text-xs transition-all duration-150 ${
                           isSelected
-                            ? "border-[#5288B8] bg-[#EAF1F9] font-semibold text-[#3C4B63] shadow-xs ring-1 ring-[#5288B8]/30"
-                            : "border-[#E0E5EF] bg-white text-[#3C4B63] hover:border-[#CFE2DC] hover:bg-[#F7F8FC]"
+                            ? "border-[#007AFF] bg-[#E5F1FF] font-semibold text-[#1D1D1F] shadow-xs ring-1 ring-[#007AFF]/30"
+                            : "border-[#D2D2D7] bg-white text-[#1D1D1F] hover:border-[#CFE2DC] hover:bg-[#F5F5F7]"
                         }`}
                       >
                         <span className="leading-relaxed">{opt.text}</span>
@@ -775,7 +775,7 @@ export const AssessmentRoom: React.FC = () => {
                             isMulti ? "rounded-md" : "rounded-full"
                           } ${
                             isSelected
-                              ? "border-[#5288B8] bg-[#5288B8] text-white shadow-xs"
+                              ? "border-[#007AFF] bg-[#007AFF] text-white shadow-xs"
                               : "border-[#D0DDD7] bg-white"
                           }`}
                         >

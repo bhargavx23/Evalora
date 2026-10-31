@@ -606,33 +606,33 @@ export const LoginPage: React.FC = () => {
           <div className="page-kicker">
             Adaptive Practice & Assessment Platform
           </div>
-          <h1 className="display-heading text-5xl leading-[1.04] text-[#3C4B63]">
+          <h1 className="display-heading text-5xl leading-[1.04] text-[#1D1D1F]">
             Practice smarter.
-            <span className="block text-[#5288B8]">Evaluate better.</span>
+            <span className="block text-[#007AFF]">Evaluate better.</span>
           </h1>
-          <p className="text-base leading-7 text-[#748199]">
+          <p className="text-base leading-7 text-[#6E6E73]">
             Sign in with your email and password or connect your Pera Wallet on
             Algorand to access adaptive DSA, Aptitude, Reasoning, and Coding
             practice sessions.
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-4 border-t border-[#E0E5EF] pt-6 text-sm">
-          <div className="rounded-xl border border-[#E0E5EF] bg-white p-3.5">
-            <div className="font-semibold text-[#3C4B63]">Email + Password</div>
-            <div className="mt-1 text-xs text-[#748199]">
+        <div className="grid grid-cols-3 gap-4 border-t border-[#D2D2D7] pt-6 text-sm">
+          <div className="rounded-xl border border-[#D2D2D7] bg-white p-3.5">
+            <div className="font-semibold text-[#1D1D1F]">Email + Password</div>
+            <div className="mt-1 text-xs text-[#6E6E73]">
               Secure account sign-in
             </div>
           </div>
-          <div className="rounded-xl border border-[#E0E5EF] bg-white p-3.5">
-            <div className="font-semibold text-[#3C4B63]">Pera Wallet</div>
-            <div className="mt-1 text-xs text-[#748199]">
+          <div className="rounded-xl border border-[#D2D2D7] bg-white p-3.5">
+            <div className="font-semibold text-[#1D1D1F]">Pera Wallet</div>
+            <div className="mt-1 text-xs text-[#6E6E73]">
               Algorand QR authentication
             </div>
           </div>
-          <div className="rounded-xl border border-[#E0E5EF] bg-white p-3.5">
-            <div className="font-semibold text-[#3C4B63]">10 Free Sessions</div>
-            <div className="mt-1 text-xs text-[#748199]">
+          <div className="rounded-xl border border-[#D2D2D7] bg-white p-3.5">
+            <div className="font-semibold text-[#1D1D1F]">10 Free Sessions</div>
+            <div className="mt-1 text-xs text-[#6E6E73]">
               Included for new accounts
             </div>
           </div>
@@ -640,7 +640,7 @@ export const LoginPage: React.FC = () => {
       </section>
 
       {/* Right Authentication Card */}
-      <Card padding="lg" className="border-[#E0E5EF] bg-white">
+      <Card padding="lg" className="border-[#D2D2D7] bg-white">
         <div className="space-y-6">
           {/* =============================================================== */}
           {/* VIEW 1: PRIMARY AUTH SELECTION (SECTION 9 & SECTION 35)         */}
@@ -648,10 +648,10 @@ export const LoginPage: React.FC = () => {
           {authMode === "select" && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <h2 className="display-heading text-3xl text-[#3C4B63]">
+                <h2 className="display-heading text-3xl text-[#1D1D1F]">
                   Welcome to Evalora
                 </h2>
-                <p className="text-sm text-[#748199]">
+                <p className="text-sm text-[#6E6E73]">
                   Select how you'd like to access your account.
                 </p>
               </div>
@@ -676,27 +676,27 @@ export const LoginPage: React.FC = () => {
                   variant="secondary"
                   size="lg"
                   className="w-full justify-between px-5 font-semibold"
-                  icon={<Wallet className="h-4 w-4 text-[#5288B8]" />}
+                  icon={<Wallet className="h-4 w-4 text-[#007AFF]" />}
                   onClick={() => startPeraQrSession()}
                 >
                   <span className="flex-1 text-left">Continue with Pera Wallet</span>
-                  <QrCode className="h-4 w-4 text-[#5288B8]" />
+                  <QrCode className="h-4 w-4 text-[#007AFF]" />
                 </Button>
               </div>
 
               {/* Distinct User Account vs Institution Account paths */}
               <div className="space-y-3 pt-1">
                 {/* 1. Normal User / Student Account */}
-                <div className="rounded-xl border border-[#E0E5EF] bg-[#F7F8FF] p-4 text-xs space-y-2">
+                <div className="rounded-xl border border-[#D2D2D7] bg-[#F7F8FF] p-4 text-xs space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="font-semibold text-xs text-[#3C4B63]">
+                    <span className="font-semibold text-xs text-[#1D1D1F]">
                       New to Evalora?
                     </span>
                     <Badge variant="blue" size="sm">
                       Student / User Account
                     </Badge>
                   </div>
-                  <p className="text-[#748199] text-[11px] leading-relaxed">
+                  <p className="text-[#6E6E73] text-[11px] leading-relaxed">
                     Create a personal student account to practice questions, take exams, and track skill growth.
                   </p>
                   <Button
@@ -712,16 +712,16 @@ export const LoginPage: React.FC = () => {
                 </div>
 
                 {/* 2. Educational Institution / Organization */}
-                <div className="rounded-xl border border-[#E0E5EF] bg-white p-4 text-xs space-y-2">
+                <div className="rounded-xl border border-[#D2D2D7] bg-white p-4 text-xs space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="font-semibold text-xs text-[#3C4B63]">
+                    <span className="font-semibold text-xs text-[#1D1D1F]">
                       Are you an organization?
                     </span>
                     <Badge variant="neutral" size="sm">
                       College / University
                     </Badge>
                   </div>
-                  <p className="text-[#748199] text-[11px] leading-relaxed">
+                  <p className="text-[#6E6E73] text-[11px] leading-relaxed">
                     Set up an isolated institutional workspace for faculty, departments, and assessments.
                   </p>
                   <Button
@@ -747,10 +747,10 @@ export const LoginPage: React.FC = () => {
             <div className="space-y-5 text-center">
               <div className="flex items-center justify-between text-left">
                 <div>
-                  <h2 className="display-heading text-2xl text-[#3C4B63]">
+                  <h2 className="display-heading text-2xl text-[#1D1D1F]">
                     Connect with Pera Wallet
                   </h2>
-                  <p className="text-xs text-[#748199]">
+                  <p className="text-xs text-[#6E6E73]">
                     Scan this QR code using your Pera Wallet mobile app
                   </p>
                 </div>
@@ -758,8 +758,8 @@ export const LoginPage: React.FC = () => {
               </div>
 
               {qrStatus === "GENERATING" && (
-                <div className="py-12 text-xs font-medium text-[#748199]">
-                  <RefreshCw className="mx-auto mb-3 h-6 w-6 animate-spin text-[#5288B8]" />
+                <div className="py-12 text-xs font-medium text-[#6E6E73]">
+                  <RefreshCw className="mx-auto mb-3 h-6 w-6 animate-spin text-[#007AFF]" />
                   Generating secure Pera Wallet connection request...
                 </div>
               )}
@@ -773,19 +773,19 @@ export const LoginPage: React.FC = () => {
                       walletLabel="Pera Wallet"
                     />
                   ) : (
-                    <div className="flex h-[210px] w-[210px] items-center justify-center rounded-xl border border-stone-200 bg-[#F7F8FC]">
-                      <RefreshCw className="h-6 w-6 animate-spin text-[#5288B8]" />
+                    <div className="flex h-[210px] w-[210px] items-center justify-center rounded-xl border border-stone-200 bg-[#F5F5F7]">
+                      <RefreshCw className="h-6 w-6 animate-spin text-[#007AFF]" />
                     </div>
                   )}
 
-                  <div className="w-full rounded-xl border border-[#D6D8F8] bg-[#EAF1F9]/70 px-4 py-3 text-xs">
-                    <p className="font-semibold text-[#3C648E]">
+                  <div className="w-full rounded-xl border border-[#D6D8F8] bg-[#E5F1FF]/70 px-4 py-3 text-xs">
+                    <p className="font-semibold text-[#0056CC]">
                       {qrStatus === "PENDING" && "Waiting for wallet approval..."}
                       {qrStatus === "SCANNED" && "QR scanned. Waiting for approval in Pera Wallet..."}
                       {qrStatus === "SIGNING" && "Wallet connected. Requesting authentication signature..."}
                       {qrStatus === "VERIFYING" && "Wallet authentication received. Verifying wallet..."}
                     </p>
-                    <p className="mt-1 text-[11px] text-[#748199]">
+                    <p className="mt-1 text-[11px] text-[#6E6E73]">
                       {qrStatus === "PENDING" && "Open Pera Wallet on your phone and scan the QR code."}
                       {qrStatus === "SCANNED" && "Please review and approve the connection in Pera Wallet."}
                       {qrStatus === "SIGNING" && "Approve the signature request in Pera Wallet to complete sign-in."}
@@ -803,7 +803,7 @@ export const LoginPage: React.FC = () => {
                     <div className="w-full pt-1 sm:hidden">
                       <a
                         href={`perawallet://wc?uri=${encodeURIComponent(qrUri)}`}
-                        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#5288B8] px-4 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-[#5288B8]"
+                        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#007AFF] px-4 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-[#007AFF]"
                       >
                         <Smartphone className="h-4 w-4" />
                         Open in Pera Wallet App
@@ -818,7 +818,7 @@ export const LoginPage: React.FC = () => {
                       variant="secondary"
                       className="w-full"
                       isLoading={isLoading}
-                      icon={<Wallet className="h-3.5 w-3.5 text-[#5288B8]" />}
+                      icon={<Wallet className="h-3.5 w-3.5 text-[#007AFF]" />}
                       onClick={handleDirectPeraConnect}
                     >
                       Connect Pera Extension on This Device
@@ -829,7 +829,7 @@ export const LoginPage: React.FC = () => {
                       variant="outline"
                       size="md"
                       onClick={handleCancelPeraQr}
-                      className="w-full text-xs font-medium text-[#748199] hover:text-[#3C4B63]"
+                      className="w-full text-xs font-medium text-[#6E6E73] hover:text-[#1D1D1F]"
                     >
                       Cancel
                     </Button>
@@ -906,8 +906,8 @@ export const LoginPage: React.FC = () => {
               )}
 
               {qrStatus === "UNAVAILABLE" && (
-                <div className="rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-5 text-xs text-[#748199] space-y-3">
-                  <p className="font-semibold text-[#3C4B63]">
+                <div className="rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] p-5 text-xs text-[#6E6E73] space-y-3">
+                  <p className="font-semibold text-[#1D1D1F]">
                     Pera Wallet service is temporarily unavailable.
                   </p>
                   <div className="flex gap-2">
@@ -942,10 +942,10 @@ export const LoginPage: React.FC = () => {
             <form onSubmit={handleCompleteOnboarding} className="space-y-4">
               <div className="space-y-1">
                 <Badge variant="green">Wallet Verified</Badge>
-                <h2 className="display-heading pt-1 text-2xl text-[#3C4B63]">
+                <h2 className="display-heading pt-1 text-2xl text-[#1D1D1F]">
                   Complete your Evalora account
                 </h2>
-                <p className="text-xs text-[#748199]">
+                <p className="text-xs text-[#6E6E73]">
                   Your Pera Wallet has been verified. Enter your details below
                   to create your account.
                 </p>
@@ -1018,7 +1018,7 @@ export const LoginPage: React.FC = () => {
 
               <button
                 type="button"
-                className="w-full text-xs font-medium text-[#748199] hover:text-[#3C4B63]"
+                className="w-full text-xs font-medium text-[#6E6E73] hover:text-[#1D1D1F]"
                 onClick={() => setAuthMode("select")}
               >
                 Cancel
@@ -1039,7 +1039,7 @@ export const LoginPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setAuthMode("select")}
-                  className="inline-flex items-center gap-1.5 text-xs font-medium text-[#748199] hover:text-[#3C4B63]"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-[#6E6E73] hover:text-[#1D1D1F]"
                 >
                   <ArrowLeft className="h-3.5 w-3.5" />
                   <span>Back to primary login</span>
@@ -1048,10 +1048,10 @@ export const LoginPage: React.FC = () => {
               </div>
 
               <div className="space-y-1">
-                <h2 className="display-heading text-2xl text-[#3C4B63]">
+                <h2 className="display-heading text-2xl text-[#1D1D1F]">
                   Password Sign In
                 </h2>
-                <p className="text-xs text-[#748199]">
+                <p className="text-xs text-[#6E6E73]">
                   Sign in with your email address and password.
                 </p>
               </div>

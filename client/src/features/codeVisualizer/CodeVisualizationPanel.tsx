@@ -456,10 +456,10 @@ export const CodeVisualizationPanel: React.FC<CodeVisualizationPanelProps> = ({
         )}
 
         {/* Standard Output Console Stream */}
-        <div className="rounded-xl border border-border-subtle bg-[#EFF2F8] p-3 text-xs font-mono text-[#3C4B63]">
-          <div className="flex items-center gap-1.5 mb-2 pb-1.5 border-b border-[#E0E5EF] text-gray-400">
+        <div className="rounded-xl border border-border-subtle bg-[#F5F5F7] p-3 text-xs font-mono text-[#1D1D1F]">
+          <div className="flex items-center gap-1.5 mb-2 pb-1.5 border-b border-[#D2D2D7] text-gray-400">
             <Terminal className="h-3.5 w-3.5 text-[#719B84]" />
-            <span className="font-semibold text-[#748199] text-xs">Console Output</span>
+            <span className="font-semibold text-[#6E6E73] text-xs">Console Output</span>
           </div>
           <pre className="whitespace-pre-wrap leading-relaxed text-[#719B84] max-h-36 overflow-y-auto">
             {currentStep?.stdout || result.stdout || (

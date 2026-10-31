@@ -371,33 +371,33 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
       header={
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EAF1F9] text-[#5288B8]">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#E5F1FF] text-[#007AFF]">
               <Wallet className="h-4 w-4" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-sm font-semibold text-[#3C4B63]">
+                <span className="text-sm font-semibold text-[#1D1D1F]">
                   Evalora Premium Plans & Practice System
                 </span>
-                <span className="font-mono text-[10px] uppercase text-[#748199] bg-[#F7F8FC] px-1.5 py-0.5 rounded border border-[#E0E5EF]">
+                <span className="font-mono text-[10px] uppercase text-[#6E6E73] bg-[#F5F5F7] px-1.5 py-0.5 rounded border border-[#D2D2D7]">
                   Algorand {network}
                 </span>
               </div>
-              <p className="text-[11px] text-[#748199]">
+              <p className="text-[11px] text-[#6E6E73]">
                 Extra practice attempts bundled with premium technology domain preparation
               </p>
             </div>
           </div>
           <div className="flex items-center gap-2">
             {flowState === 'select' && (
-              <div className="flex items-center rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-0.5 text-[11px]">
+              <div className="flex items-center rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] p-0.5 text-[11px]">
                 <button
                   type="button"
                   onClick={() => setPanelTab('cards')}
                   className={`rounded-lg px-2.5 py-1 font-medium transition-all ${
                     panelTab === 'cards'
-                      ? 'bg-white text-[#5288B8] font-semibold shadow-xs border border-[#CFE2DC]'
-                      : 'text-[#748199] hover:text-[#3C4B63]'
+                      ? 'bg-white text-[#007AFF] font-semibold shadow-xs border border-[#CFE2DC]'
+                      : 'text-[#6E6E73] hover:text-[#1D1D1F]'
                   }`}
                 >
                   Packages
@@ -407,8 +407,8 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
                   onClick={() => setPanelTab('matrix')}
                   className={`rounded-lg px-2.5 py-1 font-medium transition-all ${
                     panelTab === 'matrix'
-                      ? 'bg-white text-[#5288B8] font-semibold shadow-xs border border-[#CFE2DC]'
-                      : 'text-[#748199] hover:text-[#3C4B63]'
+                      ? 'bg-white text-[#007AFF] font-semibold shadow-xs border border-[#CFE2DC]'
+                      : 'text-[#6E6E73] hover:text-[#1D1D1F]'
                   }`}
                 >
                   Compare All
@@ -418,7 +418,7 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="rounded-lg p-1.5 text-[#748199] transition-colors hover:bg-[#F7F8FC] hover:text-[#3C4B63]"
+              className="rounded-lg p-1.5 text-[#6E6E73] transition-colors hover:bg-[#F5F5F7] hover:text-[#1D1D1F]"
               aria-label="Close"
             >
               <X className="h-4 w-4" />
@@ -432,32 +432,32 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
         {flowState === 'select' && (
           <div className="space-y-6">
             {isLoadingPlans ? (
-              <div className="py-12 text-center text-xs text-[#748199] flex items-center justify-center gap-2">
-                <Loader2 className="h-4 w-4 animate-spin text-[#5288B8]" />
+              <div className="py-12 text-center text-xs text-[#6E6E73] flex items-center justify-center gap-2">
+                <Loader2 className="h-4 w-4 animate-spin text-[#007AFF]" />
                 <span>Loading available practice packages and entitlements...</span>
               </div>
             ) : (
               <>
                 {/* Value Proposition Callout */}
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 rounded-xl border border-[#CFE2DC] bg-[#EAF1F9]/40 p-3.5">
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 rounded-xl border border-[#CFE2DC] bg-[#E5F1FF]/40 p-3.5">
                   <div className="flex items-start gap-2.5">
-                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white text-[#5288B8] shadow-2xs">
+                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white text-[#007AFF] shadow-2xs">
                       <Layers className="h-3.5 w-3.5" />
                     </div>
                     <div>
-                      <span className="font-semibold text-xs text-[#3C4B63]">Benefit A: Extra Practice Attempts</span>
-                      <p className="text-[11px] text-[#748199] leading-relaxed">
+                      <span className="font-semibold text-xs text-[#1D1D1F]">Benefit A: Extra Practice Attempts</span>
+                      <p className="text-[11px] text-[#6E6E73] leading-relaxed">
                         Free tier includes 10 complimentary attempts. Subscribed plans unlock +15 to +150 attempts that never expire.
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-2.5">
-                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white text-[#5288B8] shadow-2xs">
+                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white text-[#007AFF] shadow-2xs">
                       <BookOpen className="h-3.5 w-3.5" />
                     </div>
                     <div>
-                      <span className="font-semibold text-xs text-[#3C4B63]">Benefit B: Premium Domain Preparation</span>
-                      <p className="text-[11px] text-[#748199] leading-relaxed">
+                      <span className="font-semibold text-xs text-[#1D1D1F]">Benefit B: Premium Domain Preparation</span>
+                      <p className="text-[11px] text-[#6E6E73] leading-relaxed">
                         Unlocks full technology paths (MERN Stack, Frontend, Backend, AI/ML, Data Science) with live coding workspaces.
                       </p>
                     </div>
@@ -468,10 +468,10 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
                 {panelTab === 'cards' && (
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-[#3C4B63] uppercase tracking-wider">
+                      <span className="text-xs font-semibold text-[#1D1D1F] uppercase tracking-wider">
                         Available Plans (All &lt; 9 ALGO)
                       </span>
-                      <span className="text-[11px] text-[#748199]">
+                      <span className="text-[11px] text-[#6E6E73]">
                         Select a plan to inspect benefits and approve via Pera Wallet
                       </span>
                     </div>
@@ -486,13 +486,13 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
                             onClick={() => setSelectedPlanId(plan.id)}
                             className={`cursor-pointer flex flex-col justify-between rounded-xl border p-4 transition-all duration-150 ${
                               isSelected
-                                ? 'border-[#5288B8] bg-[#EAF1F9]/30 shadow-sm ring-2 ring-[#5288B8]'
-                                : 'border-[#E0E5EF] bg-white hover:border-[#CFE2DC] hover:bg-[#F7F8FF]/50'
+                                ? 'border-[#007AFF] bg-[#E5F1FF]/30 shadow-sm ring-2 ring-[#007AFF]'
+                                : 'border-[#D2D2D7] bg-white hover:border-[#CFE2DC] hover:bg-[#F7F8FF]/50'
                             }`}
                           >
                             <div className="space-y-2.5">
                               <div className="flex items-center justify-between gap-1">
-                                <span className="font-semibold text-xs text-[#3C4B63] truncate">{plan.name}</span>
+                                <span className="font-semibold text-xs text-[#1D1D1F] truncate">{plan.name}</span>
                                 {plan.popular ? (
                                   <Badge variant="green" size="sm">
                                     Popular
@@ -509,45 +509,45 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
                               </div>
 
                               <div className="flex items-baseline gap-1">
-                                <span className="font-serif text-2xl font-bold tracking-tight text-[#3C4B63]">
+                                <span className="font-serif text-2xl font-bold tracking-tight text-[#1D1D1F]">
                                   {plan.priceAlgo}
                                 </span>
-                                <span className="font-semibold text-xs text-[#5288B8]">ALGO</span>
-                                <span className="text-[#748199] text-[10px]">
+                                <span className="font-semibold text-xs text-[#007AFF]">ALGO</span>
+                                <span className="text-[#6E6E73] text-[10px]">
                                   ~{(plan.priceAlgo * 1_000_000).toLocaleString()} microAlgos
                                 </span>
                               </div>
 
                               {/* Two Core Benefits Breakdown */}
-                              <div className="space-y-1.5 pt-1 border-t border-[#E0E5EF]">
-                                <div className="flex items-center gap-1.5 text-xs font-medium text-[#3C4B63]">
+                              <div className="space-y-1.5 pt-1 border-t border-[#D2D2D7]">
+                                <div className="flex items-center gap-1.5 text-xs font-medium text-[#1D1D1F]">
                                   <Check className="h-3.5 w-3.5 text-[#4C765D] shrink-0" />
                                   <span>+{plan.paidAttempts} Practice Attempts</span>
                                 </div>
-                                <div className="flex items-center gap-1.5 text-xs font-medium text-[#3C4B63]">
+                                <div className="flex items-center gap-1.5 text-xs font-medium text-[#1D1D1F]">
                                   {hasDomains ? (
                                     <>
-                                      <Check className="h-3.5 w-3.5 text-[#5288B8] shrink-0" />
-                                      <span className="text-[#3C648E]">
+                                      <Check className="h-3.5 w-3.5 text-[#007AFF] shrink-0" />
+                                      <span className="text-[#0056CC]">
                                         All Tech Domains ({plan.entitlements?.subscriptionDurationDays || 30}d)
                                       </span>
                                     </>
                                   ) : (
                                     <>
                                       <Minus className="h-3.5 w-3.5 text-[#8490A2] shrink-0" />
-                                      <span className="text-[#748199]">Standard Tracks Only</span>
+                                      <span className="text-[#6E6E73]">Standard Tracks Only</span>
                                     </>
                                   )}
                                 </div>
                               </div>
 
-                              <p className="text-[11px] leading-relaxed text-[#748199]">
+                              <p className="text-[11px] leading-relaxed text-[#6E6E73]">
                                 {plan.description}
                               </p>
 
                               {/* Exclusions / Limitations Disclosure */}
                               {plan.exclusions && plan.exclusions.length > 0 && (
-                                <div className="rounded-lg bg-[#F7F8FC] border border-[#E0E5EF] p-2 text-[10px] text-[#748199] space-y-0.5">
+                                <div className="rounded-lg bg-[#F5F5F7] border border-[#D2D2D7] p-2 text-[10px] text-[#6E6E73] space-y-0.5">
                                   {plan.exclusions.map((ex, idx) => (
                                     <div key={idx} className="flex items-start gap-1">
                                       <span className="text-[#8A7047]">•</span>
@@ -558,9 +558,9 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
                               )}
                             </div>
 
-                            <div className="mt-3 pt-2.5 border-t border-[#E0E5EF] flex items-center justify-between text-[10px] text-[#748199]">
+                            <div className="mt-3 pt-2.5 border-t border-[#D2D2D7] flex items-center justify-between text-[10px] text-[#6E6E73]">
                               <span>Attempts never expire</span>
-                              <span className="font-semibold text-[#5288B8]">
+                              <span className="font-semibold text-[#007AFF]">
                                 {isSelected ? 'Selected' : 'Click to Select'}
                               </span>
                             </div>
@@ -575,42 +575,42 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
                 {panelTab === 'matrix' && (
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-[#3C4B63] uppercase tracking-wider">
+                      <span className="text-xs font-semibold text-[#1D1D1F] uppercase tracking-wider">
                         Feature & Entitlement Comparison
                       </span>
-                      <span className="text-[11px] text-[#748199]">
+                      <span className="text-[11px] text-[#6E6E73]">
                         Transparent breakdown across free and subscription tiers
                       </span>
                     </div>
 
-                    <div className="overflow-x-auto rounded-xl border border-[#E0E5EF] bg-white">
+                    <div className="overflow-x-auto rounded-xl border border-[#D2D2D7] bg-white">
                       <table className="w-full text-left border-collapse text-xs">
                         <thead>
-                          <tr className="border-b border-[#E0E5EF] bg-[#F7F8FC] text-[#3C4B63]">
+                          <tr className="border-b border-[#D2D2D7] bg-[#F5F5F7] text-[#1D1D1F]">
                             <th className="p-3 font-semibold text-[11px]">Feature / Entitlement</th>
                             <th className="p-3 font-semibold text-[11px] text-center">Free Tier</th>
                             {plans.map((p) => (
                               <th
                                 key={p.id}
                                 className={`p-3 font-semibold text-[11px] text-center cursor-pointer transition-colors ${
-                                  selectedPlanId === p.id ? 'bg-[#EAF1F9] text-[#5288B8]' : 'hover:bg-[#F2F2F7]'
+                                  selectedPlanId === p.id ? 'bg-[#E5F1FF] text-[#007AFF]' : 'hover:bg-[#F2F2F7]'
                                 }`}
                                 onClick={() => setSelectedPlanId(p.id)}
                               >
                                 {p.name}
-                                <div className="text-[10px] font-normal text-[#748199]">
+                                <div className="text-[10px] font-normal text-[#6E6E73]">
                                   {p.priceAlgo} ALGO
                                 </div>
                               </th>
                             ))}
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-[#E0E5EF] text-[11px] text-[#3C4B63]">
+                        <tbody className="divide-y divide-[#D2D2D7] text-[11px] text-[#1D1D1F]">
                           <tr>
                             <td className="p-3 font-medium">Price in ALGO</td>
-                            <td className="p-3 text-center text-[#748199]">0 ALGO</td>
+                            <td className="p-3 text-center text-[#6E6E73]">0 ALGO</td>
                             {plans.map((p) => (
-                              <td key={p.id} className="p-3 text-center font-bold text-[#5288B8]">
+                              <td key={p.id} className="p-3 text-center font-bold text-[#007AFF]">
                                 {p.priceAlgo} ALGO
                               </td>
                             ))}
@@ -626,7 +626,7 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
                           </tr>
                           <tr>
                             <td className="p-3 font-medium">Technology Domains (MERN, AI/ML, etc.)</td>
-                            <td className="p-3 text-center text-[#748199]">Preview Only</td>
+                            <td className="p-3 text-center text-[#6E6E73]">Preview Only</td>
                             {plans.map((p) => (
                               <td key={p.id} className="p-3 text-center">
                                 {p.entitlements?.domainPreparation ? (
@@ -694,9 +694,9 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
                               </td>
                             ))}
                           </tr>
-                          <tr className="bg-[#F7F8FC]">
+                          <tr className="bg-[#F5F5F7]">
                             <td className="p-3 font-medium">Action</td>
-                            <td className="p-3 text-center text-[#748199]">Default</td>
+                            <td className="p-3 text-center text-[#6E6E73]">Default</td>
                             {plans.map((p) => (
                               <td key={p.id} className="p-3 text-center">
                                 <button
@@ -707,8 +707,8 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
                                   }}
                                   className={`rounded-lg px-2.5 py-1 text-xs font-semibold transition-all ${
                                     selectedPlanId === p.id
-                                      ? 'bg-[#5288B8] text-white'
-                                      : 'bg-white border border-[#CFE2DC] text-[#5288B8] hover:bg-[#EAF1F9]'
+                                      ? 'bg-[#007AFF] text-white'
+                                      : 'bg-white border border-[#CFE2DC] text-[#007AFF] hover:bg-[#E5F1FF]'
                                   }`}
                                 >
                                   {selectedPlanId === p.id ? 'Selected' : 'Select'}
@@ -724,10 +724,10 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
 
                 {/* Pre-Approval Payment Review Card */}
                 <div className="rounded-xl border border-[#CFE2DC] bg-[#F7F8FF] p-5 space-y-4">
-                  <div className="flex items-center justify-between border-b border-[#E0E5EF] pb-3">
+                  <div className="flex items-center justify-between border-b border-[#D2D2D7] pb-3">
                     <div className="flex items-center gap-2">
-                      <Wallet className="h-4 w-4 text-[#5288B8]" />
-                      <span className="font-semibold text-sm text-[#3C4B63]">Selected Subscription Summary</span>
+                      <Wallet className="h-4 w-4 text-[#007AFF]" />
+                      <span className="font-semibold text-sm text-[#1D1D1F]">Selected Subscription Summary</span>
                     </div>
                     <Badge variant="blue" size="sm">
                       Official Algorand Integration
@@ -735,45 +735,45 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
                   </div>
 
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                    <div className="rounded-lg bg-white p-3 border border-[#E0E5EF]">
-                      <span className="block text-[10px] font-semibold text-[#748199] uppercase tracking-wider">
+                    <div className="rounded-lg bg-white p-3 border border-[#D2D2D7]">
+                      <span className="block text-[10px] font-semibold text-[#6E6E73] uppercase tracking-wider">
                         Benefit A: Extra Attempts
                       </span>
                       <span className="mt-1 block text-sm font-bold text-[#4C765D]">
                         +{selectedPlan?.paidAttempts || 25} Practice Attempts
                       </span>
-                      <span className="text-[11px] text-[#748199]">
+                      <span className="text-[11px] text-[#6E6E73]">
                         Valid across all question categories • Never expires
                       </span>
                     </div>
 
-                    <div className="rounded-lg bg-white p-3 border border-[#E0E5EF]">
-                      <span className="block text-[10px] font-semibold text-[#748199] uppercase tracking-wider">
+                    <div className="rounded-lg bg-white p-3 border border-[#D2D2D7]">
+                      <span className="block text-[10px] font-semibold text-[#6E6E73] uppercase tracking-wider">
                         Benefit B: Domain Access
                       </span>
-                      <span className="mt-1 block text-sm font-bold text-[#3C648E]">
+                      <span className="mt-1 block text-sm font-bold text-[#0056CC]">
                         {selectedPlan?.entitlements?.domainPreparation
                           ? `All Tech Domains (${selectedPlan?.entitlements?.subscriptionDurationDays || 30}d)`
                           : 'Standard Question Categories'}
                       </span>
-                      <span className="text-[11px] text-[#748199]">
+                      <span className="text-[11px] text-[#6E6E73]">
                         {selectedPlan?.entitlements?.domainPreparation
                           ? 'MERN, AI/ML, Frontend, Backend & Web Workspaces'
                           : 'General Practice Bank only'}
                       </span>
                     </div>
 
-                    <div className="rounded-lg bg-white p-3 border border-[#E0E5EF]">
-                      <span className="block text-[10px] font-semibold text-[#748199] uppercase tracking-wider">
+                    <div className="rounded-lg bg-white p-3 border border-[#D2D2D7]">
+                      <span className="block text-[10px] font-semibold text-[#6E6E73] uppercase tracking-wider">
                         Total Price
                       </span>
                       <div className="mt-1 flex items-baseline gap-1">
-                        <span className="text-xl font-bold font-serif text-[#3C4B63]">
+                        <span className="text-xl font-bold font-serif text-[#1D1D1F]">
                           {selectedPlan?.priceAlgo || 3}
                         </span>
-                        <span className="text-xs font-semibold text-[#5288B8]">ALGO</span>
+                        <span className="text-xs font-semibold text-[#007AFF]">ALGO</span>
                       </div>
-                      <span className="text-[10px] text-[#748199]">
+                      <span className="text-[10px] text-[#6E6E73]">
                         ~{((selectedPlan?.priceAlgo || 3) * 1_000_000).toLocaleString()} microAlgos
                       </span>
                     </div>
@@ -804,14 +804,14 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
                       size="sm"
                       variant="outline"
                       type="button"
-                      className="w-full justify-center text-xs text-[#5288B8] border-[#CFE2DC] hover:bg-[#EAF1F9]"
+                      className="w-full justify-center text-xs text-[#007AFF] border-[#CFE2DC] hover:bg-[#E5F1FF]"
                       onClick={handleSimulateDevApproval}
                     >
                       ⚡ [Dev / Testnet: Fast-Track Simulation & Unlock]
                     </Button>
                   )}
 
-                  <div className="flex items-center justify-center gap-1.5 text-[11px] text-[#748199]">
+                  <div className="flex items-center justify-center gap-1.5 text-[11px] text-[#6E6E73]">
                     <ShieldCheck className="h-3.5 w-3.5 text-[#4C765D]" />
                     <span>Secure payment verified cryptographically on Algorand blockchain</span>
                   </div>
@@ -824,36 +824,36 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
         {/* STATE: WAITING FOR PERA WALLET APPROVAL */}
         {flowState === 'waiting_approval' && (
           <div className="rounded-xl border border-[#CFE2DC] bg-[#F7F8FF] p-6 text-center space-y-5">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#EAF1F9] text-[#5288B8] shadow-sm animate-pulse">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#E5F1FF] text-[#007AFF] shadow-sm animate-pulse">
               <Smartphone className="h-7 w-7" />
             </div>
 
             <div className="space-y-2">
-              <h3 className="text-base font-bold text-[#3C4B63]">
+              <h3 className="text-base font-bold text-[#1D1D1F]">
                 Waiting for Pera Wallet approval...
               </h3>
-              <div className="text-xs text-[#748199] max-w-sm mx-auto space-y-1 leading-relaxed">
+              <div className="text-xs text-[#6E6E73] max-w-sm mx-auto space-y-1 leading-relaxed">
                 <p>Open your Pera Wallet mobile app</p>
                 <p>Review the transaction details</p>
                 <p>Approve the payment to continue</p>
               </div>
             </div>
 
-            <div className="rounded-xl border border-[#E0E5EF] bg-white p-3.5 max-w-xs mx-auto text-left text-xs space-y-2 shadow-xs">
-              <div className="flex justify-between text-[#748199]">
+            <div className="rounded-xl border border-[#D2D2D7] bg-white p-3.5 max-w-xs mx-auto text-left text-xs space-y-2 shadow-xs">
+              <div className="flex justify-between text-[#6E6E73]">
                 <span>Plan:</span>
-                <span className="font-semibold text-[#3C4B63]">
+                <span className="font-semibold text-[#1D1D1F]">
                   +{selectedPlan?.paidAttempts} Practice Attempts
                 </span>
               </div>
-              <div className="flex justify-between text-[#748199]">
+              <div className="flex justify-between text-[#6E6E73]">
                 <span>Amount:</span>
-                <span className="font-semibold text-[#5288B8]">
+                <span className="font-semibold text-[#007AFF]">
                   {selectedPlan?.priceAlgo} ALGO
                 </span>
               </div>
               {activeIntent && (
-                <div className="flex justify-between text-[#748199] pt-1 border-t border-[#E0E5EF]">
+                <div className="flex justify-between text-[#6E6E73] pt-1 border-t border-[#D2D2D7]">
                   <span>Payment Ref:</span>
                   <span className="font-mono text-[10px] text-[#8490A2]">
                     {activeIntent.intentId.slice(0, 16)}...
@@ -874,11 +874,11 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
             </div>
 
             {isDevEnvironment && (
-              <div className="pt-3 border-t border-[#E0E5EF]">
+              <div className="pt-3 border-t border-[#D2D2D7]">
                 <button
                   type="button"
                   onClick={handleSimulateDevApproval}
-                  className="text-[11px] text-[#5288B8] underline hover:text-[#3C648E]"
+                  className="text-[11px] text-[#007AFF] underline hover:text-[#0056CC]"
                 >
                   [Dev/Testing: Simulate Mobile Pera Approval]
                 </button>
@@ -890,20 +890,20 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
         {/* STATE: PAYMENT SUBMITTED / VERIFYING */}
         {flowState === 'submitting' && (
           <div className="rounded-xl border border-[#CFE2DC] bg-[#F7F8FF] p-6 text-center space-y-5">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#EAF1F9] text-[#5288B8] shadow-sm">
-              <Loader2 className="h-7 w-7 animate-spin text-[#5288B8]" />
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#E5F1FF] text-[#007AFF] shadow-sm">
+              <Loader2 className="h-7 w-7 animate-spin text-[#007AFF]" />
             </div>
 
             <div className="space-y-1">
-              <h3 className="text-base font-bold text-[#3C4B63]">
+              <h3 className="text-base font-bold text-[#1D1D1F]">
                 Payment submitted
               </h3>
-              <p className="text-xs text-[#748199]">
+              <p className="text-xs text-[#6E6E73]">
                 {submittingMessage}
               </p>
             </div>
 
-            <div className="flex items-center justify-center gap-2 text-xs font-mono text-[#748199]">
+            <div className="flex items-center justify-center gap-2 text-xs font-mono text-[#6E6E73]">
               <span className="inline-block h-2 w-2 rounded-full bg-[#F8F3E8] animate-ping" />
               <span>Independent Algorand node confirmation in progress</span>
             </div>
@@ -918,31 +918,31 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
             </div>
 
             <div className="space-y-1">
-              <h3 className="text-base font-bold text-[#3C4B63]">
+              <h3 className="text-base font-bold text-[#1D1D1F]">
                 Payment Successful
               </h3>
-              <p className="text-xs text-[#748199]">
+              <p className="text-xs text-[#6E6E73]">
                 Your payment has been verified successfully.
               </p>
             </div>
 
             <div className="rounded-xl border border-[#C6DFD2] bg-white p-4 max-w-sm mx-auto text-left text-xs space-y-2.5 shadow-xs">
-              <div className="flex justify-between items-center text-[#748199]">
+              <div className="flex justify-between items-center text-[#6E6E73]">
                 <span>Practice Package:</span>
                 <span className="font-semibold text-[#4C765D]">
                   +{unlockedAttemptsCount} Additional Practice Attempts
                 </span>
               </div>
-              <div className="flex justify-between items-center text-[#748199]">
+              <div className="flex justify-between items-center text-[#6E6E73]">
                 <span>Amount Paid:</span>
-                <span className="font-semibold text-[#3C4B63]">
+                <span className="font-semibold text-[#1D1D1F]">
                   {selectedPlan?.priceAlgo} ALGO
                 </span>
               </div>
               {confirmedTxId && (
-                <div className="pt-2 border-t border-[#E0E5EF]">
-                  <div className="text-[11px] text-[#748199] mb-0.5">Transaction ID:</div>
-                  <div className="font-mono text-[10px] text-[#3C4B63] break-all bg-[#F7F8FC] p-1.5 rounded border border-[#E0E5EF]">
+                <div className="pt-2 border-t border-[#D2D2D7]">
+                  <div className="text-[11px] text-[#6E6E73] mb-0.5">Transaction ID:</div>
+                  <div className="font-mono text-[10px] text-[#1D1D1F] break-all bg-[#F5F5F7] p-1.5 rounded border border-[#D2D2D7]">
                     {confirmedTxId}
                   </div>
                 </div>
@@ -987,16 +987,16 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
 
         {/* STATE: PAYMENT CANCELLED */}
         {flowState === 'cancelled' && (
-          <div className="rounded-xl border border-[#E0E5EF] bg-white p-6 text-center space-y-5">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#F7F8FC] text-[#748199] shadow-sm">
+          <div className="rounded-xl border border-[#D2D2D7] bg-white p-6 text-center space-y-5">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#F5F5F7] text-[#6E6E73] shadow-sm">
               <XCircle className="h-7 w-7 text-[#8490A2]" />
             </div>
 
             <div className="space-y-1">
-              <h3 className="text-base font-bold text-[#3C4B63]">
+              <h3 className="text-base font-bold text-[#1D1D1F]">
                 Payment cancelled
               </h3>
-              <p className="text-xs text-[#748199]">
+              <p className="text-xs text-[#6E6E73]">
                 The payment was rejected in Pera Wallet.
               </p>
             </div>
@@ -1023,10 +1023,10 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
             </div>
 
             <div className="space-y-1">
-              <h3 className="text-base font-bold text-[#3C4B63]">
+              <h3 className="text-base font-bold text-[#1D1D1F]">
                 Payment request expired.
               </h3>
-              <p className="text-xs text-[#748199]">
+              <p className="text-xs text-[#6E6E73]">
                 The payment intent timed out. Generate a new request to continue.
               </p>
             </div>
@@ -1053,10 +1053,10 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
             </div>
 
             <div className="space-y-1">
-              <h3 className="text-base font-bold text-[#3C4B63]">
+              <h3 className="text-base font-bold text-[#1D1D1F]">
                 Payment failed
               </h3>
-              <p className="text-xs text-[#748199]">
+              <p className="text-xs text-[#6E6E73]">
                 {errorMessage || 'The transaction could not be completed.'}
               </p>
             </div>
@@ -1077,7 +1077,7 @@ export const AlgoPaymentPanel: React.FC<AlgoPaymentPanelProps> = ({
                   variant="outline"
                   type="button"
                   onClick={handleSimulateDevApproval}
-                  className="justify-center text-xs text-[#5288B8] border-[#CFE2DC] hover:bg-[#EAF1F9]"
+                  className="justify-center text-xs text-[#007AFF] border-[#CFE2DC] hover:bg-[#E5F1FF]"
                 >
                   ⚡ Simulate Approval in Dev
                 </Button>

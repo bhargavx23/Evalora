@@ -296,10 +296,10 @@ export const ProfilePage: React.FC = () => {
   if (isLoading) {
     return (
       <div className="space-y-6">
-        <div className="h-28 animate-pulse rounded-2xl bg-[#F7F8FC] border border-[#E0E5EF]" />
+        <div className="h-28 animate-pulse rounded-2xl bg-[#F5F5F7] border border-[#D2D2D7]" />
         <div className="grid gap-6 lg:grid-cols-3">
-          <div className="h-64 animate-pulse rounded-2xl bg-[#F7F8FC] border border-[#E0E5EF]" />
-          <div className="h-64 animate-pulse rounded-2xl bg-[#F7F8FC] border border-[#E0E5EF] lg:col-span-2" />
+          <div className="h-64 animate-pulse rounded-2xl bg-[#F5F5F7] border border-[#D2D2D7]" />
+          <div className="h-64 animate-pulse rounded-2xl bg-[#F5F5F7] border border-[#D2D2D7] lg:col-span-2" />
         </div>
       </div>
     );
@@ -308,18 +308,18 @@ export const ProfilePage: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <header className="flex flex-col justify-between gap-4 border-b border-[#E0E5EF] pb-6 md:flex-row md:items-end">
+      <header className="flex flex-col justify-between gap-4 border-b border-[#D2D2D7] pb-6 md:flex-row md:items-end">
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#5288B8]">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#007AFF]">
               Candidate Workspace
             </span>
             <Badge variant="blue">{data?.role?.toUpperCase() || 'STUDENT'}</Badge>
           </div>
-          <h1 className="font-serif text-3xl font-medium tracking-tight text-[#3C4B63] md:text-4xl mt-1">
+          <h1 className="font-serif text-3xl font-medium tracking-tight text-[#1D1D1F] md:text-4xl mt-1">
             Candidate Profile
           </h1>
-          <p className="mt-1 text-sm text-[#748199]">
+          <p className="mt-1 text-sm text-[#6E6E73]">
             Manage your personal credentials, skills portfolio, projects, and Algorand verification.
           </p>
         </div>
@@ -344,7 +344,7 @@ export const ProfilePage: React.FC = () => {
         {/* Left Card: Candidate Identity & Photo */}
         <Card>
           <div className="flex items-center gap-4">
-            <label className="group relative flex h-20 w-20 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-[#EAF1F9] text-2xl font-semibold text-[#3C648E] shadow-[inset_0_0_0_1px_rgba(119,121,197,0.16)] flex-shrink-0">
+            <label className="group relative flex h-20 w-20 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-[#E5F1FF] text-2xl font-semibold text-[#0056CC] shadow-[inset_0_0_0_1px_rgba(119,121,197,0.16)] flex-shrink-0">
               {data?.avatar ? (
                 <img
                   src={`/api/profile/avatar/${data.avatar}`}
@@ -354,7 +354,7 @@ export const ProfilePage: React.FC = () => {
               ) : (
                 candidateName.charAt(0) || <UserRound className="h-8 w-8" />
               )}
-              <span className="absolute inset-x-0 bottom-0 bg-[#3C4B63]/80 py-1 text-center text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100">
+              <span className="absolute inset-x-0 bottom-0 bg-[#1D1D1F]/80 py-1 text-center text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100">
                 {isAvatarUploading ? '...' : 'Change'}
               </span>
               <input
@@ -366,7 +366,7 @@ export const ProfilePage: React.FC = () => {
             </label>
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-2">
-                <h2 className="text-lg font-semibold text-[#3C4B63] truncate">
+                <h2 className="text-lg font-semibold text-[#1D1D1F] truncate">
                   {candidateName || 'Add Your Name'}
                 </h2>
                 {data?.emailVerified && (
@@ -375,11 +375,11 @@ export const ProfilePage: React.FC = () => {
                   </span>
                 )}
               </div>
-              <p className="text-xs text-[#748199] truncate mt-0.5">
+              <p className="text-xs text-[#6E6E73] truncate mt-0.5">
                 {profile.headline || 'No professional headline set'}
               </p>
               <div className="flex flex-wrap items-center gap-2 mt-2">
-                <span className="text-[11px] font-mono text-[#8490A2] bg-[#F7F8FC] px-2 py-0.5 rounded border border-[#E0E5EF]">
+                <span className="text-[11px] font-mono text-[#8490A2] bg-[#F5F5F7] px-2 py-0.5 rounded border border-[#D2D2D7]">
                   {data?.email}
                 </span>
                 <Badge variant={data?.status === 'active' ? 'green' : 'amber'}>
@@ -389,26 +389,26 @@ export const ProfilePage: React.FC = () => {
             </div>
           </div>
 
-          <div className="mt-6 border-t border-[#E0E5EF] pt-5">
+          <div className="mt-6 border-t border-[#D2D2D7] pt-5">
             <div className="mb-2 flex justify-between text-xs">
-              <span className="text-[#748199]">Profile Strength</span>
-              <span className="font-semibold text-[#3C4B63]">{completion.percentage}%</span>
+              <span className="text-[#6E6E73]">Profile Strength</span>
+              <span className="font-semibold text-[#1D1D1F]">{completion.percentage}%</span>
             </div>
-            <div className="h-2 overflow-hidden rounded-full bg-[#F7F8FC]">
+            <div className="h-2 overflow-hidden rounded-full bg-[#F5F5F7]">
               <div
-                className="h-full rounded-full bg-[#5288B8] transition-all duration-500"
+                className="h-full rounded-full bg-[#007AFF] transition-all duration-500"
                 style={{ width: `${completion.percentage}%` }}
               />
             </div>
           </div>
 
           {completion.missing.length > 0 ? (
-            <div className="mt-5 border-t border-[#E0E5EF] pt-4">
-              <p className="text-xs font-semibold text-[#3C4B63]">Suggested additions to reach 100%:</p>
-              <ul className="mt-2.5 space-y-1.5 text-xs text-[#748199]">
+            <div className="mt-5 border-t border-[#D2D2D7] pt-4">
+              <p className="text-xs font-semibold text-[#1D1D1F]">Suggested additions to reach 100%:</p>
+              <ul className="mt-2.5 space-y-1.5 text-xs text-[#6E6E73]">
                 {completion.missing.map((item: string) => (
                   <li key={item} className="flex items-center gap-2">
-                    <span className="text-[#5288B8] font-bold">+</span> {item}
+                    <span className="text-[#007AFF] font-bold">+</span> {item}
                   </li>
                 ))}
               </ul>
@@ -426,12 +426,12 @@ export const ProfilePage: React.FC = () => {
           header={
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Wallet className="h-4 w-4 text-[#5288B8]" />
-                <span className="text-sm font-semibold text-[#3C4B63]">Pera Wallet & Quota</span>
+                <Wallet className="h-4 w-4 text-[#007AFF]" />
+                <span className="text-sm font-semibold text-[#1D1D1F]">Pera Wallet & Quota</span>
               </div>
               <Link
                 to="/settings"
-                className="text-xs font-semibold text-[#5288B8] hover:underline"
+                className="text-xs font-semibold text-[#007AFF] hover:underline"
               >
                 Settings & Wallet
               </Link>
@@ -440,7 +440,7 @@ export const ProfilePage: React.FC = () => {
         >
           <div className="space-y-4">
             {/* Wallet Status */}
-            <div className="rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-4">
+            <div className="rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] p-4">
               <div className="flex items-center justify-between">
                 <div>
                   <span className="text-[11px] font-semibold uppercase tracking-wider text-[#8490A2]">
@@ -449,12 +449,12 @@ export const ProfilePage: React.FC = () => {
                   <div className="mt-1 flex items-center gap-2">
                     {primaryWallet ? (
                       <>
-                        <span className="font-mono text-sm font-medium text-[#3C4B63]">
+                        <span className="font-mono text-sm font-medium text-[#1D1D1F]">
                           {formatAddress(primaryWallet)}
                         </span>
                         <button
                           onClick={() => copyWalletAddress(primaryWallet)}
-                          className="rounded p-1 text-[#748199] hover:bg-white hover:text-[#3C4B63] transition-colors"
+                          className="rounded p-1 text-[#6E6E73] hover:bg-white hover:text-[#1D1D1F] transition-colors"
                           title="Copy full address"
                         >
                           <Copy className="h-3.5 w-3.5" />
@@ -471,8 +471,8 @@ export const ProfilePage: React.FC = () => {
               </div>
 
               {!primaryWallet && (
-                <div className="mt-3 border-t border-[#E0E5EF] pt-3">
-                  <p className="text-xs text-[#748199]">
+                <div className="mt-3 border-t border-[#D2D2D7] pt-3">
+                  <p className="text-xs text-[#6E6E73]">
                     Connect your Pera Wallet to verify on-chain credentials and purchase additional practice attempts.
                   </p>
                   <Link to="/settings" className="mt-2 inline-block">
@@ -486,22 +486,22 @@ export const ProfilePage: React.FC = () => {
 
             {/* Practice Attempts Quota */}
             <div className="grid grid-cols-2 gap-3">
-              <div className="rounded-xl border border-[#E0E5EF] bg-white p-3">
+              <div className="rounded-xl border border-[#D2D2D7] bg-white p-3">
                 <span className="text-[10px] font-semibold uppercase tracking-wider text-[#8490A2] flex items-center gap-1">
                   <Zap className="h-3 w-3 text-[#8A7047]" /> Complimentary Attempts
                 </span>
-                <div className="mt-1 text-base font-semibold text-[#3C4B63]">
+                <div className="mt-1 text-base font-semibold text-[#1D1D1F]">
                   {Math.max(0, (data?.freeAttempts?.total ?? 10) - (data?.freeAttempts?.used ?? 0))}
                   <span className="text-xs font-normal text-[#8490A2]">
                     {' '}/ {data?.freeAttempts?.total ?? 10} remaining
                   </span>
                 </div>
               </div>
-              <div className="rounded-xl border border-[#E0E5EF] bg-white p-3">
+              <div className="rounded-xl border border-[#D2D2D7] bg-white p-3">
                 <span className="text-[10px] font-semibold uppercase tracking-wider text-[#8490A2] flex items-center gap-1">
-                  <ShieldCheck className="h-3 w-3 text-[#5288B8]" /> Paid / Purchased
+                  <ShieldCheck className="h-3 w-3 text-[#007AFF]" /> Paid / Purchased
                 </span>
-                <div className="mt-1 text-base font-semibold text-[#3C4B63]">
+                <div className="mt-1 text-base font-semibold text-[#1D1D1F]">
                   {Math.max(0, (data?.paidAttempts?.total ?? 0) - (data?.paidAttempts?.used ?? 0))}
                   <span className="text-xs font-normal text-[#8490A2]">
                     {' '}/ {data?.paidAttempts?.total ?? 0} unlocked
@@ -518,8 +518,8 @@ export const ProfilePage: React.FC = () => {
         header={
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-base font-semibold text-[#3C4B63]">Personal & Academic Details</h2>
-              <p className="text-xs text-[#748199] mt-0.5">
+              <h2 className="text-base font-semibold text-[#1D1D1F]">Personal & Academic Details</h2>
+              <p className="text-xs text-[#6E6E73] mt-0.5">
                 Keep your details updated for personalized practice and placement recommendations.
               </p>
             </div>
@@ -587,13 +587,13 @@ export const ProfilePage: React.FC = () => {
         </div>
 
         <label className="mt-4 block">
-          <span className="mb-1 block text-xs font-medium text-[#748199]">Professional Bio / Summary</span>
+          <span className="mb-1 block text-xs font-medium text-[#6E6E73]">Professional Bio / Summary</span>
           <textarea
             value={profile.bio || ''}
             onChange={(e) => update('bio', e.target.value)}
             rows={3}
             maxLength={1000}
-            className="w-full resize-y rounded-lg border border-[#E0E5EF] bg-white px-3.5 py-2.5 text-xs text-[#3C4B63] placeholder:text-[#8490A2] focus:border-[#5288B8] focus:outline-none focus:ring-1 focus:ring-[#5288B8]"
+            className="w-full resize-y rounded-lg border border-[#D2D2D7] bg-white px-3.5 py-2.5 text-xs text-[#1D1D1F] placeholder:text-[#8490A2] focus:border-[#007AFF] focus:outline-none focus:ring-1 focus:ring-[#007AFF]"
             placeholder="Concise summary of your problem-solving experience, technical background, and career objectives."
           />
         </label>
@@ -606,8 +606,8 @@ export const ProfilePage: React.FC = () => {
           header={
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Code2 className="h-4 w-4 text-[#5288B8]" />
-                <span className="text-sm font-semibold text-[#3C4B63]">Skills & Tech Stack</span>
+                <Code2 className="h-4 w-4 text-[#007AFF]" />
+                <span className="text-sm font-semibold text-[#1D1D1F]">Skills & Tech Stack</span>
               </div>
               <span className="text-xs text-[#8490A2]">{profile.skills.length} skills added</span>
             </div>
@@ -621,7 +621,7 @@ export const ProfilePage: React.FC = () => {
                 onChange={(e) => setNewSkill(e.target.value)}
                 onKeyDown={handleAddSkill}
                 placeholder="e.g. Python, Dynamic Programming, React..."
-                className="flex-1 rounded-lg border border-[#E0E5EF] bg-white px-3 py-2 text-xs text-[#3C4B63] placeholder:text-[#8490A2] focus:border-[#5288B8] focus:outline-none focus:ring-1 focus:ring-[#5288B8]"
+                className="flex-1 rounded-lg border border-[#D2D2D7] bg-white px-3 py-2 text-xs text-[#1D1D1F] placeholder:text-[#8490A2] focus:border-[#007AFF] focus:outline-none focus:ring-1 focus:ring-[#007AFF]"
               />
               <Button size="sm" variant="secondary" onClick={handleAddSkill} icon={<Plus className="h-3.5 w-3.5" />}>
                 Add
@@ -633,13 +633,13 @@ export const ProfilePage: React.FC = () => {
                 {profile.skills.map((skill: string) => (
                   <span
                     key={skill}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-[#EAF1F9] px-3 py-1 text-xs font-semibold text-[#3C648E] border border-[#5288B8]/20 shadow-xs"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-[#E5F1FF] px-3 py-1 text-xs font-semibold text-[#0056CC] border border-[#007AFF]/20 shadow-xs"
                   >
                     <span>{skill}</span>
                     <button
                       type="button"
                       onClick={() => handleRemoveSkill(skill)}
-                      className="rounded-full p-0.5 text-[#5288B8] hover:bg-[#D6D8F8] transition-colors"
+                      className="rounded-full p-0.5 text-[#007AFF] hover:bg-[#D6D8F8] transition-colors"
                       title="Remove skill"
                     >
                       ×
@@ -648,7 +648,7 @@ export const ProfilePage: React.FC = () => {
                 ))}
               </div>
             ) : (
-              <div className="rounded-xl border border-dashed border-[#E0E5EF] p-4 text-center text-xs text-[#8490A2]">
+              <div className="rounded-xl border border-dashed border-[#D2D2D7] p-4 text-center text-xs text-[#8490A2]">
                 No skills added yet. Type a technology or concept and click Add.
               </div>
             )}
@@ -661,7 +661,7 @@ export const ProfilePage: React.FC = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Award className="h-4 w-4 text-[#8A7047]" />
-                <span className="text-sm font-semibold text-[#3C4B63]">Certifications & Licenses</span>
+                <span className="text-sm font-semibold text-[#1D1D1F]">Certifications & Licenses</span>
               </div>
               <span className="text-xs text-[#8490A2]">{profile.certifications.length} listed</span>
             </div>
@@ -675,7 +675,7 @@ export const ProfilePage: React.FC = () => {
                 onChange={(e) => setNewCert(e.target.value)}
                 onKeyDown={handleAddCert}
                 placeholder="e.g. AWS Solutions Architect, Meta React Specialist..."
-                className="flex-1 rounded-lg border border-[#E0E5EF] bg-white px-3 py-2 text-xs text-[#3C4B63] placeholder:text-[#8490A2] focus:border-[#5288B8] focus:outline-none focus:ring-1 focus:ring-[#5288B8]"
+                className="flex-1 rounded-lg border border-[#D2D2D7] bg-white px-3 py-2 text-xs text-[#1D1D1F] placeholder:text-[#8490A2] focus:border-[#007AFF] focus:outline-none focus:ring-1 focus:ring-[#007AFF]"
               />
               <Button size="sm" variant="secondary" onClick={handleAddCert} icon={<Plus className="h-3.5 w-3.5" />}>
                 Add
@@ -687,9 +687,9 @@ export const ProfilePage: React.FC = () => {
                 {profile.certifications.map((cert: string) => (
                   <div
                     key={cert}
-                    className="flex items-center justify-between rounded-lg border border-[#E0E5EF] bg-[#F7F8FC] px-3 py-2 text-xs"
+                    className="flex items-center justify-between rounded-lg border border-[#D2D2D7] bg-[#F5F5F7] px-3 py-2 text-xs"
                   >
-                    <span className="font-medium text-[#3C4B63]">{cert}</span>
+                    <span className="font-medium text-[#1D1D1F]">{cert}</span>
                     <button
                       type="button"
                       onClick={() => handleRemoveCert(cert)}
@@ -702,7 +702,7 @@ export const ProfilePage: React.FC = () => {
                 ))}
               </div>
             ) : (
-              <div className="rounded-xl border border-dashed border-[#E0E5EF] p-4 text-center text-xs text-[#8490A2]">
+              <div className="rounded-xl border border-dashed border-[#D2D2D7] p-4 text-center text-xs text-[#8490A2]">
                 No certifications listed yet.
               </div>
             )}
@@ -715,10 +715,10 @@ export const ProfilePage: React.FC = () => {
         header={
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <FolderGit2 className="h-4 w-4 text-[#5288B8]" />
+              <FolderGit2 className="h-4 w-4 text-[#007AFF]" />
               <div>
-                <span className="text-sm font-semibold text-[#3C4B63]">Projects & Portfolio</span>
-                <p className="text-xs text-[#748199] mt-0.5">
+                <span className="text-sm font-semibold text-[#1D1D1F]">Projects & Portfolio</span>
+                <p className="text-xs text-[#6E6E73] mt-0.5">
                   Showcase software projects, open source repositories, and technical deliverables.
                 </p>
               </div>
@@ -737,8 +737,8 @@ export const ProfilePage: React.FC = () => {
         }
       >
         {isAddingProject && (
-          <div className="mb-6 rounded-xl border border-[#CFE2DC] bg-[#F7F8FC] p-5 shadow-xs">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-[#5288B8] mb-3">
+          <div className="mb-6 rounded-xl border border-[#CFE2DC] bg-[#F5F5F7] p-5 shadow-xs">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-[#007AFF] mb-3">
               Add New Project
             </h3>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -764,13 +764,13 @@ export const ProfilePage: React.FC = () => {
               </div>
               <div className="sm:col-span-2">
                 <label className="block">
-                  <span className="mb-1 block text-xs font-medium text-[#748199]">Description</span>
+                  <span className="mb-1 block text-xs font-medium text-[#6E6E73]">Description</span>
                   <textarea
                     rows={2}
                     value={projDesc}
                     onChange={(e) => setProjDesc(e.target.value)}
                     placeholder="Key architectural highlights and technical contributions."
-                    className="w-full resize-y rounded-lg border border-[#E0E5EF] bg-white px-3 py-2 text-xs text-[#3C4B63] focus:border-[#5288B8] focus:outline-none"
+                    className="w-full resize-y rounded-lg border border-[#D2D2D7] bg-white px-3 py-2 text-xs text-[#1D1D1F] focus:border-[#007AFF] focus:outline-none"
                   />
                 </label>
               </div>
@@ -791,11 +791,11 @@ export const ProfilePage: React.FC = () => {
             {profile.projects.map((proj: Project, index: number) => (
               <div
                 key={index}
-                className="flex flex-col justify-between rounded-xl border border-[#E0E5EF] bg-white p-4 shadow-xs hover:border-[#CFE2DC] transition-colors"
+                className="flex flex-col justify-between rounded-xl border border-[#D2D2D7] bg-white p-4 shadow-xs hover:border-[#CFE2DC] transition-colors"
               >
                 <div>
                   <div className="flex items-start justify-between gap-2">
-                    <h4 className="font-semibold text-sm text-[#3C4B63]">{proj.name}</h4>
+                    <h4 className="font-semibold text-sm text-[#1D1D1F]">{proj.name}</h4>
                     <button
                       type="button"
                       onClick={() => handleRemoveProject(index)}
@@ -806,14 +806,14 @@ export const ProfilePage: React.FC = () => {
                     </button>
                   </div>
                   {proj.description && (
-                    <p className="text-xs text-[#748199] mt-1.5 leading-relaxed">{proj.description}</p>
+                    <p className="text-xs text-[#6E6E73] mt-1.5 leading-relaxed">{proj.description}</p>
                   )}
                   {proj.technologies && proj.technologies.length > 0 && (
                     <div className="mt-3 flex flex-wrap gap-1">
                       {proj.technologies.map((t, idx) => (
                         <span
                           key={idx}
-                          className="rounded bg-[#F7F8FC] px-2 py-0.5 text-[10px] font-medium text-[#748199] border border-[#E0E5EF]"
+                          className="rounded bg-[#F5F5F7] px-2 py-0.5 text-[10px] font-medium text-[#6E6E73] border border-[#D2D2D7]"
                         >
                           {t}
                         </span>
@@ -823,12 +823,12 @@ export const ProfilePage: React.FC = () => {
                 </div>
 
                 {proj.url && (
-                  <div className="mt-4 border-t border-[#E0E5EF] pt-2.5">
+                  <div className="mt-4 border-t border-[#D2D2D7] pt-2.5">
                     <a
                       href={proj.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5288B8] hover:underline"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#007AFF] hover:underline"
                     >
                       <ExternalLink className="h-3 w-3" /> View Repository / Demo
                     </a>
@@ -838,10 +838,10 @@ export const ProfilePage: React.FC = () => {
             ))}
           </div>
         ) : (
-          <div className="rounded-xl border border-dashed border-[#E0E5EF] p-8 text-center">
+          <div className="rounded-xl border border-dashed border-[#D2D2D7] p-8 text-center">
             <FolderGit2 className="h-8 w-8 text-[#8490A2] mx-auto mb-2" />
-            <p className="text-xs font-semibold text-[#3C4B63]">No projects listed</p>
-            <p className="text-xs text-[#748199] mt-1">
+            <p className="text-xs font-semibold text-[#1D1D1F]">No projects listed</p>
+            <p className="text-xs text-[#6E6E73] mt-1">
               Add your technical projects to demonstrate hands-on coding capability.
             </p>
           </div>
@@ -854,8 +854,8 @@ export const ProfilePage: React.FC = () => {
         <Card
           header={
             <div className="flex items-center gap-2">
-              <LinkIcon className="h-4 w-4 text-[#5288B8]" />
-              <span className="text-sm font-semibold text-[#3C4B63]">Online Profiles</span>
+              <LinkIcon className="h-4 w-4 text-[#007AFF]" />
+              <span className="text-sm font-semibold text-[#1D1D1F]">Online Profiles</span>
             </div>
           }
         >
@@ -864,7 +864,7 @@ export const ProfilePage: React.FC = () => {
               <select
                 value={newLinkLabel}
                 onChange={(e) => setNewLinkLabel(e.target.value)}
-                className="rounded-lg border border-[#E0E5EF] bg-white px-2 py-1.5 text-xs text-[#3C4B63] focus:border-[#5288B8] focus:outline-none"
+                className="rounded-lg border border-[#D2D2D7] bg-white px-2 py-1.5 text-xs text-[#1D1D1F] focus:border-[#007AFF] focus:outline-none"
               >
                 <option value="GitHub">GitHub</option>
                 <option value="LinkedIn">LinkedIn</option>
@@ -877,7 +877,7 @@ export const ProfilePage: React.FC = () => {
                 value={newLinkUrl}
                 onChange={(e) => setNewLinkUrl(e.target.value)}
                 placeholder="https://..."
-                className="flex-1 rounded-lg border border-[#E0E5EF] bg-white px-3 py-1.5 text-xs text-[#3C4B63] focus:border-[#5288B8] focus:outline-none"
+                className="flex-1 rounded-lg border border-[#D2D2D7] bg-white px-3 py-1.5 text-xs text-[#1D1D1F] focus:border-[#007AFF] focus:outline-none"
               />
               <Button size="sm" variant="secondary" onClick={handleAddLink} icon={<Plus className="h-3 w-3" />}>
                 Add
@@ -889,15 +889,15 @@ export const ProfilePage: React.FC = () => {
                 {profile.links.map((link: ProfileLink, index: number) => (
                   <div
                     key={index}
-                    className="flex items-center justify-between rounded-lg border border-[#E0E5EF] bg-[#F7F8FC] px-3 py-2 text-xs"
+                    className="flex items-center justify-between rounded-lg border border-[#D2D2D7] bg-[#F5F5F7] px-3 py-2 text-xs"
                   >
                     <div className="flex items-center gap-2 min-w-0">
-                      <span className="font-semibold text-[#3C4B63]">{link.label}:</span>
+                      <span className="font-semibold text-[#1D1D1F]">{link.label}:</span>
                       <a
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="truncate text-[#5288B8] hover:underline"
+                        className="truncate text-[#007AFF] hover:underline"
                       >
                         {link.url}
                       </a>
@@ -923,19 +923,19 @@ export const ProfilePage: React.FC = () => {
         <Card
           header={
             <div className="flex items-center justify-between">
-              <span className="text-sm font-semibold text-[#3C4B63]">Resume Document</span>
+              <span className="text-sm font-semibold text-[#1D1D1F]">Resume Document</span>
               {resume && <Badge variant="green">Uploaded</Badge>}
             </div>
           }
         >
           {resume ? (
             <div className="space-y-4">
-              <div className="flex items-center gap-3 rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-3.5">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#EAF1F9] text-[#5288B8]">
+              <div className="flex items-center gap-3 rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] p-3.5">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#E5F1FF] text-[#007AFF]">
                   <FileText className="h-5 w-5" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs font-semibold text-[#3C4B63] truncate">{resume.originalName}</p>
+                  <p className="text-xs font-semibold text-[#1D1D1F] truncate">{resume.originalName}</p>
                   <p className="text-[11px] text-[#8490A2] mt-0.5">
                     {Math.round(resume.sizeBytes / 1024)} KB · {new Date(resume.createdAt).toLocaleDateString()}
                   </p>
@@ -946,12 +946,12 @@ export const ProfilePage: React.FC = () => {
                   href="/api/profile/resume/file"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center rounded-lg border border-[#E0E5EF] bg-white px-3 py-1.5 text-xs font-semibold text-[#3C4B63] hover:bg-[#F7F8FC]"
+                  className="inline-flex items-center rounded-lg border border-[#D2D2D7] bg-white px-3 py-1.5 text-xs font-semibold text-[#1D1D1F] hover:bg-[#F5F5F7]"
                 >
                   View Document
                 </a>
-                <label className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-[#E0E5EF] bg-white px-3 py-1.5 text-xs font-semibold text-[#3C4B63] hover:bg-[#F7F8FC]">
-                  <Upload className="h-3 w-3 text-[#748199]" /> {isUploading ? 'Uploading...' : 'Replace'}
+                <label className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-[#D2D2D7] bg-white px-3 py-1.5 text-xs font-semibold text-[#1D1D1F] hover:bg-[#F5F5F7]">
+                  <Upload className="h-3 w-3 text-[#6E6E73]" /> {isUploading ? 'Uploading...' : 'Replace'}
                   <input
                     type="file"
                     accept="application/pdf,.pdf,.docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -967,7 +967,7 @@ export const ProfilePage: React.FC = () => {
               title="No resume uploaded"
               description="Upload your PDF or DOCX resume to extract skills."
               action={
-                <label className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-[#5288B8] px-3.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-[#367873]">
+                <label className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-[#007AFF] px-3.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-[#367873]">
                   {isUploading ? 'Uploading...' : 'Upload Resume'}
                   <input
                     type="file"
@@ -985,8 +985,8 @@ export const ProfilePage: React.FC = () => {
         <Card
           header={
             <div className="flex items-center gap-2">
-              <GraduationCap className="h-4 w-4 text-[#5288B8]" />
-              <span className="text-sm font-semibold text-[#3C4B63]">Institution Data</span>
+              <GraduationCap className="h-4 w-4 text-[#007AFF]" />
+              <span className="text-sm font-semibold text-[#1D1D1F]">Institution Data</span>
             </div>
           }
         >
@@ -1016,9 +1016,9 @@ const Field: React.FC<{
   placeholder?: string;
 }> = ({ label, value, onChange, placeholder }) => (
   <label className="block">
-    <span className="mb-1 block text-xs font-medium text-[#748199]">{label}</span>
+    <span className="mb-1 block text-xs font-medium text-[#6E6E73]">{label}</span>
     <input
-      className="w-full rounded-lg border border-[#E0E5EF] bg-white px-3.5 py-2 text-xs text-[#3C4B63] placeholder:text-[#8490A2] focus:border-[#5288B8] focus:outline-none focus:ring-1 focus:ring-[#5288B8]"
+      className="w-full rounded-lg border border-[#D2D2D7] bg-white px-3.5 py-2 text-xs text-[#1D1D1F] placeholder:text-[#8490A2] focus:border-[#007AFF] focus:outline-none focus:ring-1 focus:ring-[#007AFF]"
       value={value || ''}
       placeholder={placeholder}
       onChange={(e) => onChange(e.target.value)}
@@ -1027,8 +1027,8 @@ const Field: React.FC<{
 );
 
 const Row: React.FC<{ label: string; value?: string }> = ({ label, value }) => (
-  <div className="flex justify-between gap-4 border-b border-[#E0E5EF] pb-2">
+  <div className="flex justify-between gap-4 border-b border-[#D2D2D7] pb-2">
     <dt className="text-[#8490A2] truncate">{label}</dt>
-    <dd className="text-right font-medium text-[#3C4B63] truncate">{value || 'Not provided'}</dd>
+    <dd className="text-right font-medium text-[#1D1D1F] truncate">{value || 'Not provided'}</dd>
   </div>
 );

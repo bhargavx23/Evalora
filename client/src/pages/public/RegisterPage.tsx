@@ -140,14 +140,14 @@ export const RegisterPage: React.FC = () => {
 
   return (
     <div className="max-w-lg mx-auto py-12 px-4">
-      <Card padding="lg" className="border-[#E0E5EF] bg-white shadow-xl">
+      <Card padding="lg" className="border-[#D2D2D7] bg-white shadow-xl">
         <div className="space-y-6">
           <div className="space-y-1.5">
             <div className="page-kicker">Student Registration</div>
-            <h2 className="display-heading text-3xl text-[#3C4B63]">
+            <h2 className="display-heading text-3xl text-[#1D1D1F]">
               Create Your Evalora Account
             </h2>
-            <p className="text-xs text-[#748199]">
+            <p className="text-xs text-[#6E6E73]">
               Register your personal practice account to access questions, practice sessions, and skill analytics.
             </p>
           </div>
@@ -222,11 +222,11 @@ export const RegisterPage: React.FC = () => {
               </div>
 
               {/* Optional Pera Wallet Registration Section (Automated, Zero Manual Input) */}
-              <div className="rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-4 space-y-3">
+              <div className="rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] p-4 space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Wallet className="w-4 h-4 text-[#5288B8]" />
-                    <span className="font-semibold text-xs text-[#3C4B63]">
+                    <Wallet className="w-4 h-4 text-[#007AFF]" />
+                    <span className="font-semibold text-xs text-[#1D1D1F]">
                       Pera Wallet (Optional)
                     </span>
                   </div>
@@ -259,7 +259,7 @@ export const RegisterPage: React.FC = () => {
                   </div>
                 ) : (
                   <div className="space-y-2">
-                    <p className="text-[11px] text-[#748199] leading-relaxed">
+                    <p className="text-[11px] text-[#6E6E73] leading-relaxed">
                       Optionally connect your Pera Wallet now to enable instant QR login on Algorand and unlock paid practice attempts.
                     </p>
                     <Button
@@ -269,7 +269,7 @@ export const RegisterPage: React.FC = () => {
                       className="w-full justify-center"
                       onClick={handleConnectAndSignRegistrationWallet}
                       isLoading={isWalletLoading}
-                      icon={<Wallet className="w-3.5 h-3.5 text-[#5288B8]" />}
+                      icon={<Wallet className="w-3.5 h-3.5 text-[#007AFF]" />}
                     >
                       Connect Pera Wallet
                     </Button>
@@ -288,12 +288,12 @@ export const RegisterPage: React.FC = () => {
               </Button>
           </form>
 
-          <div className="space-y-2 text-center text-xs text-[#748199] pt-3 border-t border-[#E0E5EF]">
+          <div className="space-y-2 text-center text-xs text-[#6E6E73] pt-3 border-t border-[#D2D2D7]">
             <div>
               Already have an account?{" "}
               <Link
                 to="/login"
-                className="font-semibold text-[#5288B8] hover:text-[#3C648E]"
+                className="font-semibold text-[#007AFF] hover:text-[#0056CC]"
               >
                 Sign In
               </Link>
@@ -302,7 +302,7 @@ export const RegisterPage: React.FC = () => {
               Are you an educational institution?{" "}
               <Link
                 to="/college-register"
-                className="font-semibold text-[#5288B8] hover:text-[#3C648E]"
+                className="font-semibold text-[#007AFF] hover:text-[#0056CC]"
               >
                 Register Your Institution
               </Link>

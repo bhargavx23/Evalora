@@ -172,7 +172,7 @@ export const CodeSimilarityViewer: React.FC = () => {
                         <div className="w-20 h-1.5 bg-gray-200 rounded-full overflow-hidden">
                           <div
                             className={`h-full rounded-full ${
-                              isHigh ? 'bg-[#F8EDEF]' : 'bg-[#EAF1F9]'
+                              isHigh ? 'bg-[#F8EDEF]' : 'bg-[#E5F1FF]'
                             }`}
                             style={{ width: `${report.similarityPercentage}%` }}
                           />
@@ -240,7 +240,7 @@ export const CodeSimilarityViewer: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-1">
                 <span className="font-bold text-gray-700">Student A Submission ({inspectPair.studentAId?.name}):</span>
-                <pre className="p-3 bg-[#EFF2F8] text-[#719B84] font-mono text-[11px] rounded-xl h-64 overflow-y-auto">
+                <pre className="p-3 bg-[#F5F5F7] text-[#719B84] font-mono text-[11px] rounded-xl h-64 overflow-y-auto">
 {`# Student A Submission
 def maxSubArray(nums):
     max_sum = nums[0]
@@ -254,7 +254,7 @@ def maxSubArray(nums):
 
               <div className="space-y-1">
                 <span className="font-bold text-gray-700">Student B Submission ({inspectPair.studentBId?.name}):</span>
-                <pre className="p-3 bg-[#EFF2F8] text-[#719B84] font-mono text-[11px] rounded-xl h-64 overflow-y-auto">
+                <pre className="p-3 bg-[#F5F5F7] text-[#719B84] font-mono text-[11px] rounded-xl h-64 overflow-y-auto">
 {`# Student B Submission (Renamed variables)
 def maxSubArray(arr):
     ans = arr[0]

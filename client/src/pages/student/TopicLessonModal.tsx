@@ -74,11 +74,11 @@ const InteractiveCodeExample: React.FC<{
   return (
     <div className="rounded-xl overflow-hidden border border-slate-200/90 bg-white shadow-xs">
       {/* Code Card Header */}
-      <div className="flex items-center justify-between bg-[#EFF2F8] px-4 py-2.5 text-xs text-[#3C4B63]">
+      <div className="flex items-center justify-between bg-[#F5F5F7] px-4 py-2.5 text-xs text-[#1D1D1F]">
         <div className="flex items-center gap-2">
           <Code2 className="h-4 w-4 text-[#A5B4FC] shrink-0" />
           <span className="font-semibold text-[#5B586D]">{example.title}</span>
-          <span className="uppercase text-3xs font-bold text-[#A5B4FC] bg-[#5288B8]/20 px-2 py-0.5 rounded border border-[#5288B8]/40">
+          <span className="uppercase text-3xs font-bold text-[#A5B4FC] bg-[#007AFF]/20 px-2 py-0.5 rounded border border-[#007AFF]/40">
             {example.language}
           </span>
         </div>
@@ -87,7 +87,7 @@ const InteractiveCodeExample: React.FC<{
             <button
               type="button"
               onClick={() => setShowPreview(!showPreview)}
-              className="flex items-center gap-1 text-2xs font-medium text-[#748199] hover:text-[#3C4B63] bg-[#EFF2F8] hover:bg-[#E0E5EF] px-2.5 py-1 rounded transition-colors"
+              className="flex items-center gap-1 text-2xs font-medium text-[#6E6E73] hover:text-[#1D1D1F] bg-[#F5F5F7] hover:bg-[#D2D2D7] px-2.5 py-1 rounded transition-colors"
             >
               <Play className="h-3 w-3 text-[#719B84]" />
               <span>{showPreview ? 'View Code' : 'Try / Live Preview'}</span>
@@ -96,7 +96,7 @@ const InteractiveCodeExample: React.FC<{
           <button
             type="button"
             onClick={handleCopy}
-            className="flex items-center gap-1 text-2xs font-medium text-[#748199] hover:text-[#3C4B63] bg-[#EFF2F8] hover:bg-[#E0E5EF] px-2.5 py-1 rounded transition-colors"
+            className="flex items-center gap-1 text-2xs font-medium text-[#6E6E73] hover:text-[#1D1D1F] bg-[#F5F5F7] hover:bg-[#D2D2D7] px-2.5 py-1 rounded transition-colors"
             title="Copy code to clipboard"
           >
             {copied ? (
@@ -122,7 +122,7 @@ const InteractiveCodeExample: React.FC<{
             <button
               type="button"
               onClick={handleReset}
-              className="flex items-center gap-1 text-[#5288B8] hover:text-[#3C648E] text-2xs font-semibold"
+              className="flex items-center gap-1 text-[#007AFF] hover:text-[#0056CC] text-2xs font-semibold"
             >
               <RotateCcw className="h-3 w-3" />
               <span>Reset to Example</span>
@@ -131,14 +131,14 @@ const InteractiveCodeExample: React.FC<{
           <div className="rounded-lg border border-slate-300 bg-white p-4 min-h-[110px] overflow-auto shadow-inner">
             <iframe
               title="Example Preview"
-              srcDoc={`<!DOCTYPE html><html><head><meta charset="utf-8"><style>body{font-family:system-ui,-apple-system,sans-serif;margin:12px;color:#E0E5EF;line-height:1.5;}</style></head><body>${userCode}</body></html>`}
+              srcDoc={`<!DOCTYPE html><html><head><meta charset="utf-8"><style>body{font-family:system-ui,-apple-system,sans-serif;margin:12px;color:#D2D2D7;line-height:1.5;}</style></head><body>${userCode}</body></html>`}
               className="w-full h-32 border-0 bg-transparent"
               sandbox="allow-scripts"
             />
           </div>
         </div>
       ) : (
-        <div className="bg-[#EFF2F8] p-4 text-xs font-mono overflow-x-auto leading-relaxed text-[#5B586D] border-b border-[#E0E5EF]">
+        <div className="bg-[#F5F5F7] p-4 text-xs font-mono overflow-x-auto leading-relaxed text-[#5B586D] border-b border-[#D2D2D7]">
           <pre><code>{userCode}</code></pre>
         </div>
       )}
@@ -153,7 +153,7 @@ const InteractiveCodeExample: React.FC<{
       {example.lineByLineExplanation && example.lineByLineExplanation.length > 0 && (
         <div className="bg-white p-4 border-b border-slate-100">
           <h5 className="text-2xs font-bold uppercase tracking-wider text-slate-500 mb-2.5 flex items-center gap-1.5">
-            <Code2 className="h-3.5 w-3.5 text-[#5288B8]" />
+            <Code2 className="h-3.5 w-3.5 text-[#007AFF]" />
             <span>Line-by-Line Breakdown</span>
           </h5>
           <div className="divide-y divide-slate-100 rounded-lg border border-slate-200 overflow-hidden text-xs">
@@ -162,7 +162,7 @@ const InteractiveCodeExample: React.FC<{
               const text = typeof item === 'object' && item?.explanation !== undefined ? item.explanation : String(item);
               return (
                 <div key={lIdx} className="flex items-start gap-3 p-2.5 bg-slate-50/50 hover:bg-slate-50 transition-colors">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#EAF1F9] font-mono text-3xs font-bold text-[#3C648E] border border-[#CFE2DC]">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#E5F1FF] font-mono text-3xs font-bold text-[#0056CC] border border-[#CFE2DC]">
                     {lineNum}
                   </span>
                   <span className="text-slate-700 leading-relaxed">{text}</span>
@@ -309,12 +309,12 @@ export const TopicLessonModal: React.FC<TopicLessonModalProps> = ({
         {/* Peaceful Light Header */}
         <div className="flex items-center justify-between border-b border-slate-200/80 bg-white/95 px-6 py-4 backdrop-blur-xs">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EAF1F9] text-[#5288B8] border border-[#CFE2DC]">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#E5F1FF] text-[#007AFF] border border-[#CFE2DC]">
               <BookOpen className="h-5 w-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-3xs font-bold uppercase tracking-wider text-[#3C648E] bg-[#EAF1F9] px-2.5 py-0.5 rounded-full border border-[#CFE2DC]">
+                <span className="text-3xs font-bold uppercase tracking-wider text-[#0056CC] bg-[#E5F1FF] px-2.5 py-0.5 rounded-full border border-[#CFE2DC]">
                   Topic Learning
                 </span>
                 {content?.estimatedMinutes && (
@@ -341,13 +341,13 @@ export const TopicLessonModal: React.FC<TopicLessonModalProps> = ({
         </div>
 
         {/* Tab switchers */}
-        <div className="flex border-b border-[#E0E5EF] bg-white px-6">
+        <div className="flex border-b border-[#D2D2D7] bg-white px-6">
           <button
             onClick={() => setActiveTab('lessons')}
             className={`py-3.5 px-4 text-xs font-bold border-b-2 transition-all flex items-center gap-2 ${
               activeTab === 'lessons'
-                ? 'border-[#5288B8] text-[#5288B8]'
-                : 'border-transparent text-[#748199] hover:text-[#3C4B63]'
+                ? 'border-[#007AFF] text-[#007AFF]'
+                : 'border-transparent text-[#6E6E73] hover:text-[#1D1D1F]'
             }`}
           >
             <BookOpen className="h-4 w-4" />
@@ -357,8 +357,8 @@ export const TopicLessonModal: React.FC<TopicLessonModalProps> = ({
             onClick={() => setActiveTab('exercises')}
             className={`py-3.5 px-4 text-xs font-bold border-b-2 transition-all flex items-center gap-2 ${
               activeTab === 'exercises'
-                ? 'border-[#5288B8] text-[#5288B8]'
-                : 'border-transparent text-[#748199] hover:text-[#3C4B63]'
+                ? 'border-[#007AFF] text-[#007AFF]'
+                : 'border-transparent text-[#6E6E73] hover:text-[#1D1D1F]'
             }`}
           >
             <Code2 className="h-4 w-4" />
@@ -371,62 +371,62 @@ export const TopicLessonModal: React.FC<TopicLessonModalProps> = ({
           {isLoading ? (
             <div className="flex h-64 items-center justify-center">
               <div className="flex flex-col items-center gap-2">
-                <Loader2 className="h-8 w-8 animate-spin text-[#5288B8]" />
-                <p className="text-xs font-medium text-[#748199]">Loading verified lesson content...</p>
+                <Loader2 className="h-8 w-8 animate-spin text-[#007AFF]" />
+                <p className="text-xs font-medium text-[#6E6E73]">Loading verified lesson content...</p>
               </div>
             </div>
           ) : !content ? (
-            <p className="text-center text-sm text-[#748199] py-12">No content available for this topic.</p>
+            <p className="text-center text-sm text-[#6E6E73] py-12">No content available for this topic.</p>
           ) : activeTab === 'lessons' ? (
             /* Tab 1: Progressive Beginner Lessons */
             <div className="space-y-6">
               {/* Topic Overview Banner */}
-              <div className="rounded-xl bg-white border border-[#E0E5EF] p-5 shadow-xs">
+              <div className="rounded-xl bg-white border border-[#D2D2D7] p-5 shadow-xs">
                 <div className="flex items-start gap-3">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#EAF1F9] text-[#5288B8]">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#E5F1FF] text-[#007AFF]">
                     <Compass className="h-4 w-4" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#3C648E] mb-1">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#0056CC] mb-1">
                       Topic Overview
                     </h4>
-                    <p className="text-sm leading-relaxed text-[#3C4B63]">{content.overview}</p>
+                    <p className="text-sm leading-relaxed text-[#1D1D1F]">{content.overview}</p>
                   </div>
                 </div>
               </div>
 
               {/* Lesson Items */}
               {content.lessons.map((lesson, lIdx) => (
-                <div key={lesson.lessonId || lIdx} className="space-y-4 rounded-2xl border border-[#E0E5EF] bg-white p-6 shadow-xs">
+                <div key={lesson.lessonId || lIdx} className="space-y-4 rounded-2xl border border-[#D2D2D7] bg-white p-6 shadow-xs">
                   {/* Lesson Heading */}
-                  <div className="border-b border-[#E0E5EF] pb-3">
-                    <span className="text-3xs font-bold uppercase tracking-wider text-[#3C648E] bg-[#EAF1F9] px-2.5 py-0.5 rounded-full border border-[#CFE2DC]">
+                  <div className="border-b border-[#D2D2D7] pb-3">
+                    <span className="text-3xs font-bold uppercase tracking-wider text-[#0056CC] bg-[#E5F1FF] px-2.5 py-0.5 rounded-full border border-[#CFE2DC]">
                       Step {lIdx + 1}
                     </span>
-                    <h3 className="text-base font-bold text-[#3C4B63] mt-1 flex items-center gap-2">
+                    <h3 className="text-base font-bold text-[#1D1D1F] mt-1 flex items-center gap-2">
                       {lesson.title}
                     </h3>
                   </div>
 
                   {/* 1. What is it? */}
-                  <div className="rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-4">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#3C4B63] mb-1.5 flex items-center gap-1.5">
-                      <HelpCircle className="h-4 w-4 text-[#5288B8]" />
+                  <div className="rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] p-4">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#1D1D1F] mb-1.5 flex items-center gap-1.5">
+                      <HelpCircle className="h-4 w-4 text-[#007AFF]" />
                       <span>1. What is it?</span>
                     </h4>
-                    <p className="text-xs sm:text-sm leading-relaxed text-[#3C4B63]">
+                    <p className="text-xs sm:text-sm leading-relaxed text-[#1D1D1F]">
                       {lesson.whatIsIt || lesson.concept}
                     </p>
                   </div>
 
                   {/* 2. Why do we need it? */}
                   {(lesson.whyNeeded || lesson.realWorldAnalogy) && (
-                    <div className="rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-4">
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-[#3C4B63] mb-1.5 flex items-center gap-1.5">
+                    <div className="rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] p-4">
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-[#1D1D1F] mb-1.5 flex items-center gap-1.5">
                         <Lightbulb className="h-4 w-4 text-[#8A7047]" />
                         <span>2. Why do we need it?</span>
                       </h4>
-                      <p className="text-xs sm:text-sm leading-relaxed text-[#3C4B63]">
+                      <p className="text-xs sm:text-sm leading-relaxed text-[#1D1D1F]">
                         {lesson.whyNeeded || `Understanding ${lesson.title} provides the foundation for building real-world web applications and scalable software systems.`}
                       </p>
                     </div>
@@ -434,19 +434,19 @@ export const TopicLessonModal: React.FC<TopicLessonModalProps> = ({
 
                   {/* 3. Syntax Breakdown / Rules */}
                   {lesson.syntaxBreakdown && (
-                    <div className="rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-4">
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-[#3C4B63] mb-2 flex items-center gap-1.5">
-                        <Code2 className="h-4 w-4 text-[#5288B8]" />
+                    <div className="rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] p-4">
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-[#1D1D1F] mb-2 flex items-center gap-1.5">
+                        <Code2 className="h-4 w-4 text-[#007AFF]" />
                         <span>3. Syntax &amp; Fundamental Rules</span>
                       </h4>
                       {Array.isArray(lesson.syntaxBreakdown) ? (
                         <div className="space-y-2">
                           {lesson.syntaxBreakdown.map((item: any, sIdx: number) => (
-                            <div key={sIdx} className="flex items-start gap-3 rounded-lg border border-[#E0E5EF] bg-white p-2.5 text-xs">
-                              <code className="rounded bg-[#EAF1F9] px-2 py-0.5 font-mono text-3xs font-bold text-[#3C648E] shrink-0 border border-[#CFE2DC]">
+                            <div key={sIdx} className="flex items-start gap-3 rounded-lg border border-[#D2D2D7] bg-white p-2.5 text-xs">
+                              <code className="rounded bg-[#E5F1FF] px-2 py-0.5 font-mono text-3xs font-bold text-[#0056CC] shrink-0 border border-[#CFE2DC]">
                                 {typeof item === 'object' && item?.element ? item.element : String(item)}
                               </code>
-                              <span className="text-[#3C4B63]">
+                              <span className="text-[#1D1D1F]">
                                 {typeof item === 'object' && item?.explanation ? item.explanation : ''}
                               </span>
                             </div>
@@ -521,7 +521,7 @@ export const TopicLessonModal: React.FC<TopicLessonModalProps> = ({
                           </span>
                           <span
                             className={`rounded-md px-2 py-0.5 text-3xs font-semibold capitalize ${
-                              ex.type === 'coding' ? 'bg-[#EAF1F9] text-[#3C648E]' : 'bg-[#E5F2EB] text-[#4C765D]'
+                              ex.type === 'coding' ? 'bg-[#E5F1FF] text-[#0056CC]' : 'bg-[#E5F2EB] text-[#4C765D]'
                             }`}
                           >
                             {ex.type.replace('_', ' ')}
@@ -574,14 +574,14 @@ export const TopicLessonModal: React.FC<TopicLessonModalProps> = ({
                               onClick={() => handleSelectOption(ex.exerciseId, opt.id)}
                               className={`w-full text-left rounded-lg p-3 text-xs transition-all border flex items-center justify-between ${
                                 isSelected
-                                  ? 'border-[#5288B8] bg-[#EAF1F9]/60 text-[#3C4B63] font-semibold'
+                                  ? 'border-[#007AFF] bg-[#E5F1FF]/60 text-[#1D1D1F] font-semibold'
                                   : 'border-slate-200 bg-slate-50/60 hover:bg-slate-100/70 text-slate-800'
                               }`}
                             >
                               <span>{opt.text}</span>
                               <div
                                 className={`h-4 w-4 rounded-full border flex items-center justify-center shrink-0 ${
-                                  isSelected ? 'border-[#5288B8] bg-[#5288B8] text-[#3C4B63]' : 'border-slate-300'
+                                  isSelected ? 'border-[#007AFF] bg-[#007AFF] text-[#1D1D1F]' : 'border-slate-300'
                                 }`}
                               >
                                 {isSelected && <span className="h-1.5 w-1.5 rounded-full bg-white" />}
@@ -594,7 +594,7 @@ export const TopicLessonModal: React.FC<TopicLessonModalProps> = ({
 
                     {/* Starter Code Preview for Coding Challenge */}
                     {ex.type === 'coding' && ex.starterCode && (
-                      <div className="rounded-lg overflow-hidden border border-[#E0E5EF] bg-[#EFF2F8] p-3 text-xs font-mono text-[#5B586D]">
+                      <div className="rounded-lg overflow-hidden border border-[#D2D2D7] bg-[#F5F5F7] p-3 text-xs font-mono text-[#5B586D]">
                         <pre>
                           <code>{ex.starterCode}</code>
                         </pre>
@@ -653,7 +653,7 @@ export const TopicLessonModal: React.FC<TopicLessonModalProps> = ({
         </div>
 
         {/* Peaceful Footer */}
-        <div className="flex items-center justify-between border-t border-[#E0E5EF] bg-white px-6 py-3.5 text-xs">
+        <div className="flex items-center justify-between border-t border-[#D2D2D7] bg-white px-6 py-3.5 text-xs">
           <Button variant="outline" size="sm" onClick={onClose}>
             Close
           </Button>

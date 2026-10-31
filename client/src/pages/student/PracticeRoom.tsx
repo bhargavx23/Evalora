@@ -633,8 +633,8 @@ export const PracticeRoom: React.FC = () => {
                         onClick={() => handleOptionSelect(opt.id)}
                         className={`group w-full p-4 rounded-xl border text-left text-sm flex items-center justify-between transition-all duration-150 ease-out active:scale-[0.99] ${
                           isSelected
-                            ? "bg-[#EAF1F9] border-[#5288B8] text-[#3C4B63] font-semibold shadow-xs ring-1 ring-[#5288B8]/30"
-                            : "bg-white border-[#E0E5EF] hover:border-[#CFE2DC] hover:bg-[#F7F8FC] text-[#3C4B63]"
+                            ? "bg-[#E5F1FF] border-[#007AFF] text-[#1D1D1F] font-semibold shadow-xs ring-1 ring-[#007AFF]/30"
+                            : "bg-white border-[#D2D2D7] hover:border-[#CFE2DC] hover:bg-[#F5F5F7] text-[#1D1D1F]"
                         }`}
                       >
                         <span className="leading-relaxed">{opt.text}</span>
@@ -643,8 +643,8 @@ export const PracticeRoom: React.FC = () => {
                             isMulti ? "rounded-md" : "rounded-full"
                           } ${
                             isSelected
-                              ? "border-[#5288B8] bg-[#5288B8] text-white shadow-xs"
-                              : "border-[#D0DDD7] bg-white group-hover:border-[#5288B8]"
+                              ? "border-[#007AFF] bg-[#007AFF] text-white shadow-xs"
+                              : "border-[#D0DDD7] bg-white group-hover:border-[#007AFF]"
                           }`}
                         >
                           {isSelected && (

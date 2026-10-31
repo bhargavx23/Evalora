@@ -333,7 +333,7 @@ export const DsaTestCasePanel: React.FC<DsaTestCasePanelProps> = ({
             <span className="block text-[11px] font-bold uppercase tracking-wider text-text-muted">
               Execution Output
             </span>
-            <div className="rounded-xl border border-border-subtle bg-[#EFF2F8] p-4 font-mono text-xs text-[#3C4B63] overflow-x-auto min-h-[180px]">
+            <div className="rounded-xl border border-border-subtle bg-[#F5F5F7] p-4 font-mono text-xs text-[#1D1D1F] overflow-x-auto min-h-[180px]">
               {singleRunResult.stdout ? (
                 <pre className="whitespace-pre-wrap text-[#719B84]">{singleRunResult.stdout}</pre>
               ) : (

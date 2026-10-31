@@ -60,7 +60,7 @@ export const SkillProfile: React.FC = () => {
 
   const getBarColor = (score: number) => {
     if (score >= 75) return "#679B7C";
-    if (score >= 50) return "#5288B8";
+    if (score >= 50) return "#007AFF";
     return "#C6A466";
   };
 
@@ -72,10 +72,10 @@ export const SkillProfile: React.FC = () => {
   return (
     <div className="page-shell space-y-8">
       {/* Header (Section 41) */}
-      <header className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#E0E5EF] pb-6">
+      <header className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#D2D2D7] pb-6">
         <div>
           <p className="page-kicker">Progress & Analytics</p>
-          <h1 className="page-title display-heading text-4xl text-[#3C4B63]">
+          <h1 className="page-title display-heading text-4xl text-[#1D1D1F]">
             Skill Profile & Topic Mastery
           </h1>
           <p className="page-copy">
@@ -99,25 +99,25 @@ export const SkillProfile: React.FC = () => {
         <Card pastelAccent="purple">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-[#3C648E] flex items-center gap-1.5 uppercase tracking-wider">
-                <Target className="w-4 h-4 text-[#5288B8]" />
+              <span className="text-xs font-semibold text-[#0056CC] flex items-center gap-1.5 uppercase tracking-wider">
+                <Target className="w-4 h-4 text-[#007AFF]" />
                 Adaptive Skill-Gap Diagnostics
               </span>
               <Badge variant="purple">Placement Readiness</Badge>
             </div>
 
             <div className="space-y-1.5">
-              <h3 className="text-lg font-semibold text-[#3C4B63]">
+              <h3 className="text-lg font-semibold text-[#1D1D1F]">
                 Recommended focus: {recommendations.primaryWeakArea} &{" "}
                 {recommendations.secondaryWeakArea}
               </h3>
-              <p className="text-sm text-[#748199] leading-relaxed max-w-3xl">
+              <p className="text-sm text-[#6E6E73] leading-relaxed max-w-3xl">
                 {recommendations.summary}
               </p>
             </div>
 
-            <div className="pt-3 border-t border-[#E0E5EF]">
-              <div className="text-xs font-semibold text-[#748199] mb-2.5 uppercase tracking-wider">
+            <div className="pt-3 border-t border-[#D2D2D7]">
+              <div className="text-xs font-semibold text-[#6E6E73] mb-2.5 uppercase tracking-wider">
                 Recommended Practice Sequence
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
@@ -125,9 +125,9 @@ export const SkillProfile: React.FC = () => {
                   (step: string, idx: number) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-xl bg-[#F7F8FC] border border-[#E0E5EF] text-xs font-medium text-[#3C4B63] flex items-center gap-2.5"
+                      className="p-3 rounded-xl bg-[#F5F5F7] border border-[#D2D2D7] text-xs font-medium text-[#1D1D1F] flex items-center gap-2.5"
                     >
-                      <span className="w-5 h-5 rounded-full bg-[#EAF1F9] text-[#3C648E] text-[10px] font-bold flex items-center justify-center shrink-0">
+                      <span className="w-5 h-5 rounded-full bg-[#E5F1FF] text-[#0056CC] text-[10px] font-bold flex items-center justify-center shrink-0">
                         {idx + 1}
                       </span>
                       <span className="truncate">{step}</span>
@@ -138,7 +138,7 @@ export const SkillProfile: React.FC = () => {
             </div>
 
             <div className="pt-2 flex flex-wrap items-center justify-between gap-3">
-              <span className="text-xs text-[#748199]">
+              <span className="text-xs text-[#6E6E73]">
                 {recommendations.actionPlan}
               </span>
               <Button
@@ -164,11 +164,11 @@ export const SkillProfile: React.FC = () => {
       <Card
         header={
           <div className="flex items-center justify-between">
-            <span className="text-sm font-semibold text-[#3C4B63] flex items-center gap-2">
-              <BarChart2 className="w-4 h-4 text-[#5288B8]" />
+            <span className="text-sm font-semibold text-[#1D1D1F] flex items-center gap-2">
+              <BarChart2 className="w-4 h-4 text-[#007AFF]" />
               Topic-wise Accuracy Breakdown
             </span>
-            <span className="text-xs text-[#748199]">
+            <span className="text-xs text-[#6E6E73]">
               {skills.length} Topics Evaluated
             </span>
           </div>
@@ -180,7 +180,7 @@ export const SkillProfile: React.FC = () => {
               <div key={s.topic} className="space-y-1.5">
                 <div className="flex items-center justify-between text-xs">
                   <div className="flex items-center gap-2">
-                    <span className="font-semibold text-[#3C4B63]">
+                    <span className="font-semibold text-[#1D1D1F]">
                       {s.topic}
                     </span>
                     <Badge
@@ -196,16 +196,16 @@ export const SkillProfile: React.FC = () => {
                     </Badge>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="text-[#748199] text-[11px]">
+                    <span className="text-[#6E6E73] text-[11px]">
                       {s.totalCorrect}/{s.totalAttempted} Solved
                     </span>
-                    <span className="font-semibold text-[#3C4B63] w-9 text-right">
+                    <span className="font-semibold text-[#1D1D1F] w-9 text-right">
                       {s.scorePercentage}%
                     </span>
                   </div>
                 </div>
 
-                <div className="w-full h-2 bg-[#F7F8FC] rounded-full overflow-hidden">
+                <div className="w-full h-2 bg-[#F5F5F7] rounded-full overflow-hidden">
                   <div
                     className="h-full rounded-full transition-all duration-500"
                     style={{
@@ -217,7 +217,7 @@ export const SkillProfile: React.FC = () => {
               </div>
             ))
           ) : (
-            <p className="text-xs text-[#748199] py-4 text-center">
+            <p className="text-xs text-[#6E6E73] py-4 text-center">
               Complete a practice session to unlock topic-wise accuracy metrics.
             </p>
           )}
@@ -230,7 +230,7 @@ export const SkillProfile: React.FC = () => {
           pastelAccent="mint"
           header={
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-[#3C4B63] flex items-center gap-1.5">
+              <span className="text-xs font-semibold text-[#1D1D1F] flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-[#4C765D]" />
                 Strong Topics (&ge; 75%)
               </span>
@@ -242,13 +242,13 @@ export const SkillProfile: React.FC = () => {
             {strongAreas.map((item: any) => (
               <div
                 key={item.topic}
-                className="p-3.5 bg-[#F7F8FC] rounded-xl border border-[#E0E5EF] flex items-center justify-between text-xs"
+                className="p-3.5 bg-[#F5F5F7] rounded-xl border border-[#D2D2D7] flex items-center justify-between text-xs"
               >
                 <div>
-                  <div className="font-semibold text-[#3C4B63]">
+                  <div className="font-semibold text-[#1D1D1F]">
                     {item.topic}
                   </div>
-                  <div className="text-[11px] text-[#748199]">
+                  <div className="text-[11px] text-[#6E6E73]">
                     Streak: {item.consecutiveSuccessCount ?? 0} consecutive
                     successes
                   </div>
@@ -259,7 +259,7 @@ export const SkillProfile: React.FC = () => {
               </div>
             ))}
             {strongAreas.length === 0 && (
-              <p className="text-xs text-[#748199] text-center py-4">
+              <p className="text-xs text-[#6E6E73] text-center py-4">
                 No topics above 75% accuracy yet.
               </p>
             )}
@@ -270,7 +270,7 @@ export const SkillProfile: React.FC = () => {
           pastelAccent="rose"
           header={
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-[#3C4B63] flex items-center gap-1.5">
+              <span className="text-xs font-semibold text-[#1D1D1F] flex items-center gap-1.5">
                 <AlertTriangle className="w-4 h-4 text-[#8A7047]" />
                 Weak Topics (&lt; 50%)
               </span>
@@ -282,13 +282,13 @@ export const SkillProfile: React.FC = () => {
             {needsImprovement.map((item: any) => (
               <div
                 key={item.topic}
-                className="p-3.5 bg-[#F7F8FC] rounded-xl border border-[#E0E5EF] flex items-center justify-between text-xs"
+                className="p-3.5 bg-[#F5F5F7] rounded-xl border border-[#D2D2D7] flex items-center justify-between text-xs"
               >
                 <div>
-                  <div className="font-semibold text-[#3C4B63]">
+                  <div className="font-semibold text-[#1D1D1F]">
                     {item.topic}
                   </div>
-                  <div className="text-[11px] text-[#748199]">
+                  <div className="text-[11px] text-[#6E6E73]">
                     Recommended for targeted reinforcement
                   </div>
                 </div>
@@ -308,7 +308,7 @@ export const SkillProfile: React.FC = () => {
               </div>
             ))}
             {needsImprovement.length === 0 && (
-              <p className="text-xs text-[#748199] text-center py-4">
+              <p className="text-xs text-[#6E6E73] text-center py-4">
                 All evaluated topics are at 50% or higher!
               </p>
             )}
@@ -320,26 +320,26 @@ export const SkillProfile: React.FC = () => {
       <Card
         header={
           <div className="flex items-center justify-between">
-            <span className="text-sm font-semibold text-[#3C4B63] flex items-center gap-2">
-              <Clock className="w-4 h-4 text-[#5288B8]" />
+            <span className="text-sm font-semibold text-[#1D1D1F] flex items-center gap-2">
+              <Clock className="w-4 h-4 text-[#007AFF]" />
               Recent Practice Sessions
             </span>
-            <span className="text-xs text-[#748199]">Latest 5 sessions</span>
+            <span className="text-xs text-[#6E6E73]">Latest 5 sessions</span>
           </div>
         }
       >
         {recentSessions.length > 0 ? (
-          <div className="divide-y divide-[#E0E5EF]">
+          <div className="divide-y divide-[#D2D2D7]">
             {recentSessions.map((sec: any) => (
               <div
                 key={sec._id}
                 className="flex items-center justify-between py-3 first:pt-0 last:pb-0 text-xs"
               >
                 <div>
-                  <div className="font-semibold text-[#3C4B63]">
+                  <div className="font-semibold text-[#1D1D1F]">
                     {sec.topic || "Custom Multi-Section Practice"}
                   </div>
-                  <div className="text-[#748199]">
+                  <div className="text-[#6E6E73]">
                     {sec.totalQuestions || 10} questions •{" "}
                     {sec.createdAt
                       ? new Date(sec.createdAt).toLocaleDateString()
@@ -371,7 +371,7 @@ export const SkillProfile: React.FC = () => {
             ))}
           </div>
         ) : (
-          <p className="text-xs text-[#748199] text-center py-4">
+          <p className="text-xs text-[#6E6E73] text-center py-4">
             No recent practice sessions recorded yet.
           </p>
         )}

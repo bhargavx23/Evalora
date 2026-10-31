@@ -43,7 +43,7 @@ export const CareerPage: React.FC = () => {
     return (
       <div className="page-shell">
         <Card>
-          <div className="h-40 animate-pulse rounded bg-[#EFF2F8]" />
+          <div className="h-40 animate-pulse rounded bg-[#F5F5F7]" />
         </Card>
       </div>
     );
@@ -53,9 +53,9 @@ export const CareerPage: React.FC = () => {
 
   return (
     <div className="page-shell">
-      <header className="border-b border-[#E0E5EF] pb-7">
+      <header className="border-b border-[#D2D2D7] pb-7">
         <p className="page-kicker">Career Readiness</p>
-        <h1 className="page-title display-heading text-4xl text-[#3C4B63]">
+        <h1 className="page-title display-heading text-4xl text-[#1D1D1F]">
           Build a stronger professional profile.
         </h1>
         <p className="page-copy">
@@ -66,11 +66,11 @@ export const CareerPage: React.FC = () => {
       <section className="grid gap-6 md:grid-cols-3">
         <Card pastelAccent="blue">
           <div className="flex items-center justify-between">
-            <UserRound className="h-5 w-5 text-[#5288B8]" />
+            <UserRound className="h-5 w-5 text-[#007AFF]" />
             <Badge variant="blue">Profile</Badge>
           </div>
-          <p className="mt-7 text-4xl font-semibold text-[#3C4B63]">{data?.completion?.percentage ?? 0}%</p>
-          <p className="mt-1 text-sm text-[#748199]">Profile completion</p>
+          <p className="mt-7 text-4xl font-semibold text-[#1D1D1F]">{data?.completion?.percentage ?? 0}%</p>
+          <p className="mt-1 text-sm text-[#6E6E73]">Profile completion</p>
           <Button
             className="mt-6 w-full"
             variant="outline"
@@ -90,16 +90,16 @@ export const CareerPage: React.FC = () => {
           </div>
           {analysis ? (
             <>
-              <p className="mt-7 text-4xl font-semibold text-[#3C4B63]">
+              <p className="mt-7 text-4xl font-semibold text-[#1D1D1F]">
                 {analysis.score}
-                <span className="text-lg text-[#748199]">/100</span>
+                <span className="text-lg text-[#6E6E73]">/100</span>
               </p>
-              <p className="mt-1 text-sm text-[#748199]">Evalora ATS compatibility estimate</p>
+              <p className="mt-1 text-sm text-[#6E6E73]">Evalora ATS compatibility estimate</p>
             </>
           ) : (
             <>
-              <p className="mt-7 text-lg font-semibold text-[#3C4B63]">No estimate yet</p>
-              <p className="mt-1 text-sm text-[#748199]">
+              <p className="mt-7 text-lg font-semibold text-[#1D1D1F]">No estimate yet</p>
+              <p className="mt-1 text-sm text-[#6E6E73]">
                 Upload and analyze your resume to get a document-based estimate.
               </p>
             </>
@@ -116,11 +116,11 @@ export const CareerPage: React.FC = () => {
 
         <Card pastelAccent="purple">
           <div className="flex items-center justify-between">
-            <TrendingUp className="h-5 w-5 text-[#D98768]" />
+            <TrendingUp className="h-5 w-5 text-[#007AFF]" />
             <Badge variant="purple">Evidence-based</Badge>
           </div>
-          <p className="mt-7 text-lg font-semibold text-[#3C4B63]">Skill signal</p>
-          <p className="mt-1 text-sm leading-6 text-[#748199]">
+          <p className="mt-7 text-lg font-semibold text-[#1D1D1F]">Skill signal</p>
+          <p className="mt-1 text-sm leading-6 text-[#6E6E73]">
             Your career profile combines demonstrated assessment and practice performance with the experience you document.
           </p>
           <Button
@@ -138,29 +138,29 @@ export const CareerPage: React.FC = () => {
           <Card
             header={
               <div>
-                <h2 className="text-sm font-semibold text-[#3C4B63]">ATS compatibility estimate</h2>
-                <p className="mt-1 text-xs text-[#748199]">
+                <h2 className="text-sm font-semibold text-[#1D1D1F]">ATS compatibility estimate</h2>
+                <p className="mt-1 text-xs text-[#6E6E73]">
                   This is Evalora's estimate based on structure, keywords, readability, and detected sections. It is not an official universal ATS score.
                 </p>
               </div>
             }
           >
             <div className="flex items-end gap-2">
-              <span className="text-6xl font-semibold tracking-tight text-[#3C4B63]">{analysis.score}</span>
-              <span className="pb-2 text-[#748199]">/ 100</span>
+              <span className="text-6xl font-semibold tracking-tight text-[#1D1D1F]">{analysis.score}</span>
+              <span className="pb-2 text-[#6E6E73]">/ 100</span>
             </div>
             <div className="mt-6 space-y-3">
               {Object.entries(analysis.scoreBreakdown || {}).map(([key, value]) => (
                 <div key={key}>
                   <div className="mb-1 flex justify-between text-xs">
-                    <span className="capitalize text-[#748199]">
+                    <span className="capitalize text-[#6E6E73]">
                       {key.replace(/([A-Z])/g, ' $1')}
                     </span>
-                    <span className="font-medium text-[#3C4B63]">{String(value)}</span>
+                    <span className="font-medium text-[#1D1D1F]">{String(value)}</span>
                   </div>
-                  <div className="h-1.5 rounded-full bg-[#EFF2F8]">
+                  <div className="h-1.5 rounded-full bg-[#F5F5F7]">
                     <div
-                      className="h-full rounded-full bg-[#5288B8]"
+                      className="h-full rounded-full bg-[#007AFF]"
                       style={{ width: `${Math.min(100, Number(value) * 5)}%` }}
                     />
                   </div>
@@ -172,17 +172,17 @@ export const CareerPage: React.FC = () => {
           <Card
             header={
               <div className="flex items-center justify-between">
-                <span className="text-sm font-semibold text-[#3C4B63]">Priority recommendations</span>
+                <span className="text-sm font-semibold text-[#1D1D1F]">Priority recommendations</span>
                 <Badge variant="amber">{analysis.recommendations?.length || 0} found</Badge>
               </div>
             }
           >
             {analysis.recommendations?.length ? (
-              <div className="divide-y divide-[#E0E5EF]">
+              <div className="divide-y divide-[#D2D2D7]">
                 {analysis.recommendations.map((item: any, index: number) => (
                   <div key={`${item.category}-${index}`} className="py-4 first:pt-0 last:pb-0">
                     <div className="flex items-center justify-between gap-3">
-                      <span className="text-sm font-medium text-[#3C4B63]">{item.problem}</span>
+                      <span className="text-sm font-medium text-[#1D1D1F]">{item.problem}</span>
                       <Badge
                         variant={
                           item.priority === 'high'
@@ -195,10 +195,10 @@ export const CareerPage: React.FC = () => {
                         {item.priority}
                       </Badge>
                     </div>
-                    <p className="mt-2 text-xs leading-5 text-[#748199]">
+                    <p className="mt-2 text-xs leading-5 text-[#6E6E73]">
                       <strong>Why it matters:</strong> {item.whyItMatters}
                     </p>
-                    <p className="mt-2 text-xs leading-5 text-[#3C4B63]">
+                    <p className="mt-2 text-xs leading-5 text-[#1D1D1F]">
                       <strong>Recommendation:</strong> {item.recommendation}
                     </p>
                   </div>
@@ -216,7 +216,7 @@ export const CareerPage: React.FC = () => {
       ) : (
         <Card>
           <EmptyState
-            icon={<FileSearch className="h-8 w-8 text-[#5288B8]" />}
+            icon={<FileSearch className="h-8 w-8 text-[#007AFF]" />}
             title="Upload a resume to unlock career insights"
             description="Evalora analyzes the actual text and structure of your PDF or DOCX without inventing phantom scores."
             action={<Button onClick={() => navigate('/profile')}>Go to Profile</Button>}

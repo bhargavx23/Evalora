@@ -152,7 +152,7 @@ export const SqlQueryOutputPanel: React.FC<SqlQueryOutputProps> = ({
 
         {/* Tab 2: Raw / Explain Output */}
         {activeTab === 'raw' && (
-          <div className="rounded-xl border border-border-subtle bg-[#EFF2F8] p-4 font-mono text-xs text-[#3C4B63] overflow-x-auto min-h-[220px]">
+          <div className="rounded-xl border border-border-subtle bg-[#F5F5F7] p-4 font-mono text-xs text-[#1D1D1F] overflow-x-auto min-h-[220px]">
             {result.rawOutput ? (
               <pre className="whitespace-pre-wrap text-[#719B84] leading-relaxed">{result.rawOutput}</pre>
             ) : (

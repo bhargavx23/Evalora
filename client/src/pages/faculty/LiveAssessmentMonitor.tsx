@@ -94,11 +94,11 @@ export const LiveAssessmentMonitor: React.FC = () => {
       </div>
 
       {/* Proctoring Banner */}
-      <div className="p-4 rounded-xl bg-[#EAF1F9]/60 border border-[#CFE2DC] text-xs text-[#3C648E] flex items-start gap-3">
-        <ShieldAlert className="w-5 h-5 text-[#3C648E] shrink-0 mt-0.5" />
+      <div className="p-4 rounded-xl bg-[#E5F1FF]/60 border border-[#CFE2DC] text-xs text-[#0056CC] flex items-start gap-3">
+        <ShieldAlert className="w-5 h-5 text-[#0056CC] shrink-0 mt-0.5" />
         <div className="space-y-1">
           <span className="font-bold">Responsible Assessment Monitoring Policy:</span>
-          <p className="text-[11px] text-[#3C648E]/80 leading-relaxed">
+          <p className="text-[11px] text-[#0056CC]/80 leading-relaxed">
             Telemetry logs track tab switches, window minimization, and fullscreen toggles as "Suspicious activity indicators". These signals indicate possible distractions or interruptions and should be corroborated before taking academic action.
           </p>
         </div>
@@ -141,7 +141,7 @@ export const LiveAssessmentMonitor: React.FC = () => {
                       </div>
                       <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-[#EAF1F9] rounded-full"
+                          className="h-full bg-[#E5F1FF] rounded-full"
                           style={{ width: `${item.progressPercentage}%` }}
                         />
                       </div>

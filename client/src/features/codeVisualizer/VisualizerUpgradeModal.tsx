@@ -77,7 +77,7 @@ export const VisualizerUpgradeModal: React.FC<VisualizerUpgradeModalProps> = ({
           </div>
 
           <div className="flex items-start gap-2.5 rounded-xl border border-border-subtle bg-surface-neutral/40 p-3">
-            <Layers className="h-4 w-4 text-[#3C648E] shrink-0 mt-0.5" />
+            <Layers className="h-4 w-4 text-[#0056CC] shrink-0 mt-0.5" />
             <div>
               <p className="text-xs font-semibold text-text-primary">Array &amp; Memory Inspector</p>
               <p className="text-[11px] text-text-muted">Interactive visual blocks with pointer markers and indices</p>
@@ -85,7 +85,7 @@ export const VisualizerUpgradeModal: React.FC<VisualizerUpgradeModalProps> = ({
           </div>
 
           <div className="flex items-start gap-2.5 rounded-xl border border-border-subtle bg-surface-neutral/40 p-3">
-            <Cpu className="h-4 w-4 text-[#3C648E] shrink-0 mt-0.5" />
+            <Cpu className="h-4 w-4 text-[#0056CC] shrink-0 mt-0.5" />
             <div>
               <p className="text-xs font-semibold text-text-primary">Infinite Loop Safeguard</p>
               <p className="text-[11px] text-text-muted">Protected sandbox with 250-step loop interceptor</p>

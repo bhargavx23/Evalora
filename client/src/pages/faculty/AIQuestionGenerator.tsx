@@ -100,8 +100,8 @@ export const AIQuestionGenerator: React.FC = () => {
     <div className="max-w-5xl mx-auto space-y-8 py-2">
       {/* Header */}
       <div>
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#EEE9F4] text-[#3C648E] text-xs font-semibold mb-2">
-          <Bot className="w-3.5 h-3.5 text-[#5288B8]" />
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#EEE9F4] text-[#0056CC] text-xs font-semibold mb-2">
+          <Bot className="w-3.5 h-3.5 text-[#007AFF]" />
           AI Curriculum Assistant (Draft Workflow)
         </div>
         <h1 className="text-2xl font-bold tracking-tight text-gray-900">AI Question Generator</h1>
@@ -185,7 +185,7 @@ export const AIQuestionGenerator: React.FC = () => {
             onClick={handleGenerate}
             isLoading={isGenerating}
             className="w-full justify-center sm:w-auto"
-            icon={<Bot className="w-4 h-4 text-[#5288B8]" />}
+            icon={<Bot className="w-4 h-4 text-[#007AFF]" />}
           >
             {isGenerating ? 'Synthesizing Questions...' : 'Generate Draft Questions'}
           </Button>
@@ -196,7 +196,7 @@ export const AIQuestionGenerator: React.FC = () => {
       <div className="space-y-4">
         <div className="flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-center">
           <h3 className="flex min-w-0 items-center gap-2 text-base font-bold text-gray-900">
-            <BookOpen className="w-4 h-4 text-[#3C648E]" />
+            <BookOpen className="w-4 h-4 text-[#0056CC]" />
             <span className="break-words">Generated Draft Review Pool ({draftQuestions.length})</span>
           </h3>
           {draftQuestions.length > 0 && (
@@ -291,7 +291,7 @@ export const AIQuestionGenerator: React.FC = () => {
               )}
 
               {draft.explanation && (
-                <div className="break-words rounded-lg border border-[#CFE2DC] bg-[#EAF1F9]/50 p-2.5 text-xs text-[#3C648E]">
+                <div className="break-words rounded-lg border border-[#CFE2DC] bg-[#E5F1FF]/50 p-2.5 text-xs text-[#0056CC]">
                   <span className="font-bold">Explanation: </span>
                   {draft.explanation}
                 </div>
@@ -302,7 +302,7 @@ export const AIQuestionGenerator: React.FC = () => {
 
         {draftQuestions.length === 0 && (
           <div className="text-center py-12 bg-white rounded-2xl border border-gray-200 text-xs text-gray-400 space-y-2">
-            <Bot className="w-8 h-8 text-[#5288B8]/40 mx-auto" />
+            <Bot className="w-8 h-8 text-[#007AFF]/40 mx-auto" />
             <p className="font-semibold text-gray-700">No Drafts in Queue</p>
             <p>Configure parameters above and click "Generate Draft Questions" to begin.</p>
           </div>

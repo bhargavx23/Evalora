@@ -5,7 +5,6 @@ import { Sidebar } from "../components/layout/Sidebar";
 
 export const AppLayout: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isDesktopLayout, setIsDesktopLayout] = useState(() =>
     typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches
   );
@@ -20,26 +19,22 @@ export const AppLayout: React.FC = () => {
   }, []);
 
   const toggleSidebar = () => {
-    if (isDesktopLayout) {
-      setIsSidebarCollapsed((collapsed) => !collapsed);
-    } else {
-      setIsSidebarOpen((open) => !open);
-    }
+    setIsSidebarOpen((open) => !open);
   };
   const isFullWidthWorkspace =
     location.pathname.startsWith('/code-visualizer') ||
     location.pathname.startsWith('/visualizer');
 
   return (
-    <div className="app-layout-shell flex h-screen min-h-0 min-w-0 flex-col overflow-hidden bg-transparent text-[#3C4B63]">
+    <div className="app-layout-shell flex h-screen min-h-0 min-w-0 flex-col overflow-hidden bg-transparent text-[#1D1D1F]">
       <Navbar
-        onToggleSidebar={toggleSidebar}
-        isSidebarExpanded={isDesktopLayout ? !isSidebarCollapsed : isSidebarOpen}
+        onToggleSidebar={isDesktopLayout ? undefined : toggleSidebar}
+        isSidebarExpanded={isDesktopLayout || isSidebarOpen}
       />
       <div className="flex min-h-0 min-w-0 flex-1 overflow-hidden">
         <Sidebar
           isOpen={isSidebarOpen}
-          isCollapsed={isSidebarCollapsed}
+          isCollapsed={false}
           onCloseMobile={() => setIsSidebarOpen(false)}
         />
         <main

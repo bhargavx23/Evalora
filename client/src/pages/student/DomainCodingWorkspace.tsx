@@ -89,12 +89,12 @@ const setupMonacoLightTheme = (monaco: any) => {
     inherit: true,
     rules: [],
     colors: {
-      'editor.background': '#F7F8FC',
-      'editorGutter.background': '#F7F8FC',
+      'editor.background': '#F5F5F7',
+      'editorGutter.background': '#F5F5F7',
       'editorLineNumber.foreground': '#9895A8',
       'editorLineNumber.activeForeground': '#8D8BC2',
-      'editor.lineHighlightBackground': '#5288B815',
-      'editorCursor.foreground': '#5288B8',
+      'editor.lineHighlightBackground': '#007AFF15',
+      'editorCursor.foreground': '#007AFF',
     }
   });
 };
@@ -1243,11 +1243,11 @@ export const DomainCodingWorkspace: React.FC = () => {
             mobileTab === 'code' ? 'flex' : 'hidden'
           } ${
             isFullscreenPreview ? 'hidden' : 'lg:flex'
-          } flex-1 flex flex-col overflow-hidden min-h-0 min-w-0 bg-[#EFF2F8] border-r border-border-subtle`}
+          } flex-1 flex flex-col overflow-hidden min-h-0 min-w-0 bg-[#F5F5F7] border-r border-border-subtle`}
         >
           {/* File Tabs for multi-file web mode */}
           {workspaceType === 'web' && (
-            <div className="flex items-center gap-1 overflow-x-auto border-b border-[#E0E5EF] bg-[#EFF2F8] px-2 py-1.5 shrink-0">
+            <div className="flex items-center gap-1 overflow-x-auto border-b border-[#D2D2D7] bg-[#F5F5F7] px-2 py-1.5 shrink-0">
               {files.map((file) => {
                 const isActive = file.filename === activeFileName;
                 return (
@@ -1256,8 +1256,8 @@ export const DomainCodingWorkspace: React.FC = () => {
                     onClick={() => setActiveFileName(file.filename)}
                     className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-mono transition-colors ${
                       isActive
-                        ? 'bg-[#EFF2F8] text-[#A5B4FC] shadow-2xs font-semibold border border-[#E0E5EF]'
-                        : 'text-[#748199] hover:bg-[#EAF1F9] hover:text-[#3C4B63]'
+                        ? 'bg-[#F5F5F7] text-[#A5B4FC] shadow-2xs font-semibold border border-[#D2D2D7]'
+                        : 'text-[#6E6E73] hover:bg-[#E5F1FF] hover:text-[#1D1D1F]'
                     }`}
                   >
                     <FileCode className="h-3.5 w-3.5" />
@@ -1270,19 +1270,19 @@ export const DomainCodingWorkspace: React.FC = () => {
 
           {/* Single-file header for python_data, sql, dsa */}
           {workspaceType !== 'web' && (
-            <div className="flex items-center justify-between border-b border-[#E0E5EF] bg-[#EFF2F8] px-3 py-1.5 shrink-0 text-xs">
-              <div className="flex items-center gap-2 font-mono text-[#748199]">
+            <div className="flex items-center justify-between border-b border-[#D2D2D7] bg-[#F5F5F7] px-3 py-1.5 shrink-0 text-xs">
+              <div className="flex items-center gap-2 font-mono text-[#6E6E73]">
                 <FileCode className="h-3.5 w-3.5 text-[#A5B4FC]" />
                 <span className="font-semibold">{activeFile?.filename || 'solution'}</span>
               </div>
-              <span className="font-mono text-[11px] text-[#748199] uppercase">
+              <span className="font-mono text-[11px] text-[#6E6E73] uppercase">
                 {selectedLanguage}
               </span>
             </div>
           )}
 
           {/* Monaco code editor container using the shared light theme */}
-          <div className="flex-1 flex overflow-hidden relative min-h-0 bg-[#EFF2F8]">
+          <div className="flex-1 flex overflow-hidden relative min-h-0 bg-[#F5F5F7]">
             <Editor
               height="100%"
               language={getEditorLanguage(activeFile?.filename || '')}
@@ -1431,22 +1431,22 @@ export const DomainCodingWorkspace: React.FC = () => {
             />
           ) : activeRightTab === 'console' && workspaceType === 'web' ? (
             /* Console log output view for Web */
-            <div className="flex-1 flex flex-col overflow-hidden min-h-0 bg-[#EFF2F8] p-4 font-mono text-xs text-[#3C4B63]">
-              <div className="flex items-center justify-between border-b border-[#E0E5EF] pb-2 mb-2 text-[#748199]">
+            <div className="flex-1 flex flex-col overflow-hidden min-h-0 bg-[#F5F5F7] p-4 font-mono text-xs text-[#1D1D1F]">
+              <div className="flex items-center justify-between border-b border-[#D2D2D7] pb-2 mb-2 text-[#6E6E73]">
                 <div className="flex items-center gap-1.5">
                   <Terminal className="h-4 w-4 text-[#719B84]" />
-                  <span className="font-semibold text-[#3C4B63]">Browser Console Logs</span>
+                  <span className="font-semibold text-[#1D1D1F]">Browser Console Logs</span>
                 </div>
                 <button
                   onClick={() => setConsoleLogs([])}
-                  className="text-[11px] text-[#748199] hover:text-[#3C4B63]"
+                  className="text-[11px] text-[#6E6E73] hover:text-[#1D1D1F]"
                 >
                   Clear
                 </button>
               </div>
-              <div className="flex-1 overflow-y-auto space-y-1 text-[#748199]">
+              <div className="flex-1 overflow-y-auto space-y-1 text-[#6E6E73]">
                 {consoleLogs.length === 0 ? (
-                  <p className="text-[#748199] italic">No console messages logged yet.</p>
+                  <p className="text-[#6E6E73] italic">No console messages logged yet.</p>
                 ) : (
                   consoleLogs.map((log, idx) => (
                     <div key={idx} className="flex items-start gap-2">

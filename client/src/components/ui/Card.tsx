@@ -23,13 +23,13 @@ export const Card: React.FC<CardProps> = ({
 }) => {
   const isInteractive = interactive || Boolean(onClick);
   const accentBorders: Record<string, string> = {
-    none: 'border-[#E0E5EF]',
-    blue: 'border-[#E0E5EF] shadow-[inset_3px_0_0_#5288B8]',
-    purple: 'border-[#E0E5EF] shadow-[inset_3px_0_0_#D98768]',
-    mint: 'border-[#E0E5EF] shadow-[inset_3px_0_0_#679B7C]',
-    peach: 'border-[#E0E5EF] shadow-[inset_3px_0_0_#C88C6C]',
-    amber: 'border-[#E0E5EF] shadow-[inset_3px_0_0_#C6A466]',
-    rose: 'border-[#E0E5EF] shadow-[inset_3px_0_0_#CB888F]',
+    none: 'border-[#D2D2D7]',
+    blue: 'border-[#D2D2D7] shadow-[inset_3px_0_0_#007AFF]',
+    purple: 'border-[#D2D2D7] shadow-[inset_3px_0_0_#007AFF]',
+    mint: 'border-[#D2D2D7] shadow-[inset_3px_0_0_#679B7C]',
+    peach: 'border-[#D2D2D7] shadow-[inset_3px_0_0_#C88C6C]',
+    amber: 'border-[#D2D2D7] shadow-[inset_3px_0_0_#C6A466]',
+    rose: 'border-[#D2D2D7] shadow-[inset_3px_0_0_#CB888F]',
   };
 
   const paddingClasses: Record<string, string> = {
@@ -50,13 +50,13 @@ export const Card: React.FC<CardProps> = ({
       {...props}
     >
       {header && (
-        <div className="px-6 py-4 border-b border-[#E0E5EF] bg-[#F7F8FC]/65">
+        <div className="px-6 py-4 border-b border-[#D2D2D7] bg-[#F5F5F7]/65">
           {header}
         </div>
       )}
       <div className={bodyPadding}>{children}</div>
       {footer && (
-        <div className="px-6 py-3.5 border-t border-[#E0E5EF] bg-[#F7F8FC]/65">
+        <div className="px-6 py-3.5 border-t border-[#D2D2D7] bg-[#F5F5F7]/65">
           {footer}
         </div>
       )}

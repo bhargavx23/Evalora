@@ -190,7 +190,7 @@ export const PythonDataOutputPanel: React.FC<PythonDataOutputProps> = ({
                 <h4 className="text-[11px] font-bold uppercase tracking-wider text-text-muted mb-2">
                   Output Logs
                 </h4>
-                <div className="rounded-xl border border-border-subtle bg-[#EFF2F8] p-3 font-mono text-xs text-[#719B84] overflow-x-auto max-h-48 leading-relaxed">
+                <div className="rounded-xl border border-border-subtle bg-[#F5F5F7] p-3 font-mono text-xs text-[#719B84] overflow-x-auto max-h-48 leading-relaxed">
                   <pre className="whitespace-pre-wrap">{result.output}</pre>
                 </div>
               </div>
@@ -273,7 +273,7 @@ export const PythonDataOutputPanel: React.FC<PythonDataOutputProps> = ({
         {/* TAB 4: CONSOLE */}
         {activeTab === 'console' && (
           <div className="space-y-3">
-            <div className="rounded-xl border border-border-subtle bg-[#EFF2F8] p-4 font-mono text-xs text-[#3C4B63] overflow-x-auto min-h-[220px]">
+            <div className="rounded-xl border border-border-subtle bg-[#F5F5F7] p-4 font-mono text-xs text-[#1D1D1F] overflow-x-auto min-h-[220px]">
               {result.output ? (
                 <pre className="whitespace-pre-wrap leading-relaxed text-[#719B84]">{result.output}</pre>
               ) : (

@@ -80,7 +80,7 @@ export const PaymentReceiptModal: React.FC<PaymentReceiptModalProps> = ({
       maxWidth="lg"
       footer={
         <div className="flex items-center justify-between w-full">
-          <div className="text-xs text-[#748199]">
+          <div className="text-xs text-[#6E6E73]">
             {receipt ? `Verified on ${receipt.dateFormatted}` : ''}
           </div>
           <div className="flex items-center gap-2.5">
@@ -104,15 +104,15 @@ export const PaymentReceiptModal: React.FC<PaymentReceiptModalProps> = ({
       <div className="space-y-5 text-xs">
         {isLoading && (
           <div className="py-12 text-center space-y-2">
-            <Loader2 className="w-7 h-7 animate-spin text-[#5288B8] mx-auto" />
-            <p className="text-xs text-[#748199]">Loading verified receipt record...</p>
+            <Loader2 className="w-7 h-7 animate-spin text-[#007AFF] mx-auto" />
+            <p className="text-xs text-[#6E6E73]">Loading verified receipt record...</p>
           </div>
         )}
 
         {error && !isLoading && (
           <div className="p-6 text-center space-y-3">
             <AlertTriangle className="w-7 h-7 text-[#8A7047] mx-auto" />
-            <p className="text-sm font-semibold text-[#3C4B63]">{error}</p>
+            <p className="text-sm font-semibold text-[#1D1D1F]">{error}</p>
             <Button size="sm" variant="outline" onClick={loadReceiptData}>
               Retry
             </Button>
@@ -128,10 +128,10 @@ export const PaymentReceiptModal: React.FC<PaymentReceiptModalProps> = ({
                   <CheckCircle2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="font-bold text-sm text-[#3C4B63]">
+                  <div className="font-bold text-sm text-[#1D1D1F]">
                     Payment Verified on Algorand
                   </div>
-                  <div className="text-[11px] text-[#748199]">
+                  <div className="text-[11px] text-[#6E6E73]">
                     {receipt.payment.network}  •  {receipt.payment.paymentMethod}
                   </div>
                 </div>
@@ -142,28 +142,28 @@ export const PaymentReceiptModal: React.FC<PaymentReceiptModalProps> = ({
             {/* Receipt Summary Grid */}
             <div className="grid grid-cols-2 gap-3">
               {/* Customer Box */}
-              <div className="p-3.5 rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] space-y-2">
-                <span className="text-[10px] font-bold text-[#3C648E] uppercase tracking-wider">
+              <div className="p-3.5 rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] space-y-2">
+                <span className="text-[10px] font-bold text-[#0056CC] uppercase tracking-wider">
                   Customer
                 </span>
                 <div className="space-y-1">
-                  <div className="font-semibold text-[#3C4B63]">{receipt.customer.name}</div>
-                  <div className="text-[#748199] text-[11px]">{receipt.customer.email}</div>
-                  <div className="font-mono text-[10px] text-[#748199] pt-1 border-t border-[#E0E5EF]">
+                  <div className="font-semibold text-[#1D1D1F]">{receipt.customer.name}</div>
+                  <div className="text-[#6E6E73] text-[11px]">{receipt.customer.email}</div>
+                  <div className="font-mono text-[10px] text-[#6E6E73] pt-1 border-t border-[#D2D2D7]">
                     Wallet: {receipt.customer.maskedWalletAddress}
                   </div>
                 </div>
               </div>
 
               {/* Plan Box */}
-              <div className="p-3.5 rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] space-y-2">
-                <span className="text-[10px] font-bold text-[#3C648E] uppercase tracking-wider">
+              <div className="p-3.5 rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] space-y-2">
+                <span className="text-[10px] font-bold text-[#0056CC] uppercase tracking-wider">
                   Entitlements Unlocked
                 </span>
                 <div className="space-y-1">
                   <div className="font-semibold text-[#4C765D]">+{receipt.payment.attemptsUnlocked} Attempts</div>
-                  <div className="text-[#3C4B63] text-[11px]">{receipt.payment.planName}</div>
-                  <div className="text-[10px] text-[#748199] pt-1 border-t border-[#E0E5EF]">
+                  <div className="text-[#1D1D1F] text-[11px]">{receipt.payment.planName}</div>
+                  <div className="text-[10px] text-[#6E6E73] pt-1 border-t border-[#D2D2D7]">
                     Access Tier: Permanent Unlocked Credit
                   </div>
                 </div>
@@ -171,50 +171,50 @@ export const PaymentReceiptModal: React.FC<PaymentReceiptModalProps> = ({
             </div>
 
             {/* Payment Amount Card */}
-            <div className="rounded-xl border border-[#CFE2DC] bg-[#EAF1F9]/30 p-4 flex items-center justify-between">
+            <div className="rounded-xl border border-[#CFE2DC] bg-[#E5F1FF]/30 p-4 flex items-center justify-between">
               <div>
-                <span className="text-[10px] font-semibold text-[#748199] uppercase tracking-wider">
+                <span className="text-[10px] font-semibold text-[#6E6E73] uppercase tracking-wider">
                   Total Amount Paid
                 </span>
-                <div className="font-bold text-lg text-[#3C4B63]">
+                <div className="font-bold text-lg text-[#1D1D1F]">
                   {receipt.payment.amountAlgo} {receipt.payment.currency}
                 </div>
               </div>
-              <div className="text-right text-[11px] text-[#748199]">
-                <div>Receipt: <strong className="text-[#3C4B63]">{receipt.receiptNumber}</strong></div>
+              <div className="text-right text-[11px] text-[#6E6E73]">
+                <div>Receipt: <strong className="text-[#1D1D1F]">{receipt.receiptNumber}</strong></div>
                 <div>Date: {receipt.dateFormatted}</div>
               </div>
             </div>
 
             {/* Blockchain Audit Box */}
-            <div className="rounded-xl border border-[#E0E5EF] bg-white p-3.5 space-y-2">
-              <span className="text-[10px] font-bold text-[#748199] uppercase tracking-wider flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#5288B8]" />
+            <div className="rounded-xl border border-[#D2D2D7] bg-white p-3.5 space-y-2">
+              <span className="text-[10px] font-bold text-[#6E6E73] uppercase tracking-wider flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#007AFF]" />
                 On-Chain Verification Audit
               </span>
               <div className="space-y-1.5 text-[11px]">
                 <div className="flex justify-between">
-                  <span className="text-[#748199]">Transaction ID:</span>
-                  <span className="font-mono text-[10px] text-[#3C4B63] max-w-[240px] truncate" title={receipt.transaction.transactionId}>
+                  <span className="text-[#6E6E73]">Transaction ID:</span>
+                  <span className="font-mono text-[10px] text-[#1D1D1F] max-w-[240px] truncate" title={receipt.transaction.transactionId}>
                     {receipt.transaction.transactionId}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#748199]">Sender:</span>
-                  <span className="font-mono text-[10px] text-[#3C4B63] max-w-[240px] truncate" title={receipt.transaction.sender}>
+                  <span className="text-[#6E6E73]">Sender:</span>
+                  <span className="font-mono text-[10px] text-[#1D1D1F] max-w-[240px] truncate" title={receipt.transaction.sender}>
                     {receipt.transaction.sender}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#748199]">Treasury Receiver:</span>
-                  <span className="font-mono text-[10px] text-[#3C4B63] max-w-[240px] truncate" title={receipt.transaction.receiver}>
+                  <span className="text-[#6E6E73]">Treasury Receiver:</span>
+                  <span className="font-mono text-[10px] text-[#1D1D1F] max-w-[240px] truncate" title={receipt.transaction.receiver}>
                     {receipt.transaction.receiver}
                   </span>
                 </div>
                 {receipt.transaction.blockchainRound && (
                   <div className="flex justify-between">
-                    <span className="text-[#748199]">Confirmed Block:</span>
-                    <span className="font-mono text-[#3C4B63]">Round #{receipt.transaction.blockchainRound}</span>
+                    <span className="text-[#6E6E73]">Confirmed Block:</span>
+                    <span className="font-mono text-[#1D1D1F]">Round #{receipt.transaction.blockchainRound}</span>
                   </div>
                 )}
               </div>

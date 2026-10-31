@@ -328,7 +328,7 @@ export const CreateQuestion: React.FC = () => {
                     onChange={() => {
                       setOptions(options.map(o => ({ ...o, isCorrect: o.id === opt.id })));
                     }}
-                    className="text-[#3C648E]"
+                    className="text-[#0056CC]"
                   />
                   <input
                     type="text"

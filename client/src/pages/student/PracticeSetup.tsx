@@ -527,21 +527,21 @@ export const PracticeSetup: React.FC = () => {
   return (
     <div className="practice-builder-shell space-y-6">
       {/* Header */}
-      <header className="practice-builder-hero flex flex-col justify-between gap-4 border-b border-[#E0E5EF] pb-6 md:flex-row md:items-end">
+      <header className="practice-builder-hero flex flex-col justify-between gap-4 border-b border-[#D2D2D7] pb-6 md:flex-row md:items-end">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-[#5288B8]">
+          <p className="text-xs font-semibold uppercase tracking-wider text-[#007AFF]">
             Adaptive Practice Engine
           </p>
-          <h1 className="font-serif text-3xl font-medium tracking-tight text-[#3C4B63] md:text-4xl mt-1">
+          <h1 className="font-serif text-3xl font-medium tracking-tight text-[#1D1D1F] md:text-4xl mt-1">
             Practice Builder
           </h1>
-          <p className="mt-1 text-sm text-[#748199]">
+          <p className="mt-1 text-sm text-[#6E6E73]">
             Your first session starts with curated topic questions. Returning learners get a fresh Gemini set matched to each selected topic and format.
           </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
-          <div className="px-3.5 py-2 rounded-xl border border-[#E0E5EF] bg-white text-xs text-[#3C4B63] flex items-center gap-3 shadow-xs">
+          <div className="px-3.5 py-2 rounded-xl border border-[#D2D2D7] bg-white text-xs text-[#1D1D1F] flex items-center gap-3 shadow-xs">
             <div className="flex items-center gap-1.5">
               <span
                 className={`w-2 h-2 rounded-full ${
@@ -570,14 +570,14 @@ export const PracticeSetup: React.FC = () => {
             Unlock Attempts (ALGO)
           </Button>
 
-          <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-[#E0E5EF] shadow-xs">
+          <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-[#D2D2D7] shadow-xs">
             <button
               type="button"
               onClick={() => setBuilderMode("multi")}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 builderMode === "multi"
-                  ? "bg-[#EAF1F9] text-[#3C648E] shadow-[inset_0_0_0_1px_rgba(119,121,197,0.16)]"
-                  : "text-[#748199] hover:text-[#3C4B63]"
+                  ? "bg-[#E5F1FF] text-[#0056CC] shadow-[inset_0_0_0_1px_rgba(119,121,197,0.16)]"
+                  : "text-[#6E6E73] hover:text-[#1D1D1F]"
               }`}
             >
               <Layers className="w-3.5 h-3.5" />
@@ -588,8 +588,8 @@ export const PracticeSetup: React.FC = () => {
               onClick={() => setBuilderMode("single")}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 builderMode === "single"
-                  ? "bg-[#EAF1F9] text-[#3C648E] shadow-[inset_0_0_0_1px_rgba(119,121,197,0.16)]"
-                  : "text-[#748199] hover:text-[#3C4B63]"
+                  ? "bg-[#E5F1FF] text-[#0056CC] shadow-[inset_0_0_0_1px_rgba(119,121,197,0.16)]"
+                  : "text-[#6E6E73] hover:text-[#1D1D1F]"
               }`}
             >
               <Sliders className="w-3.5 h-3.5" />
@@ -647,7 +647,7 @@ export const PracticeSetup: React.FC = () => {
             <span className="font-semibold text-[#8A7047]">
               Fallback Options:
             </span>
-            <label className="flex items-center gap-2 cursor-pointer font-medium text-[#3C4B63] bg-white px-2.5 py-1 rounded-lg border border-[#E9DAB5]">
+            <label className="flex items-center gap-2 cursor-pointer font-medium text-[#1D1D1F] bg-white px-2.5 py-1 rounded-lg border border-[#E9DAB5]">
               <input
                 type="checkbox"
                 checked={expandDifficulty}
@@ -655,7 +655,7 @@ export const PracticeSetup: React.FC = () => {
               />
               Expand difficulty within topic
             </label>
-            <label className="flex items-center gap-2 cursor-pointer font-medium text-[#3C4B63] bg-white px-2.5 py-1 rounded-lg border border-[#E9DAB5]">
+            <label className="flex items-center gap-2 cursor-pointer font-medium text-[#1D1D1F] bg-white px-2.5 py-1 rounded-lg border border-[#E9DAB5]">
               <input
                 type="checkbox"
                 checked={broadenCategory}
@@ -663,7 +663,7 @@ export const PracticeSetup: React.FC = () => {
               />
               Broaden to related category topics
             </label>
-            <label className="flex items-center gap-2 cursor-pointer font-medium text-[#3C4B63] bg-white px-2.5 py-1 rounded-lg border border-[#E9DAB5]">
+            <label className="flex items-center gap-2 cursor-pointer font-medium text-[#1D1D1F] bg-white px-2.5 py-1 rounded-lg border border-[#E9DAB5]">
               <input
                 type="checkbox"
                 checked={allowRepeatFallback}
@@ -677,13 +677,13 @@ export const PracticeSetup: React.FC = () => {
 
       {builderMode === "multi" ? (
         /* Section-Based Custom Practice Builder */
-        <div className="practice-builder-card rounded-2xl border border-[#E0E5EF] bg-white p-5 sm:p-6 shadow-[0_1px_3px_rgba(82,77,119,0.04)] space-y-6">
+        <div className="practice-builder-card rounded-2xl border border-[#D2D2D7] bg-white p-5 sm:p-6 shadow-[0_1px_3px_rgba(82,77,119,0.04)] space-y-6">
           {/* 1. Quick Category Combiner (1-Click Multi-Domain Selection) */}
           <div className="rounded-xl border border-[#D4D6F7] bg-[#F5F6FE] p-4 space-y-3">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div className="flex items-center gap-2">
-                <Layers className="h-4 w-4 text-[#5288B8]" />
-                <span className="text-xs font-bold uppercase tracking-wider text-[#3C648E]">
+                <Layers className="h-4 w-4 text-[#007AFF]" />
+                <span className="text-xs font-bold uppercase tracking-wider text-[#0056CC]">
                   Quick Category Combiner (Select Any Combination)
                 </span>
               </div>
@@ -691,7 +691,7 @@ export const PracticeSetup: React.FC = () => {
                 <button
                   type="button"
                   onClick={selectAllFourDomains}
-                  className="text-xs font-semibold text-[#5288B8] hover:text-[#3C648E] transition-colors underline"
+                  className="text-xs font-semibold text-[#007AFF] hover:text-[#0056CC] transition-colors underline"
                 >
                   Select All 4 Core Domains
                 </button>
@@ -710,8 +710,8 @@ export const PracticeSetup: React.FC = () => {
                     onClick={() => toggleCategory(group.label)}
                     className={`inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-semibold transition-all border ${
                       isSelected
-                        ? "bg-[#5288B8] text-white border-[#5288B8] shadow-sm"
-                        : "bg-white text-[#748199] border-[#E0E5EF] hover:border-[#5288B8] hover:bg-[#EAF1F9] hover:text-[#3C648E]"
+                        ? "bg-[#007AFF] text-white border-[#007AFF] shadow-sm"
+                        : "bg-white text-[#6E6E73] border-[#D2D2D7] hover:border-[#007AFF] hover:bg-[#E5F1FF] hover:text-[#0056CC]"
                     }`}
                   >
                     {isSelected ? (
@@ -728,13 +728,13 @@ export const PracticeSetup: React.FC = () => {
 
             {/* Active Combination Formula Display */}
             <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#E0E2F8] text-xs">
-              <div className="flex items-center gap-2 text-[#3C648E]">
+              <div className="flex items-center gap-2 text-[#0056CC]">
                 <span className="font-semibold">Active Combination:</span>
-                <span className="font-mono bg-white px-2 py-0.5 rounded border border-[#D4D6F7] font-semibold text-[#3C4B63]">
+                <span className="font-mono bg-white px-2 py-0.5 rounded border border-[#D4D6F7] font-semibold text-[#1D1D1F]">
                   {currentCombinationFormula || "None"}
                 </span>
               </div>
-              <div className="text-[11px] text-[#748199]">
+              <div className="text-[11px] text-[#6E6E73]">
                 {activeCategories.length} Domains Active • {sections.length} Section{sections.length > 1 ? "s" : ""}
               </div>
             </div>
@@ -743,7 +743,7 @@ export const PracticeSetup: React.FC = () => {
           {/* 2. All 15 Presets & Pre-Built Combinations */}
           <div className="space-y-2.5">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#748199]">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#6E6E73]">
                 All Preset Combinations (Single, Dual, Triple & Grand)
               </span>
               <span className="text-[11px] text-[#8490A2]">
@@ -758,23 +758,23 @@ export const PracticeSetup: React.FC = () => {
                   onClick={() => applyPreset(preset)}
                   className={`rounded-lg border px-2.5 py-1 text-[11px] font-medium transition-all flex items-center gap-1 ${
                     preset.name.includes("Grand")
-                      ? "border-[#5288B8] bg-[#EAF1F9] text-[#3C648E] font-semibold shadow-xs hover:bg-[#5288B8] hover:text-white"
-                      : "border-[#E0E5EF] bg-[#F7F8FC] text-[#3C4B63] hover:border-[#5288B8] hover:bg-[#EAF1F9] hover:text-[#3C648E]"
+                      ? "border-[#007AFF] bg-[#E5F1FF] text-[#0056CC] font-semibold shadow-xs hover:bg-[#007AFF] hover:text-white"
+                      : "border-[#D2D2D7] bg-[#F5F5F7] text-[#1D1D1F] hover:border-[#007AFF] hover:bg-[#E5F1FF] hover:text-[#0056CC]"
                   }`}
                 >
-                  <Plus className="h-2.5 w-2.5 text-[#5288B8]" />
+                  <Plus className="h-2.5 w-2.5 text-[#007AFF]" />
                   <span>{preset.name}</span>
                 </button>
               ))}
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-4 border-t border-[#E0E5EF]">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-4 border-t border-[#D2D2D7]">
             <div>
-              <h2 className="text-base font-semibold text-[#3C4B63]">
+              <h2 className="text-base font-semibold text-[#1D1D1F]">
                 Configured Sections
               </h2>
-              <p className="text-xs text-[#748199] mt-0.5">
+              <p className="text-xs text-[#6E6E73] mt-0.5">
                 Customize topic, difficulty, question count, and format for each section.
               </p>
             </div>
@@ -798,17 +798,17 @@ export const PracticeSetup: React.FC = () => {
               return (
                 <div
                   key={section.id}
-                  className="p-4 sm:p-5 rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] space-y-4"
+                  className="p-4 sm:p-5 rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] space-y-4"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5 min-w-0">
-                      <span className="w-6 h-6 rounded-lg bg-[#5288B8] text-white text-xs flex items-center justify-center font-semibold flex-shrink-0">
+                      <span className="w-6 h-6 rounded-lg bg-[#007AFF] text-white text-xs flex items-center justify-center font-semibold flex-shrink-0">
                         {idx + 1}
                       </span>
-                      <span className="text-sm font-semibold text-[#3C4B63]">
+                      <span className="text-sm font-semibold text-[#1D1D1F]">
                         Section {idx + 1}
                       </span>
-                      <span className="text-xs text-[#748199] truncate hidden sm:inline">
+                      <span className="text-xs text-[#6E6E73] truncate hidden sm:inline">
                         • {section.category} / {section.topic}
                       </span>
                     </div>
@@ -838,7 +838,7 @@ export const PracticeSetup: React.FC = () => {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
                     <div>
-                      <label className="mb-1 block text-xs font-medium text-[#748199]">
+                      <label className="mb-1 block text-xs font-medium text-[#6E6E73]">
                         Category
                       </label>
                       <select
@@ -848,7 +848,7 @@ export const PracticeSetup: React.FC = () => {
                             category: e.target.value,
                           })
                         }
-                        className="w-full rounded-lg border border-[#E0E5EF] bg-white px-3 py-2 text-xs font-medium text-[#3C4B63] focus:border-[#5288B8] focus:outline-none"
+                        className="w-full rounded-lg border border-[#D2D2D7] bg-white px-3 py-2 text-xs font-medium text-[#1D1D1F] focus:border-[#007AFF] focus:outline-none"
                       >
                         {TOPIC_GROUPS.map((g) => (
                           <option key={g.label} value={g.label}>
@@ -859,7 +859,7 @@ export const PracticeSetup: React.FC = () => {
                     </div>
 
                     <div>
-                      <label className="mb-1 block text-xs font-medium text-[#748199]">
+                      <label className="mb-1 block text-xs font-medium text-[#6E6E73]">
                         Topic
                       </label>
                       <select
@@ -867,7 +867,7 @@ export const PracticeSetup: React.FC = () => {
                         onChange={(e) =>
                           updateSection(section.id, { topic: e.target.value })
                         }
-                        className="w-full rounded-lg border border-[#E0E5EF] bg-white px-3 py-2 text-xs font-medium text-[#3C4B63] focus:border-[#5288B8] focus:outline-none"
+                        className="w-full rounded-lg border border-[#D2D2D7] bg-white px-3 py-2 text-xs font-medium text-[#1D1D1F] focus:border-[#007AFF] focus:outline-none"
                       >
                         {group.topics.map((t) => (
                           <option key={t} value={t}>
@@ -878,7 +878,7 @@ export const PracticeSetup: React.FC = () => {
                     </div>
 
                     <div>
-                      <label className="mb-1 block text-xs font-medium text-[#748199]">
+                      <label className="mb-1 block text-xs font-medium text-[#6E6E73]">
                         Difficulty
                       </label>
                       <select
@@ -888,7 +888,7 @@ export const PracticeSetup: React.FC = () => {
                             difficulty: e.target.value as any,
                           })
                         }
-                        className="w-full rounded-lg border border-[#E0E5EF] bg-white px-3 py-2 text-xs font-medium text-[#3C4B63] focus:border-[#5288B8] focus:outline-none"
+                        className="w-full rounded-lg border border-[#D2D2D7] bg-white px-3 py-2 text-xs font-medium text-[#1D1D1F] focus:border-[#007AFF] focus:outline-none"
                       >
                         <option value="easy">Easy</option>
                         <option value="medium">Medium</option>
@@ -898,7 +898,7 @@ export const PracticeSetup: React.FC = () => {
                     </div>
 
                     <div>
-                      <label className="mb-1 block text-xs font-medium text-[#748199]">
+                      <label className="mb-1 block text-xs font-medium text-[#6E6E73]">
                         Questions
                       </label>
                       <select
@@ -908,7 +908,7 @@ export const PracticeSetup: React.FC = () => {
                             count: Number(e.target.value),
                           })
                         }
-                        className="w-full rounded-lg border border-[#E0E5EF] bg-white px-3 py-2 text-xs font-medium text-[#3C4B63] focus:border-[#5288B8] focus:outline-none"
+                        className="w-full rounded-lg border border-[#D2D2D7] bg-white px-3 py-2 text-xs font-medium text-[#1D1D1F] focus:border-[#007AFF] focus:outline-none"
                       >
                         <option value={5}>5 Questions</option>
                         <option value={10}>10 Questions</option>
@@ -918,7 +918,7 @@ export const PracticeSetup: React.FC = () => {
                     </div>
 
                     <div>
-                      <label className="mb-1 block text-xs font-medium text-[#748199]">
+                      <label className="mb-1 block text-xs font-medium text-[#6E6E73]">
                         Format
                       </label>
                       <select
@@ -928,7 +928,7 @@ export const PracticeSetup: React.FC = () => {
                             type: e.target.value as any,
                           })
                         }
-                        className="w-full rounded-lg border border-[#E0E5EF] bg-white px-3 py-2 text-xs font-medium text-[#3C4B63] focus:border-[#5288B8] focus:outline-none"
+                        className="w-full rounded-lg border border-[#D2D2D7] bg-white px-3 py-2 text-xs font-medium text-[#1D1D1F] focus:border-[#007AFF] focus:outline-none"
                       >
                         <option value="mixed">Mixed (MCQ + Code)</option>
                         <option value="mcq">MCQ Only</option>
@@ -946,14 +946,14 @@ export const PracticeSetup: React.FC = () => {
             <p className="leading-relaxed"><strong>Adaptive question rotation.</strong> First-time learners use the curated topic bank. After a learner has attempted a question, Gemini creates a validated fresh set for each matching section on future sessions.</p>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-5 border-t border-[#E0E5EF]">
-            <div className="flex flex-wrap items-center gap-3 text-sm text-[#748199]">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-5 border-t border-[#D2D2D7]">
+            <div className="flex flex-wrap items-center gap-3 text-sm text-[#6E6E73]">
               <span>
-                Sections: <strong className="text-[#3C4B63]">{sections.length}</strong>
+                Sections: <strong className="text-[#1D1D1F]">{sections.length}</strong>
               </span>
               <span className="text-[#D0DDD7]">•</span>
               <span>
-                Total Questions: <strong className="text-[#3C4B63]">{totalQuestions}</strong>
+                Total Questions: <strong className="text-[#1D1D1F]">{totalQuestions}</strong>
               </span>
             </div>
 
@@ -980,10 +980,10 @@ export const PracticeSetup: React.FC = () => {
         </div>
       ) : (
         /* Redesigned Responsive Quick Topic Mode */
-        <div className="practice-builder-card rounded-2xl border border-[#E0E5EF] bg-white p-5 sm:p-6 shadow-[0_1px_3px_rgba(82,77,119,0.04)] space-y-6">
+        <div className="practice-builder-card rounded-2xl border border-[#D2D2D7] bg-white p-5 sm:p-6 shadow-[0_1px_3px_rgba(82,77,119,0.04)] space-y-6">
           {/* Category Tabs */}
           <div>
-            <span className="mb-2.5 block text-xs font-semibold uppercase tracking-wider text-[#748199]">
+            <span className="mb-2.5 block text-xs font-semibold uppercase tracking-wider text-[#6E6E73]">
               Select Category
             </span>
             <div className="flex flex-wrap gap-2">
@@ -1001,8 +1001,8 @@ export const PracticeSetup: React.FC = () => {
                     }}
                     className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-semibold transition-all ${
                       isSelected
-                        ? "bg-[#5288B8] text-white shadow-xs"
-                        : "bg-[#F7F8FC] text-[#748199] hover:bg-[#EAF1F9] hover:text-[#3C648E] border border-[#E0E5EF]"
+                        ? "bg-[#007AFF] text-white shadow-xs"
+                        : "bg-[#F5F5F7] text-[#6E6E73] hover:bg-[#E5F1FF] hover:text-[#0056CC] border border-[#D2D2D7]"
                     }`}
                   >
                     <Icon className="h-4 w-4" />
@@ -1014,9 +1014,9 @@ export const PracticeSetup: React.FC = () => {
           </div>
 
           {/* Quick Topic Selection with Search */}
-          <div className="space-y-3 pt-3 border-t border-[#E0E5EF]">
+          <div className="space-y-3 pt-3 border-t border-[#D2D2D7]">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#748199]">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#6E6E73]">
                 Topics in {selectedGroup} ({filteredTopics.length})
               </span>
               <div className="relative w-full sm:w-64">
@@ -1026,7 +1026,7 @@ export const PracticeSetup: React.FC = () => {
                   value={topicSearchQuery}
                   onChange={(e) => setTopicSearchQuery(e.target.value)}
                   placeholder="Filter topics..."
-                  className="w-full rounded-lg border border-[#E0E5EF] bg-[#F7F8FC] py-1.5 pl-8 pr-3 text-xs text-[#3C4B63] focus:border-[#5288B8] focus:bg-white focus:outline-none"
+                  className="w-full rounded-lg border border-[#D2D2D7] bg-[#F5F5F7] py-1.5 pl-8 pr-3 text-xs text-[#1D1D1F] focus:border-[#007AFF] focus:bg-white focus:outline-none"
                 />
               </div>
             </div>
@@ -1042,27 +1042,27 @@ export const PracticeSetup: React.FC = () => {
                       onClick={() => setSelectedTopic(topic)}
                       className={`min-w-0 rounded-xl border p-3 text-left transition-all flex items-center justify-between gap-2 ${
                         isSelected
-                          ? "border-[#5288B8] bg-[#EAF1F9] text-[#3C648E] font-semibold ring-1 ring-[#5288B8]/30 shadow-xs"
-                          : "border-[#E0E5EF] bg-white text-[#748199] hover:bg-[#F7F8FC] hover:text-[#3C4B63]"
+                          ? "border-[#007AFF] bg-[#E5F1FF] text-[#0056CC] font-semibold ring-1 ring-[#007AFF]/30 shadow-xs"
+                          : "border-[#D2D2D7] bg-white text-[#6E6E73] hover:bg-[#F5F5F7] hover:text-[#1D1D1F]"
                       }`}
                     >
                       <span className="truncate text-xs">{topic}</span>
                       {isSelected && (
-                        <CheckCircle2 className="h-4 w-4 text-[#5288B8] flex-shrink-0" />
+                        <CheckCircle2 className="h-4 w-4 text-[#007AFF] flex-shrink-0" />
                       )}
                     </button>
                   );
                 })}
               </div>
             ) : (
-              <div className="rounded-xl border border-dashed border-[#E0E5EF] p-6 text-center text-xs text-[#8490A2]">
+              <div className="rounded-xl border border-dashed border-[#D2D2D7] p-6 text-center text-xs text-[#8490A2]">
                 No topics match &quot;{topicSearchQuery}&quot; in {selectedGroup}.
               </div>
             )}
           </div>
 
           {/* Quick Topic Parameters & Summary */}
-          <div className="grid min-w-0 grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-6 pt-4 border-t border-[#E0E5EF]">
+          <div className="grid min-w-0 grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-6 pt-4 border-t border-[#D2D2D7]">
             <div className="space-y-5">
               <Segmented
                 label="Difficulty Level"
@@ -1105,10 +1105,10 @@ export const PracticeSetup: React.FC = () => {
             </div>
 
             {/* Session Summary Card */}
-            <div className="flex flex-col justify-between rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-5">
+            <div className="flex flex-col justify-between rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] p-5">
               <div>
-                <div className="flex items-center justify-between pb-3 border-b border-[#E0E5EF]">
-                  <span className="text-xs font-semibold text-[#3C4B63]">
+                <div className="flex items-center justify-between pb-3 border-b border-[#D2D2D7]">
+                  <span className="text-xs font-semibold text-[#1D1D1F]">
                     Session Overview
                   </span>
                   {validationSummary?.sections?.[0] && (
@@ -1127,7 +1127,7 @@ export const PracticeSetup: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mt-5 space-y-3 pt-4 border-t border-[#E0E5EF]">
+              <div className="mt-5 space-y-3 pt-4 border-t border-[#D2D2D7]">
                 <div className="flex items-start gap-2 rounded-xl bg-[#F5F6FE] px-3 py-2.5 text-[11px] leading-relaxed text-[#4B4C9F]"><Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0" />Fresh Gemini questions are automatically used for returning learners, matched to this topic and selection.</div>
                 <Button
                   variant="primary"
@@ -1155,7 +1155,7 @@ const Segmented: React.FC<{
   onChange: (value: string) => void;
 }> = ({ label, value, options, onChange }) => (
   <div>
-    <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#748199]">
+    <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#6E6E73]">
       {label}
     </div>
     <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -1166,8 +1166,8 @@ const Segmented: React.FC<{
           onClick={() => onChange(id)}
           className={`min-w-0 rounded-xl border px-3 py-2 text-xs font-medium transition-all truncate text-center ${
             value === id
-              ? "border-[#5288B8] bg-[#5288B8] text-white font-semibold shadow-xs"
-              : "border-[#E0E5EF] bg-white text-[#748199] hover:bg-[#F7F8FC] hover:text-[#3C4B63]"
+              ? "border-[#007AFF] bg-[#007AFF] text-white font-semibold shadow-xs"
+              : "border-[#D2D2D7] bg-white text-[#6E6E73] hover:bg-[#F5F5F7] hover:text-[#1D1D1F]"
           }`}
           title={text}
         >
@@ -1182,9 +1182,9 @@ const Summary: React.FC<{ label: string; value: string }> = ({
   label,
   value,
 }) => (
-  <div className="flex items-center justify-between border-b border-[#E0E5EF]/60 pb-2 last:border-b-0">
-    <span className="text-[#748199]">{label}</span>
-    <span className="font-semibold capitalize text-[#3C4B63] truncate ml-2 text-right">
+  <div className="flex items-center justify-between border-b border-[#D2D2D7]/60 pb-2 last:border-b-0">
+    <span className="text-[#6E6E73]">{label}</span>
+    <span className="font-semibold capitalize text-[#1D1D1F] truncate ml-2 text-right">
       {value}
     </span>
   </div>
