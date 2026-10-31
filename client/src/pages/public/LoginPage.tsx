@@ -662,12 +662,13 @@ export const LoginPage: React.FC = () => {
                   variant="primary"
                   size="lg"
                   className="w-full justify-between px-5 font-semibold"
+                  contentClassName="flex min-w-0 flex-1 items-center gap-2"
                   icon={<Mail className="h-4 w-4" />}
                   onClick={() => {
                     setAuthMode("password");
                   }}
                 >
-                  <span className="flex-1 text-left">Continue with Email + Password</span>
+                  <span className="min-w-0 flex-1 text-center">Continue with Email + Password</span>
                   <ArrowRight className="h-4 w-4 opacity-80" />
                 </Button>
 
@@ -676,10 +677,11 @@ export const LoginPage: React.FC = () => {
                   variant="secondary"
                   size="lg"
                   className="w-full justify-between px-5 font-semibold"
+                  contentClassName="flex min-w-0 flex-1 items-center gap-2"
                   icon={<Wallet className="h-4 w-4 text-[#007AFF]" />}
                   onClick={() => startPeraQrSession()}
                 >
-                  <span className="flex-1 text-left">Continue with Pera Wallet</span>
+                  <span className="min-w-0 flex-1 text-center">Continue with Pera Wallet</span>
                   <QrCode className="h-4 w-4 text-[#007AFF]" />
                 </Button>
               </div>
