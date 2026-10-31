@@ -96,9 +96,9 @@ export const SqlQueryOutputPanel: React.FC<SqlQueryOutputProps> = ({
       <div className="min-h-0 flex-1 overflow-y-auto p-4">
         {/* SQL Error Banner */}
         {result.error && (
-          <div className="mb-4 rounded-xl border border-[#E8CFD2] bg-[#F8EDEF]/70 p-3.5 text-xs text-[#9A646D]">
-            <div className="flex items-center gap-2 font-semibold text-[#9A646D] mb-1">
-              <AlertCircle className="h-4 w-4 text-[#9A646D] shrink-0" />
+          <div className="mb-4 rounded-xl border border-[#EACBC4] bg-[#F8EDEF]/70 p-3.5 text-xs text-[#A36162]">
+            <div className="flex items-center gap-2 font-semibold text-[#A36162] mb-1">
+              <AlertCircle className="h-4 w-4 text-[#A36162] shrink-0" />
               <span>SQL Execution Error:</span>
             </div>
             <pre className="font-mono text-[11px] overflow-x-auto whitespace-pre-wrap">{result.error}</pre>
@@ -152,7 +152,7 @@ export const SqlQueryOutputPanel: React.FC<SqlQueryOutputProps> = ({
 
         {/* Tab 2: Raw / Explain Output */}
         {activeTab === 'raw' && (
-          <div className="rounded-xl border border-border-subtle bg-[#F0EFF6] p-4 font-mono text-xs text-[#49465B] overflow-x-auto min-h-[220px]">
+          <div className="rounded-xl border border-border-subtle bg-[#EFF2F8] p-4 font-mono text-xs text-[#3C4B63] overflow-x-auto min-h-[220px]">
             {result.rawOutput ? (
               <pre className="whitespace-pre-wrap text-[#719B84] leading-relaxed">{result.rawOutput}</pre>
             ) : (

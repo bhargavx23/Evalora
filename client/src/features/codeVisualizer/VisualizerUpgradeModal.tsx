@@ -44,7 +44,7 @@ export const VisualizerUpgradeModal: React.FC<VisualizerUpgradeModalProps> = ({
             <Cpu className="h-3.5 w-3.5 text-brand-primary" />
             <span>Interactive Code Execution</span>
           </div>
-          <div className="inline-flex items-center gap-1 rounded-full border border-[#E8D9B9] bg-[#F8F3E8] px-2.5 py-1 text-xs font-medium text-[#896D45]">
+          <div className="inline-flex items-center gap-1 rounded-full border border-[#E9DAB5] bg-[#F8F3E8] px-2.5 py-1 text-xs font-medium text-[#8A7047]">
             <Lock className="h-3 w-3" />
             <span>Subscription Feature</span>
           </div>
@@ -69,7 +69,7 @@ export const VisualizerUpgradeModal: React.FC<VisualizerUpgradeModalProps> = ({
           </div>
 
           <div className="flex items-start gap-2.5 rounded-xl border border-border-subtle bg-surface-neutral/40 p-3">
-            <Activity className="h-4 w-4 text-[#527565] shrink-0 mt-0.5" />
+            <Activity className="h-4 w-4 text-[#4C765D] shrink-0 mt-0.5" />
             <div>
               <p className="text-xs font-semibold text-text-primary">Variable Mutation Watcher</p>
               <p className="text-[11px] text-text-muted">Highlight state changes and index accesses at every step</p>
@@ -77,7 +77,7 @@ export const VisualizerUpgradeModal: React.FC<VisualizerUpgradeModalProps> = ({
           </div>
 
           <div className="flex items-start gap-2.5 rounded-xl border border-border-subtle bg-surface-neutral/40 p-3">
-            <Layers className="h-4 w-4 text-[#555780] shrink-0 mt-0.5" />
+            <Layers className="h-4 w-4 text-[#3C648E] shrink-0 mt-0.5" />
             <div>
               <p className="text-xs font-semibold text-text-primary">Array &amp; Memory Inspector</p>
               <p className="text-[11px] text-text-muted">Interactive visual blocks with pointer markers and indices</p>
@@ -85,7 +85,7 @@ export const VisualizerUpgradeModal: React.FC<VisualizerUpgradeModalProps> = ({
           </div>
 
           <div className="flex items-start gap-2.5 rounded-xl border border-border-subtle bg-surface-neutral/40 p-3">
-            <Cpu className="h-4 w-4 text-[#555780] shrink-0 mt-0.5" />
+            <Cpu className="h-4 w-4 text-[#3C648E] shrink-0 mt-0.5" />
             <div>
               <p className="text-xs font-semibold text-text-primary">Infinite Loop Safeguard</p>
               <p className="text-[11px] text-text-muted">Protected sandbox with 250-step loop interceptor</p>

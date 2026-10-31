@@ -50,7 +50,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
       category: "Practice",
       description: "Build custom multi-section practice across DSA, Aptitude, Reasoning & Coding",
       route: "/practice",
-      icon: <Code2 className="h-4 w-4 text-[#7779C5]" />,
+      icon: <Code2 className="h-4 w-4 text-[#5288B8]" />,
       roles: ["student"],
     },
     {
@@ -59,7 +59,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
       category: "Learning Tools",
       description: "Step through JavaScript and Python execution traces line-by-line",
       route: "/code-visualizer",
-      icon: <Cpu className="h-4 w-4 text-[#7779C5]" />,
+      icon: <Cpu className="h-4 w-4 text-[#5288B8]" />,
       roles: ["student"],
     },
     {
@@ -68,7 +68,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
       category: "Examinations",
       description: "Take assigned exams, timed tests, and department evaluations",
       route: "/assessments",
-      icon: <FileCheck2 className="h-4 w-4 text-[#7779C5]" />,
+      icon: <FileCheck2 className="h-4 w-4 text-[#5288B8]" />,
       roles: ["student"],
     },
     {
@@ -77,7 +77,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
       category: "Performance",
       description: "Review test verdicts, score percentages, and integrity reports",
       route: "/results",
-      icon: <BarChart3 className="h-4 w-4 text-[#7779C5]" />,
+      icon: <BarChart3 className="h-4 w-4 text-[#5288B8]" />,
       roles: ["student"],
     },
     {
@@ -86,7 +86,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
       category: "Performance",
       description: "Track accuracy, diagnostic topic weaknesses, and percentile benchmarks",
       route: "/skills",
-      icon: <TrendingUp className="h-4 w-4 text-[#7779C5]" />,
+      icon: <TrendingUp className="h-4 w-4 text-[#5288B8]" />,
       roles: ["student"],
     },
     {
@@ -95,7 +95,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
       category: "Account",
       description: "Manage Pera Wallet connection, attempt quota, and account security",
       route: "/settings",
-      icon: <Settings className="h-4 w-4 text-[#7779C5]" />,
+      icon: <Settings className="h-4 w-4 text-[#5288B8]" />,
       roles: ["student", "faculty", "college_admin", "platform_admin"],
     },
     {
@@ -104,7 +104,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
       category: "Account",
       description: "View department info, roll number, and enrolled semester",
       route: "/profile",
-      icon: <User className="h-4 w-4 text-[#7779C5]" />,
+      icon: <User className="h-4 w-4 text-[#5288B8]" />,
       roles: ["student"],
     },
 
@@ -115,7 +115,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
       category: "Faculty",
       description: "Schedule, configure, and publish formal assessments for student batches",
       route: "/faculty/assessments",
-      icon: <FileCheck2 className="h-4 w-4 text-[#7779C5]" />,
+      icon: <FileCheck2 className="h-4 w-4 text-[#5288B8]" />,
       roles: ["faculty", "college_admin"],
     },
     {
@@ -124,7 +124,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
       category: "Faculty",
       description: "Browse, filter, and approve questions across all academic topics",
       route: "/faculty/questions",
-      icon: <BookOpen className="h-4 w-4 text-[#7779C5]" />,
+      icon: <BookOpen className="h-4 w-4 text-[#5288B8]" />,
       roles: ["faculty", "college_admin", "platform_admin"],
     },
     {
@@ -133,7 +133,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
       category: "Faculty",
       description: "Generate verified question drafts using Google Gemini Pro integration",
       route: "/faculty/ai-generator",
-      icon: <Bot className="h-4 w-4 text-[#7779C5]" />,
+      icon: <Bot className="h-4 w-4 text-[#5288B8]" />,
       roles: ["faculty", "college_admin"],
     },
     {
@@ -142,7 +142,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
       category: "Faculty",
       description: "Observe active assessment attempts, integrity flags, and submissions in real-time",
       route: "/faculty/live-monitor",
-      icon: <ShieldCheck className="h-4 w-4 text-[#7779C5]" />,
+      icon: <ShieldCheck className="h-4 w-4 text-[#5288B8]" />,
       roles: ["faculty", "college_admin"],
     },
 
@@ -153,7 +153,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
       category: "Admin",
       description: "Enrolled student rosters, faculty appointments, and role assignments",
       route: "/admin/users",
-      icon: <Users className="h-4 w-4 text-[#7779C5]" />,
+      icon: <Users className="h-4 w-4 text-[#5288B8]" />,
       roles: ["college_admin", "admin", "platform_admin"],
     },
     {
@@ -162,7 +162,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
       category: "Admin",
       description: "Academic department codes, faculty counts, and enrollment allocations",
       route: "/admin/departments",
-      icon: <Building2 className="h-4 w-4 text-[#7779C5]" />,
+      icon: <Building2 className="h-4 w-4 text-[#5288B8]" />,
       roles: ["college_admin", "admin", "platform_admin"],
     },
     {
@@ -171,7 +171,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
       category: "Super Admin",
       description: "Platform KPIs, Users, Organizations, Question Bank, Practice Controls, and Algorand Payments",
       route: "/admin",
-      icon: <ShieldCheck className="h-4 w-4 text-[#7779C5]" />,
+      icon: <ShieldCheck className="h-4 w-4 text-[#5288B8]" />,
       roles: ["admin", "platform_admin"],
     },
   ];
@@ -222,33 +222,33 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
     <div className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-16 sm:pt-24">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-[#49465B]/40 backdrop-blur-xs transition-opacity"
+        className="fixed inset-0 bg-[#3C4B63]/40 backdrop-blur-xs transition-opacity"
         onClick={onClose}
       />
 
       {/* Palette Modal */}
-      <div className="relative w-full max-w-xl rounded-2xl border border-[#E9E7F0] bg-white shadow-[0_16px_50px_-10px_rgba(82,77,119,0.18)] overflow-hidden">
+      <div className="relative w-full max-w-xl rounded-2xl border border-[#E0E5EF] bg-white shadow-[0_16px_50px_-10px_rgba(82,77,119,0.18)] overflow-hidden">
         {/* Search Input Bar */}
-        <div className="flex items-center gap-3 border-b border-[#E9E7F0] px-4 py-3.5">
-          <Search className="h-4 w-4 text-[#9895A8] shrink-0" />
+        <div className="flex items-center gap-3 border-b border-[#E0E5EF] px-4 py-3.5">
+          <Search className="h-4 w-4 text-[#8490A2] shrink-0" />
           <input
             ref={inputRef}
             type="text"
             placeholder="Search practice, assessments, question bank, settings..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full bg-transparent text-sm text-[#49465B] placeholder:text-[#9895A8] focus:outline-none"
+            className="w-full bg-transparent text-sm text-[#3C4B63] placeholder:text-[#8490A2] focus:outline-none"
           />
           {query && (
             <button
               onClick={() => setQuery("")}
-              className="rounded p-1 text-[#9895A8] hover:text-[#49465B]"
+              className="rounded p-1 text-[#8490A2] hover:text-[#3C4B63]"
               aria-label="Clear query"
             >
               <X className="h-3.5 w-3.5" />
             </button>
           )}
-          <span className="rounded bg-[#F1F2F8] px-2 py-0.5 text-[10px] font-mono text-[#777486]">
+          <span className="rounded bg-[#EFF2F8] px-2 py-0.5 text-[10px] font-mono text-[#748199]">
             ESC
           </span>
         </div>
@@ -256,7 +256,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
         {/* Results List */}
         <div className="max-h-[360px] overflow-y-auto p-2">
           {filteredItems.length === 0 ? (
-            <div className="py-8 text-center text-xs text-[#777486]">
+            <div className="py-8 text-center text-xs text-[#748199]">
               No matching pages or features found for "{query}".
             </div>
           ) : (
@@ -268,27 +268,27 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
                     navigate(item.route);
                     onClose();
                   }}
-                  className="flex w-full items-center justify-between rounded-xl p-3 text-left transition-colors hover:bg-[#F8F7FC] group"
+                  className="flex w-full items-center justify-between rounded-xl p-3 text-left transition-colors hover:bg-[#F7F8FC] group"
                 >
                   <div className="flex items-start gap-3">
-                    <div className="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-[#F0EFF9]">
+                    <div className="mt-0.5 flex h-7 w-7 items-center justify-center rounded-lg bg-[#EAF1F9]">
                       {item.icon}
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-semibold text-[#49465B] group-hover:text-[#7779C5] transition-colors">
+                        <span className="text-xs font-semibold text-[#3C4B63] group-hover:text-[#5288B8] transition-colors">
                           {item.title}
                         </span>
-                        <span className="rounded bg-[#F1F2F8] px-1.5 py-0.2 text-[9px] font-medium text-[#777486]">
+                        <span className="rounded bg-[#EFF2F8] px-1.5 py-0.2 text-[9px] font-medium text-[#748199]">
                           {item.category}
                         </span>
                       </div>
-                      <p className="mt-0.5 text-[11px] text-[#777486] line-clamp-1">
+                      <p className="mt-0.5 text-[11px] text-[#748199] line-clamp-1">
                         {item.description}
                       </p>
                     </div>
                   </div>
-                  <ArrowRight className="h-3.5 w-3.5 text-[#9895A8] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ArrowRight className="h-3.5 w-3.5 text-[#8490A2] opacity-0 group-hover:opacity-100 transition-opacity" />
                 </button>
               ))}
             </div>
@@ -296,7 +296,7 @@ export const QuickSearchModal: React.FC<QuickSearchModalProps> = ({ isOpen, onCl
         </div>
 
         {/* Footer shortcuts */}
-        <div className="border-t border-[#E9E7F0] bg-[#F8F7FC] px-4 py-2 text-[11px] text-[#777486] flex items-center justify-between">
+        <div className="border-t border-[#E0E5EF] bg-[#F7F8FC] px-4 py-2 text-[11px] text-[#748199] flex items-center justify-between">
           <span>Navigate with click or arrow keys</span>
           <span>Press ESC to dismiss</span>
         </div>

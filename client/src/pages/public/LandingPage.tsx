@@ -319,24 +319,24 @@ export const LandingPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-24 px-4 pb-20 sm:px-6">
+    <div className="landing-page relative isolate space-y-24 overflow-x-clip px-4 pb-20 sm:px-6">
       {/* ========================================================================= */}
       {/* 1. HERO SECTION WITH TASTEFUL INTERACTIVE WORKSPACE PREVIEW               */}
       {/* ========================================================================= */}
-      <section className="mx-auto grid min-h-[calc(100vh-8.5rem)] max-w-[1240px] grid-cols-1 items-center gap-12 pt-6 sm:pt-10 lg:grid-cols-[1fr_1.1fr]">
-        <div className="space-y-7">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#DEDDF0] bg-[#F0EFF9] px-3.5 py-1.5 text-xs font-semibold text-[#555780]">
-            <Brain className="h-3.5 w-3.5 text-[#7779C5]" />
+      <section className="landing-hero relative mx-auto grid min-h-[calc(100vh-8.5rem)] max-w-[1240px] grid-cols-1 items-center gap-10 pt-6 sm:gap-12 sm:pt-10 lg:grid-cols-[1fr_1.1fr]">
+        <div className="landing-hero-copy relative z-10 space-y-7">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#CFE2DC] bg-[#EAF1F9] px-3.5 py-1.5 text-xs font-semibold text-[#3C648E]">
+            <Brain className="h-3.5 w-3.5 text-[#5288B8]" />
             <span>Evalora — Next-Gen Adaptive Practice &amp; Assessment</span>
           </div>
 
           <div className="space-y-4">
-            <h1 className="display-heading max-w-2xl text-[2.75rem] leading-[1.04] text-[#49465B] sm:text-6xl">
+            <h1 className="display-heading max-w-2xl text-[2.75rem] leading-[1.04] text-[#3C4B63] sm:text-6xl">
               Practice smarter.
-              <span className="block text-[#7779C5]">Evaluate better.</span>
-              <span className="block text-[#555780]">Evolve faster.</span>
+              <span className="block text-[#5288B8]">Evaluate better.</span>
+              <span className="block text-[#3C648E]">Evolve faster.</span>
             </h1>
-            <p className="max-w-xl text-base leading-7 text-[#777486] md:text-lg">
+            <p className="max-w-xl text-base leading-7 text-[#748199] md:text-lg">
               Structured multi-track practice across DSA, Aptitude, Reasoning, and Coding.
               Guaranteed zero repetitive questions with Google Gemini AI replenishment and sandboxed multi-language judge.
             </p>
@@ -355,7 +355,7 @@ export const LandingPage: React.FC = () => {
               size="lg"
               variant="outline"
               onClick={() => navigate('/domains')}
-              icon={<BookOpen className="h-4 w-4 text-[#7779C5]" />}
+              icon={<BookOpen className="h-4 w-4 text-[#5288B8]" />}
             >
               Explore Domains
             </Button>
@@ -363,43 +363,43 @@ export const LandingPage: React.FC = () => {
               size="lg"
               variant="secondary"
               onClick={() => navigate('/pricing')}
-              icon={<Wallet className="h-4 w-4 text-[#7779C5]" />}
+              icon={<Wallet className="h-4 w-4 text-[#5288B8]" />}
             >
               View Plans (&lt; 9 ALGO)
             </Button>
           </div>
 
-          <div className="flex flex-wrap items-center gap-6 pt-1 text-xs text-[#777486]">
+          <div className="flex flex-wrap items-center gap-6 pt-1 text-xs text-[#748199]">
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4 text-[#7779C5]" />
+              <CheckCircle2 className="h-4 w-4 text-[#5288B8]" />
               <span>10 complimentary attempts included</span>
             </div>
             <div className="flex items-center gap-2">
-              <Wallet className="h-4 w-4 text-[#7779C5]" />
+              <Wallet className="h-4 w-4 text-[#5288B8]" />
               <span>Email + password and Pera Wallet login</span>
             </div>
           </div>
         </div>
 
         {/* Interactive Workspace Preview Surface */}
-        <div className="surface-rule overflow-hidden rounded-[16px] border border-[#E9E7F0] shadow-[0_12px_40px_-8px_rgba(82,77,119,0.08)]">
+        <div className="landing-preview surface-rule relative z-10 overflow-hidden rounded-[16px] border border-[#E0E5EF] shadow-[0_12px_40px_-8px_rgba(82,77,119,0.08)]">
           {/* Surface Top Header Bar */}
-          <div className="flex items-center justify-between border-b border-[#E9E7F0] bg-[#F8F7FC] px-4 py-3 sm:px-5">
-            <div className="flex items-center gap-2.5">
-              <LogoMark size="sm" />
-              <span className="hidden text-[11px] font-medium text-[#9895A8] sm:inline">
+          <div className="flex min-w-0 items-center justify-between gap-2 border-b border-[#E0E5EF] bg-[#F7F8FC] px-3 py-3 sm:px-5">
+            <div className="flex shrink-0 items-center gap-2.5">
+              <LogoMark size="sm" showWordmark={false} />
+              <span className="hidden text-[11px] font-medium text-[#8490A2] sm:inline">
                 interactive workspace preview
               </span>
             </div>
 
             {/* Preview View Switcher Tabs */}
-            <div className="flex items-center gap-1 rounded-lg border border-[#E9E7F0] bg-white p-1 text-[11px] font-medium text-[#777486]">
+            <div className="landing-preview-tabs flex min-w-0 max-w-full flex-1 items-center justify-end gap-1 overflow-x-auto rounded-lg border border-[#E0E5EF] bg-white p-1 text-[11px] font-medium text-[#748199]">
               <button
                 onClick={() => setHeroTab("practice")}
                 className={`rounded px-2.5 py-1 transition-all ${
                   heroTab === "practice"
-                    ? "bg-[#F0EFF9] text-[#555780] font-semibold"
-                    : "hover:text-[#49465B]"
+                    ? "bg-[#EAF1F9] text-[#3C648E] font-semibold"
+                    : "hover:text-[#3C4B63]"
                 }`}
               >
                 Builder
@@ -408,8 +408,8 @@ export const LandingPage: React.FC = () => {
                 onClick={() => setHeroTab("question")}
                 className={`rounded px-2.5 py-1 transition-all ${
                   heroTab === "question"
-                    ? "bg-[#F0EFF9] text-[#555780] font-semibold"
-                    : "hover:text-[#49465B]"
+                    ? "bg-[#EAF1F9] text-[#3C648E] font-semibold"
+                    : "hover:text-[#3C4B63]"
                 }`}
               >
                 Question
@@ -418,8 +418,8 @@ export const LandingPage: React.FC = () => {
                 onClick={() => setHeroTab("coding")}
                 className={`rounded px-2.5 py-1 transition-all ${
                   heroTab === "coding"
-                    ? "bg-[#F0EFF9] text-[#555780] font-semibold"
-                    : "hover:text-[#49465B]"
+                    ? "bg-[#EAF1F9] text-[#3C648E] font-semibold"
+                    : "hover:text-[#3C4B63]"
                 }`}
               >
                 Sandbox
@@ -428,8 +428,8 @@ export const LandingPage: React.FC = () => {
                 onClick={() => setHeroTab("analytics")}
                 className={`rounded px-2.5 py-1 transition-all ${
                   heroTab === "analytics"
-                    ? "bg-[#F0EFF9] text-[#555780] font-semibold"
-                    : "hover:text-[#49465B]"
+                    ? "bg-[#EAF1F9] text-[#3C648E] font-semibold"
+                    : "hover:text-[#3C4B63]"
                 }`}
               >
                 Analytics
@@ -444,10 +444,10 @@ export const LandingPage: React.FC = () => {
               <div className="space-y-5">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <h2 className="text-sm font-semibold text-[#49465B]">
+                    <h2 className="text-sm font-semibold text-[#3C4B63]">
                       Multi-Section Adaptive Practice
                     </h2>
-                    <p className="mt-0.5 text-xs text-[#777486]">
+                    <p className="mt-0.5 text-xs text-[#748199]">
                       Click a category track below to simulate instant section composition.
                     </p>
                   </div>
@@ -466,11 +466,11 @@ export const LandingPage: React.FC = () => {
                       onClick={() => setHeroTrack(t.id as any)}
                       className={`flex items-center gap-2 rounded-xl border px-3 py-2 text-xs transition-all ${
                         heroTrack === t.id
-                          ? "border-[#7779C5] bg-[#F0EFF9] font-semibold text-[#555780] shadow-xs"
-                          : "border-[#E9E7F0] bg-[#F8F7FC] text-[#777486] hover:border-[#DEDDF0]"
+                          ? "border-[#5288B8] bg-[#EAF1F9] font-semibold text-[#3C648E] shadow-xs"
+                          : "border-[#E0E5EF] bg-[#F7F8FC] text-[#748199] hover:border-[#CFE2DC]"
                       }`}
                     >
-                      <Layers className="h-3.5 w-3.5 text-[#7779C5]" />
+                      <Layers className="h-3.5 w-3.5 text-[#5288B8]" />
                       <span>{t.label}</span>
                       <span className="text-[10px] opacity-75">• {t.diff}</span>
                     </button>
@@ -478,31 +478,31 @@ export const LandingPage: React.FC = () => {
                 </div>
 
                 {/* Simulated Section Card Breakdown */}
-                <div className="rounded-xl border border-[#E9E7F0] bg-[#F8F7FC] p-4 text-xs">
-                  <div className="flex items-center justify-between border-b border-[#E9E7F0] pb-2.5">
-                    <span className="font-semibold text-[#49465B]">
+                <div className="rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-4 text-xs">
+                  <div className="flex items-center justify-between border-b border-[#E0E5EF] pb-2.5">
+                    <span className="font-semibold text-[#3C4B63]">
                       Active Configuration: {heroTrack.toUpperCase()} Track
                     </span>
-                    <span className="font-mono text-[#7779C5]">30 Questions Total</span>
+                    <span className="font-mono text-[#5288B8]">30 Questions Total</span>
                   </div>
                   <div className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-3">
-                    <div className="rounded-lg border border-[#E9E7F0] bg-white p-2.5">
-                      <div className="text-[11px] text-[#777486]">Fresh Question Pool</div>
-                      <div className="mt-1 text-sm font-semibold text-[#49465B]">100% Guaranteed</div>
+                    <div className="rounded-lg border border-[#E0E5EF] bg-white p-2.5">
+                      <div className="text-[11px] text-[#748199]">Fresh Question Pool</div>
+                      <div className="mt-1 text-sm font-semibold text-[#3C4B63]">100% Guaranteed</div>
                     </div>
-                    <div className="rounded-lg border border-[#E9E7F0] bg-white p-2.5">
-                      <div className="text-[11px] text-[#777486]">AI Auto-Replenish</div>
-                      <div className="mt-1 text-sm font-semibold text-[#555780]">Gemini Pro Active</div>
+                    <div className="rounded-lg border border-[#E0E5EF] bg-white p-2.5">
+                      <div className="text-[11px] text-[#748199]">AI Auto-Replenish</div>
+                      <div className="mt-1 text-sm font-semibold text-[#3C648E]">Gemini Pro Active</div>
                     </div>
-                    <div className="rounded-lg border border-[#E9E7F0] bg-white p-2.5">
-                      <div className="text-[11px] text-[#777486]">Attempt Quota</div>
-                      <div className="mt-1 text-sm font-semibold text-[#527565]">1 Attempt Deducted</div>
+                    <div className="rounded-lg border border-[#E0E5EF] bg-white p-2.5">
+                      <div className="text-[11px] text-[#748199]">Attempt Quota</div>
+                      <div className="mt-1 text-sm font-semibold text-[#4C765D]">1 Attempt Deducted</div>
                     </div>
                   </div>
                 </div>
 
                 <div className="flex items-center justify-between pt-1">
-                  <span className="text-xs text-[#777486]">
+                  <span className="text-xs text-[#748199]">
                     Try clicking <strong>Question</strong> or <strong>Sandbox</strong> above to preview student room
                   </span>
                   <Button
@@ -525,11 +525,11 @@ export const LandingPage: React.FC = () => {
                     <Badge variant="blue">Question 1 of 10</Badge>
                     <Badge variant="purple">DSA • Sliding Window</Badge>
                   </div>
-                  <span className="font-mono text-xs text-[#777486]">Est: 2m</span>
+                  <span className="font-mono text-xs text-[#748199]">Est: 2m</span>
                 </div>
 
-                <div className="rounded-xl border border-[#E9E7F0] bg-[#F8F7FC] p-4 text-xs">
-                  <p className="font-medium text-[#49465B]">
+                <div className="rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-4 text-xs">
+                  <p className="font-medium text-[#3C4B63]">
                     Given an array of integers, which sliding window technique handles variable window sizes with non-negative sums in linear time?
                   </p>
                 </div>
@@ -546,17 +546,17 @@ export const LandingPage: React.FC = () => {
                       className={`flex w-full items-center justify-between rounded-xl border px-3.5 py-2.5 text-left text-xs transition-all ${
                         heroSelectedOption === opt.id
                           ? opt.correct
-                            ? "border-[#C8DFD1] bg-[#E9F3ED] text-[#527565] font-semibold"
-                            : "border-[#E8CFD2] bg-[#F8EDEF] text-[#9A646D] font-semibold"
-                          : "border-[#E9E7F0] bg-white text-[#49465B] hover:bg-[#F8F7FC]"
+                            ? "border-[#C6DFD2] bg-[#E5F2EB] text-[#4C765D] font-semibold"
+                            : "border-[#EACBC4] bg-[#F8EDEF] text-[#A36162] font-semibold"
+                          : "border-[#E0E5EF] bg-white text-[#3C4B63] hover:bg-[#F7F8FC]"
                       }`}
                     >
                       <span>{opt.text}</span>
                       {heroSelectedOption === opt.id && (
                         opt.correct ? (
-                          <Check className="h-4 w-4 text-[#527565] shrink-0" />
+                          <Check className="h-4 w-4 text-[#4C765D] shrink-0" />
                         ) : (
-                          <span className="text-[10px] text-[#9A646D] font-semibold">Try another</span>
+                          <span className="text-[10px] text-[#A36162] font-semibold">Try another</span>
                         )
                       )}
                     </button>
@@ -564,7 +564,7 @@ export const LandingPage: React.FC = () => {
                 </div>
 
                 {heroSelectedOption && (
-                  <div className="rounded-lg border border-[#DEDDF0] bg-[#F0EFF9] p-3 text-[11px] text-[#555780]">
+                  <div className="rounded-lg border border-[#CFE2DC] bg-[#EAF1F9] p-3 text-[11px] text-[#3C648E]">
                     <strong>Instant Explanation:</strong> The two-pointer expansion and contraction pattern ensures each element enters and exits the window at most once, achieving strict O(n) amortized runtime.
                   </div>
                 )}
@@ -576,7 +576,7 @@ export const LandingPage: React.FC = () => {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-semibold text-[#49465B]">Sandbox Execution</span>
+                    <span className="text-xs font-semibold text-[#3C4B63]">Sandbox Execution</span>
                     <Badge variant="green">Compiler Online</Badge>
                   </div>
                   <div className="flex items-center gap-1 text-[11px]">
@@ -586,8 +586,8 @@ export const LandingPage: React.FC = () => {
                         onClick={() => setHeroLang(lang)}
                         className={`rounded px-2 py-0.5 capitalize transition-all ${
                           heroLang === lang
-                            ? "bg-[#7779C5] text-white font-semibold"
-                            : "bg-[#F8F7FC] text-[#777486] hover:text-[#49465B]"
+                            ? "bg-[#5288B8] text-white font-semibold"
+                            : "bg-[#F7F8FC] text-[#748199] hover:text-[#3C4B63]"
                         }`}
                       >
                         {lang === "cpp" ? "C++ 20" : lang}
@@ -596,7 +596,7 @@ export const LandingPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-[#E9E7F0] bg-[#49465B] p-4 font-mono text-xs text-[#5B586D]">
+                <div className="rounded-xl border border-[#E0E5EF] bg-[#3C4B63] p-4 font-mono text-xs text-[#5B586D]">
                   <div className="mb-2.5 flex items-center justify-between border-b border-white/10 pb-2 text-[11px] text-slate-400">
                     <span>solution.{heroLang === "python" ? "py" : heroLang === "cpp" ? "cpp" : "java"}</span>
                     <span className="text-[#719B84]">All 14 Hidden Testcases Passed</span>
@@ -614,9 +614,9 @@ export const LandingPage: React.FC = () => {
                   </pre>
                 </div>
 
-                <div className="flex items-center justify-between rounded-lg border border-[#E9E7F0] bg-[#F8F7FC] px-3.5 py-2 text-xs">
-                  <span className="text-[#777486]">Runtime: <strong className="text-[#49465B]">18 ms</strong> • Memory: <strong className="text-[#49465B]">14.1 MB</strong></span>
-                  <span className="text-[#527565] font-semibold">100 / 100 Score</span>
+                <div className="flex items-center justify-between rounded-lg border border-[#E0E5EF] bg-[#F7F8FC] px-3.5 py-2 text-xs">
+                  <span className="text-[#748199]">Runtime: <strong className="text-[#3C4B63]">18 ms</strong> • Memory: <strong className="text-[#3C4B63]">14.1 MB</strong></span>
+                  <span className="text-[#4C765D] font-semibold">100 / 100 Score</span>
                 </div>
               </div>
             )}
@@ -625,7 +625,7 @@ export const LandingPage: React.FC = () => {
             {heroTab === "analytics" && (
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-[#49465B]">Student Topic Mastery Matrix</span>
+                  <span className="text-xs font-semibold text-[#3C4B63]">Student Topic Mastery Matrix</span>
                   <Badge variant="blue">+10 XP Earned</Badge>
                 </div>
 
@@ -636,17 +636,17 @@ export const LandingPage: React.FC = () => {
                     { topic: "Quantitative Ratios & Time-Work", pct: 88, badge: "Mastered" },
                     { topic: "Logical Syllogisms & Seating", pct: 81, badge: "Advanced" },
                   ].map((m) => (
-                    <div key={m.topic} className="rounded-xl border border-[#E9E7F0] bg-[#F8F7FC] p-3 text-xs">
+                    <div key={m.topic} className="rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-3 text-xs">
                       <div className="mb-1.5 flex items-center justify-between">
-                        <span className="font-semibold text-[#49465B]">{m.topic}</span>
+                        <span className="font-semibold text-[#3C4B63]">{m.topic}</span>
                         <div className="flex items-center gap-2">
-                          <span className="text-[11px] font-mono text-[#7779C5]">{m.pct}%</span>
-                          <span className="text-[10px] text-[#777486]">({m.badge})</span>
+                          <span className="text-[11px] font-mono text-[#5288B8]">{m.pct}%</span>
+                          <span className="text-[10px] text-[#748199]">({m.badge})</span>
                         </div>
                       </div>
-                      <div className="h-2 w-full overflow-hidden rounded-full bg-[#E9E7F0]">
+                      <div className="h-2 w-full overflow-hidden rounded-full bg-[#E0E5EF]">
                         <div
-                          className="h-full rounded-full bg-[#7779C5] transition-all duration-500"
+                          className="h-full rounded-full bg-[#5288B8] transition-all duration-500"
                           style={{ width: `${m.pct}%` }}
                         />
                       </div>
@@ -654,9 +654,9 @@ export const LandingPage: React.FC = () => {
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between pt-1 text-xs text-[#777486]">
+                <div className="flex items-center justify-between pt-1 text-xs text-[#748199]">
                   <span>Algorand Certifiable Skill Credential Ready</span>
-                  <span className="font-semibold text-[#555780]">Verified On-Chain</span>
+                  <span className="font-semibold text-[#3C648E]">Verified On-Chain</span>
                 </div>
               </div>
             )}
@@ -667,57 +667,57 @@ export const LandingPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 2. WHAT EVALORA SOLVES — DIRECT COMPARISON                                */}
       {/* ========================================================================= */}
-      <section className="mx-auto max-w-[1240px] border-t border-[#E9E7F0] pt-20">
+      <section className="mx-auto max-w-[1240px] border-t border-[#E0E5EF] pt-20">
         <div className="mb-12 max-w-2xl space-y-3">
           <div className="page-kicker">Core Differentiation</div>
-          <h2 className="display-heading text-3xl text-[#49465B] sm:text-4xl">
+          <h2 className="display-heading text-3xl text-[#3C4B63] sm:text-4xl">
             Engineered to eliminate repetitive drills and shallow assessment.
           </h2>
-          <p className="text-sm leading-6 text-[#777486]">
+          <p className="text-sm leading-6 text-[#748199]">
             Traditional placement portals rely on stagnant question banks that students memorize. Evalora guarantees fresh challenges tailored to individual growth.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* Legacy Pitfalls Card */}
-          <div className="rounded-[16px] border border-[#E9E7F0] bg-[#FAFAFD] p-7">
-            <div className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#9A646D]">
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#F8EDEF] text-[#9A646D]">✕</span>
+          <div className="rounded-[16px] border border-[#E0E5EF] bg-[#FAFAFD] p-7">
+            <div className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#A36162]">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#F8EDEF] text-[#A36162]">✕</span>
               Legacy Placement Portals
             </div>
-            <ul className="space-y-3.5 text-xs text-[#777486] leading-relaxed">
+            <ul className="space-y-3.5 text-xs text-[#748199] leading-relaxed">
               <li className="flex items-start gap-2.5">
-                <span className="text-[#9A646D] font-bold">•</span>
+                <span className="text-[#A36162] font-bold">•</span>
                 <span><strong>Stale Question Banks:</strong> Same 50 questions repeated every exam, encouraging rote memorization rather than actual skill.</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <span className="text-[#9A646D] font-bold">•</span>
+                <span className="text-[#A36162] font-bold">•</span>
                 <span><strong>No Real Coding Judge:</strong> Multiple-choice approximations that fail to test edge cases, runtime complexity, or sandboxed execution.</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <span className="text-[#9A646D] font-bold">•</span>
+                <span className="text-[#A36162] font-bold">•</span>
                 <span><strong>Unverified Certificates:</strong> Easily forged PDF receipts with zero cryptographic validation.</span>
               </li>
             </ul>
           </div>
 
           {/* Evalora Advantage Card */}
-          <div className="rounded-[16px] border border-[#DEDDF0] bg-white p-7 shadow-[0_6px_28px_-6px_rgba(119,121,197,0.12)]">
-            <div className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#555780]">
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#F0EFF9] text-[#7779C5]">✓</span>
+          <div className="rounded-[16px] border border-[#CFE2DC] bg-white p-7 shadow-[0_6px_28px_-6px_rgba(119,121,197,0.12)]">
+            <div className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#3C648E]">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#EAF1F9] text-[#5288B8]">✓</span>
               Evalora Architecture
             </div>
-            <ul className="space-y-3.5 text-xs text-[#49465B] leading-relaxed">
+            <ul className="space-y-3.5 text-xs text-[#3C4B63] leading-relaxed">
               <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="h-4 w-4 text-[#7779C5] shrink-0 mt-0.5" />
+                <CheckCircle2 className="h-4 w-4 text-[#5288B8] shrink-0 mt-0.5" />
                 <span><strong>Freshness Guarantee:</strong> Algorithmic history tracking ensures you never see a repeated question unless explicitly requested.</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="h-4 w-4 text-[#7779C5] shrink-0 mt-0.5" />
+                <CheckCircle2 className="h-4 w-4 text-[#5288B8] shrink-0 mt-0.5" />
                 <span><strong>Google Gemini AI Replenishment:</strong> Automatic synthesis of high-fidelity questions with reference solutions and testcases.</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="h-4 w-4 text-[#7779C5] shrink-0 mt-0.5" />
+                <CheckCircle2 className="h-4 w-4 text-[#5288B8] shrink-0 mt-0.5" />
                 <span><strong>Algorand Cryptographic Anchoring:</strong> Pera Wallet login, QR authentication, and tamper-proof attempt unlocking.</span>
               </li>
             </ul>
@@ -728,13 +728,13 @@ export const LandingPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 3. INTERACTIVE PRACTICE DEMO — HANDS-ON DEMONSTRATION                     */}
       {/* ========================================================================= */}
-      <section id="interactive-demo" className="mx-auto max-w-[1240px] scroll-mt-24 border-t border-[#E9E7F0] pt-20">
+      <section id="interactive-demo" className="mx-auto max-w-[1240px] scroll-mt-24 border-t border-[#E0E5EF] pt-20">
         <div className="mb-10 max-w-2xl space-y-3">
           <div className="page-kicker">Interactive Demonstration</div>
-          <h2 className="display-heading text-3xl text-[#49465B] sm:text-4xl">
+          <h2 className="display-heading text-3xl text-[#3C4B63] sm:text-4xl">
             Test the adaptive engine directly in your browser.
           </h2>
-          <p className="text-sm leading-6 text-[#777486]">
+          <p className="text-sm leading-6 text-[#748199]">
             Configure track, difficulty, and question parameters below to experience how Evalora synthesizes personalized practice sets.
           </p>
         </div>
@@ -742,9 +742,9 @@ export const LandingPage: React.FC = () => {
         {/* Demo Playground Grid */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[340px_1fr]">
           {/* Controls Column */}
-          <div className="rounded-[16px] border border-[#E9E7F0] bg-white p-6 shadow-sm space-y-6">
+          <div className="rounded-[16px] border border-[#E0E5EF] bg-white p-6 shadow-sm space-y-6">
             <div>
-              <label className="text-xs font-semibold text-[#49465B] uppercase tracking-wider block mb-2.5">
+              <label className="text-xs font-semibold text-[#3C4B63] uppercase tracking-wider block mb-2.5">
                 1. Select Track
               </label>
               <div className="grid grid-cols-2 gap-2">
@@ -763,11 +763,11 @@ export const LandingPage: React.FC = () => {
                     }}
                     className={`flex items-center gap-2 rounded-xl border p-2.5 text-xs transition-all ${
                       demoCategory === item.id
-                        ? "border-[#7779C5] bg-[#F0EFF9] font-semibold text-[#555780]"
-                        : "border-[#E9E7F0] bg-[#F8F7FC] text-[#777486] hover:border-[#DEDDF0]"
+                        ? "border-[#5288B8] bg-[#EAF1F9] font-semibold text-[#3C648E]"
+                        : "border-[#E0E5EF] bg-[#F7F8FC] text-[#748199] hover:border-[#CFE2DC]"
                     }`}
                   >
-                    <item.icon className="h-3.5 w-3.5 text-[#7779C5]" />
+                    <item.icon className="h-3.5 w-3.5 text-[#5288B8]" />
                     <span>{item.label}</span>
                   </button>
                 ))}
@@ -775,7 +775,7 @@ export const LandingPage: React.FC = () => {
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#49465B] uppercase tracking-wider block mb-2.5">
+              <label className="text-xs font-semibold text-[#3C4B63] uppercase tracking-wider block mb-2.5">
                 2. Target Difficulty
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -789,8 +789,8 @@ export const LandingPage: React.FC = () => {
                     }}
                     className={`rounded-xl border py-2 text-xs capitalize transition-all ${
                       demoDifficulty === diff
-                        ? "border-[#7779C5] bg-[#F0EFF9] font-semibold text-[#555780]"
-                        : "border-[#E9E7F0] bg-[#F8F7FC] text-[#777486] hover:border-[#DEDDF0]"
+                        ? "border-[#5288B8] bg-[#EAF1F9] font-semibold text-[#3C648E]"
+                        : "border-[#E0E5EF] bg-[#F7F8FC] text-[#748199] hover:border-[#CFE2DC]"
                     }`}
                   >
                     {diff}
@@ -800,7 +800,7 @@ export const LandingPage: React.FC = () => {
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#49465B] uppercase tracking-wider block mb-2.5">
+              <label className="text-xs font-semibold text-[#3C4B63] uppercase tracking-wider block mb-2.5">
                 3. Session Question Count
               </label>
               <div className="flex gap-2">
@@ -810,8 +810,8 @@ export const LandingPage: React.FC = () => {
                     onClick={() => setDemoCount(count)}
                     className={`flex-1 rounded-xl border py-2 text-xs font-mono transition-all ${
                       demoCount === count
-                        ? "border-[#7779C5] bg-[#F0EFF9] font-bold text-[#555780]"
-                        : "border-[#E9E7F0] bg-[#F8F7FC] text-[#777486] hover:border-[#DEDDF0]"
+                        ? "border-[#5288B8] bg-[#EAF1F9] font-bold text-[#3C648E]"
+                        : "border-[#E0E5EF] bg-[#F7F8FC] text-[#748199] hover:border-[#CFE2DC]"
                     }`}
                   >
                     {count} Qs
@@ -820,13 +820,13 @@ export const LandingPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="rounded-xl border border-[#E9E7F0] bg-[#F8F7FC] p-3 text-xs space-y-2">
+            <div className="rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-3 text-xs space-y-2">
               <div className="flex items-center justify-between">
-                <span className="font-semibold text-[#49465B]">AI Replenishment</span>
+                <span className="font-semibold text-[#3C4B63]">AI Replenishment</span>
                 <button
                   onClick={() => setAiReplenish(!aiReplenish)}
                   className={`h-5 w-9 rounded-full transition-colors p-0.5 ${
-                    aiReplenish ? "bg-[#7779C5]" : "bg-[#D4D4E0]"
+                    aiReplenish ? "bg-[#5288B8]" : "bg-[#D0DDD7]"
                   }`}
                 >
                   <div
@@ -836,7 +836,7 @@ export const LandingPage: React.FC = () => {
                   />
                 </button>
               </div>
-              <p className="text-[11px] text-[#777486]">
+              <p className="text-[11px] text-[#748199]">
                 {aiReplenish ? "Google Gemini Pro guarantees fresh problem generation if pool is depleted." : "Only pull from pre-existing verified question pool."}
               </p>
             </div>
@@ -853,8 +853,8 @@ export const LandingPage: React.FC = () => {
           </div>
 
           {/* Interactive Problem Viewer */}
-          <div className="surface-rule overflow-hidden rounded-[16px] border border-[#E9E7F0] bg-white p-6 shadow-sm">
-            <div className="mb-5 flex flex-wrap items-center justify-between gap-3 border-b border-[#E9E7F0] pb-4">
+          <div className="surface-rule overflow-hidden rounded-[16px] border border-[#E0E5EF] bg-white p-6 shadow-sm">
+            <div className="mb-5 flex flex-wrap items-center justify-between gap-3 border-b border-[#E0E5EF] pb-4">
               <div className="flex items-center gap-2">
                 <Badge variant="blue">{activeDemoProblem.category}</Badge>
                 <Badge variant="purple">{activeDemoProblem.topic}</Badge>
@@ -862,17 +862,17 @@ export const LandingPage: React.FC = () => {
                   {activeDemoProblem.difficulty.toUpperCase()}
                 </Badge>
               </div>
-              <span className="text-xs text-[#777486] font-mono">
+              <span className="text-xs text-[#748199] font-mono">
                 Interactive Preview Mode
               </span>
             </div>
 
             <div className="space-y-5">
               <div>
-                <h3 className="text-base font-semibold text-[#49465B]">
+                <h3 className="text-base font-semibold text-[#3C4B63]">
                   {activeDemoProblem.title}
                 </h3>
-                <p className="mt-2 text-xs leading-relaxed text-[#4A4A57]">
+                <p className="mt-2 text-xs leading-relaxed text-[#526563]">
                   {activeDemoProblem.statement}
                 </p>
               </div>
@@ -880,7 +880,7 @@ export const LandingPage: React.FC = () => {
               {/* If MCQ type: interactive options */}
               {activeDemoProblem.type === "mcq" && activeDemoProblem.options && (
                 <div className="space-y-2.5">
-                  <div className="text-[11px] font-semibold text-[#9895A8] uppercase tracking-wider">
+                  <div className="text-[11px] font-semibold text-[#8490A2] uppercase tracking-wider">
                     Select an answer to inspect instant evaluation:
                   </div>
                   {activeDemoProblem.options.map((opt) => (
@@ -890,9 +890,9 @@ export const LandingPage: React.FC = () => {
                       className={`flex w-full items-center justify-between rounded-xl border p-3.5 text-left text-xs transition-all ${
                         selectedDemoAnswer === opt.id
                           ? opt.isCorrect
-                            ? "border-[#C8DFD1] bg-[#E9F3ED] text-[#527565] font-semibold"
-                            : "border-[#E8CFD2] bg-[#F8EDEF] text-[#9A646D] font-semibold"
-                          : "border-[#E9E7F0] bg-[#F8F7FC] text-[#49465B] hover:border-[#DEDDF0] hover:bg-white"
+                            ? "border-[#C6DFD2] bg-[#E5F2EB] text-[#4C765D] font-semibold"
+                            : "border-[#EACBC4] bg-[#F8EDEF] text-[#A36162] font-semibold"
+                          : "border-[#E0E5EF] bg-[#F7F8FC] text-[#3C4B63] hover:border-[#CFE2DC] hover:bg-white"
                       }`}
                     >
                       <span className="pr-4">{opt.text}</span>
@@ -912,7 +912,7 @@ export const LandingPage: React.FC = () => {
               {activeDemoProblem.type === "coding" && activeDemoProblem.codeSnippet && (
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-semibold text-[#9895A8] uppercase tracking-wider">
+                    <span className="text-[11px] font-semibold text-[#8490A2] uppercase tracking-wider">
                       Reference Solution ({demoCodingLang}):
                     </span>
                     <div className="flex gap-1 text-[10px]">
@@ -922,8 +922,8 @@ export const LandingPage: React.FC = () => {
                           onClick={() => setDemoCodingLang(l)}
                           className={`rounded px-2 py-0.5 uppercase ${
                             demoCodingLang === l
-                              ? "bg-[#7779C5] text-white font-semibold"
-                              : "bg-[#F8F7FC] text-[#777486] hover:text-[#49465B]"
+                              ? "bg-[#5288B8] text-white font-semibold"
+                              : "bg-[#F7F8FC] text-[#748199] hover:text-[#3C4B63]"
                           }`}
                         >
                           {l}
@@ -931,11 +931,11 @@ export const LandingPage: React.FC = () => {
                       ))}
                     </div>
                   </div>
-                  <pre className="rounded-xl border border-[#E9E7F0] bg-[#49465B] p-4 font-mono text-xs text-[#5B586D] overflow-x-auto leading-relaxed">
+                  <pre className="rounded-xl border border-[#E0E5EF] bg-[#3C4B63] p-4 font-mono text-xs text-[#5B586D] overflow-x-auto leading-relaxed">
                     {activeDemoProblem.codeSnippet[demoCodingLang]}
                   </pre>
                   {activeDemoProblem.sampleOutput && (
-                    <div className="rounded-lg border border-[#DEDDF0] bg-[#F0EFF9] p-3 text-xs font-mono text-[#555780]">
+                    <div className="rounded-lg border border-[#CFE2DC] bg-[#EAF1F9] p-3 text-xs font-mono text-[#3C648E]">
                       {activeDemoProblem.sampleOutput}
                     </div>
                   )}
@@ -944,16 +944,16 @@ export const LandingPage: React.FC = () => {
 
               {/* Solution explanation */}
               {selectedDemoAnswer && (
-                <div className="rounded-xl border border-[#DEDDF0] bg-[#F0EFF9] p-4 text-xs text-[#555780]">
-                  <div className="font-semibold text-[#49465B] mb-1">
+                <div className="rounded-xl border border-[#CFE2DC] bg-[#EAF1F9] p-4 text-xs text-[#3C648E]">
+                  <div className="font-semibold text-[#3C4B63] mb-1">
                     Verified Solution Analysis
                   </div>
                   <p className="leading-relaxed">{activeDemoProblem.explanation}</p>
                 </div>
               )}
 
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-[#E9E7F0] pt-4">
-                <span className="text-xs text-[#777486]">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-[#E0E5EF] pt-4">
+                <span className="text-xs text-[#748199]">
                   Ready to launch an official graded session with real timer and analytics?
                 </span>
                 <Button
@@ -973,13 +973,13 @@ export const LandingPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 4. INTERACTIVE HOW EVALORA WORKS (4-STEP WALKTHROUGH)                     */}
       {/* ========================================================================= */}
-      <section className="mx-auto max-w-[1240px] border-t border-[#E9E7F0] pt-20">
+      <section className="mx-auto max-w-[1240px] border-t border-[#E0E5EF] pt-20">
         <div className="mb-12 max-w-2xl space-y-3">
           <div className="page-kicker">Workflow Architecture</div>
-          <h2 className="display-heading text-3xl text-[#49465B] sm:text-4xl">
+          <h2 className="display-heading text-3xl text-[#3C4B63] sm:text-4xl">
             From topic selection to certified skill verification.
           </h2>
-          <p className="text-sm leading-6 text-[#777486]">
+          <p className="text-sm leading-6 text-[#748199]">
             Click any step to inspect the underlying system mechanics.
           </p>
         </div>
@@ -997,17 +997,17 @@ export const LandingPage: React.FC = () => {
               onClick={() => setActiveStep(item.step)}
               className={`rounded-2xl border p-4 text-left transition-all ${
                 activeStep === item.step
-                  ? "border-[#7779C5] bg-[#F0EFF9] shadow-xs"
-                  : "border-[#E9E7F0] bg-white hover:border-[#DEDDF0] hover:bg-[#F8F7FC]"
+                  ? "border-[#5288B8] bg-[#EAF1F9] shadow-xs"
+                  : "border-[#E0E5EF] bg-white hover:border-[#CFE2DC] hover:bg-[#F7F8FC]"
               }`}
             >
               <div className={`text-xs font-mono font-semibold ${
-                activeStep === item.step ? "text-[#7779C5]" : "text-[#9895A8]"
+                activeStep === item.step ? "text-[#5288B8]" : "text-[#8490A2]"
               }`}>
                 {item.label}
               </div>
               <div className={`mt-1 text-sm font-semibold ${
-                activeStep === item.step ? "text-[#555780]" : "text-[#49465B]"
+                activeStep === item.step ? "text-[#3C648E]" : "text-[#3C4B63]"
               }`}>
                 {item.title}
               </div>
@@ -1016,27 +1016,27 @@ export const LandingPage: React.FC = () => {
         </div>
 
         {/* Dynamic Detail Card Based on Active Step */}
-        <div className="rounded-[16px] border border-[#E9E7F0] bg-white p-7 shadow-sm">
+        <div className="rounded-[16px] border border-[#E0E5EF] bg-white p-7 shadow-sm">
           {activeStep === 1 && (
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 items-center">
               <div className="space-y-3">
                 <Badge variant="blue">Step 01 • Configuration</Badge>
-                <h3 className="display-heading text-2xl text-[#49465B]">
+                <h3 className="display-heading text-2xl text-[#3C4B63]">
                   Multi-Section Practice Builder
                 </h3>
-                <p className="text-xs leading-relaxed text-[#777486]">
+                <p className="text-xs leading-relaxed text-[#748199]">
                   Combine DSA, Aptitude, Reasoning, and Coding in one synchronized exam. Set individual difficulties, target questions, and time limits per section with atomic quota validation.
                 </p>
-                <div className="pt-2 text-xs font-medium text-[#7779C5]">
+                <div className="pt-2 text-xs font-medium text-[#5288B8]">
                   Supports up to 5 concurrent sections per attempt
                 </div>
               </div>
-              <div className="rounded-xl border border-[#E9E7F0] bg-[#F8F7FC] p-5 text-xs font-mono space-y-2">
-                <div className="text-[#555780] font-semibold">// POST /api/practice/generate</div>
-                <div className="text-[#49465B]">sections: [</div>
-                <div className="pl-4 text-[#777486]">&#123; category: 'DSA', topic: 'Arrays', difficulty: 'medium', count: 10 &#125;,</div>
-                <div className="pl-4 text-[#777486]">&#123; category: 'Aptitude', topic: 'Percentages', difficulty: 'easy', count: 10 &#125;</div>
-                <div className="text-[#49465B]">]</div>
+              <div className="rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-5 text-xs font-mono space-y-2">
+                <div className="text-[#3C648E] font-semibold">// POST /api/practice/generate</div>
+                <div className="text-[#3C4B63]">sections: [</div>
+                <div className="pl-4 text-[#748199]">&#123; category: 'DSA', topic: 'Arrays', difficulty: 'medium', count: 10 &#125;,</div>
+                <div className="pl-4 text-[#748199]">&#123; category: 'Aptitude', topic: 'Percentages', difficulty: 'easy', count: 10 &#125;</div>
+                <div className="text-[#3C4B63]">]</div>
               </div>
             </div>
           )}
@@ -1045,22 +1045,22 @@ export const LandingPage: React.FC = () => {
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 items-center">
               <div className="space-y-3">
                 <Badge variant="purple">Step 02 • Adaptive Freshness</Badge>
-                <h3 className="display-heading text-2xl text-[#49465B]">
+                <h3 className="display-heading text-2xl text-[#3C4B63]">
                   Continuous Fresh-Question Engine & AI Replenish
                 </h3>
-                <p className="text-xs leading-relaxed text-[#777486]">
+                <p className="text-xs leading-relaxed text-[#748199]">
                   Evalora audits your complete historical attempt log in MongoDB. If the verified pool has insufficient fresh questions, the Google Gemini Pro provider synthesizes, validates, and stores verified candidates on the fly.
                 </p>
-                <div className="pt-2 text-xs font-medium text-[#7779C5]">
+                <div className="pt-2 text-xs font-medium text-[#5288B8]">
                   Guaranteed zero repeated questions unless review mode enabled
                 </div>
               </div>
-              <div className="rounded-xl border border-[#E9E7F0] bg-[#F8F7FC] p-5 text-xs space-y-2">
-                <div className="flex items-center justify-between border-b border-[#E9E7F0] pb-2">
-                  <span className="font-semibold text-[#49465B]">Fresh Selection Audit</span>
+              <div className="rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-5 text-xs space-y-2">
+                <div className="flex items-center justify-between border-b border-[#E0E5EF] pb-2">
+                  <span className="font-semibold text-[#3C4B63]">Fresh Selection Audit</span>
                   <Badge variant="green">Verified Fresh</Badge>
                 </div>
-                <div className="text-xs text-[#777486] space-y-1">
+                <div className="text-xs text-[#748199] space-y-1">
                   <div>• Attempt history queried: 142 completed questions</div>
                   <div>• Duplicates automatically excluded from active candidate pool</div>
                   <div>• Gemini 3.5 Pro standby ready for instant replenishment</div>
@@ -1073,17 +1073,17 @@ export const LandingPage: React.FC = () => {
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 items-center">
               <div className="space-y-3">
                 <Badge variant="green">Step 03 • Code Execution</Badge>
-                <h3 className="display-heading text-2xl text-[#49465B]">
+                <h3 className="display-heading text-2xl text-[#3C4B63]">
                   Developer Monaco Workspace & Sandbox Judge
                 </h3>
-                <p className="text-xs leading-relaxed text-[#777486]">
+                <p className="text-xs leading-relaxed text-[#748199]">
                   Write C, C++, Python, and Java code in Monaco Editor. Execute against custom stdin or submit for complete isolated sandbox testing against hidden edge cases with CPU and memory limits.
                 </p>
-                <div className="pt-2 text-xs font-medium text-[#7779C5]">
+                <div className="pt-2 text-xs font-medium text-[#5288B8]">
                   Strict 2000ms time limits, 256MB memory caps, and zero network escapes
                 </div>
               </div>
-              <div className="rounded-xl border border-[#E9E7F0] bg-[#49465B] p-4 text-xs font-mono text-[#5B586D] space-y-2">
+              <div className="rounded-xl border border-[#E0E5EF] bg-[#3C4B63] p-4 text-xs font-mono text-[#5B586D] space-y-2">
                 <div className="flex justify-between text-slate-400 text-[11px] border-b border-white/10 pb-1.5">
                   <span>POST /api/submissions/evaluate</span>
                   <span className="text-[#719B84]">Exit Code: 0</span>
@@ -1100,19 +1100,19 @@ export const LandingPage: React.FC = () => {
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 items-center">
               <div className="space-y-3">
                 <Badge variant="blue">Step 04 • Verification</Badge>
-                <h3 className="display-heading text-2xl text-[#49465B]">
+                <h3 className="display-heading text-2xl text-[#3C4B63]">
                   Actionable Analytics & Algorand Trust
                 </h3>
-                <p className="text-xs leading-relaxed text-[#777486]">
+                <p className="text-xs leading-relaxed text-[#748199]">
                   Review in-depth topic breakdown, percentile tracking, and time management metrics. Connect your Algorand wallet or unlock paid attempts with instant micro-payments.
                 </p>
-                <div className="pt-2 text-xs font-medium text-[#7779C5]">
+                <div className="pt-2 text-xs font-medium text-[#5288B8]">
                   Pera Wallet QR login + transparent Algorand blockchain ledger
                 </div>
               </div>
-              <div className="rounded-xl border border-[#DEDDF0] bg-[#F0EFF9] p-5 text-xs text-[#555780] space-y-2">
-                <div className="flex items-center justify-between border-b border-[#DEDDF0] pb-2">
-                  <span className="font-semibold text-[#49465B]">Algorand Verification Status</span>
+              <div className="rounded-xl border border-[#CFE2DC] bg-[#EAF1F9] p-5 text-xs text-[#3C648E] space-y-2">
+                <div className="flex items-center justify-between border-b border-[#CFE2DC] pb-2">
+                  <span className="font-semibold text-[#3C4B63]">Algorand Verification Status</span>
                   <Badge variant="blue">Pera Connected</Badge>
                 </div>
                 <div>• Cryptographic Challenge Signature Verified</div>
@@ -1127,16 +1127,16 @@ export const LandingPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 5. INTERACTIVE FEATURE SHOWCASE (TABS)                                   */}
       {/* ========================================================================= */}
-      <section className="mx-auto max-w-[1240px] border-t border-[#E9E7F0] pt-20">
+      <section className="mx-auto max-w-[1240px] border-t border-[#E0E5EF] pt-20">
         <div className="mb-10 max-w-2xl space-y-3">
           <div className="page-kicker">Platform Features</div>
-          <h2 className="display-heading text-3xl text-[#49465B] sm:text-4xl">
+          <h2 className="display-heading text-3xl text-[#3C4B63] sm:text-4xl">
             Comprehensive tools for students, faculty, and institutions.
           </h2>
         </div>
 
         {/* Feature Tabs */}
-        <div className="flex flex-wrap gap-2 border-b border-[#E9E7F0] pb-4">
+        <div className="flex flex-wrap gap-2 border-b border-[#E0E5EF] pb-4">
           {[
             { id: "practice", label: "Adaptive Practice" },
             { id: "coding", label: "Coding Workspace" },
@@ -1148,8 +1148,8 @@ export const LandingPage: React.FC = () => {
               onClick={() => setFeatureTab(tab.id as any)}
               className={`rounded-xl px-4 py-2 text-xs font-medium transition-all ${
                 featureTab === tab.id
-                  ? "bg-[#7779C5] text-white font-semibold shadow-xs"
-                  : "bg-white text-[#777486] hover:bg-[#F8F7FC] hover:text-[#49465B] border border-[#E9E7F0]"
+                  ? "bg-[#5288B8] text-white font-semibold shadow-xs"
+                  : "bg-white text-[#748199] hover:bg-[#F7F8FC] hover:text-[#3C4B63] border border-[#E0E5EF]"
               }`}
             >
               {tab.label}
@@ -1158,33 +1158,33 @@ export const LandingPage: React.FC = () => {
         </div>
 
         {/* Tab Content Display */}
-        <div className="mt-8 rounded-[16px] border border-[#E9E7F0] bg-white p-7 shadow-sm">
+        <div className="mt-8 rounded-[16px] border border-[#E0E5EF] bg-white p-7 shadow-sm">
           {featureTab === "practice" && (
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               <div className="space-y-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F0EFF9] text-[#7779C5]">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EAF1F9] text-[#5288B8]">
                   <Layers className="h-5 w-5" />
                 </div>
-                <h4 className="text-sm font-semibold text-[#49465B]">Multi-Track Combiner</h4>
-                <p className="text-xs text-[#777486] leading-relaxed">
+                <h4 className="text-sm font-semibold text-[#3C4B63]">Multi-Track Combiner</h4>
+                <p className="text-xs text-[#748199] leading-relaxed">
                   Design practice sessions pairing algorithmic coding with quantitative percentages and logical syllogisms.
                 </p>
               </div>
               <div className="space-y-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F0EFF9] text-[#7779C5]">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EAF1F9] text-[#5288B8]">
                   <Brain className="h-5 w-5" />
                 </div>
-                <h4 className="text-sm font-semibold text-[#49465B]">AI Replenishment</h4>
-                <p className="text-xs text-[#777486] leading-relaxed">
+                <h4 className="text-sm font-semibold text-[#3C4B63]">AI Replenishment</h4>
+                <p className="text-xs text-[#748199] leading-relaxed">
                   Powered by Google Gemini 3.5 Pro to synthesize new questions when existing pools run low, complete with verified explanations.
                 </p>
               </div>
               <div className="space-y-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F0EFF9] text-[#7779C5]">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EAF1F9] text-[#5288B8]">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
-                <h4 className="text-sm font-semibold text-[#49465B]">Atomic Quota Safety</h4>
-                <p className="text-xs text-[#777486] leading-relaxed">
+                <h4 className="text-sm font-semibold text-[#3C4B63]">Atomic Quota Safety</h4>
+                <p className="text-xs text-[#748199] leading-relaxed">
                   Race-condition-proof attempt deductions prevent accidental losses and guarantee seamless session resumption.
                 </p>
               </div>
@@ -1194,29 +1194,29 @@ export const LandingPage: React.FC = () => {
           {featureTab === "coding" && (
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               <div className="space-y-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F0EFF9] text-[#7779C5]">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EAF1F9] text-[#5288B8]">
                   <Terminal className="h-5 w-5" />
                 </div>
-                <h4 className="text-sm font-semibold text-[#49465B]">Multi-Language Support</h4>
-                <p className="text-xs text-[#777486] leading-relaxed">
+                <h4 className="text-sm font-semibold text-[#3C4B63]">Multi-Language Support</h4>
+                <p className="text-xs text-[#748199] leading-relaxed">
                   First-class support for Python 3, C++ 20, C17, and Java 25 with language-specific starter boilerplate and types.
                 </p>
               </div>
               <div className="space-y-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F0EFF9] text-[#7779C5]">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EAF1F9] text-[#5288B8]">
                   <Cpu className="h-5 w-5" />
                 </div>
-                <h4 className="text-sm font-semibold text-[#49465B]">Isolated Sandbox</h4>
-                <p className="text-xs text-[#777486] leading-relaxed">
+                <h4 className="text-sm font-semibold text-[#3C4B63]">Isolated Sandbox</h4>
+                <p className="text-xs text-[#748199] leading-relaxed">
                   Sandboxed process isolation guarding against malicious code execution with strict timeout and resource limits.
                 </p>
               </div>
               <div className="space-y-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F0EFF9] text-[#7779C5]">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EAF1F9] text-[#5288B8]">
                   <CheckCircle2 className="h-5 w-5" />
                 </div>
-                <h4 className="text-sm font-semibold text-[#49465B]">Hidden Test Verification</h4>
-                <p className="text-xs text-[#777486] leading-relaxed">
+                <h4 className="text-sm font-semibold text-[#3C4B63]">Hidden Test Verification</h4>
+                <p className="text-xs text-[#748199] leading-relaxed">
                   Evaluate solutions against hidden edge cases, boundary parameters, and performance stress tests.
                 </p>
               </div>
@@ -1226,29 +1226,29 @@ export const LandingPage: React.FC = () => {
           {featureTab === "assessments" && (
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               <div className="space-y-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F0EFF9] text-[#7779C5]">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EAF1F9] text-[#5288B8]">
                   <FileCheck2 className="h-5 w-5" />
                 </div>
-                <h4 className="text-sm font-semibold text-[#49465B]">Faculty Assessment Builder</h4>
-                <p className="text-xs text-[#777486] leading-relaxed">
+                <h4 className="text-sm font-semibold text-[#3C4B63]">Faculty Assessment Builder</h4>
+                <p className="text-xs text-[#748199] leading-relaxed">
                   Construct exams with custom pass marks, scheduled availability windows, and Department-based student targeting.
                 </p>
               </div>
               <div className="space-y-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F0EFF9] text-[#7779C5]">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EAF1F9] text-[#5288B8]">
                   <Lock className="h-5 w-5" />
                 </div>
-                <h4 className="text-sm font-semibold text-[#49465B]">Anti-Cheat Proctoring</h4>
-                <p className="text-xs text-[#777486] leading-relaxed">
+                <h4 className="text-sm font-semibold text-[#3C4B63]">Anti-Cheat Proctoring</h4>
+                <p className="text-xs text-[#748199] leading-relaxed">
                   Full-screen enforcement, tab-switch monitoring, copy-paste guards, and real-time live proctoring dashboard.
                 </p>
               </div>
               <div className="space-y-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F0EFF9] text-[#7779C5]">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EAF1F9] text-[#5288B8]">
                   <BarChart3 className="h-5 w-5" />
                 </div>
-                <h4 className="text-sm font-semibold text-[#49465B]">Batch Analytics</h4>
-                <p className="text-xs text-[#777486] leading-relaxed">
+                <h4 className="text-sm font-semibold text-[#3C4B63]">Batch Analytics</h4>
+                <p className="text-xs text-[#748199] leading-relaxed">
                   Analyze cohort performance, difficulty drop-offs, and department-level question discrimination indices.
                 </p>
               </div>
@@ -1258,29 +1258,29 @@ export const LandingPage: React.FC = () => {
           {featureTab === "blockchain" && (
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               <div className="space-y-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F0EFF9] text-[#7779C5]">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EAF1F9] text-[#5288B8]">
                   <Wallet className="h-5 w-5" />
                 </div>
-                <h4 className="text-sm font-semibold text-[#49465B]">Desktop QR Wallet Login</h4>
-                <p className="text-xs text-[#777486] leading-relaxed">
+                <h4 className="text-sm font-semibold text-[#3C4B63]">Desktop QR Wallet Login</h4>
+                <p className="text-xs text-[#748199] leading-relaxed">
                   Sign in instantly by scanning a desktop QR code using your Pera Wallet mobile app on Algorand.
                 </p>
               </div>
               <div className="space-y-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F0EFF9] text-[#7779C5]">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EAF1F9] text-[#5288B8]">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
-                <h4 className="text-sm font-semibold text-[#49465B]">Zero Private Credential Storage</h4>
-                <p className="text-xs text-[#777486] leading-relaxed">
+                <h4 className="text-sm font-semibold text-[#3C4B63]">Zero Private Credential Storage</h4>
+                <p className="text-xs text-[#748199] leading-relaxed">
                   Evalora never requests or stores seed phrases or private keys. All authentication uses cryptographic challenge verification.
                 </p>
               </div>
               <div className="space-y-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F0EFF9] text-[#7779C5]">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EAF1F9] text-[#5288B8]">
                   <Award className="h-5 w-5" />
                 </div>
-                <h4 className="text-sm font-semibold text-[#49465B]">Algorand Micro-Payments</h4>
-                <p className="text-xs text-[#777486] leading-relaxed">
+                <h4 className="text-sm font-semibold text-[#3C4B63]">Algorand Micro-Payments</h4>
+                <p className="text-xs text-[#748199] leading-relaxed">
                   Unlock practice attempts with instant ALGO blockchain payments verified directly against the Algorand network.
                 </p>
               </div>
@@ -1292,14 +1292,14 @@ export const LandingPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 6. PREMIUM TECHNOLOGY DOMAIN PREPARATION                                  */}
       {/* ========================================================================= */}
-      <section className="mx-auto max-w-[1240px] border-t border-[#E9E7F0] pt-20">
+      <section className="mx-auto max-w-[1240px] border-t border-[#E0E5EF] pt-20">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-2xl space-y-3">
             <div className="page-kicker">Multi-Domain Preparation</div>
-            <h2 className="display-heading text-3xl text-[#49465B] sm:text-4xl">
+            <h2 className="display-heading text-3xl text-[#3C4B63] sm:text-4xl">
               Specialized preparation paths for in-demand tech roles.
             </h2>
-            <p className="text-sm leading-relaxed text-[#777486]">
+            <p className="text-sm leading-relaxed text-[#748199]">
               Prepare for real-world engineering careers with structured roadmaps, interactive multi-tab code editors, and live criteria evaluation.
             </p>
           </div>
@@ -1307,7 +1307,7 @@ export const LandingPage: React.FC = () => {
             size="md"
             variant="outline"
             onClick={() => navigate('/domains')}
-            icon={<ArrowRight className="h-4 w-4 text-[#7779C5]" />}
+            icon={<ArrowRight className="h-4 w-4 text-[#5288B8]" />}
           >
             Explore All Domains
           </Button>
@@ -1366,25 +1366,25 @@ export const LandingPage: React.FC = () => {
           ].map((domain) => (
             <div
               key={domain.slug}
-              className="flex flex-col justify-between rounded-2xl border border-[#E9E7F0] bg-white p-6 shadow-xs hover:border-[#DEDDF0] hover:shadow-md transition-all duration-150"
+              className="flex flex-col justify-between rounded-2xl border border-[#E0E5EF] bg-white p-6 shadow-xs hover:border-[#CFE2DC] hover:shadow-md transition-all duration-150"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <Badge variant="blue" size="sm">{domain.tag}</Badge>
-                  <span className="text-[11px] font-semibold text-[#7779C5]">{domain.modules} Modules</span>
+                  <span className="text-[11px] font-semibold text-[#5288B8]">{domain.modules} Modules</span>
                 </div>
-                <h3 className="text-base font-bold text-[#49465B]">{domain.name}</h3>
-                <p className="text-xs text-[#777486] leading-relaxed">{domain.desc}</p>
-                <div className="rounded-lg bg-[#F8F7FC] border border-[#E9E7F0] p-2 text-[10px] text-[#555780] font-mono">
+                <h3 className="text-base font-bold text-[#3C4B63]">{domain.name}</h3>
+                <p className="text-xs text-[#748199] leading-relaxed">{domain.desc}</p>
+                <div className="rounded-lg bg-[#F7F8FC] border border-[#E0E5EF] p-2 text-[10px] text-[#3C648E] font-mono">
                   {domain.highlight}
                 </div>
               </div>
 
-              <div className="mt-5 pt-3 border-t border-[#E9E7F0] flex items-center justify-between">
-                <span className="text-[11px] text-[#777486]">Syllabus Preview Available</span>
+              <div className="mt-5 pt-3 border-t border-[#E0E5EF] flex items-center justify-between">
+                <span className="text-[11px] text-[#748199]">Syllabus Preview Available</span>
                 <button
                   onClick={() => navigate(`/domains/${domain.slug}`)}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-[#7779C5] hover:text-[#555780]"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-[#5288B8] hover:text-[#3C648E]"
                 >
                   <span>View Details</span>
                   <ChevronRight className="h-3.5 w-3.5" />
@@ -1398,53 +1398,53 @@ export const LandingPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 7. FREE VS PREMIUM SUBSCRIPTION COMPARISON                                */}
       {/* ========================================================================= */}
-      <section className="mx-auto max-w-[1240px] border-t border-[#E9E7F0] pt-20">
+      <section className="mx-auto max-w-[1240px] border-t border-[#E0E5EF] pt-20">
         <div className="mb-12 max-w-2xl space-y-3">
           <div className="page-kicker">Honest & Transparent Model</div>
-          <h2 className="display-heading text-3xl text-[#49465B] sm:text-4xl">
+          <h2 className="display-heading text-3xl text-[#3C4B63] sm:text-4xl">
             Free practice for all. Premium for deep technical mastery.
           </h2>
-          <p className="text-sm leading-relaxed text-[#777486]">
+          <p className="text-sm leading-relaxed text-[#748199]">
             No hidden fees, no automatic recurring lock-ins. Subscribe with Pera Wallet only when you want to unlock extra attempts or domain preparation.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {/* Free Tier Card */}
-          <div className="rounded-2xl border border-[#E9E7F0] bg-white p-7 space-y-5 shadow-xs">
+          <div className="rounded-2xl border border-[#E0E5EF] bg-white p-7 space-y-5 shadow-xs">
             <div className="space-y-2">
               <Badge variant="blue">Free Forever</Badge>
               <div className="flex items-baseline gap-2">
-                <span className="font-serif text-3xl font-bold text-[#49465B]">0 ALGO</span>
-                <span className="text-xs text-[#777486]">/ 10 Complimentary Attempts</span>
+                <span className="font-serif text-3xl font-bold text-[#3C4B63]">0 ALGO</span>
+                <span className="text-xs text-[#748199]">/ 10 Complimentary Attempts</span>
               </div>
-              <p className="text-xs text-[#777486] leading-relaxed">
+              <p className="text-xs text-[#748199] leading-relaxed">
                 Ideal for evaluating platform capabilities, taking institutional assessments, and personal practice.
               </p>
             </div>
 
-            <div className="space-y-2.5 text-xs text-[#49465B] pt-2 border-t border-[#E9E7F0]">
+            <div className="space-y-2.5 text-xs text-[#3C4B63] pt-2 border-t border-[#E0E5EF]">
               <div className="flex items-start gap-2.5">
-                <Check className="h-4 w-4 text-[#527565] shrink-0 mt-0.5" />
+                <Check className="h-4 w-4 text-[#4C765D] shrink-0 mt-0.5" />
                 <span><strong>10 Practice Sessions</strong> with full question scoring</span>
               </div>
               <div className="flex items-start gap-2.5">
-                <Check className="h-4 w-4 text-[#527565] shrink-0 mt-0.5" />
+                <Check className="h-4 w-4 text-[#4C765D] shrink-0 mt-0.5" />
                 <span><strong>All Standard Categories</strong>: DSA, Aptitude, Reasoning, Coding</span>
               </div>
               <div className="flex items-start gap-2.5">
-                <Check className="h-4 w-4 text-[#527565] shrink-0 mt-0.5" />
+                <Check className="h-4 w-4 text-[#4C765D] shrink-0 mt-0.5" />
                 <span><strong>Isolated Code Sandbox</strong>: Python, C, C++, Java execution</span>
               </div>
               <div className="flex items-start gap-2.5">
-                <Check className="h-4 w-4 text-[#527565] shrink-0 mt-0.5" />
+                <Check className="h-4 w-4 text-[#4C765D] shrink-0 mt-0.5" />
                 <span><strong>Downloadable Performance Report</strong> (PDF analysis)</span>
               </div>
-              <div className="flex items-start gap-2.5 text-[#9895A8]">
+              <div className="flex items-start gap-2.5 text-[#8490A2]">
                 <Minus className="h-4 w-4 shrink-0 mt-0.5" />
                 <span>Technology Domain Practice (Syllabus preview only)</span>
               </div>
-              <div className="flex items-start gap-2.5 text-[#9895A8]">
+              <div className="flex items-start gap-2.5 text-[#8490A2]">
                 <Minus className="h-4 w-4 shrink-0 mt-0.5" />
                 <span>Interactive Multi-tab Web Workspaces & Live Preview</span>
               </div>
@@ -1463,46 +1463,46 @@ export const LandingPage: React.FC = () => {
           </div>
 
           {/* Premium Subscriptions Card */}
-          <div className="rounded-2xl border-2 border-[#7779C5] bg-gradient-to-br from-white to-[#F0EFF9]/40 p-7 space-y-5 shadow-md relative">
+          <div className="rounded-2xl border-2 border-[#5288B8] bg-gradient-to-br from-white to-[#EAF1F9]/40 p-7 space-y-5 shadow-md relative">
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Badge variant="purple">Subscribed Tier</Badge>
-                <span className="text-[10px] font-semibold text-[#7779C5] uppercase tracking-wider">
+                <span className="text-[10px] font-semibold text-[#5288B8] uppercase tracking-wider">
                   Always &lt; 9 ALGO
                 </span>
               </div>
               <div className="flex items-baseline gap-2">
-                <span className="font-serif text-3xl font-bold text-[#49465B]">1 to 8 ALGO</span>
-                <span className="text-xs text-[#7779C5] font-semibold">/ +15 to +150 Attempts + Domain Pass</span>
+                <span className="font-serif text-3xl font-bold text-[#3C4B63]">1 to 8 ALGO</span>
+                <span className="text-xs text-[#5288B8] font-semibold">/ +15 to +150 Attempts + Domain Pass</span>
               </div>
-              <p className="text-xs text-[#777486] leading-relaxed">
+              <p className="text-xs text-[#748199] leading-relaxed">
                 Bundles additional lifetime practice attempts with 30-90 days access to all technology domain preparation tracks.
               </p>
             </div>
 
-            <div className="space-y-2.5 text-xs text-[#49465B] pt-2 border-t border-[#DEDDF0]">
+            <div className="space-y-2.5 text-xs text-[#3C4B63] pt-2 border-t border-[#CFE2DC]">
               <div className="flex items-start gap-2.5">
-                <Check className="h-4 w-4 text-[#527565] shrink-0 mt-0.5" />
+                <Check className="h-4 w-4 text-[#4C765D] shrink-0 mt-0.5" />
                 <span><strong>Benefit A: Extra Lifetime Attempts</strong> (+15 to +150 attempts, never expire)</span>
               </div>
               <div className="flex items-start gap-2.5">
-                <Check className="h-4 w-4 text-[#527565] shrink-0 mt-0.5" />
+                <Check className="h-4 w-4 text-[#4C765D] shrink-0 mt-0.5" />
                 <span><strong>Benefit B: All Tech Domains</strong> (MERN, AI/ML, Frontend, Backend, Full-Stack)</span>
               </div>
               <div className="flex items-start gap-2.5">
-                <Check className="h-4 w-4 text-[#527565] shrink-0 mt-0.5" />
+                <Check className="h-4 w-4 text-[#4C765D] shrink-0 mt-0.5" />
                 <span><strong>Multi-Tab Web Code Editor</strong>: HTML/CSS/JS with live sandboxed preview</span>
               </div>
               <div className="flex items-start gap-2.5">
-                <Check className="h-4 w-4 text-[#527565] shrink-0 mt-0.5" />
+                <Check className="h-4 w-4 text-[#4C765D] shrink-0 mt-0.5" />
                 <span><strong>Real Portfolio Projects</strong> with milestone automated tests</span>
               </div>
               <div className="flex items-start gap-2.5">
-                <Check className="h-4 w-4 text-[#527565] shrink-0 mt-0.5" />
+                <Check className="h-4 w-4 text-[#4C765D] shrink-0 mt-0.5" />
                 <span><strong>48-Hour AI Adaptive Question Pool</strong> (Zero repetition)</span>
               </div>
               <div className="flex items-start gap-2.5">
-                <Check className="h-4 w-4 text-[#527565] shrink-0 mt-0.5" />
+                <Check className="h-4 w-4 text-[#4C765D] shrink-0 mt-0.5" />
                 <span><strong>Cryptographic Payment Receipt (PDF)</strong> with verified Algorand TxID</span>
               </div>
             </div>
@@ -1525,14 +1525,14 @@ export const LandingPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 8. SUBSCRIPTION PREVIEW & POPULAR PLANS HIGHLIGHT                         */}
       {/* ========================================================================= */}
-      <section className="mx-auto max-w-[1240px] border-t border-[#E9E7F0] pt-20">
+      <section className="mx-auto max-w-[1240px] border-t border-[#E0E5EF] pt-20">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-2xl space-y-3">
             <div className="page-kicker">Instant Pera Wallet Payments</div>
-            <h2 className="display-heading text-3xl text-[#49465B] sm:text-4xl">
+            <h2 className="display-heading text-3xl text-[#3C4B63] sm:text-4xl">
               Compare plans. Choose your preparation intensity.
             </h2>
-            <p className="text-sm leading-relaxed text-[#777486]">
+            <p className="text-sm leading-relaxed text-[#748199]">
               Every plan strictly satisfies 0 &lt; price &lt; 9 ALGO. No subscription auto-renewal; pay only when you need it.
             </p>
           </div>
@@ -1540,7 +1540,7 @@ export const LandingPage: React.FC = () => {
             size="md"
             variant="secondary"
             onClick={() => navigate('/pricing')}
-            icon={<Wallet className="h-4 w-4 text-[#7779C5]" />}
+            icon={<Wallet className="h-4 w-4 text-[#5288B8]" />}
           >
             Full Comparison Matrix
           </Button>
@@ -1586,8 +1586,8 @@ export const LandingPage: React.FC = () => {
               key={plan.id}
               className={`rounded-2xl border p-5 flex flex-col justify-between transition-all ${
                 plan.popular
-                  ? 'border-[#7779C5] bg-[#F0EFF9]/30 shadow-md ring-2 ring-[#7779C5]/20'
-                  : 'border-[#E9E7F0] bg-white hover:border-[#DEDDF0]'
+                  ? 'border-[#5288B8] bg-[#EAF1F9]/30 shadow-md ring-2 ring-[#5288B8]/20'
+                  : 'border-[#E0E5EF] bg-white hover:border-[#CFE2DC]'
               }`}
             >
               <div className="space-y-3">
@@ -1595,16 +1595,16 @@ export const LandingPage: React.FC = () => {
                   <Badge variant={plan.popular ? 'green' : 'blue'} size="sm">
                     {plan.badge}
                   </Badge>
-                  <span className="text-xs font-bold text-[#7779C5]">{plan.price} ALGO</span>
+                  <span className="text-xs font-bold text-[#5288B8]">{plan.price} ALGO</span>
                 </div>
-                <h4 className="font-bold text-sm text-[#49465B]">{plan.name}</h4>
+                <h4 className="font-bold text-sm text-[#3C4B63]">{plan.name}</h4>
                 <div className="space-y-1 text-xs">
-                  <div className="font-semibold text-[#527565]">+{plan.attempts} Practice Attempts</div>
-                  <div className="text-[11px] text-[#777486]">{plan.domains}</div>
+                  <div className="font-semibold text-[#4C765D]">+{plan.attempts} Practice Attempts</div>
+                  <div className="text-[11px] text-[#748199]">{plan.domains}</div>
                 </div>
               </div>
 
-              <div className="mt-5 pt-3 border-t border-[#E9E7F0]">
+              <div className="mt-5 pt-3 border-t border-[#E0E5EF]">
                 <Button
                   size="sm"
                   variant={plan.popular ? 'primary' : 'outline'}
@@ -1622,15 +1622,15 @@ export const LandingPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 6. BOTTOM CALL TO ACTION                                                  */}
       {/* ========================================================================= */}
-      <section className="mx-auto flex max-w-[1240px] flex-col justify-between gap-6 rounded-[16px] border border-[#DEDDF0] bg-white p-8 shadow-[0_4px_24px_-4px_rgba(119,121,197,0.12)] md:flex-row md:items-center">
+      <section className="mx-auto flex max-w-[1240px] flex-col justify-between gap-6 rounded-[16px] border border-[#CFE2DC] bg-white p-8 shadow-[0_4px_24px_-4px_rgba(119,121,197,0.12)] md:flex-row md:items-center">
         <div className="space-y-2">
-          <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[#7779C5]">
+          <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[#5288B8]">
             Ready to Begin
           </div>
-          <h3 className="display-heading text-2xl text-[#49465B] sm:text-3xl">
+          <h3 className="display-heading text-2xl text-[#3C4B63] sm:text-3xl">
             Start your personalized practice session today.
           </h3>
-          <p className="max-w-2xl text-xs sm:text-sm text-[#777486]">
+          <p className="max-w-2xl text-xs sm:text-sm text-[#748199]">
             Master DSA, Quantitative Aptitude, Logical Reasoning, and Developer Coding with 10 free complimentary sessions.
           </p>
         </div>
@@ -1656,7 +1656,7 @@ export const LandingPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 7. CLEAN RESTRAINED FOOTER                                                */}
       {/* ========================================================================= */}
-      <footer className="mx-auto max-w-[1240px] border-t border-[#E9E7F0] pt-8 text-xs text-[#777486] flex flex-col sm:flex-row items-center justify-between gap-4">
+      <footer className="mx-auto max-w-[1240px] border-t border-[#E0E5EF] pt-8 text-xs text-[#748199] flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <LogoMark size="sm" />
           <span>© {new Date().getFullYear()} Evalora Inc. All rights reserved.</span>
@@ -1664,15 +1664,15 @@ export const LandingPage: React.FC = () => {
         <div className="flex items-center gap-6">
           {isAuthenticated ? (
             <>
-              <button onClick={handleDashboard} className="hover:text-[#49465B]">Dashboard</button>
-              <button onClick={handleStartPractice} className="hover:text-[#49465B]">Practice</button>
-              <button onClick={handleExploreAssessments} className="hover:text-[#49465B]">Assessments</button>
+              <button onClick={handleDashboard} className="hover:text-[#3C4B63]">Dashboard</button>
+              <button onClick={handleStartPractice} className="hover:text-[#3C4B63]">Practice</button>
+              <button onClick={handleExploreAssessments} className="hover:text-[#3C4B63]">Assessments</button>
             </>
           ) : (
             <>
-              <button onClick={() => navigate("/login")} className="hover:text-[#49465B]">Sign In</button>
-              <button onClick={() => navigate("/register")} className="hover:text-[#49465B]">Register</button>
-              <button onClick={() => navigate("/register/college")} className="hover:text-[#49465B]">Institution Onboarding</button>
+              <button onClick={() => navigate("/login")} className="hover:text-[#3C4B63]">Sign In</button>
+              <button onClick={() => navigate("/register")} className="hover:text-[#3C4B63]">Register</button>
+              <button onClick={() => navigate("/register/college")} className="hover:text-[#3C4B63]">Institution Onboarding</button>
             </>
           )}
         </div>

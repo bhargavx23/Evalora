@@ -55,8 +55,8 @@ export const PracticeResults: React.FC = () => {
   if (isLoading) {
     return (
       <div className="text-center py-24 space-y-3">
-        <Loader2 className="w-8 h-8 animate-spin text-[#7779C5] mx-auto" />
-        <p className="text-sm text-[#777486]">Loading practice evaluation results...</p>
+        <Loader2 className="w-8 h-8 animate-spin text-[#5288B8] mx-auto" />
+        <p className="text-sm text-[#748199]">Loading practice evaluation results...</p>
       </div>
     );
   }
@@ -64,7 +64,7 @@ export const PracticeResults: React.FC = () => {
   if (!session) {
     return (
       <div className="text-center py-16 space-y-4">
-        <h2 className="display-heading text-2xl text-[#49465B]">
+        <h2 className="display-heading text-2xl text-[#3C4B63]">
           No recent practice results found
         </h2>
         <Button variant="primary" onClick={() => navigate("/practice")}>
@@ -105,31 +105,31 @@ export const PracticeResults: React.FC = () => {
     <div className="max-w-4xl mx-auto space-y-8 py-6">
       {/* Completion Header (Section 40) */}
       <div className="text-center space-y-3">
-        <div className="w-12 h-12 rounded-2xl bg-[#F0EFF9] text-[#7779C5] flex items-center justify-center mx-auto border border-[#D6D8F8]">
+        <div className="w-12 h-12 rounded-2xl bg-[#EAF1F9] text-[#5288B8] flex items-center justify-center mx-auto border border-[#D6D8F8]">
           <CheckCircle2 className="w-6 h-6" />
         </div>
-        <h1 className="display-heading text-4xl text-[#49465B]">
+        <h1 className="display-heading text-4xl text-[#3C4B63]">
           Practice Session Complete
         </h1>
-        <p className="text-sm text-[#777486]">
+        <p className="text-sm text-[#748199]">
           Your responses for{" "}
-          <span className="font-semibold text-[#49465B]">{session.topic}</span>{" "}
+          <span className="font-semibold text-[#3C4B63]">{session.topic}</span>{" "}
           have been evaluated and your skill profile is updated.
         </p>
       </div>
 
       {/* Performance Analysis Action Card */}
-      <Card pastelAccent="purple" className="border-[#DEDDF0] shadow-sm">
+      <Card pastelAccent="purple" className="border-[#CFE2DC] shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <FileText className="w-4 h-4 text-[#7779C5]" />
-              <h3 className="text-sm font-bold text-[#49465B]">
+              <FileText className="w-4 h-4 text-[#5288B8]" />
+              <h3 className="text-sm font-bold text-[#3C4B63]">
                 Performance Analysis
               </h3>
               <Badge variant="purple">Official Report</Badge>
             </div>
-            <p className="text-xs text-[#777486] max-w-xl">
+            <p className="text-xs text-[#748199] max-w-xl">
               Generate and download your complete academic and placement-readiness diagnostic report, featuring category-wise mastery, topic strengths, areas to improve, and question-level review.
             </p>
           </div>
@@ -159,25 +159,25 @@ export const PracticeResults: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Card pastelAccent="mint">
           <div className="text-center space-y-1">
-            <div className="text-xs font-semibold text-[#777486] uppercase tracking-wider">
+            <div className="text-xs font-semibold text-[#748199] uppercase tracking-wider">
               Overall Score
             </div>
-            <div className="text-3xl font-semibold text-[#49465B]">
+            <div className="text-3xl font-semibold text-[#3C4B63]">
               {session.correctCount} / {session.totalQuestions}
             </div>
-            <div className="text-xs text-[#777486]">Questions Solved</div>
+            <div className="text-xs text-[#748199]">Questions Solved</div>
           </div>
         </Card>
 
         <Card pastelAccent="blue">
           <div className="text-center space-y-1">
-            <div className="text-xs font-semibold text-[#777486] uppercase tracking-wider">
+            <div className="text-xs font-semibold text-[#748199] uppercase tracking-wider">
               Accuracy
             </div>
-            <div className="text-3xl font-semibold text-[#7779C5]">
+            <div className="text-3xl font-semibold text-[#5288B8]">
               {accuracy}%
             </div>
-            <div className="text-xs text-[#777486]">
+            <div className="text-xs text-[#748199]">
               {accuracy >= 75 ? "Strong mastery" : "Continue practicing"}
             </div>
           </div>
@@ -185,13 +185,13 @@ export const PracticeResults: React.FC = () => {
 
         <Card pastelAccent="purple">
           <div className="text-center space-y-1">
-            <div className="text-xs font-semibold text-[#777486] uppercase tracking-wider">
+            <div className="text-xs font-semibold text-[#748199] uppercase tracking-wider">
               Time Taken
             </div>
-            <div className="text-3xl font-semibold text-[#49465B]">
+            <div className="text-3xl font-semibold text-[#3C4B63]">
               {minutes}m {seconds}s
             </div>
-            <div className="text-xs text-[#777486]">Total Duration</div>
+            <div className="text-xs text-[#748199]">Total Duration</div>
           </div>
         </Card>
       </div>
@@ -199,8 +199,8 @@ export const PracticeResults: React.FC = () => {
       {/* Section-wise Breakdown */}
       {sections.length > 0 && (
         <div className="space-y-3">
-          <h3 className="text-sm font-semibold text-[#49465B] flex items-center gap-2">
-            <Layers3 className="w-4 h-4 text-[#7779C5]" />
+          <h3 className="text-sm font-semibold text-[#3C4B63] flex items-center gap-2">
+            <Layers3 className="w-4 h-4 text-[#5288B8]" />
             Section-wise Breakdown
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
@@ -212,29 +212,29 @@ export const PracticeResults: React.FC = () => {
               return (
                 <div
                   key={i}
-                  className="p-4 rounded-[14px] border border-[#E9E7F0] bg-white space-y-2.5 shadow-[0_1px_3px_rgba(82,77,119,0.04)]"
+                  className="p-4 rounded-[14px] border border-[#E0E5EF] bg-white space-y-2.5 shadow-[0_1px_3px_rgba(82,77,119,0.04)]"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-semibold text-[#49465B]">
+                    <span className="text-xs font-semibold text-[#3C4B63]">
                       {sec.topic || sec.category}
                     </span>
                     <Badge variant="purple">{sec.difficulty}</Badge>
                   </div>
-                  <div className="flex items-center justify-between text-xs text-[#777486]">
+                  <div className="flex items-center justify-between text-xs text-[#748199]">
                     <span>
                       Score:{" "}
-                      <strong className="text-[#49465B]">
+                      <strong className="text-[#3C4B63]">
                         {sec.correctCount || 0} / {sec.count}
                       </strong>
                     </span>
                     <span>
                       Accuracy:{" "}
-                      <strong className="text-[#49465B]">{secAccuracy}%</strong>
+                      <strong className="text-[#3C4B63]">{secAccuracy}%</strong>
                     </span>
                   </div>
-                  <div className="w-full bg-[#F8F7FC] rounded-full h-1.5 overflow-hidden">
+                  <div className="w-full bg-[#F7F8FC] rounded-full h-1.5 overflow-hidden">
                     <div
-                      className="bg-[#7779C5] h-1.5 rounded-full"
+                      className="bg-[#5288B8] h-1.5 rounded-full"
                       style={{ width: `${secAccuracy}%` }}
                     />
                   </div>
@@ -250,8 +250,8 @@ export const PracticeResults: React.FC = () => {
         pastelAccent={accuracy < 60 ? "rose" : "mint"}
         header={
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-[#49465B] flex items-center gap-1.5">
-              <Target className="w-4 h-4 text-[#7779C5]" /> Weak-Area Summary
+            <span className="text-xs font-semibold text-[#3C4B63] flex items-center gap-1.5">
+              <Target className="w-4 h-4 text-[#5288B8]" /> Weak-Area Summary
               &amp; Next Practice Recommendation
             </span>
             <Badge variant={accuracy < 60 ? "amber" : "green"}>
@@ -275,7 +275,7 @@ export const PracticeResults: React.FC = () => {
             </div>
           )}
 
-          <p className="text-sm text-[#777486] leading-relaxed">
+          <p className="text-sm text-[#748199] leading-relaxed">
             {accuracy < 60
               ? `You achieved ${accuracy}% accuracy on ${session.topic}. We recommend a targeted session on foundational concepts to strengthen your accuracy.`
               : `Excellent work! With ${accuracy}% accuracy on ${session.topic}, you are ready to advance to higher-difficulty problems or combine additional sections.`}
@@ -310,8 +310,8 @@ export const PracticeResults: React.FC = () => {
       {/* Question Review & Explanations */}
       {reviewQuestions.length > 0 && (
         <div className="space-y-4">
-          <h3 className="text-sm font-semibold text-[#49465B] flex items-center gap-2">
-            <BookOpen className="w-4 h-4 text-[#7779C5]" />
+          <h3 className="text-sm font-semibold text-[#3C4B63] flex items-center gap-2">
+            <BookOpen className="w-4 h-4 text-[#5288B8]" />
             Question Review & Explanations
           </h3>
 
@@ -320,19 +320,19 @@ export const PracticeResults: React.FC = () => {
               <Card key={q._id}>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-semibold text-[#49465B]">
+                    <span className="text-sm font-semibold text-[#3C4B63]">
                       Q{idx + 1}. {q.title}
                     </span>
                     <Badge variant="purple">{q.difficulty}</Badge>
                   </div>
 
-                  <p className="text-xs text-[#777486] leading-relaxed">
+                  <p className="text-xs text-[#748199] leading-relaxed">
                     {q.description}
                   </p>
 
                   {q.explanation && (
-                    <div className="p-3.5 bg-[#F8F7FC] rounded-xl border border-[#E9E7F0] text-xs text-[#49465B]">
-                      <span className="font-semibold text-[#7779C5]">
+                    <div className="p-3.5 bg-[#F7F8FC] rounded-xl border border-[#E0E5EF] text-xs text-[#3C4B63]">
+                      <span className="font-semibold text-[#5288B8]">
                         Explanation:{" "}
                       </span>
                       {q.explanation}

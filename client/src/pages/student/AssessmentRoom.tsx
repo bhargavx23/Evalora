@@ -397,7 +397,7 @@ export const AssessmentRoom: React.FC = () => {
     return (
       <div className="flex items-center justify-center min-h-[70vh]">
         <div className="text-center space-y-3">
-          <div className="w-8 h-8 border-3 border-[#DEDDF0] border-t-transparent rounded-full animate-spin mx-auto" />
+          <div className="w-8 h-8 border-3 border-[#CFE2DC] border-t-transparent rounded-full animate-spin mx-auto" />
           <p className="text-xs text-gray-500">
             Loading your secure assessment environment...
           </p>
@@ -419,7 +419,7 @@ export const AssessmentRoom: React.FC = () => {
   return (
     <div className="flex h-[100dvh] w-full max-w-full flex-col overflow-hidden bg-white select-none">
       {/* Distraction-Free Header */}
-      <header className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-b border-gray-200 bg-[#FAFAF8] px-4 py-3 sm:px-6">
+      <header className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-b border-gray-200 bg-[#F7F8FC] px-4 py-3 sm:px-6">
         <div className="flex min-w-0 items-center gap-2 sm:gap-4">
           <div className="flex min-w-0 items-center gap-2">
             <span className="truncate text-sm font-bold text-gray-900">
@@ -432,7 +432,7 @@ export const AssessmentRoom: React.FC = () => {
 
           <div className="hidden sm:flex items-center gap-1.5 text-xs text-gray-400 border-l border-gray-200 pl-4">
             <Save
-              className={`w-3.5 h-3.5 ${isSaving ? "text-[#896D45] animate-spin" : "text-[#527565]"}`}
+              className={`w-3.5 h-3.5 ${isSaving ? "text-[#8A7047] animate-spin" : "text-[#4C765D]"}`}
             />
             <span>{isSaving ? "Autosaving..." : "All changes saved"}</span>
           </div>
@@ -452,7 +452,7 @@ export const AssessmentRoom: React.FC = () => {
           <div
             className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border font-mono text-xs font-bold ${
               timeRemainingSeconds < 300
-                ? "bg-[#F4D8D8] border-[#E8CFD2] text-[#9A646D] animate-pulse"
+                ? "bg-[#F8EAE7] border-[#EACBC4] text-[#A36162] animate-pulse"
                 : "bg-white border-gray-200 text-gray-800"
             }`}
           >
@@ -474,7 +474,7 @@ export const AssessmentRoom: React.FC = () => {
       {/* Main Split Interface */}
       <div className="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden md:flex-row">
         {/* Left Side / Question Palette Navigator */}
-        <aside className="hidden w-64 shrink-0 flex-col justify-between border-r border-gray-200 bg-[#FAFAF8] p-4 lg:flex">
+        <aside className="hidden w-64 shrink-0 flex-col justify-between border-r border-gray-200 bg-[#F7F8FC] p-4 lg:flex">
           <div className="space-y-4">
             <div className="text-xs font-bold text-gray-700 uppercase tracking-wider">
               Question Palette
@@ -490,14 +490,14 @@ export const AssessmentRoom: React.FC = () => {
                   "bg-white text-gray-700 border-gray-200 hover:bg-gray-50";
                 if (status === "answered") {
                   btnStyle =
-                    "bg-[#DCEFE8] text-[#527565] border-[#C8DFD1] font-bold";
+                    "bg-[#E5F2EB] text-[#4C765D] border-[#C6DFD2] font-bold";
                 } else if (status === "review") {
                   btnStyle =
-                    "bg-[#F7E6B5] text-[#896D45] border-[#E8D9B9] font-bold";
+                    "bg-[#F8F2E4] text-[#8A7047] border-[#E9DAB5] font-bold";
                 }
 
                 if (isCurrent) {
-                  btnStyle += " ring-2 ring-[#7779C5] font-extrabold";
+                  btnStyle += " ring-2 ring-[#5288B8] font-extrabold";
                 }
 
                 return (
@@ -518,11 +518,11 @@ export const AssessmentRoom: React.FC = () => {
             {/* Legend */}
             <div className="pt-4 border-t border-gray-200 space-y-2 text-[11px] text-gray-600">
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-md bg-[#DCEFE8] border border-[#C8DFD1]" />
+                <span className="w-3 h-3 rounded-md bg-[#E5F2EB] border border-[#C6DFD2]" />
                 <span>Answered</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-md bg-[#F7E6B5] border border-[#E8D9B9]" />
+                <span className="w-3 h-3 rounded-md bg-[#F8F2E4] border border-[#E9DAB5]" />
                 <span>Marked for Review</span>
               </div>
               <div className="flex items-center gap-2">
@@ -538,16 +538,16 @@ export const AssessmentRoom: React.FC = () => {
         </aside>
 
         {isPaletteOpen && (
-          <div className="shrink-0 border-b border-gray-200 bg-[#FAFAF8] p-4 md:hidden">
+          <div className="shrink-0 border-b border-gray-200 bg-[#F7F8FC] p-4 md:hidden">
             <div className="grid grid-cols-6 gap-2">
               {questions.map((q, idx) => {
                 const status = getQuestionStatus(q._id);
                 const isCurrent = idx === currentQuestionIndex;
                 const statusStyle =
                   status === "answered"
-                    ? "border-[#C8DFD1] bg-[#DDEFE7] text-[#527565]"
+                    ? "border-[#C6DFD2] bg-[#DDEFE7] text-[#4C765D]"
                     : status === "review"
-                      ? "border-[#E8D9B9] bg-[#F4EAC5] text-[#896D45]"
+                      ? "border-[#E9DAB5] bg-[#F4EAC5] text-[#8A7047]"
                       : "border-stone-200 bg-white text-gray-700";
                 return (
                   <button
@@ -558,7 +558,7 @@ export const AssessmentRoom: React.FC = () => {
                       setCurrentQuestionIndex(idx);
                       setIsPaletteOpen(false);
                     }}
-                    className={`h-9 rounded-md border text-xs font-medium ${statusStyle} ${isCurrent ? "ring-2 ring-[#7779C5]" : ""}`}
+                    className={`h-9 rounded-md border text-xs font-medium ${statusStyle} ${isCurrent ? "ring-2 ring-[#5288B8]" : ""}`}
                   >
                     {idx + 1}
                   </button>
@@ -582,7 +582,7 @@ export const AssessmentRoom: React.FC = () => {
                       {currentQuestion.topic}
                     </span>
                   </div>
-                  <span className="text-xs font-bold text-[#555780] bg-[#F0EFF9] px-2 py-0.5 rounded border border-[#DEDDF0]">
+                  <span className="text-xs font-bold text-[#3C648E] bg-[#EAF1F9] px-2 py-0.5 rounded border border-[#CFE2DC]">
                     {currentQuestion.marks || 15} Marks
                   </span>
                 </div>
@@ -622,7 +622,7 @@ export const AssessmentRoom: React.FC = () => {
                   (ex: any, idx: number) => (
                     <div
                       key={idx}
-                      className="space-y-1.5 p-3 rounded-lg bg-[#FAFAF8] border border-gray-200 text-xs"
+                      className="space-y-1.5 p-3 rounded-lg bg-[#F7F8FC] border border-gray-200 text-xs"
                     >
                       <div className="font-bold text-gray-800">
                         Example {idx + 1}:
@@ -672,7 +672,7 @@ export const AssessmentRoom: React.FC = () => {
                         setCode(defaultCode);
                         saveCurrentAnswer(undefined, defaultCode, newLang);
                       }}
-                      className="px-2 py-1 bg-white border border-gray-300 rounded font-medium focus:ring-1 focus:ring-[#7779C5] focus:outline-none"
+                      className="px-2 py-1 bg-white border border-gray-300 rounded font-medium focus:ring-1 focus:ring-[#5288B8] focus:outline-none"
                     >
                       <option value="python">Python 3</option>
                       <option value="cpp">C++ (g++)</option>
@@ -687,7 +687,7 @@ export const AssessmentRoom: React.FC = () => {
                       size="sm"
                       onClick={handleRunCode}
                       isLoading={isExecuting}
-                      icon={<Play className="w-3.5 h-3.5 text-[#555780]" />}
+                      icon={<Play className="w-3.5 h-3.5 text-[#3C648E]" />}
                     >
                       Run Code
                     </Button>
@@ -696,7 +696,7 @@ export const AssessmentRoom: React.FC = () => {
                       size="sm"
                       onClick={handleEvaluateCode}
                       isLoading={isExecuting}
-                      icon={<Check className="w-3.5 h-3.5 text-[#527565]" />}
+                      icon={<Check className="w-3.5 h-3.5 text-[#4C765D]" />}
                     >
                       Submit Code
                     </Button>
@@ -744,7 +744,7 @@ export const AssessmentRoom: React.FC = () => {
                     <DifficultyBadge difficulty={currentQuestion.difficulty} />
                     <span className="text-xs font-semibold text-gray-500">{currentQuestion.topic}</span>
                   </div>
-                  <span className="rounded border border-[#DEDDF0] bg-[#F0EFF9] px-2.5 py-1 text-xs font-bold text-[#555780]">
+                  <span className="rounded border border-[#CFE2DC] bg-[#EAF1F9] px-2.5 py-1 text-xs font-bold text-[#3C648E]">
                     {currentQuestion.marks || 1} Marks
                   </span>
                 </div>
@@ -765,8 +765,8 @@ export const AssessmentRoom: React.FC = () => {
                         onClick={() => handleOptionSelect(opt.id)}
                         className={`flex w-full items-center justify-between rounded-xl border p-4 text-left text-xs transition-all duration-150 ${
                           isSelected
-                            ? "border-[#7779C5] bg-[#F0EFF9] font-semibold text-[#49465B] shadow-xs ring-1 ring-[#7779C5]/30"
-                            : "border-[#E9E7F0] bg-white text-[#49465B] hover:border-[#DEDDF0] hover:bg-[#F8F7FC]"
+                            ? "border-[#5288B8] bg-[#EAF1F9] font-semibold text-[#3C4B63] shadow-xs ring-1 ring-[#5288B8]/30"
+                            : "border-[#E0E5EF] bg-white text-[#3C4B63] hover:border-[#CFE2DC] hover:bg-[#F7F8FC]"
                         }`}
                       >
                         <span className="leading-relaxed">{opt.text}</span>
@@ -775,8 +775,8 @@ export const AssessmentRoom: React.FC = () => {
                             isMulti ? "rounded-md" : "rounded-full"
                           } ${
                             isSelected
-                              ? "border-[#7779C5] bg-[#7779C5] text-white shadow-xs"
-                              : "border-[#D4D4E0] bg-white"
+                              ? "border-[#5288B8] bg-[#5288B8] text-white shadow-xs"
+                              : "border-[#D0DDD7] bg-white"
                           }`}
                         >
                           {isSelected && (
@@ -825,7 +825,7 @@ export const AssessmentRoom: React.FC = () => {
                 }}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
                   isMarkedForReview
-                    ? "bg-[#F7E6B5] border-[#E8D9B9] text-[#896D45] font-bold"
+                    ? "bg-[#F8F2E4] border-[#E9DAB5] text-[#8A7047] font-bold"
                     : "bg-white border-gray-200 text-gray-600 hover:bg-gray-50"
                 }`}
               >
@@ -880,8 +880,8 @@ export const AssessmentRoom: React.FC = () => {
           }
         >
           <div className="space-y-3 text-xs text-gray-700">
-            <div className="p-3 bg-[#F4D8D8]/50 rounded-xl border border-[#E8CFD2] text-[#9A646D] flex items-center gap-2.5">
-              <ShieldAlert className="w-5 h-5 text-[#9A646D] shrink-0" />
+            <div className="p-3 bg-[#F8EAE7]/50 rounded-xl border border-[#EACBC4] text-[#A36162] flex items-center gap-2.5">
+              <ShieldAlert className="w-5 h-5 text-[#A36162] shrink-0" />
               <span>{warningMessage}</span>
             </div>
             <p className="text-gray-600 leading-relaxed">
@@ -931,14 +931,14 @@ export const AssessmentRoom: React.FC = () => {
               </div>
               <div>
                 Answered:{" "}
-                <span className="font-bold text-[#527565]">
+                <span className="font-bold text-[#4C765D]">
                   {attempt?.answers?.filter((a: any) => a.isAttempted).length ||
                     0}
                 </span>
               </div>
               <div>
                 Marked for Review:{" "}
-                <span className="font-bold text-[#896D45]">
+                <span className="font-bold text-[#8A7047]">
                   {attempt?.answers?.filter((a: any) => a.isMarkedForReview)
                     .length || 0}
                 </span>

@@ -89,12 +89,12 @@ const setupMonacoLightTheme = (monaco: any) => {
     inherit: true,
     rules: [],
     colors: {
-      'editor.background': '#F8F7FC',
-      'editorGutter.background': '#F8F7FC',
+      'editor.background': '#F7F8FC',
+      'editorGutter.background': '#F7F8FC',
       'editorLineNumber.foreground': '#9895A8',
       'editorLineNumber.activeForeground': '#8D8BC2',
-      'editor.lineHighlightBackground': '#7779C515',
-      'editorCursor.foreground': '#7779C5',
+      'editor.lineHighlightBackground': '#5288B815',
+      'editorCursor.foreground': '#5288B8',
     }
   });
 };
@@ -1209,7 +1209,7 @@ export const DomainCodingWorkspace: React.FC = () => {
                   <div
                     className={`rounded-xl p-3 text-xs border ${
                       evaluationResult.passed
-                        ? 'bg-[#E9F3ED] border-[#C8DFD1] text-[#527565]'
+                        ? 'bg-[#E5F2EB] border-[#C8DFD1] text-[#527565]'
                         : 'bg-[#F8F3E8] border-[#E8D9B9] text-[#896D45]'
                     }`}
                   >
@@ -1243,11 +1243,11 @@ export const DomainCodingWorkspace: React.FC = () => {
             mobileTab === 'code' ? 'flex' : 'hidden'
           } ${
             isFullscreenPreview ? 'hidden' : 'lg:flex'
-          } flex-1 flex flex-col overflow-hidden min-h-0 min-w-0 bg-[#F0EFF6] border-r border-border-subtle`}
+          } flex-1 flex flex-col overflow-hidden min-h-0 min-w-0 bg-[#EFF2F8] border-r border-border-subtle`}
         >
           {/* File Tabs for multi-file web mode */}
           {workspaceType === 'web' && (
-            <div className="flex items-center gap-1 overflow-x-auto border-b border-[#E9E7F0] bg-[#F0EFF6] px-2 py-1.5 shrink-0">
+            <div className="flex items-center gap-1 overflow-x-auto border-b border-[#E0E5EF] bg-[#EFF2F8] px-2 py-1.5 shrink-0">
               {files.map((file) => {
                 const isActive = file.filename === activeFileName;
                 return (
@@ -1256,8 +1256,8 @@ export const DomainCodingWorkspace: React.FC = () => {
                     onClick={() => setActiveFileName(file.filename)}
                     className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-mono transition-colors ${
                       isActive
-                        ? 'bg-[#F0EFF6] text-[#A5B4FC] shadow-2xs font-semibold border border-[#E9E7F0]'
-                        : 'text-[#777486] hover:bg-[#F0EFF9] hover:text-[#49465B]'
+                        ? 'bg-[#EFF2F8] text-[#A5B4FC] shadow-2xs font-semibold border border-[#E0E5EF]'
+                        : 'text-[#748199] hover:bg-[#EAF1F9] hover:text-[#3C4B63]'
                     }`}
                   >
                     <FileCode className="h-3.5 w-3.5" />
@@ -1270,19 +1270,19 @@ export const DomainCodingWorkspace: React.FC = () => {
 
           {/* Single-file header for python_data, sql, dsa */}
           {workspaceType !== 'web' && (
-            <div className="flex items-center justify-between border-b border-[#E9E7F0] bg-[#F0EFF6] px-3 py-1.5 shrink-0 text-xs">
-              <div className="flex items-center gap-2 font-mono text-[#777486]">
+            <div className="flex items-center justify-between border-b border-[#E0E5EF] bg-[#EFF2F8] px-3 py-1.5 shrink-0 text-xs">
+              <div className="flex items-center gap-2 font-mono text-[#748199]">
                 <FileCode className="h-3.5 w-3.5 text-[#A5B4FC]" />
                 <span className="font-semibold">{activeFile?.filename || 'solution'}</span>
               </div>
-              <span className="font-mono text-[11px] text-[#777486] uppercase">
+              <span className="font-mono text-[11px] text-[#748199] uppercase">
                 {selectedLanguage}
               </span>
             </div>
           )}
 
           {/* Monaco code editor container using the shared light theme */}
-          <div className="flex-1 flex overflow-hidden relative min-h-0 bg-[#F0EFF6]">
+          <div className="flex-1 flex overflow-hidden relative min-h-0 bg-[#EFF2F8]">
             <Editor
               height="100%"
               language={getEditorLanguage(activeFile?.filename || '')}
@@ -1431,22 +1431,22 @@ export const DomainCodingWorkspace: React.FC = () => {
             />
           ) : activeRightTab === 'console' && workspaceType === 'web' ? (
             /* Console log output view for Web */
-            <div className="flex-1 flex flex-col overflow-hidden min-h-0 bg-[#F0EFF6] p-4 font-mono text-xs text-[#49465B]">
-              <div className="flex items-center justify-between border-b border-[#E9E7F0] pb-2 mb-2 text-[#777486]">
+            <div className="flex-1 flex flex-col overflow-hidden min-h-0 bg-[#EFF2F8] p-4 font-mono text-xs text-[#3C4B63]">
+              <div className="flex items-center justify-between border-b border-[#E0E5EF] pb-2 mb-2 text-[#748199]">
                 <div className="flex items-center gap-1.5">
                   <Terminal className="h-4 w-4 text-[#719B84]" />
-                  <span className="font-semibold text-[#49465B]">Browser Console Logs</span>
+                  <span className="font-semibold text-[#3C4B63]">Browser Console Logs</span>
                 </div>
                 <button
                   onClick={() => setConsoleLogs([])}
-                  className="text-[11px] text-[#777486] hover:text-[#49465B]"
+                  className="text-[11px] text-[#748199] hover:text-[#3C4B63]"
                 >
                   Clear
                 </button>
               </div>
-              <div className="flex-1 overflow-y-auto space-y-1 text-[#777486]">
+              <div className="flex-1 overflow-y-auto space-y-1 text-[#748199]">
                 {consoleLogs.length === 0 ? (
-                  <p className="text-[#777486] italic">No console messages logged yet.</p>
+                  <p className="text-[#748199] italic">No console messages logged yet.</p>
                 ) : (
                   consoleLogs.map((log, idx) => (
                     <div key={idx} className="flex items-start gap-2">
@@ -1556,7 +1556,7 @@ export const DomainCodingWorkspace: React.FC = () => {
       {showCelebrationModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#625E75]/35 backdrop-blur-xs p-4">
           <div className="max-w-md w-full rounded-2xl bg-white border border-[#C8DFD1] p-6 shadow-2xl text-center space-y-4">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#E9F3ED] text-[#527565] ring-8 ring-[#78A88F]">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#E5F2EB] text-[#527565] ring-8 ring-[#679B7C]">
               <Award className="h-8 w-8" />
             </div>
             <div className="space-y-1">
@@ -1567,7 +1567,7 @@ export const DomainCodingWorkspace: React.FC = () => {
               </p>
             </div>
             {evaluationResult?.nextModuleId && (
-              <div className="rounded-xl bg-[#E9F3ED] border border-[#C8DFD1] p-3 text-xs text-[#527565]">
+              <div className="rounded-xl bg-[#E5F2EB] border border-[#C8DFD1] p-3 text-xs text-[#527565]">
                 <strong>Next Module Unlocked!</strong> You can now progress to the next module in your career curriculum.
               </div>
             )}

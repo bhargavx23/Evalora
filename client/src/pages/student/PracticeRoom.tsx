@@ -633,8 +633,8 @@ export const PracticeRoom: React.FC = () => {
                         onClick={() => handleOptionSelect(opt.id)}
                         className={`group w-full p-4 rounded-xl border text-left text-sm flex items-center justify-between transition-all duration-150 ease-out active:scale-[0.99] ${
                           isSelected
-                            ? "bg-[#F0EFF9] border-[#7779C5] text-[#49465B] font-semibold shadow-xs ring-1 ring-[#7779C5]/30"
-                            : "bg-white border-[#E9E7F0] hover:border-[#DEDDF0] hover:bg-[#F8F7FC] text-[#49465B]"
+                            ? "bg-[#EAF1F9] border-[#5288B8] text-[#3C4B63] font-semibold shadow-xs ring-1 ring-[#5288B8]/30"
+                            : "bg-white border-[#E0E5EF] hover:border-[#CFE2DC] hover:bg-[#F7F8FC] text-[#3C4B63]"
                         }`}
                       >
                         <span className="leading-relaxed">{opt.text}</span>
@@ -643,8 +643,8 @@ export const PracticeRoom: React.FC = () => {
                             isMulti ? "rounded-md" : "rounded-full"
                           } ${
                             isSelected
-                              ? "border-[#7779C5] bg-[#7779C5] text-white shadow-xs"
-                              : "border-[#D4D4E0] bg-white group-hover:border-[#7779C5]"
+                              ? "border-[#5288B8] bg-[#5288B8] text-white shadow-xs"
+                              : "border-[#D0DDD7] bg-white group-hover:border-[#5288B8]"
                           }`}
                         >
                           {isSelected && (
@@ -737,13 +737,13 @@ export const PracticeRoom: React.FC = () => {
               </div>
               <div className="flex justify-between">
                 <span className="text-text-secondary">Answers Saved:</span>
-                <span className="font-semibold text-[#527565]">
+                <span className="font-semibold text-[#4C765D]">
                   {savedCount}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-text-secondary">Unattempted:</span>
-                <span className="font-semibold text-[#896D45]">
+                <span className="font-semibold text-[#8A7047]">
                   {questions.length - savedCount}
                 </span>
               </div>
@@ -775,7 +775,7 @@ export const PracticeRoom: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-brand-dark/40 backdrop-blur-xs p-4">
           <div className="w-full max-w-md rounded-2xl border border-border-subtle bg-white p-6 shadow-xl space-y-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F8F3E8] text-[#896D45]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F8F3E8] text-[#8A7047]">
                 <AlertTriangle className="h-5 w-5" />
               </div>
               <div>

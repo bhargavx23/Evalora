@@ -53,7 +53,7 @@ export const AdminDashboard: React.FC = () => {
       </header>
 
       {loadError && (
-        <div className="rounded-md border border-[#E8D9B9] bg-[#F4EAC5]/50 px-3 py-2 text-xs font-medium text-[#896D45]">
+        <div className="rounded-md border border-[#E9DAB5] bg-[#F4EAC5]/50 px-3 py-2 text-xs font-medium text-[#8A7047]">
           {loadError}
         </div>
       )}

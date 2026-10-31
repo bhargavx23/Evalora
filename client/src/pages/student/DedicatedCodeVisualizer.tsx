@@ -59,12 +59,12 @@ const setupMonacoLightTheme = (monaco: any) => {
     inherit: true,
     rules: [],
     colors: {
-      'editor.background': '#F8F7FC',
-      'editorGutter.background': '#F8F7FC',
-      'editorLineNumber.foreground': '#9895A8',
+      'editor.background': '#F7F8FC',
+      'editorGutter.background': '#F7F8FC',
+      'editorLineNumber.foreground': '#8490A2',
       'editorLineNumber.activeForeground': '#8D8BC2',
-      'editor.lineHighlightBackground': '#7779C515',
-      'editorCursor.foreground': '#7779C5'
+      'editor.lineHighlightBackground': '#5288B815',
+      'editorCursor.foreground': '#5288B8'
     }
   });
 };
@@ -265,7 +265,7 @@ export const DedicatedCodeVisualizer: React.FC = () => {
     <div
       className={`flex flex-col w-full overflow-hidden transition-all duration-150 ${
         isFullscreen
-          ? 'fixed inset-0 z-50 bg-[#F8F7FC]'
+          ? 'fixed inset-0 z-50 bg-[#F7F8FC]'
           : 'h-[calc(100vh-5.5rem)] rounded-xl border border-border-subtle bg-white shadow-xs'
       }`}
     >
@@ -396,18 +396,18 @@ export const DedicatedCodeVisualizer: React.FC = () => {
       {/* 2. Main Two-Column Full-Size Workspace */}
       <div className="flex-1 flex flex-col lg:flex-row overflow-hidden min-h-0 min-w-0">
         {/* Left Column: Monaco Code Editor */}
-        <div className="flex-1 flex flex-col overflow-hidden min-h-0 border-b lg:border-b-0 lg:border-r border-border-subtle bg-[#F0EFF6]">
-          <div className="flex items-center justify-between border-b border-[#E9E7F0] bg-[#F0EFF6] px-4 py-2 text-xs font-mono font-semibold text-[#777486] shrink-0">
+        <div className="flex-1 flex flex-col overflow-hidden min-h-0 border-b lg:border-b-0 lg:border-r border-border-subtle bg-[#EFF2F8]">
+          <div className="flex items-center justify-between border-b border-[#E0E5EF] bg-[#EFF2F8] px-4 py-2 text-xs font-mono font-semibold text-[#748199] shrink-0">
             <div className="flex items-center gap-2">
               <Code2 className="h-3.5 w-3.5 text-[#A5B4FC]" />
               <span>
                 Source Editor ({language === 'javascript' ? 'JavaScript ES6+' : 'Python 3.13'})
               </span>
             </div>
-            <span className="text-[#777486] text-[11px]">250 Steps Loop Guard Enabled</span>
+            <span className="text-[#748199] text-[11px]">250 Steps Loop Guard Enabled</span>
           </div>
 
-          <div className="flex-1 overflow-hidden relative min-h-0 bg-[#F0EFF6]">
+          <div className="flex-1 overflow-hidden relative min-h-0 bg-[#EFF2F8]">
             <Editor
               height="100%"
               language={language}

@@ -87,25 +87,25 @@ export const DsaTestCasePanel: React.FC<DsaTestCasePanelProps> = ({
     switch (status) {
       case 'ACCEPTED':
         return (
-          <span className="inline-flex items-center gap-1 rounded-full bg-[#E9F3ED] px-2.5 py-0.5 text-xs font-semibold text-[#527565] border border-[#C8DFD1]">
+          <span className="inline-flex items-center gap-1 rounded-full bg-[#E5F2EB] px-2.5 py-0.5 text-xs font-semibold text-[#4C765D] border border-[#C6DFD2]">
             <CheckCircle2 className="h-3.5 w-3.5" /> Accepted ({passedCount}/{totalTestCases})
           </span>
         );
       case 'WRONG_ANSWER':
         return (
-          <span className="inline-flex items-center gap-1 rounded-full bg-[#F8EDEF] px-2.5 py-0.5 text-xs font-semibold text-[#9A646D] border border-[#E8CFD2]">
+          <span className="inline-flex items-center gap-1 rounded-full bg-[#F8EDEF] px-2.5 py-0.5 text-xs font-semibold text-[#A36162] border border-[#EACBC4]">
             <XCircle className="h-3.5 w-3.5" /> Wrong Answer ({passedCount}/{totalTestCases})
           </span>
         );
       case 'COMPILATION_ERROR':
         return (
-          <span className="inline-flex items-center gap-1 rounded-full bg-[#F8F3E8] px-2.5 py-0.5 text-xs font-semibold text-[#896D45] border border-[#E8D9B9]">
+          <span className="inline-flex items-center gap-1 rounded-full bg-[#F8F3E8] px-2.5 py-0.5 text-xs font-semibold text-[#8A7047] border border-[#E9DAB5]">
             <AlertTriangle className="h-3.5 w-3.5" /> Compile Error
           </span>
         );
       default:
         return (
-          <span className="inline-flex items-center gap-1 rounded-full bg-[#F8EDEF] px-2.5 py-0.5 text-xs font-semibold text-[#9A646D] border border-[#E8CFD2]">
+          <span className="inline-flex items-center gap-1 rounded-full bg-[#F8EDEF] px-2.5 py-0.5 text-xs font-semibold text-[#A36162] border border-[#EACBC4]">
             <AlertTriangle className="h-3.5 w-3.5" /> {status}
           </span>
         );
@@ -131,8 +131,8 @@ export const DsaTestCasePanel: React.FC<DsaTestCasePanelProps> = ({
               <span
                 className={`rounded-full px-1.5 py-0.2 text-[10px] font-bold ${
                   evaluationResult.passed
-                    ? 'bg-[#E9F3ED] text-[#527565]'
-                    : 'bg-[#F8EDEF] text-[#9A646D]'
+                    ? 'bg-[#E5F2EB] text-[#4C765D]'
+                    : 'bg-[#F8EDEF] text-[#A36162]'
                 }`}
               >
                 {evaluationResult.passedCount}/{evaluationResult.totalTestCases}
@@ -184,9 +184,9 @@ export const DsaTestCasePanel: React.FC<DsaTestCasePanelProps> = ({
       <div className="min-h-0 flex-1 overflow-y-auto p-4">
         {/* Compilation Error Notice */}
         {evaluationResult?.compileError && (
-          <div className="mb-4 rounded-xl border border-[#E8CFD2] bg-[#F8EDEF]/70 p-3.5 text-xs text-[#9A646D]">
-            <div className="flex items-center gap-2 font-semibold text-[#9A646D] mb-1">
-              <AlertTriangle className="h-4 w-4 text-[#9A646D] shrink-0" />
+          <div className="mb-4 rounded-xl border border-[#EACBC4] bg-[#F8EDEF]/70 p-3.5 text-xs text-[#A36162]">
+            <div className="flex items-center gap-2 font-semibold text-[#A36162] mb-1">
+              <AlertTriangle className="h-4 w-4 text-[#A36162] shrink-0" />
               <span>Compilation Error:</span>
             </div>
             <pre className="font-mono text-[11px] overflow-x-auto whitespace-pre-wrap">{evaluationResult.compileError}</pre>
@@ -222,7 +222,7 @@ export const DsaTestCasePanel: React.FC<DsaTestCasePanelProps> = ({
                     {hasEvaluated && !isHidden && (
                       <span
                         className={`h-2 w-2 rounded-full ${
-                          passed ? 'bg-[#E9F3ED]' : 'bg-[#F8EDEF]'
+                          passed ? 'bg-[#E5F2EB]' : 'bg-[#F8EDEF]'
                         }`}
                       />
                     )}
@@ -241,11 +241,11 @@ export const DsaTestCasePanel: React.FC<DsaTestCasePanelProps> = ({
                     {evaluationResult && (
                       <div className="mt-3">
                         {(currentCase as any).passed ? (
-                          <span className="inline-flex items-center gap-1 text-[#527565] font-semibold text-xs">
+                          <span className="inline-flex items-center gap-1 text-[#4C765D] font-semibold text-xs">
                             <CheckCircle2 className="h-4 w-4" /> Passed
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1 text-[#9A646D] font-semibold text-xs">
+                          <span className="inline-flex items-center gap-1 text-[#A36162] font-semibold text-xs">
                             <XCircle className="h-4 w-4" /> Failed
                           </span>
                         )}
@@ -283,8 +283,8 @@ export const DsaTestCasePanel: React.FC<DsaTestCasePanelProps> = ({
                         <div
                           className={`rounded-xl border p-3 font-mono text-xs overflow-x-auto ${
                             (currentCase as any).passed
-                              ? 'border-[#C8DFD1] bg-[#E9F3ED]/50 text-[#527565]'
-                              : 'border-[#E8CFD2] bg-[#F8EDEF]/50 text-[#9A646D]'
+                              ? 'border-[#C6DFD2] bg-[#E5F2EB]/50 text-[#4C765D]'
+                              : 'border-[#EACBC4] bg-[#F8EDEF]/50 text-[#A36162]'
                           }`}
                         >
                           <pre className="whitespace-pre-wrap">
@@ -296,7 +296,7 @@ export const DsaTestCasePanel: React.FC<DsaTestCasePanelProps> = ({
 
                     {/* Error if present */}
                     {(currentCase as any).error && (
-                      <div className="rounded-xl border border-[#E8CFD2] bg-[#F8EDEF]/70 p-3 text-xs text-[#9A646D]">
+                      <div className="rounded-xl border border-[#EACBC4] bg-[#F8EDEF]/70 p-3 text-xs text-[#A36162]">
                         <span className="font-semibold block mb-1">Runtime Note:</span>
                         <pre className="font-mono text-[11px] whitespace-pre-wrap">{(currentCase as any).error}</pre>
                       </div>
@@ -333,14 +333,14 @@ export const DsaTestCasePanel: React.FC<DsaTestCasePanelProps> = ({
             <span className="block text-[11px] font-bold uppercase tracking-wider text-text-muted">
               Execution Output
             </span>
-            <div className="rounded-xl border border-border-subtle bg-[#F0EFF6] p-4 font-mono text-xs text-[#49465B] overflow-x-auto min-h-[180px]">
+            <div className="rounded-xl border border-border-subtle bg-[#EFF2F8] p-4 font-mono text-xs text-[#3C4B63] overflow-x-auto min-h-[180px]">
               {singleRunResult.stdout ? (
                 <pre className="whitespace-pre-wrap text-[#719B84]">{singleRunResult.stdout}</pre>
               ) : (
                 <span className="text-gray-500 italic">No standard output produced.</span>
               )}
               {singleRunResult.stderr && (
-                <pre className="mt-2 text-[#9A646D] whitespace-pre-wrap">{singleRunResult.stderr}</pre>
+                <pre className="mt-2 text-[#A36162] whitespace-pre-wrap">{singleRunResult.stderr}</pre>
               )}
             </div>
           </div>

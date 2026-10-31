@@ -140,14 +140,14 @@ export const RegisterPage: React.FC = () => {
 
   return (
     <div className="max-w-lg mx-auto py-12 px-4">
-      <Card padding="lg" className="border-[#E9E7F0] bg-white shadow-xl">
+      <Card padding="lg" className="border-[#E0E5EF] bg-white shadow-xl">
         <div className="space-y-6">
           <div className="space-y-1.5">
             <div className="page-kicker">Student Registration</div>
-            <h2 className="display-heading text-3xl text-[#49465B]">
+            <h2 className="display-heading text-3xl text-[#3C4B63]">
               Create Your Evalora Account
             </h2>
-            <p className="text-xs text-[#777486]">
+            <p className="text-xs text-[#748199]">
               Register your personal practice account to access questions, practice sessions, and skill analytics.
             </p>
           </div>
@@ -156,7 +156,7 @@ export const RegisterPage: React.FC = () => {
               <div>
                 <label className="field-label">Full Name *</label>
                 <div className="relative">
-                  <User className="absolute left-3.5 top-3 h-4 w-4 text-[#9895A8]" />
+                  <User className="absolute left-3.5 top-3 h-4 w-4 text-[#8490A2]" />
                   <input
                     type="text"
                     value={formData.name}
@@ -173,7 +173,7 @@ export const RegisterPage: React.FC = () => {
               <div>
                 <label className="field-label">Email Address *</label>
                 <div className="relative">
-                  <Mail className="absolute left-3.5 top-3 h-4 w-4 text-[#9895A8]" />
+                  <Mail className="absolute left-3.5 top-3 h-4 w-4 text-[#8490A2]" />
                   <input
                     type="email"
                     value={formData.email}
@@ -190,7 +190,7 @@ export const RegisterPage: React.FC = () => {
               <div>
                 <label className="field-label">Phone Number (Optional)</label>
                 <div className="relative">
-                  <Phone className="absolute left-3.5 top-3 h-4 w-4 text-[#9895A8]" />
+                  <Phone className="absolute left-3.5 top-3 h-4 w-4 text-[#8490A2]" />
                   <input
                     type="tel"
                     value={formData.phone}
@@ -206,7 +206,7 @@ export const RegisterPage: React.FC = () => {
               <div>
                 <label className="field-label">Password *</label>
                 <div className="relative">
-                  <Lock className="absolute left-3.5 top-3 h-4 w-4 text-[#9895A8]" />
+                  <Lock className="absolute left-3.5 top-3 h-4 w-4 text-[#8490A2]" />
                   <input
                     type="password"
                     value={formData.password}
@@ -222,11 +222,11 @@ export const RegisterPage: React.FC = () => {
               </div>
 
               {/* Optional Pera Wallet Registration Section (Automated, Zero Manual Input) */}
-              <div className="rounded-xl border border-[#E9E7F0] bg-[#F8F7FC] p-4 space-y-3">
+              <div className="rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-4 space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Wallet className="w-4 h-4 text-[#7779C5]" />
-                    <span className="font-semibold text-xs text-[#49465B]">
+                    <Wallet className="w-4 h-4 text-[#5288B8]" />
+                    <span className="font-semibold text-xs text-[#3C4B63]">
                       Pera Wallet (Optional)
                     </span>
                   </div>
@@ -238,13 +238,13 @@ export const RegisterPage: React.FC = () => {
                 </div>
 
                 {walletAddress && walletSignature ? (
-                  <div className="rounded-lg border border-[#C8DFD1] bg-[#E9F3ED]/70 p-3 flex items-center justify-between">
+                  <div className="rounded-lg border border-[#C6DFD2] bg-[#E5F2EB]/70 p-3 flex items-center justify-between">
                     <div className="space-y-0.5">
-                      <div className="text-[11px] font-semibold text-[#527565] flex items-center gap-1.5">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#527565]" />
+                      <div className="text-[11px] font-semibold text-[#4C765D] flex items-center gap-1.5">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#4C765D]" />
                         <span>Pera Wallet Connected & Verified</span>
                       </div>
-                      <div className="font-mono text-[10px] text-[#527565]">
+                      <div className="font-mono text-[10px] text-[#4C765D]">
                         {walletAddress.slice(0, 10)}...{walletAddress.slice(-8)}
                       </div>
                     </div>
@@ -259,7 +259,7 @@ export const RegisterPage: React.FC = () => {
                   </div>
                 ) : (
                   <div className="space-y-2">
-                    <p className="text-[11px] text-[#777486] leading-relaxed">
+                    <p className="text-[11px] text-[#748199] leading-relaxed">
                       Optionally connect your Pera Wallet now to enable instant QR login on Algorand and unlock paid practice attempts.
                     </p>
                     <Button
@@ -269,7 +269,7 @@ export const RegisterPage: React.FC = () => {
                       className="w-full justify-center"
                       onClick={handleConnectAndSignRegistrationWallet}
                       isLoading={isWalletLoading}
-                      icon={<Wallet className="w-3.5 h-3.5 text-[#7779C5]" />}
+                      icon={<Wallet className="w-3.5 h-3.5 text-[#5288B8]" />}
                     >
                       Connect Pera Wallet
                     </Button>
@@ -288,12 +288,12 @@ export const RegisterPage: React.FC = () => {
               </Button>
           </form>
 
-          <div className="space-y-2 text-center text-xs text-[#777486] pt-3 border-t border-[#E9E7F0]">
+          <div className="space-y-2 text-center text-xs text-[#748199] pt-3 border-t border-[#E0E5EF]">
             <div>
               Already have an account?{" "}
               <Link
                 to="/login"
-                className="font-semibold text-[#7779C5] hover:text-[#555780]"
+                className="font-semibold text-[#5288B8] hover:text-[#3C648E]"
               >
                 Sign In
               </Link>
@@ -302,7 +302,7 @@ export const RegisterPage: React.FC = () => {
               Are you an educational institution?{" "}
               <Link
                 to="/college-register"
-                className="font-semibold text-[#7779C5] hover:text-[#555780]"
+                className="font-semibold text-[#5288B8] hover:text-[#3C648E]"
               >
                 Register Your Institution
               </Link>

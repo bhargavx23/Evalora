@@ -128,14 +128,14 @@ body {
 };
 
 export const PASTEL_THEME = {
-  background: '#FAFAF8',
-  primaryPastel: '#DDE7F7',
-  secondaryPastel: '#E8E1F4',
-  accentPastel: '#DCEFE8',
-  warmAccent: '#F5E5D3',
-  softWarning: '#F7E6B5',
-  softDanger: '#F4D8D8',
-  text: '#49465B',
-  secondaryText: '#6B7280',
-  borders: '#E5E7EB'
+  background: '#F7F8FC',
+  primaryPastel: '#DCEFEB',
+  secondaryPastel: '#EEE9F4',
+  accentPastel: '#E5F2EB',
+  warmAccent: '#F8EEE8',
+  softWarning: '#F8F2E4',
+  softDanger: '#F8EAE7',
+  text: '#3C4B63',
+  secondaryText: '#748199',
+  borders: '#E0E5EF'
 } as const;

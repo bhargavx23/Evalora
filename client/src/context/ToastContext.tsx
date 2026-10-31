@@ -41,17 +41,17 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   };
 
   const icons = {
-    success: <CheckCircle2 className="w-4 h-4 text-[#527565] shrink-0" />,
-    error: <AlertCircle className="w-4 h-4 text-[#9A646D] shrink-0" />,
-    warning: <AlertTriangle className="w-4 h-4 text-[#896D45] shrink-0" />,
-    info: <Info className="w-4 h-4 text-[#555780] shrink-0" />
+    success: <CheckCircle2 className="w-4 h-4 text-[#4C765D] shrink-0" />,
+    error: <AlertCircle className="w-4 h-4 text-[#A36162] shrink-0" />,
+    warning: <AlertTriangle className="w-4 h-4 text-[#8A7047] shrink-0" />,
+    info: <Info className="w-4 h-4 text-[#3C648E] shrink-0" />
   };
 
   const colors = {
-    success: 'bg-[#DCEFE8] border-[#C8DFD1] text-[#527565]',
-    error: 'bg-[#F4D8D8] border-[#E8CFD2] text-[#9A646D]',
-    warning: 'bg-[#F7E6B5] border-[#E8D9B9] text-[#896D45]',
-    info: 'bg-[#DDE7F7] border-[#DEDDF0] text-[#555780]'
+    success: 'bg-[#E5F2EB] border-[#C6DFD2] text-[#4C765D]',
+    error: 'bg-[#F8EAE7] border-[#EACBC4] text-[#A36162]',
+    warning: 'bg-[#F8F2E4] border-[#E9DAB5] text-[#8A7047]',
+    info: 'bg-[#DCEFEB] border-[#CFE2DC] text-[#3C648E]'
   };
 
   return (
@@ -61,7 +61,7 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         {toasts.map(t => (
           <div
             key={t.id}
-            className={`pointer-events-auto flex items-center justify-between p-3.5 rounded-xl border shadow-md text-xs font-medium animate-in fade-in slide-in-from-bottom-3 duration-200 ease-out ${colors[t.type]}`}
+            className={`toast-island pointer-events-auto flex items-center justify-between p-3.5 rounded-2xl border shadow-md text-xs font-medium animate-in fade-in slide-in-from-bottom-3 duration-200 ease-out ${colors[t.type]}`}
           >
             <div className="flex items-center gap-2.5">
               {icons[t.type]}

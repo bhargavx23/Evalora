@@ -93,8 +93,8 @@ export const DomainLearningPath: React.FC = () => {
     return (
       <div className="flex h-96 items-center justify-center">
         <div className="flex flex-col items-center gap-3">
-          <Loader2 className="h-8 w-8 animate-spin text-[#7779C5]" />
-          <p className="text-sm font-medium text-[#777486]">Loading domain curriculum...</p>
+          <Loader2 className="h-8 w-8 animate-spin text-[#5288B8]" />
+          <p className="text-sm font-medium text-[#748199]">Loading domain curriculum...</p>
         </div>
       </div>
     );
@@ -108,8 +108,8 @@ export const DomainLearningPath: React.FC = () => {
           <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#F8F3E8] text-[#896D45]">
             <Lock className="h-7 w-7" />
           </div>
-          <h2 className="text-2xl font-bold text-[#49465B]">Premium Subscription Required</h2>
-          <p className="mt-2 text-sm text-[#777486]">
+          <h2 className="text-2xl font-bold text-[#3C4B63]">Premium Subscription Required</h2>
+          <p className="mt-2 text-sm text-[#748199]">
             Domain-based technical preparation and practical coding workspaces require an active,
             verified subscription on Algorand (&lt; 9 ALGO).
           </p>
@@ -159,17 +159,17 @@ export const DomainLearningPath: React.FC = () => {
   return (
     <div className="space-y-6 pb-16">
       {/* Breadcrumb Navigation */}
-      <div className="flex items-center gap-2 text-sm text-[#777486]">
-        <Link to="/domains" className="hover:text-[#7779C5] flex items-center gap-1">
+      <div className="flex items-center gap-2 text-sm text-[#748199]">
+        <Link to="/domains" className="hover:text-[#5288B8] flex items-center gap-1">
           <ArrowLeft className="h-4 w-4" />
           <span>All Domains</span>
         </Link>
         <span>/</span>
-        <span className="font-semibold text-[#49465B]">{domain.name}</span>
+        <span className="font-semibold text-[#3C4B63]">{domain.name}</span>
       </div>
 
       {/* Hero Header */}
-      <div className="rounded-2xl bg-white border border-[#E9E7F0] p-6 md:p-8 shadow-xs">
+      <div className="rounded-2xl bg-white border border-[#E0E5EF] p-6 md:p-8 shadow-xs">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="space-y-3 max-w-3xl">
             <div className="flex flex-wrap items-center gap-2">
@@ -180,17 +180,17 @@ export const DomainLearningPath: React.FC = () => {
                 <CheckCircle2 className="h-3.5 w-3.5" /> Subscribed Access
               </Badge>
             </div>
-            <h1 className="text-2xl md:text-3xl font-extrabold text-[#49465B]">
+            <h1 className="text-2xl md:text-3xl font-extrabold text-[#3C4B63]">
               {domain.name}
             </h1>
-            <p className="text-sm md:text-base text-[#777486]">{domain.description || domain.shortDescription}</p>
+            <p className="text-sm md:text-base text-[#748199]">{domain.description || domain.shortDescription}</p>
 
             {/* Tech badges */}
             <div className="flex flex-wrap gap-1.5 pt-1">
               {(domain.technologies || []).map((t: string) => (
                 <span
                   key={t}
-                  className="rounded-md bg-[#F1F2F8] px-2.5 py-1 text-xs font-medium text-[#49465B]"
+                  className="rounded-md bg-[#EFF2F8] px-2.5 py-1 text-xs font-medium text-[#3C4B63]"
                 >
                   {t}
                 </span>
@@ -214,7 +214,7 @@ export const DomainLearningPath: React.FC = () => {
                 const firstTopic = firstModule?.topics?.[0] || 'Fundamentals';
                 navigate(`/domains/${domain.slug}/practice?module=${firstModule?.moduleId}&topic=${encodeURIComponent(firstTopic)}`);
               }}
-              icon={<Code2 className="h-4 w-4 text-[#7779C5]" />}
+              icon={<Code2 className="h-4 w-4 text-[#5288B8]" />}
             >
               Practice Session
             </Button>
@@ -222,18 +222,18 @@ export const DomainLearningPath: React.FC = () => {
         </div>
 
         {/* Progress Tracker Bar */}
-        <div className="mt-8 border-t border-[#E9E7F0] pt-6">
+        <div className="mt-8 border-t border-[#E0E5EF] pt-6">
           <div className="flex items-center justify-between text-sm mb-2">
-            <span className="font-semibold text-[#49465B]">Track Progress</span>
-            <span className="font-bold text-[#7779C5]">{progressPercent}% Completed</span>
+            <span className="font-semibold text-[#3C4B63]">Track Progress</span>
+            <span className="font-bold text-[#5288B8]">{progressPercent}% Completed</span>
           </div>
-          <div className="h-2.5 w-full overflow-hidden rounded-full bg-[#F1F2F8]">
+          <div className="h-2.5 w-full overflow-hidden rounded-full bg-[#EFF2F8]">
             <div
-              className="h-full rounded-full bg-[#7779C5] transition-all duration-500"
+              className="h-full rounded-full bg-[#5288B8] transition-all duration-500"
               style={{ width: `${progressPercent}%` }}
             />
           </div>
-          <div className="mt-3 flex flex-wrap items-center justify-between gap-4 text-xs text-[#777486]">
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-4 text-xs text-[#748199]">
             <span>
               {completedTopicsList.length} of {allTopicsCount} topics mastered
             </span>
@@ -241,7 +241,7 @@ export const DomainLearningPath: React.FC = () => {
               <strong>Current Stage:</strong> {progress?.currentStage || 'Getting Started'}
             </span>
             {progress?.recommendedNextTopic && (
-              <span className="text-[#7779C5] font-medium">
+              <span className="text-[#5288B8] font-medium">
                 <strong>Next recommended:</strong> {progress.recommendedNextTopic}
               </span>
             )}
@@ -250,13 +250,13 @@ export const DomainLearningPath: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-[#E9E7F0]">
+      <div className="flex border-b border-[#E0E5EF]">
         <button
           onClick={() => setActiveTab('modules')}
           className={`py-3 px-6 text-sm font-semibold border-b-2 transition-all ${
             activeTab === 'modules'
-              ? 'border-[#7779C5] text-[#7779C5]'
-              : 'border-transparent text-[#777486] hover:text-[#49465B]'
+              ? 'border-[#5288B8] text-[#5288B8]'
+              : 'border-transparent text-[#748199] hover:text-[#3C4B63]'
           }`}
         >
           Learning Modules ({domain.modules?.length || 0})
@@ -265,8 +265,8 @@ export const DomainLearningPath: React.FC = () => {
           onClick={() => setActiveTab('projects')}
           className={`py-3 px-6 text-sm font-semibold border-b-2 transition-all ${
             activeTab === 'projects'
-              ? 'border-[#7779C5] text-[#7779C5]'
-              : 'border-transparent text-[#777486] hover:text-[#49465B]'
+              ? 'border-[#5288B8] text-[#5288B8]'
+              : 'border-transparent text-[#748199] hover:text-[#3C4B63]'
           }`}
         >
           Practical Projects ({domain.projects?.length || 0})
@@ -275,8 +275,8 @@ export const DomainLearningPath: React.FC = () => {
           onClick={() => setActiveTab('assessments')}
           className={`py-3 px-6 text-sm font-semibold border-b-2 transition-all ${
             activeTab === 'assessments'
-              ? 'border-[#7779C5] text-[#7779C5]'
-              : 'border-transparent text-[#777486] hover:text-[#49465B]'
+              ? 'border-[#5288B8] text-[#5288B8]'
+              : 'border-transparent text-[#748199] hover:text-[#3C4B63]'
           }`}
         >
           Assessments &amp; Certification ({domain.assessments?.length || 0})
@@ -320,10 +320,10 @@ export const DomainLearningPath: React.FC = () => {
                     <div
                       className={`flex h-9 w-9 items-center justify-center rounded-full text-xs font-bold ${
                         !isUnlocked
-                          ? 'bg-[#F1F2F8] text-[#777486]'
+                          ? 'bg-[#EFF2F8] text-[#748199]'
                           : isModulePassed
                           ? 'bg-[#E6F6F0] text-[#527565]'
-                          : 'bg-[#F0EFF9] text-[#555780]'
+                          : 'bg-[#EAF1F9] text-[#3C648E]'
                       }`}
                     >
                       {!isUnlocked ? (
@@ -336,7 +336,7 @@ export const DomainLearningPath: React.FC = () => {
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <h3 className="text-base font-bold text-[#49465B]">{m.title}</h3>
+                        <h3 className="text-base font-bold text-[#3C4B63]">{m.title}</h3>
                         {!isUnlocked && (
                           <Badge variant="neutral" size="sm">Locked</Badge>
                         )}
@@ -344,26 +344,26 @@ export const DomainLearningPath: React.FC = () => {
                           <Badge variant="green" size="sm">Passed</Badge>
                         )}
                       </div>
-                      <p className="text-xs text-[#777486] mt-0.5">{m.description}</p>
+                      <p className="text-xs text-[#748199] mt-0.5">{m.description}</p>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <span className="hidden sm:inline-block rounded-full bg-[#F1F2F8] px-2.5 py-0.5 text-xs font-medium text-[#777486]">
+                    <span className="hidden sm:inline-block rounded-full bg-[#EFF2F8] px-2.5 py-0.5 text-xs font-medium text-[#748199]">
                       {completedCount}/{moduleTopics.length} topics
                     </span>
                     {isUnlocked &&
                       (isExpanded ? (
-                        <ChevronDown className="h-5 w-5 text-[#777486]" />
+                        <ChevronDown className="h-5 w-5 text-[#748199]" />
                       ) : (
-                        <ChevronRight className="h-5 w-5 text-[#777486]" />
+                        <ChevronRight className="h-5 w-5 text-[#748199]" />
                       ))}
                   </div>
                 </div>
 
                 {/* Module Body (Topics list, Learn modals & Mandatory Assignment) */}
                 {isUnlocked && isExpanded && (
-                  <div className="border-t border-[#E9E7F0] bg-[#F8F7FC]/40 p-5 space-y-6">
+                  <div className="border-t border-[#E0E5EF] bg-[#F7F8FC]/40 p-5 space-y-6">
                     {/* Topics Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       {moduleTopics.map((topicName) => {
@@ -372,19 +372,19 @@ export const DomainLearningPath: React.FC = () => {
                         return (
                           <div
                             key={topicName}
-                            className="flex items-center justify-between rounded-lg border border-[#E9E7F0] bg-white p-3.5 shadow-2xs hover:border-[#DEDDF0] transition-colors"
+                            className="flex items-center justify-between rounded-lg border border-[#E0E5EF] bg-white p-3.5 shadow-2xs hover:border-[#CFE2DC] transition-colors"
                           >
                             <div className="flex items-center gap-3 min-w-0">
                               <div
                                 className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
                                   isDone
-                                    ? 'bg-[#E9F3ED] text-white'
-                                    : 'border border-[#E9E7F0] text-transparent'
+                                    ? 'bg-[#E5F2EB] text-white'
+                                    : 'border border-[#E0E5EF] text-transparent'
                                 }`}
                               >
                                 <CheckCircle2 className="h-3.5 w-3.5" />
                               </div>
-                              <span className="text-sm font-medium text-[#49465B] truncate">
+                              <span className="text-sm font-medium text-[#3C4B63] truncate">
                                 {topicName}
                               </span>
                             </div>
@@ -395,7 +395,7 @@ export const DomainLearningPath: React.FC = () => {
                                   e.stopPropagation();
                                   setSelectedTopicLesson({ moduleId: m.moduleId, topic: topicName });
                                 }}
-                                className="flex items-center gap-1 rounded-md bg-[#F0EFF9] px-2 py-1 text-xs font-semibold text-[#555780] hover:bg-[#E1E5FF] transition-colors"
+                                className="flex items-center gap-1 rounded-md bg-[#EAF1F9] px-2 py-1 text-xs font-semibold text-[#3C648E] hover:bg-[#E1E5FF] transition-colors"
                               >
                                 <BookOpen className="h-3 w-3" />
                                 <span>Learn</span>
@@ -410,9 +410,9 @@ export const DomainLearningPath: React.FC = () => {
                                     )}`
                                   );
                                 }}
-                                className="flex items-center gap-1 rounded-md bg-[#F1F2F8] px-2 py-1 text-xs font-medium text-[#49465B] hover:bg-[#E9E7F0] transition-colors"
+                                className="flex items-center gap-1 rounded-md bg-[#EFF2F8] px-2 py-1 text-xs font-medium text-[#3C4B63] hover:bg-[#E0E5EF] transition-colors"
                               >
-                                <Code2 className="h-3 w-3 text-[#7779C5]" />
+                                <Code2 className="h-3 w-3 text-[#5288B8]" />
                                 <span>Practice</span>
                               </button>
                             </div>
@@ -427,8 +427,8 @@ export const DomainLearningPath: React.FC = () => {
                         isModulePassed
                           ? 'bg-[#E6F6F0]/40 border-[#C3E8D8]'
                           : isAllTopicsComplete
-                          ? 'bg-[#F0EFF9]/50 border-[#DEDDF0] ring-2 ring-[#7779C5]/15'
-                          : 'bg-[#F8F7FC] border-[#E9E7F0] opacity-90'
+                          ? 'bg-[#EAF1F9]/50 border-[#CFE2DC] ring-2 ring-[#5288B8]/15'
+                          : 'bg-[#F7F8FC] border-[#E0E5EF] opacity-90'
                       }`}
                     >
                       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -438,8 +438,8 @@ export const DomainLearningPath: React.FC = () => {
                               isModulePassed
                                 ? 'bg-[#E6F6F0] text-[#527565]'
                                 : isAllTopicsComplete
-                                ? 'bg-[#F0EFF9] text-[#555780]'
-                                : 'bg-[#F1F2F8] text-[#777486]'
+                                ? 'bg-[#EAF1F9] text-[#3C648E]'
+                                : 'bg-[#EFF2F8] text-[#748199]'
                             }`}
                           >
                             {isModulePassed ? (
@@ -452,7 +452,7 @@ export const DomainLearningPath: React.FC = () => {
                           </div>
                           <div>
                             <div className="flex items-center gap-2">
-                              <span className="text-3xs font-bold uppercase tracking-wider text-[#777486]">
+                              <span className="text-3xs font-bold uppercase tracking-wider text-[#748199]">
                                 Mandatory Module Milestone
                               </span>
                               {isModulePassed && (
@@ -471,10 +471,10 @@ export const DomainLearningPath: React.FC = () => {
                                 </Badge>
                               )}
                             </div>
-                            <h4 className="text-sm font-bold text-[#49465B] mt-0.5">
+                            <h4 className="text-sm font-bold text-[#3C4B63] mt-0.5">
                               Module {index + 1} Assignment: {m.title}
                             </h4>
-                            <p className="text-xs text-[#777486] mt-0.5">
+                            <p className="text-xs text-[#748199] mt-0.5">
                               {isModulePassed
                                 ? `Completed with verified passing grade. Next module is unlocked.`
                                 : isAllTopicsComplete
@@ -547,7 +547,7 @@ export const DomainLearningPath: React.FC = () => {
             return (
               <div
                 key={p.projectId}
-                className="flex flex-col justify-between rounded-xl border border-[#E9E7F0] bg-white p-6 shadow-xs hover:border-[#DEDDF0] transition-all"
+                className="flex flex-col justify-between rounded-xl border border-[#E0E5EF] bg-white p-6 shadow-xs hover:border-[#CFE2DC] transition-all"
               >
                 <div>
                   <div className="flex items-center justify-between">
@@ -569,17 +569,17 @@ export const DomainLearningPath: React.FC = () => {
                     )}
                   </div>
 
-                  <h3 className="mt-3 text-lg font-bold text-[#49465B]">{p.title}</h3>
-                  <p className="mt-2 text-sm text-[#777486]">{p.description}</p>
+                  <h3 className="mt-3 text-lg font-bold text-[#3C4B63]">{p.title}</h3>
+                  <p className="mt-2 text-sm text-[#748199]">{p.description}</p>
 
                   <div className="mt-4 space-y-2">
-                    <span className="text-xs font-semibold text-[#777486] uppercase">
+                    <span className="text-xs font-semibold text-[#748199] uppercase">
                       Milestones ({p.tasks?.length || 0} tasks):
                     </span>
-                    <ul className="space-y-1.5 text-xs text-[#49465B]">
+                    <ul className="space-y-1.5 text-xs text-[#3C4B63]">
                       {(p.tasks || []).map((t: any) => (
                         <li key={t.taskId} className="flex items-start gap-2">
-                          <span className="text-[#7779C5] font-bold">•</span>
+                          <span className="text-[#5288B8] font-bold">•</span>
                           <span>{t.title}</span>
                         </li>
                       ))}
@@ -587,7 +587,7 @@ export const DomainLearningPath: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-[#E9E7F0]">
+                <div className="mt-6 pt-4 border-t border-[#E0E5EF]">
                   <Button
                     variant="primary"
                     onClick={() =>
@@ -620,14 +620,14 @@ export const DomainLearningPath: React.FC = () => {
               >
                 <div className="space-y-2 max-w-2xl">
                   <div className="flex items-center gap-2">
-                    <span className="rounded-full bg-[#F0EFF9] px-2.5 py-0.5 text-xs font-bold text-[#555780]">
+                    <span className="rounded-full bg-[#EAF1F9] px-2.5 py-0.5 text-xs font-bold text-[#3C648E]">
                       Certification Assessment
                     </span>
                     {pastAttempt && (
                       <span
                         className={`rounded-full px-2 py-0.5 text-xs font-bold ${
                           pastAttempt.passed
-                            ? 'bg-[#E9F3ED] text-[#527565]'
+                            ? 'bg-[#E5F2EB] text-[#527565]'
                             : 'bg-[#F8EDEF] text-[#9A646D]'
                         }`}
                       >
@@ -651,7 +651,7 @@ export const DomainLearningPath: React.FC = () => {
                       `/domains/${domain.slug}/assessment/${a.assessmentId}`
                     )
                   }
-                  className="w-full md:w-auto bg-[#F0EFF9] hover:bg-[#F0EFF9] text-white font-semibold shrink-0"
+                  className="w-full md:w-auto bg-[#EAF1F9] hover:bg-[#EAF1F9] text-white font-semibold shrink-0"
                 >
                   <Award className="h-4 w-4 mr-2" />
                   <span>Start Assessment</span>

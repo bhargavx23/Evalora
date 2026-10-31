@@ -66,7 +66,7 @@ export const QrCodeDisplay: React.FC<QrCodeDisplayProps> = ({
                 y={rIdx + quietZone}
                 width={1}
                 height={1}
-                fill="#49465B"
+                fill="#3C4B63"
               />
             ) : null
           )

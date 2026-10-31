@@ -126,8 +126,8 @@ export const StudentDashboard: React.FC = () => {
   const recentActivity = analytics?.recentActivity || [];
 
   const scoreColor = (score: number) => {
-    if (score >= 75) return "#78A88F";
-    if (score >= 50) return "#7779C5";
+    if (score >= 75) return "#679B7C";
+    if (score >= 50) return "#5288B8";
     return "#C6A466";
   };
 
@@ -163,10 +163,10 @@ export const StudentDashboard: React.FC = () => {
   return (
     <div className="page-shell">
       {/* Header Hierarchy (Section 36) */}
-      <header className="flex flex-col justify-between gap-5 border-b border-[#E9E7F0] pb-7 md:flex-row md:items-end">
+      <header className="flex flex-col justify-between gap-5 border-b border-[#E0E5EF] pb-7 md:flex-row md:items-end">
         <div>
           <p className="page-kicker">Student Overview</p>
-          <h1 className="page-title display-heading text-4xl sm:text-5xl text-[#49465B]">
+          <h1 className="page-title display-heading text-4xl sm:text-5xl text-[#3C4B63]">
             Welcome back, {firstName}
           </h1>
           <p className="page-copy">
@@ -233,20 +233,20 @@ export const StudentDashboard: React.FC = () => {
           return (
             <div
               key={metric.label}
-              className="rounded-[14px] border border-[#E9E7F0] bg-white p-5 shadow-[0_1px_3px_rgba(82,77,119,0.04)]"
+              className="rounded-[14px] border border-[#E0E5EF] bg-white p-5 shadow-[0_1px_3px_rgba(82,77,119,0.04)]"
             >
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-[#777486]">
+                <span className="text-xs font-semibold text-[#748199]">
                   {metric.label}
                 </span>
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#F0EFF9] text-[#7779C5]">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#EAF1F9] text-[#5288B8]">
                   <Icon className="h-4 w-4" />
                 </div>
               </div>
-              <div className="mt-3 text-3xl font-semibold tracking-tight text-[#49465B]">
+              <div className="mt-3 text-3xl font-semibold tracking-tight text-[#3C4B63]">
                 {metric.value}
               </div>
-              <div className="mt-1 text-xs text-[#777486]">{metric.sub}</div>
+              <div className="mt-1 text-xs text-[#748199]">{metric.sub}</div>
             </div>
           );
         })}
@@ -259,10 +259,10 @@ export const StudentDashboard: React.FC = () => {
           header={
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-sm font-semibold text-[#49465B]">
+                <h2 className="text-sm font-semibold text-[#3C4B63]">
                   Institutional Assessments
                 </h2>
-                <p className="text-xs text-[#777486]">
+                <p className="text-xs text-[#748199]">
                   Assigned evaluations that can be started or resumed
                 </p>
               </div>
@@ -274,10 +274,10 @@ export const StudentDashboard: React.FC = () => {
             <div className="space-y-4">
               <div className="flex flex-col justify-between gap-3 md:flex-row md:items-start">
                 <div>
-                  <h3 className="text-lg font-semibold text-[#49465B]">
+                  <h3 className="text-lg font-semibold text-[#3C4B63]">
                     {upcomingAssessment.title}
                   </h3>
-                  <p className="mt-1.5 max-w-2xl text-sm leading-6 text-[#777486]">
+                  <p className="mt-1.5 max-w-2xl text-sm leading-6 text-[#748199]">
                     {upcomingAssessment.description}
                   </p>
                 </div>
@@ -293,28 +293,28 @@ export const StudentDashboard: React.FC = () => {
                     : "Ready"}
                 </Badge>
               </div>
-              <div className="grid grid-cols-2 gap-4 rounded-xl border border-[#E9E7F0] bg-[#F8F7FC] p-4 text-sm md:grid-cols-4">
+              <div className="grid grid-cols-2 gap-4 rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-4 text-sm md:grid-cols-4">
                 <div>
-                  <div className="text-xs text-[#777486]">Duration</div>
-                  <div className="mt-1 font-semibold text-[#49465B]">
+                  <div className="text-xs text-[#748199]">Duration</div>
+                  <div className="mt-1 font-semibold text-[#3C4B63]">
                     {upcomingAssessment.durationMinutes} min
                   </div>
                 </div>
                 <div>
-                  <div className="text-xs text-[#777486]">Total Marks</div>
-                  <div className="mt-1 font-semibold text-[#49465B]">
+                  <div className="text-xs text-[#748199]">Total Marks</div>
+                  <div className="mt-1 font-semibold text-[#3C4B63]">
                     {upcomingAssessment.totalMarks}
                   </div>
                 </div>
                 <div>
-                  <div className="text-xs text-[#777486]">Sections</div>
-                  <div className="mt-1 font-semibold text-[#49465B]">
+                  <div className="text-xs text-[#748199]">Sections</div>
+                  <div className="mt-1 font-semibold text-[#3C4B63]">
                     {upcomingAssessment.sections?.length ?? 0}
                   </div>
                 </div>
                 <div>
-                  <div className="text-xs text-[#777486]">Due Date</div>
-                  <div className="mt-1 font-semibold text-[#49465B]">
+                  <div className="text-xs text-[#748199]">Due Date</div>
+                  <div className="mt-1 font-semibold text-[#3C4B63]">
                     {new Date(upcomingAssessment.endDate).toLocaleDateString()}
                   </div>
                 </div>
@@ -355,12 +355,12 @@ export const StudentDashboard: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-1.5">
-                  <Target className="h-4 w-4 text-[#7779C5]" />
-                  <h2 className="text-sm font-semibold text-[#49465B]">
+                  <Target className="h-4 w-4 text-[#5288B8]" />
+                  <h2 className="text-sm font-semibold text-[#3C4B63]">
                     Adaptive Practice System
                   </h2>
                 </div>
-                <p className="text-xs text-[#777486]">
+                <p className="text-xs text-[#748199]">
                   Personalized questions adapting to your performance
                 </p>
               </div>
@@ -383,12 +383,12 @@ export const StudentDashboard: React.FC = () => {
           {adaptiveData?.adaptiveProfile ? (
             <div className="space-y-4">
               {/* Adaptive Status & Difficulty Callout */}
-              <div className="rounded-xl border border-[#D6D8F8] bg-[#F0EFF9]/50 p-3.5">
+              <div className="rounded-xl border border-[#D6D8F8] bg-[#EAF1F9]/50 p-3.5">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-semibold uppercase tracking-wider text-[#7779C5]">
+                  <span className="font-semibold uppercase tracking-wider text-[#5288B8]">
                     Current Level: {adaptiveData.adaptiveProfile.currentDifficulty.toUpperCase()}
                   </span>
-                  <span className="text-[#777486]">
+                  <span className="text-[#748199]">
                     Recent Accuracy: {adaptiveData.adaptiveProfile.recentAccuracy}%
                   </span>
                 </div>
@@ -400,21 +400,21 @@ export const StudentDashboard: React.FC = () => {
               {/* Recommended Questions List */}
               {adaptiveData.recommendations && adaptiveData.recommendations.length > 0 && (
                 <div className="space-y-2">
-                  <div className="text-xs font-semibold text-[#777486]">
+                  <div className="text-xs font-semibold text-[#748199]">
                     Recommended for You
                   </div>
                   <div className="space-y-2">
                     {adaptiveData.recommendations.slice(0, 3).map((q: any) => (
                       <div
                         key={q.questionId}
-                        className="rounded-lg border border-[#E9E7F0] bg-white p-2.5 transition-colors hover:border-[#7779C5]/40"
+                        className="rounded-lg border border-[#E0E5EF] bg-white p-2.5 transition-colors hover:border-[#5288B8]/40"
                       >
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0">
-                            <div className="truncate text-xs font-semibold text-[#49465B]">
+                            <div className="truncate text-xs font-semibold text-[#3C4B63]">
                               {q.title}
                             </div>
-                            <div className="mt-0.5 text-[11px] text-[#777486]">
+                            <div className="mt-0.5 text-[11px] text-[#748199]">
                               {q.topic} • {q.reason}
                             </div>
                           </div>
@@ -467,18 +467,18 @@ export const StudentDashboard: React.FC = () => {
             </div>
           ) : analytics?.weakestTopic?.topic ? (
             <div className="space-y-4">
-              <div className="rounded-xl border border-[#D6D8F8] bg-[#F0EFF9]/60 p-4">
-                <div className="text-xs font-semibold uppercase tracking-wider text-[#7779C5]">
+              <div className="rounded-xl border border-[#D6D8F8] bg-[#EAF1F9]/60 p-4">
+                <div className="text-xs font-semibold uppercase tracking-wider text-[#5288B8]">
                   Focus Topic
                 </div>
-                <div className="mt-1 text-xl font-semibold text-[#49465B]">
+                <div className="mt-1 text-xl font-semibold text-[#3C4B63]">
                   {analytics.weakestTopic.topic}
                 </div>
               </div>
               <div>
                 <div className="mb-2 flex justify-between text-xs">
-                  <span className="text-[#777486]">Current Mastery</span>
-                  <span className="font-semibold text-[#49465B]">
+                  <span className="text-[#748199]">Current Mastery</span>
+                  <span className="font-semibold text-[#3C4B63]">
                     {analytics.weakestTopic.score}%
                   </span>
                 </div>
@@ -504,14 +504,14 @@ export const StudentDashboard: React.FC = () => {
             </div>
           ) : (
             <div className="space-y-4">
-              <div className="rounded-xl border border-[#E9E7F0] bg-[#F8F7FC] p-4">
-                <div className="text-xs font-semibold uppercase tracking-wider text-[#7779C5]">
+              <div className="rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-4">
+                <div className="text-xs font-semibold uppercase tracking-wider text-[#5288B8]">
                   Starter Recommendation
                 </div>
-                <div className="mt-1 text-base font-semibold text-[#49465B]">
+                <div className="mt-1 text-base font-semibold text-[#3C4B63]">
                   DSA (Arrays) + Quantitative Aptitude
                 </div>
-                <p className="mt-1 text-xs text-[#777486]">
+                <p className="mt-1 text-xs text-[#748199]">
                   Build your baseline skill profile with a balanced 10-question
                   adaptive practice set.
                 </p>
@@ -537,28 +537,28 @@ export const StudentDashboard: React.FC = () => {
               <div className="flex items-center gap-2">
                 <Badge variant="amber" size="sm">PREMIUM TOOL</Badge>
                 <Badge variant="blue" size="sm">
-                  <Cpu className="h-3 w-3 text-[#7779C5]" />
+                  <Cpu className="h-3 w-3 text-[#5288B8]" />
                   Independent Feature
                 </Badge>
               </div>
-              <h2 className="text-lg font-bold text-[#49465B]">
+              <h2 className="text-lg font-bold text-[#3C4B63]">
                 Step-by-Step Code Execution Visualizer
               </h2>
-              <p className="text-sm text-[#777486] leading-relaxed">
+              <p className="text-sm text-[#748199] leading-relaxed">
                 Execute and explore code behavior line-by-line with genuine runtime execution traces. 
                 Inspect variable states, call stacks, loop iterations, and array mutations in real time—without starting an assignment or lesson.
               </p>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 pt-1 text-xs text-[#777486]">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 pt-1 text-xs text-[#748199]">
                 <span className="flex items-center gap-1.5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#E9F3ED]" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#E5F2EB]" />
                   JavaScript &amp; Python support
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#E9F3ED]" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#E5F2EB]" />
                   Pre-seeded Algorithm Library
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#E9F3ED]" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#E5F2EB]" />
                   Deterministic Runtime Traces
                 </span>
               </div>
@@ -590,12 +590,12 @@ export const StudentDashboard: React.FC = () => {
           header={
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Code2 className="h-5 w-5 text-[#7779C5]" />
+                <Code2 className="h-5 w-5 text-[#5288B8]" />
                 <div>
-                  <h2 className="text-sm font-semibold text-[#49465B]">
+                  <h2 className="text-sm font-semibold text-[#3C4B63]">
                     Technology Career Domain Progress
                   </h2>
-                  <p className="text-xs text-[#777486]">
+                  <p className="text-xs text-[#748199]">
                     Sequential topic learning, hands-on code workspaces &amp; mandatory module milestones
                   </p>
                 </div>
@@ -612,23 +612,23 @@ export const StudentDashboard: React.FC = () => {
           }
         >
           <div className="space-y-4">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 rounded-xl border border-[#E9E7F0] bg-[#F8F7FC] p-5">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-5">
               <div className="space-y-1.5 max-w-xl">
                 <div className="flex items-center gap-2">
                   <Badge variant="blue" size="sm">Active Track</Badge>
-                  <span className="text-xs text-[#777486] font-medium">
+                  <span className="text-xs text-[#748199] font-medium">
                     {primaryProgress?.completedModules?.length || 0} Modules Completed
                   </span>
                 </div>
-                <h3 className="text-base font-bold text-[#49465B]">
+                <h3 className="text-base font-bold text-[#3C4B63]">
                   MERN Stack &amp; Full-Stack Development
                 </h3>
-                <p className="text-xs text-[#777486]">
+                <p className="text-xs text-[#748199]">
                   {primaryProgress?.recommendedNextTopic
                     ? `Recommended next topic: ${primaryProgress.recommendedNextTopic}`
                     : `Complete topic lessons and pass mandatory assignments to unlock subsequent modules.`}
                 </p>
-                <div className="flex items-center gap-4 pt-1 text-2xs text-[#777486]">
+                <div className="flex items-center gap-4 pt-1 text-2xs text-[#748199]">
                   <span>
                     <strong>Topics Mastered:</strong> {primaryProgress?.completedTopics?.length || 0}
                   </span>
@@ -655,7 +655,7 @@ export const StudentDashboard: React.FC = () => {
                   variant="outline"
                   size="sm"
                   onClick={() => navigate("/domains/mern-stack/workspace")}
-                  icon={<Code2 className="h-4 w-4 text-[#7779C5]" />}
+                  icon={<Code2 className="h-4 w-4 text-[#5288B8]" />}
                 >
                   Open Coding Workspace
                 </Button>
@@ -664,14 +664,14 @@ export const StudentDashboard: React.FC = () => {
 
             {/* Quick Domain Pills */}
             <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
-              <span className="font-semibold text-[#777486] text-2xs uppercase tracking-wider">
+              <span className="font-semibold text-[#748199] text-2xs uppercase tracking-wider">
                 Explore Tracks:
               </span>
               {(domainsData || []).slice(0, 5).map((d: any) => (
                 <button
                   key={d.slug}
                   onClick={() => navigate(`/domains/${d.slug}`)}
-                  className="rounded-lg border border-[#E9E7F0] bg-white px-3 py-1 text-xs font-medium text-[#49465B] hover:border-[#7779C5] hover:text-[#7779C5] transition-colors shadow-2xs"
+                  className="rounded-lg border border-[#E0E5EF] bg-white px-3 py-1 text-xs font-medium text-[#3C4B63] hover:border-[#5288B8] hover:text-[#5288B8] transition-colors shadow-2xs"
                 >
                   {d.name}
                 </button>
@@ -686,13 +686,13 @@ export const StudentDashboard: React.FC = () => {
         <Card
           header={
             <div className="flex items-center justify-between">
-              <span className="text-sm font-semibold text-[#49465B]">
+              <span className="text-sm font-semibold text-[#3C4B63]">
                 Performance Summary
               </span>
               <button
                 type="button"
                 onClick={() => navigate("/skills")}
-                className="text-xs font-semibold text-[#7779C5] hover:text-[#555780]"
+                className="text-xs font-semibold text-[#5288B8] hover:text-[#3C648E]"
               >
                 Full Skill Profile
               </button>
@@ -709,12 +709,12 @@ export const StudentDashboard: React.FC = () => {
               ].map(([label, value]) => (
                 <div
                   key={label as string}
-                  className="rounded-xl border border-[#E9E7F0] bg-[#F8F7FC] p-3.5"
+                  className="rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-3.5"
                 >
-                  <div className="text-xs text-[#777486]">
+                  <div className="text-xs text-[#748199]">
                     {label as string}
                   </div>
-                  <div className="mt-1 text-xl font-semibold text-[#49465B]">
+                  <div className="mt-1 text-xl font-semibold text-[#3C4B63]">
                     {value != null ? `${value}%` : "—"}
                   </div>
                 </div>
@@ -726,10 +726,10 @@ export const StudentDashboard: React.FC = () => {
                 {topicPerformance.map((topic: any) => (
                   <div key={topic.topic}>
                     <div className="mb-1 flex justify-between text-xs">
-                      <span className="font-medium text-[#49465B]">
+                      <span className="font-medium text-[#3C4B63]">
                         {topic.topic}
                       </span>
-                      <span className="font-semibold text-[#777486]">
+                      <span className="font-semibold text-[#748199]">
                         {topic.score}%
                       </span>
                     </div>
@@ -741,7 +741,7 @@ export const StudentDashboard: React.FC = () => {
                 ))}
               </div>
             ) : (
-              <p className="rounded-xl border border-dashed border-[#E9E7F0] bg-[#F8F7FC] p-4 text-xs text-[#777486]">
+              <p className="rounded-xl border border-dashed border-[#E0E5EF] bg-[#F7F8FC] p-4 text-xs text-[#748199]">
                 Topic-level proficiency bars appear automatically after your
                 first completed session.
               </p>
@@ -752,10 +752,10 @@ export const StudentDashboard: React.FC = () => {
         <Card
           header={
             <div className="flex items-center justify-between">
-              <span className="text-sm font-semibold text-[#49465B]">
+              <span className="text-sm font-semibold text-[#3C4B63]">
                 Accuracy Progression
               </span>
-              <span className="text-xs text-[#777486]">Recent sessions</span>
+              <span className="text-xs text-[#748199]">Recent sessions</span>
             </div>
           }
         >
@@ -768,25 +768,25 @@ export const StudentDashboard: React.FC = () => {
                 >
                   <XAxis
                     dataKey="date"
-                    tick={{ fontSize: 11, fill: "#777486" }}
+                    tick={{ fontSize: 11, fill: "#748199" }}
                   />
                   <YAxis
                     domain={[0, 100]}
-                    tick={{ fontSize: 11, fill: "#777486" }}
+                    tick={{ fontSize: 11, fill: "#748199" }}
                   />
                   <Tooltip
                     contentStyle={{
                       borderRadius: 10,
-                      border: "1px solid #E9E7F0",
+                      border: "1px solid #E0E5EF",
                       fontSize: 12,
                     }}
                   />
                   <Area
                     type="monotone"
                     dataKey="score"
-                    stroke="#7779C5"
+                    stroke="#5288B8"
                     strokeWidth={2.5}
-                    fill="#F0EFF9"
+                    fill="#EAF1F9"
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -806,17 +806,17 @@ export const StudentDashboard: React.FC = () => {
         padding="none"
         header={
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-[#49465B]">
+            <h2 className="text-sm font-semibold text-[#3C4B63]">
               Recent Activity
             </h2>
-            <span className="text-xs text-[#777486]">
+            <span className="text-xs text-[#748199]">
               Practice sessions & assessments
             </span>
           </div>
         }
       >
         {recentActivity.length > 0 || practiceHistory.length > 0 ? (
-          <div className="divide-y divide-[#E9E7F0]">
+          <div className="divide-y divide-[#E0E5EF]">
             {(recentActivity.length > 0
               ? recentActivity
               : practiceHistory.slice(0, 5).map((s: any) => ({
@@ -829,10 +829,10 @@ export const StudentDashboard: React.FC = () => {
             ).map((item: any, index: number) => (
               <div
                 key={`${item.title}-${index}`}
-                className="flex items-center justify-between px-6 py-3.5 text-sm hover:bg-[#F8F7FC] transition-colors"
+                className="flex items-center justify-between px-6 py-3.5 text-sm hover:bg-[#F7F8FC] transition-colors"
               >
                 <div className="flex items-center gap-3.5">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F0EFF9] text-[#7779C5]">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EAF1F9] text-[#5288B8]">
                     {item.type === "assessment" ? (
                       <FileCheck2 className="h-4 w-4" />
                     ) : (
@@ -840,10 +840,10 @@ export const StudentDashboard: React.FC = () => {
                     )}
                   </div>
                   <div>
-                    <div className="font-semibold text-[#49465B]">
+                    <div className="font-semibold text-[#3C4B63]">
                       {item.title}
                     </div>
-                    <div className="text-xs text-[#777486]">
+                    <div className="text-xs text-[#748199]">
                       {item.date
                         ? new Date(item.date).toLocaleDateString()
                         : "Recent session"}

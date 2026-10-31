@@ -12,7 +12,6 @@ import {
   signChallengeWithInjectedWallet,
 } from "../../utils/algorandWallet";
 import {
-  Bell,
   LockKeyhole,
   Shield,
   Wallet,
@@ -34,12 +33,6 @@ export const SettingsPage: React.FC = () => {
       profileVisible: false,
       resumeVisible: false,
       careerVisible: false,
-    },
-    notificationPreferences: {
-      assessment: true,
-      practice: true,
-      results: true,
-      resume: true,
     },
   });
   const [isSaving, setIsSaving] = useState(false);
@@ -94,10 +87,6 @@ export const SettingsPage: React.FC = () => {
               ...settings.privacy,
               ...(res.data.profile.privacy || {}),
             },
-            notificationPreferences: {
-              ...settings.notificationPreferences,
-              ...(res.data.profile.notificationPreferences || {}),
-            },
           });
         }
       })
@@ -119,7 +108,7 @@ export const SettingsPage: React.FC = () => {
       .finally(() => setIsLoadingHistory(false));
   };
 
-  const toggle = (group: "privacy" | "notificationPreferences", key: string) =>
+  const toggle = (group: "privacy", key: string) =>
     setSettings((current: any) => ({
       ...current,
       [group]: { ...current[group], [key]: !current[group][key] },
@@ -341,7 +330,7 @@ export const SettingsPage: React.FC = () => {
 
               {browserWallet && (
                 <div className="flex items-center gap-2 text-xs">
-                  <span className="font-mono text-[#527565]">
+                  <span className="font-mono text-[#4C765D]">
                     Active: {browserWallet.slice(0, 8)}...{browserWallet.slice(-6)}
                   </span>
                   <Button
@@ -364,7 +353,7 @@ export const SettingsPage: React.FC = () => {
         header={
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#E9F3ED] text-[#527565]">
+              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#E5F2EB] text-[#4C765D]">
                 <History className="h-4 w-4" />
               </div>
               <span className="text-sm font-semibold text-text-primary">
@@ -412,7 +401,7 @@ export const SettingsPage: React.FC = () => {
                     <td className="py-3 font-mono font-medium text-text-primary">
                       {tx.amount} {tx.currency}
                     </td>
-                    <td className="py-3 font-medium text-[#527565]">
+                    <td className="py-3 font-medium text-[#4C765D]">
                       +{tx.attemptsUnlocked || 0}
                     </td>
                     <td className="py-3">
@@ -474,8 +463,8 @@ export const SettingsPage: React.FC = () => {
         )}
       </Card>
 
-      {/* Privacy and Notifications */}
-      <div className="grid max-w-4xl gap-6 md:grid-cols-2">
+      {/* Privacy Controls */}
+      <div className="grid max-w-4xl gap-6">
         <Card
           header={
             <div className="flex items-center gap-2">
@@ -503,33 +492,6 @@ export const SettingsPage: React.FC = () => {
           </div>
         </Card>
 
-        <Card
-          header={
-            <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-surface-neutral text-text-secondary">
-                <Bell className="h-4 w-4" />
-              </div>
-              <span className="text-sm font-semibold text-text-primary">Notifications</span>
-            </div>
-          }
-        >
-          <div className="space-y-4">
-            {[
-              ["assessment", "Assessment reminders"],
-              ["practice", "Practice recommendations"],
-              ["results", "Performance reports"],
-              ["resume", "Skill analysis updates"],
-            ].map(([key, label]) => (
-              <Toggle
-                key={key}
-                label={label}
-                description="Receive updates via your registered contact channels."
-                value={settings.notificationPreferences[key]}
-                onChange={() => toggle("notificationPreferences", key)}
-              />
-            ))}
-          </div>
-        </Card>
       </div>
 
       {/* Account Security */}

@@ -168,14 +168,14 @@ export const MobileWalletApprovePage: React.FC = () => {
   return (
     <div className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-md flex-col justify-center px-4 py-10">
       <Card padding="lg" className="space-y-5">
-        <div className="flex items-center justify-between border-b border-[#E9E7F0] pb-4">
+        <div className="flex items-center justify-between border-b border-[#E0E5EF] pb-4">
           <div className="flex items-center gap-2.5">
             <LogoMark size="sm" />
             <div>
-              <h1 className="text-base font-semibold text-[#49465B]">
+              <h1 className="text-base font-semibold text-[#3C4B63]">
                 Pera Wallet Sign-In
               </h1>
-              <p className="text-xs text-[#777486]">
+              <p className="text-xs text-[#748199]">
                 Mobile Wallet Approval Request
               </p>
             </div>
@@ -184,34 +184,34 @@ export const MobileWalletApprovePage: React.FC = () => {
         </div>
 
         {status === "LOADING" && (
-          <div className="py-8 text-center text-xs text-[#777486]">
+          <div className="py-8 text-center text-xs text-[#748199]">
             Connecting to Pera QR authentication session...
           </div>
         )}
 
         {(status === "READY" || status === "SIGNING") && (
           <div className="space-y-4">
-            <div className="rounded-xl border border-[#E9E7F0] bg-[#F8F7FC] p-3.5 text-xs space-y-2">
+            <div className="rounded-xl border border-[#E0E5EF] bg-[#F7F8FC] p-3.5 text-xs space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-[#777486]">Wallet Provider</span>
-                <span className="font-semibold text-[#49465B]">
+                <span className="text-[#748199]">Wallet Provider</span>
+                <span className="font-semibold text-[#3C4B63]">
                   Pera Wallet
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-[#777486]">Blockchain Network</span>
-                <span className="font-mono text-[#49465B]">Algorand</span>
+                <span className="text-[#748199]">Blockchain Network</span>
+                <span className="font-mono text-[#3C4B63]">Algorand</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-[#777486]">Verification Type</span>
-                <span className="text-[#527565] font-semibold">
+                <span className="text-[#748199]">Verification Type</span>
+                <span className="text-[#4C765D] font-semibold">
                   Zero-Fee Ownership Signature
                 </span>
               </div>
             </div>
 
             {errorMessage && (
-              <div className="rounded-xl border border-[#E8CFD2] bg-[#F8EDEF] p-3 text-xs text-[#9A646D]">
+              <div className="rounded-xl border border-[#EACBC4] bg-[#F8EDEF] p-3 text-xs text-[#A36162]">
                 {errorMessage}
               </div>
             )}
@@ -230,17 +230,17 @@ export const MobileWalletApprovePage: React.FC = () => {
 
               <a
                 href={deepLinkHref}
-                className="flex w-full items-center justify-center gap-1.5 rounded-[10px] border border-[#E9E7F0] bg-white px-3 py-2 text-xs font-semibold text-[#49465B] hover:bg-[#F8F7FC]"
+                className="flex w-full items-center justify-center gap-1.5 rounded-[10px] border border-[#E0E5EF] bg-white px-3 py-2 text-xs font-semibold text-[#3C4B63] hover:bg-[#F7F8FC]"
               >
-                <Smartphone className="h-3.5 w-3.5 text-[#7779C5]" />
+                <Smartphone className="h-3.5 w-3.5 text-[#5288B8]" />
                 Open in Pera Wallet Mobile App
-                <ExternalLink className="h-3 w-3 text-[#9895A8]" />
+                <ExternalLink className="h-3 w-3 text-[#8490A2]" />
               </a>
 
               <Button
                 type="button"
                 variant="ghost"
-                className="w-full text-[#9A646D] hover:bg-[#F8EDEF]"
+                className="w-full text-[#A36162] hover:bg-[#F8EDEF]"
                 disabled={isSubmitting}
                 onClick={handleReject}
               >
@@ -251,8 +251,8 @@ export const MobileWalletApprovePage: React.FC = () => {
         )}
 
         {status === "APPROVED" && (
-          <div className="rounded-xl border border-[#C8DFD1] bg-[#E9F3ED] p-5 text-center text-xs text-[#527565] space-y-2">
-            <CheckCircle2 className="mx-auto h-8 w-8 text-[#527565]" />
+          <div className="rounded-xl border border-[#C6DFD2] bg-[#E5F2EB] p-5 text-center text-xs text-[#4C765D] space-y-2">
+            <CheckCircle2 className="mx-auto h-8 w-8 text-[#4C765D]" />
             <p className="text-sm font-semibold">
               Wallet verified. Logging you in...
             </p>
@@ -264,8 +264,8 @@ export const MobileWalletApprovePage: React.FC = () => {
         )}
 
         {status === "REJECTED" && (
-          <div className="rounded-xl border border-[#E8CFD2] bg-[#F8EDEF] p-5 text-center text-xs text-[#9A646D] space-y-2">
-            <XCircle className="mx-auto h-8 w-8 text-[#9A646D]" />
+          <div className="rounded-xl border border-[#EACBC4] bg-[#F8EDEF] p-5 text-center text-xs text-[#A36162] space-y-2">
+            <XCircle className="mx-auto h-8 w-8 text-[#A36162]" />
             <p className="text-sm font-semibold">
               Wallet approval was rejected.
             </p>
@@ -274,14 +274,14 @@ export const MobileWalletApprovePage: React.FC = () => {
         )}
 
         {(status === "EXPIRED" || status === "ERROR") && (
-          <div className="rounded-xl border border-[#E8D9B9] bg-[#F8F3E8] p-5 text-center text-xs text-[#896D45] space-y-3">
+          <div className="rounded-xl border border-[#E9DAB5] bg-[#F8F3E8] p-5 text-center text-xs text-[#8A7047] space-y-3">
             <p className="font-semibold">
               {errorMessage ||
                 "QR expired. Generate a new QR code on your desktop."}
             </p>
             <Link
               to="/login"
-              className="inline-block font-semibold text-[#7779C5] underline"
+              className="inline-block font-semibold text-[#5288B8] underline"
             >
               Return to Evalora Login
             </Link>

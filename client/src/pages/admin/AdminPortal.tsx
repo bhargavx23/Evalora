@@ -609,7 +609,7 @@ export const AdminPortal: React.FC = () => {
                 <Card padding="sm">
                   <span className="block min-w-0 text-xs font-medium leading-5 text-text-muted">Onboarded Institutions</span>
                   <div className="mt-1 break-words font-serif text-2xl font-medium text-text-primary sm:text-3xl">{metrics.organizations.total}</div>
-                  <div className="mt-2 text-xs text-[#527565] font-medium">{metrics.organizations.active} Active</div>
+                  <div className="mt-2 text-xs text-[#4C765D] font-medium">{metrics.organizations.active} Active</div>
                 </Card>
                 <Card padding="sm">
                   <span className="block min-w-0 text-xs font-medium leading-5 text-text-muted">Question Bank Size</span>
@@ -618,7 +618,7 @@ export const AdminPortal: React.FC = () => {
                 </Card>
                 <Card padding="sm">
                   <span className="block min-w-0 text-xs font-medium leading-5 text-text-muted">Pera Payments Volume</span>
-                  <div className="mt-1 break-all font-serif text-2xl font-medium text-[#527565] sm:text-3xl">{metrics.payments.totalAlgoVolume} ALGO</div>
+                  <div className="mt-1 break-all font-serif text-2xl font-medium text-[#4C765D] sm:text-3xl">{metrics.payments.totalAlgoVolume} ALGO</div>
                   <div className="mt-2 text-xs text-text-secondary">{metrics.payments.verifiedTransactions} Verified Txns</div>
                 </Card>
               </div>
@@ -639,7 +639,7 @@ export const AdminPortal: React.FC = () => {
                   </div>
                   <div className="flex flex-col sm:flex-row justify-between py-1.5 border-b border-border-subtle">
                     <span className="text-text-muted font-medium">Authorized Admin Pera/Algorand Wallet:</span>
-                    <span className="font-mono text-[#527565] font-medium break-all">{metrics.system.adminWallet}</span>
+                    <span className="font-mono text-[#4C765D] font-medium break-all">{metrics.system.adminWallet}</span>
                   </div>
                   <div className="flex flex-col sm:flex-row justify-between py-1.5">
                     <span className="text-text-muted font-medium">Algorand Network:</span>
@@ -780,7 +780,7 @@ export const AdminPortal: React.FC = () => {
                           </td>
                           <td className="py-3">
                             {hasWallet ? (
-                              <span className="font-mono text-[11px] text-[#527565]">
+                              <span className="font-mono text-[11px] text-[#4C765D]">
                                 {u.walletAddress
                                   ? `${u.walletAddress.slice(0, 6)}...${u.walletAddress.slice(-4)}`
                                   : 'Linked'}
@@ -816,7 +816,7 @@ export const AdminPortal: React.FC = () => {
                                     size="sm"
                                     variant="ghost"
                                     onClick={() => handleDeleteUser(u)}
-                                    className="text-[#9A646D] hover:bg-[#F8EDEF]"
+                                    className="text-[#A36162] hover:bg-[#F8EDEF]"
                                     icon={<Trash2 className="h-3.5 w-3.5" />}
                                   >
                                     Delete
@@ -904,7 +904,7 @@ export const AdminPortal: React.FC = () => {
                               size="sm"
                               variant="ghost"
                               onClick={() => handleDeleteOrg(org)}
-                              className="text-[#9A646D] hover:bg-[#F8EDEF]"
+                              className="text-[#A36162] hover:bg-[#F8EDEF]"
                               icon={<Trash2 className="h-3.5 w-3.5" />}
                             >
                               Delete
@@ -1024,7 +1024,7 @@ export const AdminPortal: React.FC = () => {
                             size="sm"
                             variant="ghost"
                             onClick={() => handleDeleteQuestion(q)}
-                            className="text-[#9A646D] hover:bg-[#F8EDEF]"
+                            className="text-[#A36162] hover:bg-[#F8EDEF]"
                             icon={<Trash2 className="h-3.5 w-3.5" />}
                           >
                             Delete
@@ -1237,13 +1237,13 @@ export const AdminPortal: React.FC = () => {
                             <div className="flex items-center gap-1.5 font-bold text-text-primary">
                               <span>{priceVal} ALGO</span>
                               {isCompliant ? (
-                                <span className="text-[10px] text-[#527565] font-normal">(&lt; 9 ALGO)</span>
+                                <span className="text-[10px] text-[#4C765D] font-normal">(&lt; 9 ALGO)</span>
                               ) : (
                                 <Badge variant="rose" className="text-[9px]">Non-Compliant</Badge>
                               )}
                             </div>
                           </td>
-                          <td className="py-3 font-medium text-[#527565]">+{attemptsVal} attempts</td>
+                          <td className="py-3 font-medium text-[#4C765D]">+{attemptsVal} attempts</td>
                           <td className="py-3">
                             <Badge variant={p.active ? 'green' : 'neutral'}>
                               {p.active ? 'Active' : 'Inactive'}
@@ -1266,7 +1266,7 @@ export const AdminPortal: React.FC = () => {
                                 size="sm"
                                 variant="outline"
                                 className={`h-7 px-2 text-[11px] ${
-                                  p.active ? 'text-[#896D45] hover:bg-[#F8F3E8]' : 'text-[#527565] hover:bg-[#E9F3ED]'
+                                  p.active ? 'text-[#8A7047] hover:bg-[#F8F3E8]' : 'text-[#4C765D] hover:bg-[#E5F2EB]'
                                 }`}
                                 onClick={() => handleTogglePlanStatus(p)}
                               >
@@ -1336,11 +1336,11 @@ export const AdminPortal: React.FC = () => {
                             <div className="font-semibold text-text-primary">{tx.userId?.name || 'Unknown'}</div>
                             <div className="text-[10px] text-text-muted">{tx.userId?.email}</div>
                           </td>
-                          <td className="py-3 font-mono text-[#527565]">
+                          <td className="py-3 font-mono text-[#4C765D]">
                             {tx.walletAddress?.slice(0, 8)}...{tx.walletAddress?.slice(-6)}
                           </td>
                           <td className="py-3 font-bold text-text-primary">{tx.amount} {tx.currency}</td>
-                          <td className="py-3 font-medium text-[#527565]">+{tx.attemptsUnlocked}</td>
+                          <td className="py-3 font-medium text-[#4C765D]">+{tx.attemptsUnlocked}</td>
                           <td className="py-3">
                             <Badge variant={tx.status === 'verified' ? 'green' : 'amber'}>
                               {tx.status}
@@ -1443,7 +1443,7 @@ export const AdminPortal: React.FC = () => {
             <div>
               <span className="font-semibold text-text-primary">Linked Pera Wallet</span>
               {selectedUserDetail.user.walletAddress || (selectedUserDetail.user.wallets && selectedUserDetail.user.wallets.length > 0) ? (
-                <div className="mt-1 rounded-lg border border-border-subtle p-2.5 font-mono text-[11px] text-[#527565] bg-white">
+                <div className="mt-1 rounded-lg border border-border-subtle p-2.5 font-mono text-[11px] text-[#4C765D] bg-white">
                   {selectedUserDetail.user.walletAddress || selectedUserDetail.user.wallets[0]?.address}
                 </div>
               ) : (
@@ -1459,7 +1459,7 @@ export const AdminPortal: React.FC = () => {
               </div>
               <div>
                 <span className="text-text-muted">Paid Attempts Available:</span>
-                <p className="font-medium text-[#527565]">{selectedUserDetail.user.paidAttempts?.total || 0}</p>
+                <p className="font-medium text-[#4C765D]">{selectedUserDetail.user.paidAttempts?.total || 0}</p>
               </div>
             </div>
 
@@ -1607,7 +1607,7 @@ export const AdminPortal: React.FC = () => {
             <div>
               <div className="flex items-center justify-between">
                 <label className="block font-medium text-text-secondary">Price in ALGO (0 &lt; price &lt; 9)</label>
-                <span className="text-[10px] font-semibold text-[#527565]">Max limit: 8.99 ALGO</span>
+                <span className="text-[10px] font-semibold text-[#4C765D]">Max limit: 8.99 ALGO</span>
               </div>
               <div className="relative mt-1">
                 <input
@@ -1621,12 +1621,12 @@ export const AdminPortal: React.FC = () => {
                   className={`w-full rounded-lg border px-3 py-2 text-xs font-bold ${
                     planFormData.price > 0 && planFormData.price < 9
                       ? 'border-border-subtle bg-white text-text-primary focus:border-brand-primary'
-                      : 'border-[#E8CFD2] bg-[#F8EDEF] text-[#9A646D]'
+                      : 'border-[#EACBC4] bg-[#F8EDEF] text-[#A36162]'
                   }`}
                 />
                 <span className="absolute right-3 top-2 text-xs font-semibold text-text-muted">ALGO</span>
               </div>
-              <p className="mt-1.5 text-[11px] text-[#527565] bg-[#E9F3ED]/80 p-2 rounded-lg border border-[#C8DFD1]">
+              <p className="mt-1.5 text-[11px] text-[#4C765D] bg-[#E5F2EB]/80 p-2 rounded-lg border border-[#C6DFD2]">
                 🔒 <strong>Platform Pricing Policy:</strong> All premium plans must cost strictly less than 9 ALGO. Values &#8805; 9 ALGO are automatically rejected by backend validation.
               </p>
             </div>
@@ -1709,8 +1709,8 @@ export const AdminPortal: React.FC = () => {
           title={confirmModal.title}
         >
           <div className="space-y-4 text-xs">
-            <div className="flex items-start gap-3 rounded-lg border border-[#E8CFD2] bg-[#F8EDEF]/60 p-3 text-[#9A646D]">
-              <AlertTriangle className="h-5 w-5 flex-shrink-0 text-[#9A646D] mt-0.5" />
+            <div className="flex items-start gap-3 rounded-lg border border-[#EACBC4] bg-[#F8EDEF]/60 p-3 text-[#A36162]">
+              <AlertTriangle className="h-5 w-5 flex-shrink-0 text-[#A36162] mt-0.5" />
               <span>{confirmModal.message}</span>
             </div>
             <div className="flex justify-end gap-2 border-t border-border-subtle pt-3">

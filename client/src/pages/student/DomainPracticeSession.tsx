@@ -98,7 +98,7 @@ export const DomainPracticeSession: React.FC = () => {
   if (isLoading) {
     return (
       <div className="flex h-96 flex-col items-center justify-center gap-3">
-        <Loader2 className="h-8 w-8 animate-spin text-[#555780]" />
+        <Loader2 className="h-8 w-8 animate-spin text-[#3C648E]" />
         <p className="text-sm font-medium text-gray-500">
           Generating AI question session for {topic}...
         </p>
@@ -128,13 +128,13 @@ export const DomainPracticeSession: React.FC = () => {
       <div className="flex items-center justify-between border-b border-gray-200 pb-4">
         <Link
           to={`/domains/${slug}`}
-          className="flex items-center gap-1.5 text-sm font-semibold text-gray-500 hover:text-[#555780]"
+          className="flex items-center gap-1.5 text-sm font-semibold text-gray-500 hover:text-[#3C648E]"
         >
           <ArrowLeft className="h-4 w-4" />
           <span>Exit Practice</span>
         </Link>
         <div className="flex items-center gap-2">
-          <span className="rounded-full bg-[#F0EFF9] px-3 py-1 text-xs font-bold text-[#555780]">
+          <span className="rounded-full bg-[#EAF1F9] px-3 py-1 text-xs font-bold text-[#3C648E]">
             {topic}
           </span>
           <span className="text-xs text-gray-400">
@@ -145,8 +145,8 @@ export const DomainPracticeSession: React.FC = () => {
 
       {/* Results Banner if completed */}
       {isCompleted && (
-        <div className="rounded-2xl border border-[#C8DFD1] bg-[#E9F3ED]/80 p-6 text-center shadow-xs">
-          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#E9F3ED] text-[#527565]">
+        <div className="rounded-2xl border border-[#C8DFD1] bg-[#E5F2EB]/80 p-6 text-center shadow-xs">
+          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#E5F2EB] text-[#527565]">
             <Award className="h-6 w-6" />
           </div>
           <h2 className="text-xl font-bold text-gray-900">Session Completed!</h2>
@@ -157,7 +157,7 @@ export const DomainPracticeSession: React.FC = () => {
           <div className="mt-4 flex items-center justify-center gap-3">
             <Button
               onClick={() => navigate(`/domains/${slug}`)}
-              className="bg-[#F0EFF9] hover:bg-[#F0EFF9] text-white font-semibold text-sm"
+              className="bg-[#EAF1F9] hover:bg-[#EAF1F9] text-white font-semibold text-sm"
             >
               Return to Learning Path
             </Button>
@@ -187,13 +187,13 @@ export const DomainPracticeSession: React.FC = () => {
             const reviewOpt = reviewQuestion?.options?.find((o: any) => o.id === opt.id);
             const isCorrectOption = reviewOpt?.isCorrect;
 
-            let optStyle = 'border-gray-200 bg-white text-gray-800 hover:border-[#DEDDF0]';
+            let optStyle = 'border-gray-200 bg-white text-gray-800 hover:border-[#CFE2DC]';
             if (isSelected) {
-              optStyle = 'border-[#DEDDF0] bg-[#F0EFF9]/50 text-[#555780] font-medium shadow-xs';
+              optStyle = 'border-[#CFE2DC] bg-[#EAF1F9]/50 text-[#3C648E] font-medium shadow-xs';
             }
             if (isCompleted) {
               if (isCorrectOption) {
-                optStyle = 'border-[#C8DFD1] bg-[#E9F3ED] text-[#527565] font-semibold';
+                optStyle = 'border-[#C8DFD1] bg-[#E5F2EB] text-[#527565] font-semibold';
               } else if (isSelected && !isCorrectOption) {
                 optStyle = 'border-[#E8CFD2] bg-[#F8EDEF] text-[#9A646D]';
               }
@@ -209,7 +209,7 @@ export const DomainPracticeSession: React.FC = () => {
                   <div
                     className={`flex h-5 w-5 items-center justify-center rounded-full border transition-colors ${
                       isSelected
-                        ? 'border-[#DEDDF0] bg-[#F0EFF9] text-white'
+                        ? 'border-[#CFE2DC] bg-[#EAF1F9] text-white'
                         : 'border-gray-300 bg-white'
                     }`}
                   >
@@ -227,8 +227,8 @@ export const DomainPracticeSession: React.FC = () => {
 
         {/* Explanation Card in review mode */}
         {isCompleted && reviewQuestion?.explanation && (
-          <div className="mt-4 rounded-xl border border-[#DEDDF0] bg-[#F0EFF9]/60 p-4 text-xs text-gray-700">
-            <strong className="block text-[#555780] font-bold mb-1">Concept Explanation:</strong>
+          <div className="mt-4 rounded-xl border border-[#CFE2DC] bg-[#EAF1F9]/60 p-4 text-xs text-gray-700">
+            <strong className="block text-[#3C648E] font-bold mb-1">Concept Explanation:</strong>
             {reviewQuestion.explanation}
           </div>
         )}
@@ -250,7 +250,7 @@ export const DomainPracticeSession: React.FC = () => {
           {currentIndex < questions.length - 1 ? (
             <Button
               onClick={() => setCurrentIndex((prev) => prev + 1)}
-              className="bg-[#F0EFF9] hover:bg-[#F0EFF9] text-white flex items-center gap-1.5"
+              className="bg-[#EAF1F9] hover:bg-[#EAF1F9] text-white flex items-center gap-1.5"
             >
               <span>Next</span>
               <ArrowRight className="h-4 w-4" />
@@ -260,7 +260,7 @@ export const DomainPracticeSession: React.FC = () => {
               <Button
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="bg-[#E9F3ED] hover:bg-[#E9F3ED] text-white font-bold px-6"
+                className="bg-[#E5F2EB] hover:bg-[#E5F2EB] text-white font-bold px-6"
               >
                 {isSubmitting ? 'Submitting...' : 'Submit Answers'}
               </Button>

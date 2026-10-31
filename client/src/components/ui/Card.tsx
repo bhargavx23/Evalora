@@ -23,13 +23,13 @@ export const Card: React.FC<CardProps> = ({
 }) => {
   const isInteractive = interactive || Boolean(onClick);
   const accentBorders: Record<string, string> = {
-    none: 'border-[#E9E7F0]',
-    blue: 'border-[#E9E7F0] shadow-[inset_3px_0_0_#7779C5]',
-    purple: 'border-[#E9E7F0] shadow-[inset_3px_0_0_#9691CC]',
-    mint: 'border-[#E9E7F0] shadow-[inset_3px_0_0_#78A88F]',
-    peach: 'border-[#E9E7F0] shadow-[inset_3px_0_0_#C88C6C]',
-    amber: 'border-[#E9E7F0] shadow-[inset_3px_0_0_#C6A466]',
-    rose: 'border-[#E9E7F0] shadow-[inset_3px_0_0_#CB888F]',
+    none: 'border-[#E0E5EF]',
+    blue: 'border-[#E0E5EF] shadow-[inset_3px_0_0_#5288B8]',
+    purple: 'border-[#E0E5EF] shadow-[inset_3px_0_0_#D98768]',
+    mint: 'border-[#E0E5EF] shadow-[inset_3px_0_0_#679B7C]',
+    peach: 'border-[#E0E5EF] shadow-[inset_3px_0_0_#C88C6C]',
+    amber: 'border-[#E0E5EF] shadow-[inset_3px_0_0_#C6A466]',
+    rose: 'border-[#E0E5EF] shadow-[inset_3px_0_0_#CB888F]',
   };
 
   const paddingClasses: Record<string, string> = {
@@ -44,19 +44,19 @@ export const Card: React.FC<CardProps> = ({
   return (
     <div
       onClick={onClick}
-      className={`bg-white rounded-2xl border ${accentBorders[pastelAccent] || accentBorders.none} shadow-[0_8px_28px_-18px_rgba(82,77,119,0.28)] overflow-hidden transition-all duration-300 ease-out ${
-        isInteractive ? 'hover:-translate-y-1 hover:shadow-[0_18px_38px_-20px_rgba(82,77,119,0.32)] hover:border-[#DEDDF0] cursor-pointer' : ''
+      className={`island-card bg-white rounded-2xl border ${accentBorders[pastelAccent] || accentBorders.none} shadow-[0_8px_28px_-18px_rgba(68,94,140,0.24)] overflow-hidden transition-all duration-300 ease-out ${
+        isInteractive ? 'hover:-translate-y-1 hover:shadow-[0_18px_38px_-20px_rgba(82,77,119,0.32)] hover:border-[#CFE2DC] cursor-pointer' : ''
       } ${className}`}
       {...props}
     >
       {header && (
-        <div className="px-6 py-4 border-b border-[#E9E7F0] bg-[#F8F7FC]/65">
+        <div className="px-6 py-4 border-b border-[#E0E5EF] bg-[#F7F8FC]/65">
           {header}
         </div>
       )}
       <div className={bodyPadding}>{children}</div>
       {footer && (
-        <div className="px-6 py-3.5 border-t border-[#E9E7F0] bg-[#F8F7FC]/65">
+        <div className="px-6 py-3.5 border-t border-[#E0E5EF] bg-[#F7F8FC]/65">
           {footer}
         </div>
       )}

@@ -73,8 +73,8 @@ export const DatabaseSchemaPanel: React.FC<DatabaseSchemaPanelProps> = ({ tables
           >
             {copied ? (
               <>
-                <Check className="h-3 w-3 text-[#527565]" />
-                <span className="text-[#527565]">Copied</span>
+                <Check className="h-3 w-3 text-[#4C765D]" />
+                <span className="text-[#4C765D]">Copied</span>
               </>
             ) : (
               <>
@@ -117,7 +117,7 @@ export const DatabaseSchemaPanel: React.FC<DatabaseSchemaPanelProps> = ({ tables
                       <td className="py-1.5 px-3 text-brand-primary">{col.type}</td>
                       <td className="py-1.5 px-3">
                         {col.isPrimary ? (
-                          <span className="inline-flex items-center gap-1 rounded bg-[#F8F3E8] px-1.5 py-0.5 text-[10px] font-semibold text-[#896D45] border border-[#E8D9B9]">
+                          <span className="inline-flex items-center gap-1 rounded bg-[#F8F3E8] px-1.5 py-0.5 text-[10px] font-semibold text-[#8A7047] border border-[#E9DAB5]">
                             <Key className="h-2.5 w-2.5" /> PK
                           </span>
                         ) : (

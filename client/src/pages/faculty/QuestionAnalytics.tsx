@@ -54,7 +54,7 @@ export const QuestionAnalytics: React.FC = () => {
               type="checkbox"
               checked={filterFlaggedOnly}
               onChange={e => setFilterFlaggedOnly(e.target.checked)}
-              className="rounded text-[#9A646D]"
+              className="rounded text-[#A36162]"
             />
             <span>Show Flagged Only ({questions.filter(q => q.flag).length})</span>
           </label>
@@ -109,9 +109,9 @@ export const QuestionAnalytics: React.FC = () => {
                     <span
                       className={`font-bold ${
                         q.correctPercentage != null && q.correctPercentage < 35
-                          ? 'text-[#9A646D]'
+                          ? 'text-[#A36162]'
                           : q.correctPercentage != null && q.correctPercentage > 75
-                          ? 'text-[#527565]'
+                          ? 'text-[#4C765D]'
                           : 'text-gray-800'
                       }`}
                     >
@@ -119,14 +119,14 @@ export const QuestionAnalytics: React.FC = () => {
                     </span>
                   </td>
                   <td className="py-3 font-mono">
-                    <span className={q.discriminationIndex != null && q.discriminationIndex < 0.25 ? 'text-[#896D45] font-bold' : 'text-gray-700'}>
+                    <span className={q.discriminationIndex != null && q.discriminationIndex < 0.25 ? 'text-[#8A7047] font-bold' : 'text-gray-700'}>
                       {q.discriminationIndex != null ? q.discriminationIndex.toFixed(2) : 'N/A'}
                     </span>
                   </td>
                   <td className="py-3 text-right">
                     {q.flag ? (
-                      <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded bg-[#F7E6B5] border border-[#E8D9B9] text-[#896D45] font-semibold">
-                        <AlertTriangle className="w-3 h-3 text-[#896D45]" />
+                      <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded bg-[#F8F2E4] border border-[#E9DAB5] text-[#8A7047] font-semibold">
+                        <AlertTriangle className="w-3 h-3 text-[#8A7047]" />
                         {q.flag}
                       </span>
                     ) : q.attemptCount > 0 ? (

@@ -81,7 +81,7 @@ export const QuestionHistory: React.FC = () => {
   return (
     <div className="page-shell">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E9E7F0] pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E0E5EF] pb-6">
         <div>
           <div className="page-kicker">Student Performance</div>
           <h1 className="page-title mt-1">Results & Attempt History</h1>
@@ -91,13 +91,13 @@ export const QuestionHistory: React.FC = () => {
         </div>
 
         {/* Tab Filters */}
-        <div className="flex items-center gap-1.5 p-1 bg-[#F1F2F8] rounded-xl border border-[#E9E7F0] text-xs">
+        <div className="flex items-center gap-1.5 p-1 bg-[#EFF2F8] rounded-xl border border-[#E0E5EF] text-xs">
           <button
             onClick={() => setActiveTab('all')}
             className={`px-3.5 py-1.5 rounded-lg font-medium transition-all ${
               activeTab === 'all'
-                ? 'bg-white text-[#49465B] font-semibold shadow-xs'
-                : 'text-[#777486] hover:text-[#49465B]'
+                ? 'bg-white text-[#3C4B63] font-semibold shadow-xs'
+                : 'text-[#748199] hover:text-[#3C4B63]'
             }`}
           >
             All Activity
@@ -106,8 +106,8 @@ export const QuestionHistory: React.FC = () => {
             onClick={() => setActiveTab('assessments')}
             className={`px-3.5 py-1.5 rounded-lg font-medium transition-all ${
               activeTab === 'assessments'
-                ? 'bg-white text-[#555780] font-semibold shadow-xs'
-                : 'text-[#777486] hover:text-[#49465B]'
+                ? 'bg-white text-[#3C648E] font-semibold shadow-xs'
+                : 'text-[#748199] hover:text-[#3C4B63]'
             }`}
           >
             Formal Exams ({attempts.length})
@@ -116,8 +116,8 @@ export const QuestionHistory: React.FC = () => {
             onClick={() => setActiveTab('practice')}
             className={`px-3.5 py-1.5 rounded-lg font-medium transition-all ${
               activeTab === 'practice'
-                ? 'bg-white text-[#7779C5] font-semibold shadow-xs'
-                : 'text-[#777486] hover:text-[#49465B]'
+                ? 'bg-white text-[#5288B8] font-semibold shadow-xs'
+                : 'text-[#748199] hover:text-[#3C4B63]'
             }`}
           >
             Practice ({practiceHistory.length})
@@ -127,18 +127,18 @@ export const QuestionHistory: React.FC = () => {
 
       {/* Search Input */}
       <div className="relative max-w-md">
-        <Search className="w-4 h-4 text-[#9895A8] absolute left-3.5 top-3" />
+        <Search className="w-4 h-4 text-[#8490A2] absolute left-3.5 top-3" />
         <input
           type="text"
           placeholder="Search by assessment title, practice topic, or difficulty..."
           value={searchQuery}
           onChange={e => setSearchQuery(e.target.value)}
-          className="w-full pl-10 pr-9 py-2 text-xs border border-[#E9E7F0] rounded-xl focus:outline-none focus:border-[#7779C5] focus:ring-2 focus:ring-[#7779C5]/15 text-[#49465B] bg-white transition-all shadow-[0_1px_2px_rgba(82,77,119,0.02)]"
+          className="w-full pl-10 pr-9 py-2 text-xs border border-[#E0E5EF] rounded-xl focus:outline-none focus:border-[#5288B8] focus:ring-2 focus:ring-[#5288B8]/15 text-[#3C4B63] bg-white transition-all shadow-[0_1px_2px_rgba(82,77,119,0.02)]"
         />
         {searchQuery && (
           <button
             onClick={() => setSearchQuery('')}
-            className="absolute right-3 top-2.5 text-[#9895A8] hover:text-[#49465B]"
+            className="absolute right-3 top-2.5 text-[#8490A2] hover:text-[#3C4B63]"
             title="Clear filter"
           >
             <X className="w-3.5 h-3.5" />
@@ -151,8 +151,8 @@ export const QuestionHistory: React.FC = () => {
         <Card
           header={
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-[#49465B] flex items-center gap-2">
-                <FileCheck2 className="w-4 h-4 text-[#7779C5]" />
+              <span className="text-xs font-semibold text-[#3C4B63] flex items-center gap-2">
+                <FileCheck2 className="w-4 h-4 text-[#5288B8]" />
                 Formal Assessment Attempts ({filteredAttempts.length})
               </span>
               <Badge variant="blue">{attempts.length} Total Recorded</Badge>
@@ -162,7 +162,7 @@ export const QuestionHistory: React.FC = () => {
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-[#E9E7F0] text-[#9895A8] font-semibold uppercase text-[10px] tracking-wider">
+                <tr className="border-b border-[#E0E5EF] text-[#8490A2] font-semibold uppercase text-[10px] tracking-wider">
                   <th className="pb-3">Assessment Title</th>
                   <th className="pb-3">Submitted At</th>
                   <th className="pb-3">Score / Total</th>
@@ -171,19 +171,19 @@ export const QuestionHistory: React.FC = () => {
                   <th className="pb-3 text-right">Verdict</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E9E7F0]">
+              <tbody className="divide-y divide-[#E0E5EF]">
                 {filteredAttempts.map(att => (
-                  <tr key={att._id} className="hover:bg-[#F8F7FC] transition-colors">
-                    <td className="py-3 font-semibold text-[#49465B]">{att.assessmentTitle}</td>
-                    <td className="py-3 text-[#777486]">
+                  <tr key={att._id} className="hover:bg-[#F7F8FC] transition-colors">
+                    <td className="py-3 font-semibold text-[#3C4B63]">{att.assessmentTitle}</td>
+                    <td className="py-3 text-[#748199]">
                       {att.submittedAt ? new Date(att.submittedAt).toLocaleDateString() : 'In Progress'}
                     </td>
-                    <td className="py-3 font-semibold text-[#49465B]">
+                    <td className="py-3 font-semibold text-[#3C4B63]">
                       {att.totalScore} / {att.maxScore || att.totalMarks}
                     </td>
-                    <td className="py-3 font-semibold text-[#555780]">{att.percentage}%</td>
+                    <td className="py-3 font-semibold text-[#3C648E]">{att.percentage}%</td>
                     <td className="py-3">
-                      <span className="text-[#527565] font-medium">
+                      <span className="text-[#4C765D] font-medium">
                         {att.integrityScore != null ? `${att.integrityScore}%` : '—'}
                       </span>
                     </td>
@@ -198,7 +198,7 @@ export const QuestionHistory: React.FC = () => {
                 ))}
                 {filteredAttempts.length === 0 && (
                   <tr>
-                    <td colSpan={6} className="py-8 text-center text-xs text-[#777486]">
+                    <td colSpan={6} className="py-8 text-center text-xs text-[#748199]">
                       {searchQuery ? 'No assessment records match your search query.' : 'No formal assessment attempts submitted yet.'}
                     </td>
                   </tr>
@@ -214,8 +214,8 @@ export const QuestionHistory: React.FC = () => {
         <Card
           header={
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-[#49465B] flex items-center gap-2">
-                <Code2 className="w-4 h-4 text-[#9691CC]" />
+              <span className="text-xs font-semibold text-[#3C4B63] flex items-center gap-2">
+                <Code2 className="w-4 h-4 text-[#D98768]" />
                 Dynamic Practice Sessions ({filteredPractice.length})
               </span>
               <Badge variant="purple">{practiceHistory.length} Sessions Total</Badge>
@@ -225,7 +225,7 @@ export const QuestionHistory: React.FC = () => {
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-[#E9E7F0] text-[#9895A8] font-semibold uppercase text-[10px] tracking-wider">
+                <tr className="border-b border-[#E0E5EF] text-[#8490A2] font-semibold uppercase text-[10px] tracking-wider">
                   <th className="pb-3">Topic</th>
                   <th className="pb-3">Difficulty</th>
                   <th className="pb-3">Date</th>
@@ -235,22 +235,22 @@ export const QuestionHistory: React.FC = () => {
                   <th className="pb-3 text-right">Report</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E9E7F0]">
+              <tbody className="divide-y divide-[#E0E5EF]">
                 {filteredPractice.map(prac => (
-                  <tr key={prac._id} className="hover:bg-[#F8F7FC] transition-colors">
-                    <td className="py-3 font-semibold text-[#49465B]">{prac.topic || 'Multi-Section Practice'}</td>
+                  <tr key={prac._id} className="hover:bg-[#F7F8FC] transition-colors">
+                    <td className="py-3 font-semibold text-[#3C4B63]">{prac.topic || 'Multi-Section Practice'}</td>
                     <td className="py-3">
                       <Badge variant={prac.difficulty === 'easy' ? 'green' : prac.difficulty === 'hard' ? 'rose' : 'amber'}>
                         {prac.difficulty || 'mixed'}
                       </Badge>
                     </td>
-                    <td className="py-3 text-[#777486]">
+                    <td className="py-3 text-[#748199]">
                       {new Date(prac.createdAt).toLocaleDateString()}
                     </td>
-                    <td className="py-3 text-[#49465B] font-medium">
+                    <td className="py-3 text-[#3C4B63] font-medium">
                       {prac.correctCount ?? prac.score ?? 0} / {prac.totalQuestions ?? (prac.questions?.length || 10)}
                     </td>
-                    <td className="py-3 font-semibold text-[#7779C5]">
+                    <td className="py-3 font-semibold text-[#5288B8]">
                       {prac.accuracyPercentage != null ? `${prac.accuracyPercentage}%` : `${prac.accuracy ?? 0}%`}
                     </td>
                     <td className="py-3">
@@ -281,14 +281,14 @@ export const QuestionHistory: React.FC = () => {
                           </Button>
                         </div>
                       ) : (
-                        <span className="text-[11px] text-[#9895A8] italic">Pending</span>
+                        <span className="text-[11px] text-[#8490A2] italic">Pending</span>
                       )}
                     </td>
                   </tr>
                 ))}
                 {filteredPractice.length === 0 && (
                   <tr>
-                    <td colSpan={7} className="py-8 text-center text-xs text-[#777486]">
+                    <td colSpan={7} className="py-8 text-center text-xs text-[#748199]">
                       {searchQuery ? 'No practice sessions match your search query.' : 'No practice sessions recorded yet.'}
                     </td>
                   </tr>

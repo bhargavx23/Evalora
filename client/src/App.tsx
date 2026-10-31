@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ToastProvider } from './context/ToastContext';
+import { ScrollMotionObserver } from './hooks/useScrollMotion';
 
 // Layouts
 import { AppLayout } from './layouts/AppLayout';
@@ -98,6 +99,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode; allowedRoles?: strin
 export function App() {
   return (
     <BrowserRouter>
+      <ScrollMotionObserver />
       <AuthProvider>
         <ToastProvider>
           <Routes>

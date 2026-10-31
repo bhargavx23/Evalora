@@ -84,8 +84,8 @@ export const PlatformDashboard: React.FC = () => {
     <div className="space-y-8 py-2 max-w-5xl mx-auto">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#DDE7F7] text-[#555780] text-xs font-semibold mb-1">
-            <Cpu className="w-3.5 h-3.5 text-[#555780]" />
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#DCEFEB] text-[#3C648E] text-xs font-semibold mb-1">
+            <Cpu className="w-3.5 h-3.5 text-[#3C648E]" />
             Global Platform Administration
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-gray-900">Platform System Monitor</h1>
@@ -106,7 +106,7 @@ export const PlatformDashboard: React.FC = () => {
 
       {/* Metric Cards */}
       {loadError && (
-        <div className="rounded-lg border border-[#E8D9B9] bg-[#F8F3E8] px-3 py-2 text-xs font-medium text-[#896D45]">
+        <div className="rounded-lg border border-[#E9DAB5] bg-[#F8F3E8] px-3 py-2 text-xs font-medium text-[#8A7047]">
           {loadError}
         </div>
       )}
@@ -116,7 +116,7 @@ export const PlatformDashboard: React.FC = () => {
             <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
               Institutions
             </span>
-            <div className="text-2xl font-bold text-[#555780]">{isLoading ? '...' : metrics?.totalColleges ?? 0}</div>
+            <div className="text-2xl font-bold text-[#3C648E]">{isLoading ? '...' : metrics?.totalColleges ?? 0}</div>
             <div className="text-[10px] text-gray-400">Active Tenant Workspaces</div>
           </div>
         </Card>
@@ -126,7 +126,7 @@ export const PlatformDashboard: React.FC = () => {
             <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
               Enrolled Students
             </span>
-            <div className="text-2xl font-bold text-[#527565]">{isLoading ? '...' : metrics?.totalStudents ?? 0}</div>
+            <div className="text-2xl font-bold text-[#4C765D]">{isLoading ? '...' : metrics?.totalStudents ?? 0}</div>
             <div className="text-[10px] text-gray-400">Total Registered Examinees</div>
           </div>
         </Card>
@@ -136,7 +136,7 @@ export const PlatformDashboard: React.FC = () => {
             <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
               Faculty Staff
             </span>
-            <div className="text-2xl font-bold text-[#555780]">{isLoading ? '...' : metrics?.totalFaculty ?? 0}</div>
+            <div className="text-2xl font-bold text-[#3C648E]">{isLoading ? '...' : metrics?.totalFaculty ?? 0}</div>
             <div className="text-[10px] text-gray-400">Active Examiners</div>
           </div>
         </Card>
@@ -146,7 +146,7 @@ export const PlatformDashboard: React.FC = () => {
             <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
               Code Executions
             </span>
-            <div className="text-2xl font-bold text-[#896D45]">{isLoading ? '...' : metrics?.totalSubmissions ?? 0}</div>
+            <div className="text-2xl font-bold text-[#8A7047]">{isLoading ? '...' : metrics?.totalSubmissions ?? 0}</div>
             <div className="text-[10px] text-gray-400">Sandboxed Submissions</div>
           </div>
         </Card>
@@ -179,7 +179,7 @@ export const PlatformDashboard: React.FC = () => {
               {colleges.map(c => (
                 <tr key={c._id} className="hover:bg-gray-50">
                   <td className="py-3 font-semibold text-gray-900">{c.name}</td>
-                  <td className="py-3 font-mono font-bold text-[#555780]">{c.code}</td>
+                  <td className="py-3 font-mono font-bold text-[#3C648E]">{c.code}</td>
                   <td className="py-3 text-gray-500">{c.domain || 'N/A'}</td>
                   <td className="py-3">
                     <Badge variant={c.status === 'active' ? 'green' : 'rose'}>

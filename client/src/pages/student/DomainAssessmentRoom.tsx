@@ -119,7 +119,7 @@ export const DomainAssessmentRoom: React.FC = () => {
   if (isLoading) {
     return (
       <div className="flex h-96 items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-[#555780]" />
+        <Loader2 className="h-8 w-8 animate-spin text-[#3C648E]" />
       </div>
     );
   }
@@ -140,19 +140,19 @@ export const DomainAssessmentRoom: React.FC = () => {
   const currentQ = questions[currentIndex];
 
   return (
-    <div className="min-h-screen bg-[#F8F7FC] py-8 px-4 sm:px-6">
+    <div className="min-h-screen bg-[#F7F8FC] py-8 px-4 sm:px-6">
       <div className="mx-auto max-w-3xl space-y-6 pb-16">
       {/* Assessment Header */}
       <div className="flex items-center justify-between border-b border-gray-200 pb-4">
         <div>
-          <span className="text-xs font-bold text-[#555780] bg-[#F0EFF9] px-2.5 py-0.5 rounded-full uppercase">
+          <span className="text-xs font-bold text-[#3C648E] bg-[#EAF1F9] px-2.5 py-0.5 rounded-full uppercase">
             Certification Exam
           </span>
           <h2 className="text-lg font-bold text-gray-900 mt-1">{assessment.title}</h2>
         </div>
 
         {!result && (
-          <div className="flex items-center gap-1.5 rounded-lg border border-[#DEDDF0] bg-[#F0EFF9] px-3 py-1.5 text-sm font-bold text-[#555780]">
+          <div className="flex items-center gap-1.5 rounded-lg border border-[#CFE2DC] bg-[#EAF1F9] px-3 py-1.5 text-sm font-bold text-[#3C648E]">
             <Clock className="h-4 w-4" />
             <span>
               {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
@@ -163,8 +163,8 @@ export const DomainAssessmentRoom: React.FC = () => {
 
       {/* Completion Result Card */}
       {result && (
-        <div className="rounded-2xl border border-[#DEDDF0] bg-[#F0EFF9]/70 p-6 text-center shadow-xs">
-          <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#F0EFF9] text-[#555780]">
+        <div className="rounded-2xl border border-[#CFE2DC] bg-[#EAF1F9]/70 p-6 text-center shadow-xs">
+          <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#EAF1F9] text-[#3C648E]">
             <Award className="h-7 w-7" />
           </div>
           <h3 className="text-xl font-bold text-gray-900">
@@ -177,7 +177,7 @@ export const DomainAssessmentRoom: React.FC = () => {
           <div className="mt-5 flex justify-center">
             <Button
               onClick={() => navigate(`/domains/${slug}`)}
-              className="bg-[#F0EFF9] hover:bg-[#F0EFF9] text-white font-semibold"
+              className="bg-[#EAF1F9] hover:bg-[#EAF1F9] text-white font-semibold"
             >
               Back to Domain Overview
             </Button>
@@ -208,14 +208,14 @@ export const DomainAssessmentRoom: React.FC = () => {
                   onClick={() => handleSelectOption(currentQ._id, opt.id)}
                   className={`flex cursor-pointer items-center gap-3 rounded-xl border p-4 text-sm transition-all ${
                     isSelected
-                      ? 'border-[#DEDDF0] bg-[#F0EFF9]/50 text-[#555780] font-semibold'
-                      : 'border-gray-200 bg-white text-gray-800 hover:border-[#DEDDF0]'
+                      ? 'border-[#CFE2DC] bg-[#EAF1F9]/50 text-[#3C648E] font-semibold'
+                      : 'border-gray-200 bg-white text-gray-800 hover:border-[#CFE2DC]'
                   }`}
                 >
                   <div
                     className={`flex h-5 w-5 items-center justify-center rounded-full border ${
                       isSelected
-                        ? 'border-[#DEDDF0] bg-[#F0EFF9] text-white'
+                        ? 'border-[#CFE2DC] bg-[#EAF1F9] text-white'
                         : 'border-gray-300'
                     }`}
                   >
@@ -243,7 +243,7 @@ export const DomainAssessmentRoom: React.FC = () => {
           {currentIndex < questions.length - 1 ? (
             <Button
               onClick={() => setCurrentIndex((prev) => prev + 1)}
-              className="bg-[#F0EFF9] hover:bg-[#F0EFF9] text-white"
+              className="bg-[#EAF1F9] hover:bg-[#EAF1F9] text-white"
             >
               Next
             </Button>
@@ -251,7 +251,7 @@ export const DomainAssessmentRoom: React.FC = () => {
             <Button
               onClick={handleSubmitAssessment}
               disabled={isSubmitting}
-              className="bg-[#E9F3ED] hover:bg-[#E9F3ED] text-white font-bold px-6"
+              className="bg-[#E5F2EB] hover:bg-[#E5F2EB] text-white font-bold px-6"
             >
               {isSubmitting ? 'Evaluating...' : 'Finish & Submit Exam'}
             </Button>

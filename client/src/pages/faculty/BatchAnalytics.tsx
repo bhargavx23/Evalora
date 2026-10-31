@@ -42,7 +42,7 @@ export const BatchAnalytics: React.FC = () => {
   const topicPerformance = stats?.topicPerformance || [];
 
   const getBarColor = (score: number) => {
-    if (score >= 75) return '#78A88F';
+    if (score >= 75) return '#679B7C';
     if (score >= 50) return '#C6A466';
     return '#CB888F';
   };
@@ -63,7 +63,7 @@ export const BatchAnalytics: React.FC = () => {
             <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
               Class Average
             </span>
-            <div className="text-2xl font-bold text-[#555780]">{stats?.classAverage != null ? `${stats.classAverage}%` : 'No data'}</div>
+            <div className="text-2xl font-bold text-[#3C648E]">{stats?.classAverage != null ? `${stats.classAverage}%` : 'No data'}</div>
             <div className="text-[10px] text-gray-400">Mean Score across cohort</div>
           </div>
         </Card>
@@ -73,7 +73,7 @@ export const BatchAnalytics: React.FC = () => {
             <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
               Median Score
             </span>
-            <div className="text-2xl font-bold text-[#527565]">{stats?.median != null ? `${stats.median}%` : 'No data'}</div>
+            <div className="text-2xl font-bold text-[#4C765D]">{stats?.median != null ? `${stats.median}%` : 'No data'}</div>
             <div className="text-[10px] text-gray-400">50th percentile mark</div>
           </div>
         </Card>
@@ -83,7 +83,7 @@ export const BatchAnalytics: React.FC = () => {
             <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
               Highest Score
             </span>
-            <div className="text-2xl font-bold text-[#555780]">{stats?.highest != null ? `${stats.highest}%` : 'No data'}</div>
+            <div className="text-2xl font-bold text-[#3C648E]">{stats?.highest != null ? `${stats.highest}%` : 'No data'}</div>
             <div className="text-[10px] text-gray-400">Top performer mark</div>
           </div>
         </Card>
@@ -93,7 +93,7 @@ export const BatchAnalytics: React.FC = () => {
             <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
               Lowest Score
             </span>
-            <div className="text-2xl font-bold text-[#9A646D]">{stats?.lowest != null ? `${stats.lowest}%` : 'No data'}</div>
+            <div className="text-2xl font-bold text-[#A36162]">{stats?.lowest != null ? `${stats.lowest}%` : 'No data'}</div>
             <div className="text-[10px] text-gray-400">Intervention threshold</div>
           </div>
         </Card>
@@ -104,7 +104,7 @@ export const BatchAnalytics: React.FC = () => {
         header={
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-gray-800 flex items-center gap-1.5">
-              <BarChart3 className="w-4 h-4 text-[#555780]" />
+              <BarChart3 className="w-4 h-4 text-[#3C648E]" />
               Cohort Topic Performance Distribution
             </span>
             <Badge variant="amber">Class-Wide Topic Analysis</Badge>
@@ -122,12 +122,12 @@ export const BatchAnalytics: React.FC = () => {
                   angle={-15}
                   textAnchor="end"
                 />
-                <YAxis domain={[0, 100]} tick={{ fontSize: 11, fill: '#6B7280' }} />
+                <YAxis domain={[0, 100]} tick={{ fontSize: 11, fill: '#748199' }} />
                 <Tooltip
                   contentStyle={{
                     backgroundColor: '#FFFFFF',
                     borderRadius: '8px',
-                    border: '1px solid #E5E7EB',
+                    border: '1px solid #E0E5EF',
                     fontSize: '12px'
                   }}
                 />
@@ -141,17 +141,17 @@ export const BatchAnalytics: React.FC = () => {
           </div>
           ) : (
             <div className="h-64 flex flex-col items-center justify-center text-center text-xs text-gray-500">
-              <BarChart3 className="w-8 h-8 text-[#555780] mb-2" />
+              <BarChart3 className="w-8 h-8 text-[#3C648E] mb-2" />
               <p className="font-semibold text-gray-800">No performance data yet</p>
               <p>Analytics will appear after students complete assessments.</p>
             </div>
           )}
 
           {hasAttempts && topicPerformance.some((t: any) => t.average < 50) && (
-          <div className="p-3 bg-[#F8EDEF]/50 rounded-xl border border-[#E8CFD2] text-xs text-[#9A646D] flex items-center justify-between">
+          <div className="p-3 bg-[#F8EDEF]/50 rounded-xl border border-[#EACBC4] text-xs text-[#A36162] flex items-center justify-between">
             <div>
               <span className="font-bold">Urgent Curriculum Action Needed:</span>
-              <p className="text-[11px] text-[#9A646D] mt-0.5">
+              <p className="text-[11px] text-[#A36162] mt-0.5">
                 One or more topics are below 50% based on completed assessment attempts.
               </p>
             </div>
@@ -166,7 +166,7 @@ export const BatchAnalytics: React.FC = () => {
         header={
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-gray-800 flex items-center gap-1.5">
-              <AlertTriangle className="w-4 h-4 text-[#896D45]" />
+              <AlertTriangle className="w-4 h-4 text-[#8A7047]" />
               High Difficulty Questions in Exam Cohort
             </span>
             <span className="text-xs text-gray-400">Low discrimination index flags</span>

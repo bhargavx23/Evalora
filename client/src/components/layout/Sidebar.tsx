@@ -34,14 +34,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, isCollapsed = false, o
   const role = user?.role || "student";
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `flex items-center gap-3 rounded-[10px] px-3 py-2.5 text-sm font-medium transition-all ${
+    `flex min-h-11 min-w-0 items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all ${
       isActive
-        ? "bg-[#F0EFF9] text-[#555780] font-semibold shadow-[inset_0_0_0_1px_rgba(119,121,197,0.14)]"
-        : "text-[#777486] hover:bg-[#F8F7FC] hover:text-[#49465B]"
+        ? "bg-[#EAF1F9] text-[#3C648E] font-semibold shadow-[inset_0_0_0_1px_rgba(82,136,184,0.14)]"
+        : "text-[#748199] hover:bg-[#F7F8FC] hover:text-[#3C4B63]"
     }`;
 
   const SectionLabel = ({ children }: { children: React.ReactNode }) => (
-    <div className="px-3 pb-2 pt-3 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#9895A8]">
+    <div className="px-3 pb-2 pt-3 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#8490A2]">
       {children}
     </div>
   );
@@ -51,7 +51,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, isCollapsed = false, o
       {/* Mobile Backdrop */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-40 bg-[#49465B]/30 backdrop-blur-xs lg:hidden"
+          className="fixed inset-0 z-40 bg-[#3C4B63]/30 backdrop-blur-xs lg:hidden"
           onClick={onCloseMobile}
         />
       )}
@@ -59,11 +59,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, isCollapsed = false, o
       <aside
           id="app-sidebar"
           aria-hidden={isCollapsed && !isOpen}
-          className={`fixed left-0 top-16 z-40 flex h-[calc(100dvh-4rem)] w-[min(15.5rem,calc(100vw-2rem))] flex-col justify-between overflow-y-auto border-r border-[#E9E7F0] bg-white/90 p-3.5 shadow-[8px_0_28px_-24px_rgba(82,77,119,0.25)] backdrop-blur-xl transition-[transform,width,padding] duration-300 ease-out lg:sticky lg:translate-x-0 ${
+          className={`fixed left-0 top-16 z-40 flex h-[calc(100dvh-4rem)] w-[min(17rem,calc(100vw-1.25rem))] min-h-0 flex-col justify-between overflow-hidden border-r border-[#E0E5EF] bg-white/90 p-3.5 shadow-[8px_0_28px_-24px_rgba(82,77,119,0.25)] backdrop-blur-xl transition-[transform,width,padding] duration-300 ease-out lg:sticky lg:translate-x-0 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } ${isCollapsed ? 'lg:w-0 lg:overflow-hidden lg:border-r-0 lg:p-0 lg:shadow-none' : 'lg:w-[15.5rem]'}`}
+        } ${isCollapsed ? 'lg:w-0 lg:overflow-hidden lg:border-r-0 lg:p-0 lg:shadow-none' : 'lg:w-[17rem] lg:shrink-0'}`}
       >
-        <div className="space-y-6">
+        <div className="min-h-0 flex-1 space-y-6 overflow-y-auto overscroll-contain pb-4">
           <div className="hidden px-2 pt-1 md:block">
             <LogoMark size="sm" showWordmark={false} />
           </div>
@@ -109,10 +109,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, isCollapsed = false, o
                 className={linkClass}
                 onClick={onCloseMobile}
               >
-                <Cpu className="w-4 h-4 text-[#7779C5]" />
+                <Cpu className="w-4 h-4 text-[#5288B8]" />
                 <div className="flex items-center justify-between w-full">
                   <span>Code Visualizer</span>
-                  <span className="rounded-full bg-[#F0EFF9] px-2 py-0.5 text-[10px] font-semibold text-[#555780] border border-[#DEDDF0]">
+                  <span className="rounded-full bg-[#EAF1F9] px-2 py-0.5 text-[10px] font-semibold text-[#3C648E] border border-[#CFE2DC]">
                     PRO
                   </span>
                 </div>
@@ -285,7 +285,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, isCollapsed = false, o
                 className={linkClass}
                 onClick={onCloseMobile}
               >
-                <ShieldCheck className="w-4 h-4 text-[#7779C5]" />
+                <ShieldCheck className="w-4 h-4 text-[#5288B8]" />
                 <span>Admin Portal</span>
               </NavLink>
               <NavLink
@@ -317,10 +317,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, isCollapsed = false, o
         </div>
 
         {/* Bottom Section */}
-        <div className="space-y-1 border-t border-[#E9E7F0] pt-4">
-          <div className="px-3 py-2 text-[11px] text-[#777486]">
-            <div className="font-semibold text-[#49465B]">Evalora Workspace</div>
-            <div>Practice & Assessment Platform</div>
+        <div className="shrink-0 space-y-1 border-t border-[#E0E5EF] pt-3">
+          <div className="break-words px-3 py-2 text-[11px] leading-relaxed text-[#748199]">
+            <div className="font-semibold text-[#3C4B63]">Evalora Workspace</div>
+            <div>Practice &amp; Assessment Platform</div>
           </div>
         </div>
       </aside>

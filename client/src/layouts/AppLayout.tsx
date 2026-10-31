@@ -31,21 +31,21 @@ export const AppLayout: React.FC = () => {
     location.pathname.startsWith('/visualizer');
 
   return (
-    <div className="flex min-h-screen min-w-0 flex-col bg-transparent text-[#49465B]">
+    <div className="app-layout-shell flex h-screen min-h-0 min-w-0 flex-col overflow-hidden bg-transparent text-[#3C4B63]">
       <Navbar
         onToggleSidebar={toggleSidebar}
         isSidebarExpanded={isDesktopLayout ? !isSidebarCollapsed : isSidebarOpen}
       />
-      <div className="flex min-h-0 min-w-0 flex-1">
+      <div className="flex min-h-0 min-w-0 flex-1 overflow-hidden">
         <Sidebar
           isOpen={isSidebarOpen}
           isCollapsed={isSidebarCollapsed}
           onCloseMobile={() => setIsSidebarOpen(false)}
         />
         <main
-          className={`min-w-0 w-full flex-1 overflow-x-hidden ${
+          className={`min-h-0 min-w-0 w-full flex-1 overflow-x-hidden overflow-y-auto ${
             isFullWidthWorkspace
-            ? 'p-2 sm:p-3 md:p-4 flex flex-col min-h-0'
+            ? 'p-2 sm:p-3 md:p-4 flex flex-col min-h-0 overflow-y-hidden'
               : 'max-w-[1280px] px-4 py-6 sm:px-6 md:px-8 md:py-8 xl:px-10'
           }`}
         >

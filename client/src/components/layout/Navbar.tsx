@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { Button } from "../ui/Button";
 import { LogoMark } from "../ui/LogoMark";
 import { QuickSearchModal } from "./QuickSearchModal";
 import {
-  Bell,
+  Activity,
+  ChevronDown,
   HelpCircle,
   LogOut,
   Menu,
@@ -13,9 +14,15 @@ import {
   Settings,
   ShieldCheck,
   User,
+  X,
 } from "lucide-react";
 
-export const Navbar: React.FC<{ onToggleSidebar?: () => void; isSidebarExpanded?: boolean }> = ({
+interface NavbarProps {
+  onToggleSidebar?: () => void;
+  isSidebarExpanded?: boolean;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({
   onToggleSidebar,
   isSidebarExpanded = false,
 }) => {
@@ -24,13 +31,18 @@ export const Navbar: React.FC<{ onToggleSidebar?: () => void; isSidebarExpanded?
   const location = useLocation();
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const profileRef = useRef<HTMLDivElement>(null);
+  const [isIslandExpanded, setIsIslandExpanded] = useState(false);
+  const islandRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
-        e.preventDefault();
-        setIsSearchOpen((prev) => !prev);
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        setIsSearchOpen((open) => !open);
+      }
+      if (event.key === "Escape") {
+        setIsIslandExpanded(false);
+        setIsProfileOpen(false);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -38,20 +50,23 @@ export const Navbar: React.FC<{ onToggleSidebar?: () => void; isSidebarExpanded?
   }, []);
 
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (profileRef.current && !profileRef.current.contains(e.target as Node)) {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (islandRef.current && !islandRef.current.contains(event.target as Node)) {
+        setIsIslandExpanded(false);
         setIsProfileOpen(false);
       }
     };
-    if (isProfileOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isProfileOpen]);
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, []);
+
+  useEffect(() => {
+    setIsIslandExpanded(false);
+    setIsProfileOpen(false);
+  }, [location.pathname]);
 
   const handleLogout = async () => {
+    setIsProfileOpen(false);
     await logout();
     navigate("/login");
   };
@@ -66,172 +81,165 @@ export const Navbar: React.FC<{ onToggleSidebar?: () => void; isSidebarExpanded?
       .filter(Boolean)
       .slice(-1)[0]
       ?.replace(/-/g, " ") || "overview";
+  const readablePath = pathLabel.replace(/\b\w/g, (letter) => letter.toUpperCase());
 
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-[#E9E7F0]/80 bg-white/85 px-4 shadow-[0_4px_18px_-14px_rgba(82,77,119,0.25)] backdrop-blur-xl md:px-6">
-      <div className="flex items-center gap-3">
-        {onToggleSidebar && (
+    <header className="nav-island-header sticky top-0 z-40 h-16 w-full px-2.5 py-1 sm:px-4">
+      <nav
+        ref={islandRef}
+        aria-label="Main navigation"
+        className={`nav-island relative mx-auto w-full max-w-[800px] rounded-[26px] border border-white/80 bg-white/80 p-1.5 shadow-[0_12px_36px_-20px_rgba(61,82,121,0.38)] backdrop-blur-2xl transition-[border-radius,box-shadow] duration-300 ${isIslandExpanded ? "nav-island-expanded rounded-[24px]" : ""}`}
+      >
+        <div className="flex min-h-11 items-center gap-1.5 sm:gap-2">
+          {onToggleSidebar && (
+            <button
+              onClick={onToggleSidebar}
+              className="nav-island-icon flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[#748199] hover:bg-[#EFF2F8] hover:text-[#3C648E]"
+              aria-label={isSidebarExpanded ? "Close navigation sidebar" : "Open navigation sidebar"}
+              aria-controls="app-sidebar"
+              aria-expanded={isSidebarExpanded}
+              title={isSidebarExpanded ? "Close sidebar" : "Open sidebar"}
+            >
+              <Menu className="h-[18px] w-[18px]" />
+            </button>
+          )}
+
+          <Link to="/" className="nav-island-brand flex min-w-0 shrink-0 items-center rounded-full px-1.5 py-1">
+            <span className="hidden sm:block"><LogoMark size="sm" /></span>
+            <span className="sm:hidden"><LogoMark size="sm" showWordmark={false} /></span>
+          </Link>
+
+          <span className="nav-island-divider h-7 w-px shrink-0 bg-[#E0E5EF]" />
+
           <button
-            onClick={onToggleSidebar}
-            className="rounded-lg p-2 text-[#777486] hover:bg-[#F8F7FC] hover:text-[#49465B]"
-            aria-label={isSidebarExpanded ? "Close navigation sidebar" : "Open navigation sidebar"}
-            aria-controls="app-sidebar"
-            aria-expanded={isSidebarExpanded}
-            title={isSidebarExpanded ? "Close sidebar" : "Open sidebar"}
+            type="button"
+            className="nav-island-location flex min-w-0 flex-1 items-center gap-2 rounded-full px-2.5 py-2 text-left hover:bg-[#F7F8FC] sm:flex-none sm:px-3"
+            aria-expanded={isIslandExpanded}
+            aria-controls="nav-island-details"
+            onClick={() => setIsIslandExpanded((expanded) => !expanded)}
           >
-            <Menu className="h-5 w-5" />
+            <span className="relative flex h-2.5 w-2.5 shrink-0 items-center justify-center">
+              <span className="absolute h-full w-full animate-ping rounded-full bg-[#D98768]/40" />
+              <span className="relative h-2 w-2 rounded-full bg-[#5288B8] ring-2 ring-[#EAF1F9]" />
+            </span>
+            <span className="min-w-0 flex-1 sm:flex-none">
+              <span className="block whitespace-normal break-words text-[11px] font-semibold leading-tight text-[#3C4B63] sm:text-xs">{readablePath}</span>
+              <span className="hidden max-w-[150px] truncate text-[10px] text-[#748199] lg:block">{user ? collegeName : "Practice smarter. Evolve faster."}</span>
+            </span>
+            <ChevronDown className={`hidden h-3.5 w-3.5 shrink-0 text-[#8490A2] transition-transform duration-300 sm:block ${isIslandExpanded ? "rotate-180" : ""}`} />
           </button>
-        )}
 
-        <Link to="/" className="group flex items-center gap-2.5">
-          <LogoMark size="md" />
-        </Link>
+          {user ? (
+            <>
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                className="nav-island-search hidden h-9 items-center gap-2 rounded-full border border-[#E0E5EF]/80 bg-[#F7F8FC]/90 px-3 text-[11px] text-[#748199] transition-colors hover:border-[#C7D8EA] hover:bg-white md:flex"
+                title="Quick Search (Ctrl + K)"
+              >
+                <Search className="h-3.5 w-3.5 text-[#5288B8]" />
+                <span>Search</span>
+                <span className="rounded-md border border-[#E0E5EF] bg-white px-1.5 py-0.5 font-mono text-[9px] text-[#8490A2]">Ctrl K</span>
+              </button>
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                className="nav-island-icon flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[#748199] hover:bg-[#EFF2F8] hover:text-[#5288B8] md:hidden"
+                aria-label="Open search"
+                title="Search"
+              >
+                <Search className="h-4 w-4" />
+              </button>
 
-        {user?.collegeId && (
-          <div className="hidden lg:flex items-center gap-2 ml-4 pl-4 border-l border-[#E9E7F0]">
-            <span className="text-xs font-medium capitalize text-[#777486]">
-              {pathLabel}
-            </span>
-            <span className="text-[#D4D4E0]">/</span>
-            <span className="text-xs font-semibold text-[#49465B]">
-              {collegeName}
-            </span>
-          </div>
-        )}
-      </div>
-
-      <div className="flex items-center gap-3">
-        {user && (
-          <>
-            {/* Desktop Quick Search Trigger */}
-            <button
-              onClick={() => setIsSearchOpen(true)}
-              className="hidden md:flex h-9 w-64 items-center justify-between rounded-lg border border-[#E9E7F0] bg-[#F8F7FC] px-3 text-xs text-[#777486] hover:border-[#DEDDF0] hover:bg-white transition-all shadow-[0_1px_2px_rgba(82,77,119,0.02)] group"
-              title="Quick Search (Ctrl + K)"
-            >
-              <div className="flex items-center gap-2">
-                <Search className="h-3.5 w-3.5 text-[#9895A8] group-hover:text-[#7779C5] transition-colors" />
-                <span>Search features, exams...</span>
-              </div>
-              <span className="rounded border border-[#E9E7F0] bg-white px-1.5 py-0.5 text-[10px] font-mono text-[#9895A8] shadow-xs">
-                ⌘K
-              </span>
-            </button>
-
-            {/* Mobile Search Icon Button */}
-            <button
-              onClick={() => setIsSearchOpen(true)}
-              className="flex md:hidden h-8 w-8 items-center justify-center rounded-lg border border-[#E9E7F0] text-[#777486] hover:bg-[#F8F7FC]"
-              aria-label="Open Search"
-            >
-              <Search className="h-4 w-4" />
-            </button>
-          </>
-        )}
-
-        {user ? (
-          <div className="relative flex items-center gap-1.5" ref={profileRef}>
-            <button
-              className="hidden rounded-lg p-2 text-[#9895A8] hover:bg-[#F8F7FC] sm:inline-flex"
-              aria-label="Notifications"
-              disabled
-              title="Notifications are up to date"
-            >
-              <Bell className="h-4 w-4" />
-            </button>
-            <button
-              onClick={() => setIsProfileOpen((prev) => !prev)}
-              className="flex items-center gap-2.5 rounded-xl border border-[#E9E7F0] bg-white px-2.5 py-1.5 transition-all duration-150 hover:border-[#D6D8F8] hover:bg-[#F8F7FC] active:scale-[0.98]"
-            >
-              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F0EFF9] text-xs font-semibold text-[#555780]">
-                {user.name.charAt(0).toUpperCase()}
-              </div>
-              <div className="hidden text-left md:block">
-                <div className="text-xs font-semibold text-[#49465B]">
-                  {user.name}
-                </div>
-                <div className="text-[10px] capitalize text-[#777486]">
-                  {user.role.replace("_", " ")}
-                </div>
-              </div>
-            </button>
-
-            {isProfileOpen && (
-              <div className="absolute right-0 top-12 w-52 rounded-xl border border-[#E9E7F0] bg-white p-1.5 shadow-[0_10px_30px_-5px_rgba(82,77,119,0.08)] animate-in fade-in zoom-in-95 duration-150 origin-top-right ease-out z-50">
+              <div className="relative shrink-0">
                 <button
-                  onClick={() => {
-                    setIsProfileOpen(false);
-                    navigate("/profile");
-                  }}
-                  className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-xs font-medium text-[#49465B] hover:bg-[#F8F7FC]"
+                  onClick={() => setIsProfileOpen((open) => !open)}
+                  className="nav-island-profile flex items-center gap-2 rounded-full border border-transparent py-1 pl-1 pr-1 sm:pr-2 hover:border-[#E0E5EF] hover:bg-[#F7F8FC]"
+                  aria-label={`Account menu for ${user.name}`}
+                  aria-expanded={isProfileOpen}
                 >
-                  <User className="h-3.5 w-3.5 text-[#777486]" /> Profile
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[#EAF1F9] to-[#F0EDFA] text-xs font-bold text-[#3C648E] ring-1 ring-white">
+                    {user.name.charAt(0).toUpperCase()}
+                  </span>
+                  <span className="hidden max-w-[150px] text-left md:block">
+                    <span className="block whitespace-normal break-words text-[11px] font-semibold leading-tight text-[#3C4B63]">{user.name}</span>
+                    <span className="block truncate text-[9px] capitalize text-[#748199]">{user.role.replace("_", " ")}</span>
+                  </span>
+                  <ChevronDown className={`hidden h-3 w-3 text-[#8490A2] transition-transform md:block ${isProfileOpen ? "rotate-180" : ""}`} />
                 </button>
-                <button
-                  onClick={() => {
-                    setIsProfileOpen(false);
-                    navigate("/settings");
-                  }}
-                  className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-xs font-medium text-[#49465B] hover:bg-[#F8F7FC]"
-                >
-                  <Settings className="h-3.5 w-3.5 text-[#777486]" /> Settings & Wallet
-                </button>
-                {(user.role === "admin" || user.role === "platform_admin") && (
-                  <button
-                    onClick={() => {
-                      setIsProfileOpen(false);
-                      navigate("/admin");
-                    }}
-                    className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-xs font-semibold text-[#7779C5] hover:bg-[#F0EFF9]"
-                  >
-                    <ShieldCheck className="h-3.5 w-3.5 text-[#7779C5]" /> Admin Portal
+
+                {isProfileOpen && (
+                  <div className="absolute right-0 top-[calc(100%+12px)] z-50 w-56 origin-top-right animate-in fade-in zoom-in-95 rounded-2xl border border-[#E0E5EF] bg-white/95 p-1.5 shadow-[0_18px_44px_-18px_rgba(61,82,121,0.32)] backdrop-blur-xl duration-150">
+                    <div className="mb-1 border-b border-[#E0E5EF] px-3 py-2.5">
+                      <p className="truncate text-xs font-semibold text-[#3C4B63]">{user.name}</p>
+                      <p className="truncate text-[10px] capitalize text-[#748199]">{user.role.replace("_", " ")}</p>
+                    </div>
+                    <button onClick={() => { setIsProfileOpen(false); navigate("/profile"); }} className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-xs font-medium text-[#3C4B63] hover:bg-[#EFF2F8]">
+                      <User className="h-3.5 w-3.5 text-[#748199]" /> Profile
+                    </button>
+                    <button onClick={() => { setIsProfileOpen(false); navigate("/settings"); }} className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-xs font-medium text-[#3C4B63] hover:bg-[#EFF2F8]">
+                      <Settings className="h-3.5 w-3.5 text-[#748199]" /> Settings &amp; Wallet
+                    </button>
+                    {(user.role === "admin" || user.role === "platform_admin") && (
+                      <button onClick={() => { setIsProfileOpen(false); navigate("/admin"); }} className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-xs font-semibold text-[#3C648E] hover:bg-[#EAF1F9]">
+                        <ShieldCheck className="h-3.5 w-3.5" /> Admin Portal
+                      </button>
+                    )}
+                    <button className="flex w-full cursor-not-allowed items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-xs text-[#8490A2]" disabled title="Documentation">
+                      <HelpCircle className="h-3.5 w-3.5" /> Help
+                    </button>
+                    <div className="my-1 border-t border-[#E0E5EF]" />
+                    <button onClick={handleLogout} className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-xs font-medium text-[#A36162] hover:bg-[#F9EAE8]">
+                      <LogOut className="h-3.5 w-3.5" /> Log out
+                    </button>
+                  </div>
+                )}
+              </div>
+            </>
+          ) : (
+            <div className="flex shrink-0 items-center gap-1 sm:gap-2">
+              <Button variant="ghost" size="sm" className="hidden sm:inline-flex" onClick={() => navigate("/login")}>Sign in</Button>
+              <Button variant="primary" size="sm" className="px-3 sm:px-4" onClick={() => navigate("/login?redirect=/practice")}>
+                <span className="sm:hidden">Start</span>
+                <span className="hidden sm:inline">Start Practicing</span>
+              </Button>
+            </div>
+          )}
+        </div>
+
+        {isIslandExpanded && (
+          <div id="nav-island-details" className="nav-island-details mt-1.5 border-t border-[#E0E5EF]/80 px-2 pb-2 pt-3 sm:px-3">
+            <div className="grid gap-2 sm:grid-cols-[1fr_auto] sm:items-center">
+              <div className="flex min-w-0 items-center gap-3 rounded-2xl bg-gradient-to-r from-[#EAF1F9] via-white to-[#F0EDFA] px-3 py-2.5">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-[#5288B8] shadow-sm"><Activity className="h-4 w-4" /></span>
+                <span className="min-w-0">
+                  <span className="block whitespace-normal break-words text-xs font-semibold text-[#3C4B63]">{readablePath}</span>
+                  <span className="block whitespace-normal break-words text-[10px] text-[#748199]">{user ? `${user.role.replace("_", " ")} · ${collegeName}` : "Practice smarter. Evaluate better. Evolve faster."}</span>
+                </span>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                {user && onToggleSidebar && (
+                  <button onClick={() => { onToggleSidebar(); setIsIslandExpanded(false); }} className="flex items-center justify-center gap-2 rounded-xl border border-[#E0E5EF] bg-white px-3 py-2.5 text-[11px] font-semibold text-[#3C4B63] hover:border-[#C7D8EA] hover:bg-[#F7F8FC]">
+                    <Menu className="h-3.5 w-3.5 text-[#5288B8]" /> Navigation
                   </button>
                 )}
-                <button
-                  className="flex w-full cursor-not-allowed items-center gap-2.5 rounded-lg px-3 py-2 text-left text-xs text-[#9895A8]"
-                  disabled
-                  title="Documentation"
-                >
-                  <HelpCircle className="h-3.5 w-3.5" /> Help
-                </button>
-                <div className="my-1 border-t border-[#E9E7F0]" />
-                <button
-                  onClick={handleLogout}
-                  className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-xs font-medium text-[#9A646D] hover:bg-[#F8EDEF]"
-                >
-                  <LogOut className="h-3.5 w-3.5" /> Log out
-                </button>
+                {user ? (
+                  <button onClick={() => { setIsSearchOpen(true); setIsIslandExpanded(false); }} className="flex items-center justify-center gap-2 rounded-xl border border-[#E0E5EF] bg-white px-3 py-2.5 text-[11px] font-semibold text-[#3C4B63] hover:border-[#C7D8EA] hover:bg-[#F7F8FC]">
+                    <Search className="h-3.5 w-3.5 text-[#5288B8]" /> Search
+                  </button>
+                ) : (
+                  <button onClick={() => { setIsIslandExpanded(false); navigate("/pricing"); }} className="flex items-center justify-center gap-2 rounded-xl border border-[#E0E5EF] bg-white px-3 py-2.5 text-[11px] font-semibold text-[#3C4B63] hover:border-[#C7D8EA] hover:bg-[#F7F8FC]">
+                    <Activity className="h-3.5 w-3.5 text-[#D98768]" /> Explore plans
+                  </button>
+                )}
               </div>
-            )}
-          </div>
-        ) : (
-          <div className="flex items-center gap-2.5">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="hidden sm:inline-flex"
-              onClick={() => navigate("/login")}
-            >
-              Sign in
-            </Button>
-            <Button
-              variant="primary"
-              size="sm"
-              onClick={() => navigate("/login?redirect=/practice")}
-            >
-              <span className="sm:hidden">Start</span>
-              <span className="hidden sm:inline">Start Practicing</span>
-            </Button>
+            </div>
+            <button onClick={() => setIsIslandExpanded(false)} className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full text-[#8490A2] hover:bg-white sm:hidden" aria-label="Collapse navigation island">
+              <X className="h-3.5 w-3.5" />
+            </button>
           </div>
         )}
-      </div>
+      </nav>
 
-      {/* Global Command / Quick Search Modal */}
-      <QuickSearchModal
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-      />
+      <QuickSearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </header>
   );
 };
-

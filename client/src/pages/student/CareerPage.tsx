@@ -43,7 +43,7 @@ export const CareerPage: React.FC = () => {
     return (
       <div className="page-shell">
         <Card>
-          <div className="h-40 animate-pulse rounded bg-[#F1F2F8]" />
+          <div className="h-40 animate-pulse rounded bg-[#EFF2F8]" />
         </Card>
       </div>
     );
@@ -53,9 +53,9 @@ export const CareerPage: React.FC = () => {
 
   return (
     <div className="page-shell">
-      <header className="border-b border-[#E9E7F0] pb-7">
+      <header className="border-b border-[#E0E5EF] pb-7">
         <p className="page-kicker">Career Readiness</p>
-        <h1 className="page-title display-heading text-4xl text-[#49465B]">
+        <h1 className="page-title display-heading text-4xl text-[#3C4B63]">
           Build a stronger professional profile.
         </h1>
         <p className="page-copy">
@@ -66,11 +66,11 @@ export const CareerPage: React.FC = () => {
       <section className="grid gap-6 md:grid-cols-3">
         <Card pastelAccent="blue">
           <div className="flex items-center justify-between">
-            <UserRound className="h-5 w-5 text-[#7779C5]" />
+            <UserRound className="h-5 w-5 text-[#5288B8]" />
             <Badge variant="blue">Profile</Badge>
           </div>
-          <p className="mt-7 text-4xl font-semibold text-[#49465B]">{data?.completion?.percentage ?? 0}%</p>
-          <p className="mt-1 text-sm text-[#777486]">Profile completion</p>
+          <p className="mt-7 text-4xl font-semibold text-[#3C4B63]">{data?.completion?.percentage ?? 0}%</p>
+          <p className="mt-1 text-sm text-[#748199]">Profile completion</p>
           <Button
             className="mt-6 w-full"
             variant="outline"
@@ -83,23 +83,23 @@ export const CareerPage: React.FC = () => {
 
         <Card pastelAccent="mint">
           <div className="flex items-center justify-between">
-            <FileSearch className="h-5 w-5 text-[#527565]" />
+            <FileSearch className="h-5 w-5 text-[#4C765D]" />
             <Badge variant={analysis ? 'green' : 'neutral'}>
               {analysis ? 'Analyzed' : 'Not analyzed'}
             </Badge>
           </div>
           {analysis ? (
             <>
-              <p className="mt-7 text-4xl font-semibold text-[#49465B]">
+              <p className="mt-7 text-4xl font-semibold text-[#3C4B63]">
                 {analysis.score}
-                <span className="text-lg text-[#777486]">/100</span>
+                <span className="text-lg text-[#748199]">/100</span>
               </p>
-              <p className="mt-1 text-sm text-[#777486]">Evalora ATS compatibility estimate</p>
+              <p className="mt-1 text-sm text-[#748199]">Evalora ATS compatibility estimate</p>
             </>
           ) : (
             <>
-              <p className="mt-7 text-lg font-semibold text-[#49465B]">No estimate yet</p>
-              <p className="mt-1 text-sm text-[#777486]">
+              <p className="mt-7 text-lg font-semibold text-[#3C4B63]">No estimate yet</p>
+              <p className="mt-1 text-sm text-[#748199]">
                 Upload and analyze your resume to get a document-based estimate.
               </p>
             </>
@@ -116,11 +116,11 @@ export const CareerPage: React.FC = () => {
 
         <Card pastelAccent="purple">
           <div className="flex items-center justify-between">
-            <TrendingUp className="h-5 w-5 text-[#9691CC]" />
+            <TrendingUp className="h-5 w-5 text-[#D98768]" />
             <Badge variant="purple">Evidence-based</Badge>
           </div>
-          <p className="mt-7 text-lg font-semibold text-[#49465B]">Skill signal</p>
-          <p className="mt-1 text-sm leading-6 text-[#777486]">
+          <p className="mt-7 text-lg font-semibold text-[#3C4B63]">Skill signal</p>
+          <p className="mt-1 text-sm leading-6 text-[#748199]">
             Your career profile combines demonstrated assessment and practice performance with the experience you document.
           </p>
           <Button
@@ -138,29 +138,29 @@ export const CareerPage: React.FC = () => {
           <Card
             header={
               <div>
-                <h2 className="text-sm font-semibold text-[#49465B]">ATS compatibility estimate</h2>
-                <p className="mt-1 text-xs text-[#777486]">
+                <h2 className="text-sm font-semibold text-[#3C4B63]">ATS compatibility estimate</h2>
+                <p className="mt-1 text-xs text-[#748199]">
                   This is Evalora's estimate based on structure, keywords, readability, and detected sections. It is not an official universal ATS score.
                 </p>
               </div>
             }
           >
             <div className="flex items-end gap-2">
-              <span className="text-6xl font-semibold tracking-tight text-[#49465B]">{analysis.score}</span>
-              <span className="pb-2 text-[#777486]">/ 100</span>
+              <span className="text-6xl font-semibold tracking-tight text-[#3C4B63]">{analysis.score}</span>
+              <span className="pb-2 text-[#748199]">/ 100</span>
             </div>
             <div className="mt-6 space-y-3">
               {Object.entries(analysis.scoreBreakdown || {}).map(([key, value]) => (
                 <div key={key}>
                   <div className="mb-1 flex justify-between text-xs">
-                    <span className="capitalize text-[#777486]">
+                    <span className="capitalize text-[#748199]">
                       {key.replace(/([A-Z])/g, ' $1')}
                     </span>
-                    <span className="font-medium text-[#49465B]">{String(value)}</span>
+                    <span className="font-medium text-[#3C4B63]">{String(value)}</span>
                   </div>
-                  <div className="h-1.5 rounded-full bg-[#F1F2F8]">
+                  <div className="h-1.5 rounded-full bg-[#EFF2F8]">
                     <div
-                      className="h-full rounded-full bg-[#7779C5]"
+                      className="h-full rounded-full bg-[#5288B8]"
                       style={{ width: `${Math.min(100, Number(value) * 5)}%` }}
                     />
                   </div>
@@ -172,17 +172,17 @@ export const CareerPage: React.FC = () => {
           <Card
             header={
               <div className="flex items-center justify-between">
-                <span className="text-sm font-semibold text-[#49465B]">Priority recommendations</span>
+                <span className="text-sm font-semibold text-[#3C4B63]">Priority recommendations</span>
                 <Badge variant="amber">{analysis.recommendations?.length || 0} found</Badge>
               </div>
             }
           >
             {analysis.recommendations?.length ? (
-              <div className="divide-y divide-[#E9E7F0]">
+              <div className="divide-y divide-[#E0E5EF]">
                 {analysis.recommendations.map((item: any, index: number) => (
                   <div key={`${item.category}-${index}`} className="py-4 first:pt-0 last:pb-0">
                     <div className="flex items-center justify-between gap-3">
-                      <span className="text-sm font-medium text-[#49465B]">{item.problem}</span>
+                      <span className="text-sm font-medium text-[#3C4B63]">{item.problem}</span>
                       <Badge
                         variant={
                           item.priority === 'high'
@@ -195,10 +195,10 @@ export const CareerPage: React.FC = () => {
                         {item.priority}
                       </Badge>
                     </div>
-                    <p className="mt-2 text-xs leading-5 text-[#777486]">
+                    <p className="mt-2 text-xs leading-5 text-[#748199]">
                       <strong>Why it matters:</strong> {item.whyItMatters}
                     </p>
-                    <p className="mt-2 text-xs leading-5 text-[#49465B]">
+                    <p className="mt-2 text-xs leading-5 text-[#3C4B63]">
                       <strong>Recommendation:</strong> {item.recommendation}
                     </p>
                   </div>
@@ -206,7 +206,7 @@ export const CareerPage: React.FC = () => {
               </div>
             ) : (
               <EmptyState
-                icon={<CheckCircle2 className="h-7 w-7 text-[#527565]" />}
+                icon={<CheckCircle2 className="h-7 w-7 text-[#4C765D]" />}
                 title="No document problems detected"
                 description="The current analysis did not identify additional recommendations."
               />
@@ -216,7 +216,7 @@ export const CareerPage: React.FC = () => {
       ) : (
         <Card>
           <EmptyState
-            icon={<FileSearch className="h-8 w-8 text-[#7779C5]" />}
+            icon={<FileSearch className="h-8 w-8 text-[#5288B8]" />}
             title="Upload a resume to unlock career insights"
             description="Evalora analyzes the actual text and structure of your PDF or DOCX without inventing phantom scores."
             action={<Button onClick={() => navigate('/profile')}>Go to Profile</Button>}
